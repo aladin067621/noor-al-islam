@@ -28,7 +28,7 @@ class BooksListScreen extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   leading: CircleAvatar(
-                    backgroundColor: AppTheme.gold.withValues(alpha: 0.15),
+                    backgroundColor: AppTheme.gold.withOpacity(0.15),
                     child: const Icon(Icons.menu_book, color: AppTheme.gold),
                   ),
                   title: Text(b.title,

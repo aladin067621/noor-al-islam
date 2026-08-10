@@ -59,7 +59,7 @@ class _TafsirSurahScreenState extends State<TafsirSurahScreen> {
                     children: [
                       CircleAvatar(
                         radius: 14,
-                        backgroundColor: AppTheme.primaryGreen.withValues(alpha: 0.15),
+                        backgroundColor: AppTheme.primaryGreen.withOpacity(0.15),
                         child: Text('$number',
                             style: const TextStyle(
                                 fontSize: 13,

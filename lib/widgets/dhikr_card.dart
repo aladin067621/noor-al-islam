@@ -81,7 +81,7 @@ class _DhikrCardState extends State<DhikrCard> {
                 margin: const EdgeInsets.only(bottom: 10),
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppTheme.gold.withValues(alpha: 0.12),
+                  color: AppTheme.gold.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
@@ -109,8 +109,8 @@ class _DhikrCardState extends State<DhikrCard> {
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
                       color: done
-                          ? Colors.green.withValues(alpha: 0.15)
-                          : Theme.of(context).colorScheme.primary.withValues(alpha: 0.12),
+                          ? Colors.green.withOpacity(0.15)
+                          : Theme.of(context).colorScheme.primary.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Row(

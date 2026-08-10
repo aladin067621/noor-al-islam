@@ -37,7 +37,7 @@ class MemorizationScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppTheme.primaryGreen.withValues(alpha: 0.08),
+              color: AppTheme.primaryGreen.withOpacity(0.08),
               borderRadius: BorderRadius.circular(12),
             ),
             child: const Column(

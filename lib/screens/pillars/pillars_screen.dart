@@ -27,7 +27,7 @@ class PillarsScreen extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
-                    color: AppTheme.primaryGreen.withValues(alpha: 0.08),
+                    color: AppTheme.primaryGreen.withOpacity(0.08),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(intro,

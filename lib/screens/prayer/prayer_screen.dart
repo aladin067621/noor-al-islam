@@ -67,7 +67,7 @@ class _StepsList extends StatelessWidget {
             shape: const Border(),
             collapsedShape: const Border(),
             leading: CircleAvatar(
-              backgroundColor: AppTheme.primaryGreen.withValues(alpha: 0.15),
+              backgroundColor: AppTheme.primaryGreen.withOpacity(0.15),
               child: Text('${index + 1}',
                   style: const TextStyle(color: AppTheme.primaryGreen, fontWeight: FontWeight.bold)),
             ),
@@ -96,7 +96,7 @@ class _StepsList extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: AppTheme.primaryGreen.withValues(alpha: 0.08),
+                    color: AppTheme.primaryGreen.withOpacity(0.08),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(

@@ -56,7 +56,7 @@ class BookChaptersScreen extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 4),
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundColor: AppTheme.primaryGreen.withValues(alpha: 0.15),
+                      backgroundColor: AppTheme.primaryGreen.withOpacity(0.15),
                       child: Text('${i + 1}',
                           style: const TextStyle(
                               color: AppTheme.primaryGreen, fontWeight: FontWeight.bold)),

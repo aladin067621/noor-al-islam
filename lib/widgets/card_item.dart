@@ -23,8 +23,8 @@ class CardItem extends StatelessWidget {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
-                  section.color.withValues(alpha: 0.92),
-                  section.color.withValues(alpha: 0.65),
+                  section.color.withOpacity(0.92),
+                  section.color.withOpacity(0.65),
                 ],
               ),
             ),

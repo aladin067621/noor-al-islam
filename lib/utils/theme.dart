@@ -34,14 +34,13 @@ class AppTheme {
           color: Colors.white,
         ),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: CardTheme(
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         color: Colors.white,
       ),
       textTheme: _textTheme(Colors.black87),
-      fontFamily: fontFamily,
-      dividerColor: gold.withValues(alpha: 0.3),
+      dividerColor: gold.withOpacity(0.3),
     );
   }
 
@@ -67,14 +66,13 @@ class AppTheme {
           color: Colors.white,
         ),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: CardTheme(
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         color: const Color(0xFF15201C),
       ),
-      textTheme: _textTheme(Colors.white.withValues(alpha: 0.92)),
-      fontFamily: fontFamily,
-      dividerColor: lightGold.withValues(alpha: 0.3),
+      textTheme: _textTheme(Colors.white.withOpacity(0.92)),
+      dividerColor: lightGold.withOpacity(0.3),
     );
   }
 

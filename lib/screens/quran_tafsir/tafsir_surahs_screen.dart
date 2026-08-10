@@ -54,7 +54,7 @@ class _TafsirSurahsScreenState extends State<TafsirSurahsScreen> {
                     return Card(
                       child: ListTile(
                         leading: CircleAvatar(
-                          backgroundColor: AppTheme.primaryGreen.withValues(alpha: 0.15),
+                          backgroundColor: AppTheme.primaryGreen.withOpacity(0.15),
                           child: Text('${s['id']}',
                               style: const TextStyle(
                                   color: AppTheme.primaryGreen, fontWeight: FontWeight.bold)),

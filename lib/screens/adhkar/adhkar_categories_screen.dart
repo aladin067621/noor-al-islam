@@ -26,7 +26,7 @@ class AdhkarCategoriesScreen extends StatelessWidget {
           return Card(
             child: ListTile(
               leading: CircleAvatar(
-                backgroundColor: AppTheme.primaryGreen.withValues(alpha: 0.15),
+                backgroundColor: AppTheme.primaryGreen.withOpacity(0.15),
                 child: Icon(c['icon'] as IconData, color: AppTheme.primaryGreen),
               ),
               title: Text(c['title'] as String,
