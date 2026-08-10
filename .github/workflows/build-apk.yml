@@ -18,11 +18,11 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: 3.24.5
           cache: true
 
       - name: Generate Android wrapper files
-        run: flutter create --platforms=android --project-name islamic_app .
+        run: flutter create --platforms=android --org com.noor --project-name islamic_app .
 
       - name: Fetch packages
         run: flutter pub get
