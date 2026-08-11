@@ -128,28 +128,40 @@ class _HomeScreenState extends State<HomeScreen> {
                     colors: [AppTheme.primaryGreen, AppTheme.darkGreen],
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 40, 20, 50),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 500),
-                      child: Text(
-                        _verses.isEmpty ? '' : _verses[_verseIndex],
-                        key: ValueKey(_verseIndex),
-                        textAlign: TextAlign.center,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontFamily: AppTheme.quranFontFamily,
-                          fontSize: 16,
-                          height: 1.6,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                 child: Padding(
+                   padding: const EdgeInsets.fromLTRB(28, 62, 28, 20),
+                   child: Align(
+                     alignment: Alignment.topCenter,
+                     child: SizedBox(
+                       height: 58,
+                       width: double.infinity,
+                     child: AnimatedSwitcher(
+                         duration: const Duration(milliseconds: 500),
+                         layoutBuilder: (currentChild, previousChildren) =>
+                             Stack(
+                           alignment: Alignment.topCenter,
+                           children: [
+                             ...previousChildren,
+                             if (currentChild != null) currentChild,
+                           ],
+                         ),
+                         child: Text(
+                           _verses.isEmpty ? '' : _verses[_verseIndex],
+                           key: ValueKey(_verseIndex),
+                           textAlign: TextAlign.right,
+                           maxLines: 2,
+                           overflow: TextOverflow.ellipsis,
+                           style: const TextStyle(
+                             color: Colors.white,
+                             fontFamily: AppTheme.quranFontFamily,
+                             fontSize: 16,
+                             height: 1.6,
+                           ),
+                         ),
+                       ),
+                     ),
+                   ),
+                 ),
               ),
             ),
           ),

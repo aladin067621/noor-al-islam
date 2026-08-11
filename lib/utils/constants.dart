@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// ثوابت التطبيق العامة
 class AppConstants {
-  static const String appName = 'نور الإسلام';
+  static const String appName = 'العروة الوثقى';
   static const String appTagline = 'القرآن والسنة وفهم السلف الصالح';
   static const String appVersion = '1.0.0';
 
