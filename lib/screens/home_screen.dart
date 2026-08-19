@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:hijri/hijri_calendar.dart';
 
 import '../utils/constants.dart';
 import '../utils/theme.dart';
@@ -9,7 +10,12 @@ import '../widgets/app_drawer.dart';
 import '../services/data_service.dart';
 
 import 'adhkar/adhkar_categories_screen.dart';
+import 'tasbih/tasbih_screen.dart';
+import 'asma_al_husna/asma_al_husna_screen.dart';
 import 'prayer/prayer_screen.dart';
+import 'prayer/prayer_times_screen.dart';
+import 'qibla/qibla_screen.dart';
+import 'hijri_calendar/hijri_calendar_screen.dart';
 import 'tawheed/tawheed_screen.dart';
 import 'pillars/pillars_screen.dart';
 import 'quran_tafsir/tafsir_surahs_screen.dart';
@@ -30,6 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> _verses = [];
   int _verseIndex = 0;
   Timer? _timer;
+
+  static const List<String> _hijriMonths = [
+    '', 'محرّم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
+    'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان',
+    'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة',
+  ];
+
+  String _hijriDateStr() {
+    final hijri = HijriCalendar.now();
+    final monthName = _hijriMonths[hijri.hMonth];
+    return '${hijri.hDay} $monthName ${hijri.hYear}';
+  }
 
   @override
   void initState() {
@@ -60,8 +78,23 @@ class _HomeScreenState extends State<HomeScreen> {
       case 'adhkar':
         screen = const AdhkarCategoriesScreen();
         break;
+      case 'tasbih':
+        screen = const TasbihScreen();
+        break;
+      case 'asma':
+        screen = const AsmaAlHusnaScreen();
+        break;
       case 'prayer':
         screen = const PrayerScreen();
+        break;
+      case 'prayer_times':
+        screen = const PrayerTimesScreen();
+        break;
+      case 'qibla':
+        screen = const QiblaScreen();
+        break;
+      case 'hijri':
+        screen = const HijriCalendarScreen();
         break;
       case 'tawheed':
         screen = const TawheedScreen();
@@ -118,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text(AppConstants.appName),
+              title: Text(_hijriDateStr()),
               centerTitle: true,
               background: Container(
                 decoration: const BoxDecoration(

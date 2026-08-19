@@ -6,6 +6,12 @@ class Dhikr {
   final String source; // المصدر: "رواه البخاري"...
   final String category; // الفئة: صباح / مساء / نوم / سفر...
   final String? virtue; // فضل الذكر (اختياري)
+  final String? sourceBook; // الكتاب الذي نُقل منه الذكر
+  final String? sourceChapter; // الباب الذي ورد فيه الذكر
+  final String? narrator; // الراوي إن ورد في المصدر
+  final String? hadithReference; // اسم المصدر الحديثي ورقم الحديث
+  final String? grading; // درجة الحديث إن وردت
+  final int? sourcePage; // صفحة الذكر في الكتاب
   bool isFavorite;
 
   Dhikr({
@@ -15,6 +21,12 @@ class Dhikr {
     required this.source,
     required this.category,
     this.virtue,
+    this.sourceBook,
+    this.sourceChapter,
+    this.narrator,
+    this.hadithReference,
+    this.grading,
+    this.sourcePage,
     this.isFavorite = false,
   });
 
@@ -26,6 +38,14 @@ class Dhikr {
       source: json['source'] ?? '',
       category: json['category'] ?? category,
       virtue: json['virtue'],
+      sourceBook: json['sourceBook'],
+      sourceChapter: json['sourceChapter'],
+      narrator: json['narrator'],
+      hadithReference: json['hadithReference'],
+      grading: json['grading'],
+      sourcePage: json['sourcePage'] is int
+          ? json['sourcePage'] as int
+          : int.tryParse('${json['sourcePage'] ?? ''}'),
     );
   }
 

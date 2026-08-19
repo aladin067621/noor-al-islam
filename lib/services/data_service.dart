@@ -14,6 +14,8 @@ class DataService {
 
   // ذاكرة تخزين مؤقت
   final Map<String, List<Dhikr>> _adhkarCache = {};
+  List<Dhikr>? _hisnAdhkar;
+  List<Dhikr>? _wabilAdhkar;
   List<PrayerTab>? _prayerTabs;
   List<dynamic>? _tawheedSections;
   Map<String, dynamic>? _pillars;
@@ -52,7 +54,41 @@ class DataService {
     for (final key in AppConstants.adhkarFiles.keys) {
       all.addAll(await loadAdhkar(key));
     }
+    all.addAll(await loadHisnAdhkar());
+    all.addAll(await loadWabilAdhkar());
     return all;
+  }
+
+  /// تحميل جميع أبواب حصن المسلم من ملف محلي موثق المصدر.
+  Future<List<Dhikr>> loadHisnAdhkar() async {
+    if (_hisnAdhkar != null) return _hisnAdhkar!;
+    final data = await _loadJson(AppConstants.hisnAdhkarPath);
+    final result = <Dhikr>[];
+    for (final category in data['categories'] as List) {
+      final categoryData = category as Map<String, dynamic>;
+      final title = categoryData['title']?.toString() ?? 'حصن المسلم';
+      for (final item in categoryData['items'] as List) {
+        result.add(Dhikr.fromJson(item as Map<String, dynamic>, title));
+      }
+    }
+    _hisnAdhkar = result;
+    return result;
+  }
+
+  /// تحميل جميع أذكار الوابل الصيب من ملف محلي موثق المصدر.
+  Future<List<Dhikr>> loadWabilAdhkar() async {
+    if (_wabilAdhkar != null) return _wabilAdhkar!;
+    final data = await _loadJson(AppConstants.wabilAdhkarPath);
+    final result = <Dhikr>[];
+    for (final category in data['categories'] as List) {
+      final categoryData = category as Map<String, dynamic>;
+      final title = categoryData['title']?.toString() ?? 'الوابل الصيب';
+      for (final item in categoryData['items'] as List) {
+        result.add(Dhikr.fromJson(item as Map<String, dynamic>, title));
+      }
+    }
+    _wabilAdhkar = result;
+    return result;
   }
 
   Future<List<PrayerTab>> loadPrayerTabs() async {

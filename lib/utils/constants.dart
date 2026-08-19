@@ -9,6 +9,8 @@ class AppConstants {
   // مسارات الأصول (assets)
   static const String configPath = 'assets/config/app_config.json';
   static const String referencesPath = 'assets/references.md';
+  static const String hisnAdhkarPath = 'assets/adhkar/hisn_al_muslim.json';
+  static const String wabilAdhkarPath = 'assets/adhkar/wabil_al_sayyib.json';
 
   static const Map<String, String> adhkarFiles = {
     'morning': 'assets/adhkar/morning.json',
@@ -64,7 +66,12 @@ class HomeSection {
 
 const List<HomeSection> homeSections = [
   HomeSection(id: 'adhkar', title: 'الأذكار', icon: Icons.spa, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'tasbih', title: 'السبحة', icon: Icons.circle, color: Color(0xFF1B6B5A)),
+  HomeSection(id: 'asma', title: 'أسماء الله الحسنى', icon: Icons.auto_awesome, color: Color(0xFFB8860B)),
   HomeSection(id: 'prayer', title: 'الصلاة', icon: Icons.mosque, color: Color(0xFF1B6B5A)),
+  HomeSection(id: 'prayer_times', title: 'مواقيت الصلاة', icon: Icons.access_time, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'qibla', title: 'اتجاه القبلة', icon: Icons.explore, color: Color(0xFF1B6B5A)),
+  HomeSection(id: 'hijri', title: 'التقويم الهجري', icon: Icons.calendar_month, color: Color(0xFF8B6914)),
   HomeSection(id: 'tawheed', title: 'التوحيد', icon: Icons.brightness_7, color: Color(0xFFB8860B)),
   HomeSection(id: 'pillars', title: 'أركان الإسلام', icon: Icons.auto_stories, color: Color(0xFF8B6914)),
   HomeSection(id: 'tafsir', title: 'تفسير القرآن', icon: Icons.menu_book, color: Color(0xFF2E7D5B)),

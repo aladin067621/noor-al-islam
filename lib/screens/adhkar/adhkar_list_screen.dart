@@ -14,7 +14,11 @@ class AdhkarListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: FutureBuilder<List<Dhikr>>(
-        future: DataService.instance.loadAdhkar(categoryKey),
+        future: categoryKey == 'hisn_all'
+            ? DataService.instance.loadHisnAdhkar()
+            : categoryKey == 'wabil_all'
+                ? DataService.instance.loadWabilAdhkar()
+                : DataService.instance.loadAdhkar(categoryKey),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());

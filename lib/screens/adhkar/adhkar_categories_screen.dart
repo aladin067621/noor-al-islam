@@ -11,6 +11,8 @@ class AdhkarCategoriesScreen extends StatelessWidget {
     {'key': 'before_sleep', 'title': 'أذكار قبل النوم', 'icon': Icons.bedtime},
     {'key': 'travel', 'title': 'أذكار السفر', 'icon': Icons.flight},
     {'key': 'misc', 'title': 'أذكار متنوعة', 'icon': Icons.auto_awesome},
+    {'key': 'hisn_all', 'title': 'حصن المسلم — جميع الأبواب', 'icon': Icons.menu_book},
+    {'key': 'wabil_all', 'title': 'الوابل الصيب — جميع الأبواب', 'icon': Icons.auto_stories},
   ];
 
   @override

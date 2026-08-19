@@ -44,6 +44,60 @@ class _DhikrCardState extends State<DhikrCard> {
     Share.share(widget.dhikr.shareText());
   }
 
+  void _showSourceDetails() {
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (context) => Directionality(
+        textDirection: TextDirection.rtl,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              const Text(
+                'المصدر والتفاصيل',
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 12),
+              _detail('المصدر المختصر', widget.dhikr.source),
+              if (widget.dhikr.sourceBook?.isNotEmpty == true)
+                _detail('الكتاب', widget.dhikr.sourceBook!),
+              if (widget.dhikr.sourceChapter?.isNotEmpty == true)
+                _detail('الباب', widget.dhikr.sourceChapter!),
+              if (widget.dhikr.narrator?.isNotEmpty == true)
+                _detail('الراوي', widget.dhikr.narrator!),
+              if (widget.dhikr.hadithReference?.isNotEmpty == true)
+                _detail('المرجع الحديثي', widget.dhikr.hadithReference!),
+              if (widget.dhikr.grading?.isNotEmpty == true)
+                _detail('درجة الحديث', widget.dhikr.grading!),
+              if (widget.dhikr.sourcePage != null)
+                _detail('صفحة الكتاب', '${widget.dhikr.sourcePage}'),
+              if (widget.dhikr.virtue?.isNotEmpty == true)
+                _detail('الفضل الوارد في المصدر', widget.dhikr.virtue!),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _detail(String label, String value) => Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: '$label: ',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              TextSpan(text: value),
+            ],
+          ),
+          style: const TextStyle(height: 1.7),
+        ),
+      );
+
   FavoriteItem _favItem() => FavoriteItem(
         key: widget.dhikr.favoriteKey,
         type: 'dhikr',
@@ -96,6 +150,11 @@ class _DhikrCardState extends State<DhikrCard> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
               ),
+            TextButton.icon(
+              onPressed: _showSourceDetails,
+              icon: const Icon(Icons.info_outline, size: 18),
+              label: const Text('المصدر والتفاصيل'),
+            ),
             const SizedBox(height: 8),
             const Divider(),
             Row(
