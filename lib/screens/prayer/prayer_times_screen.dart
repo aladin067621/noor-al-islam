@@ -1,7 +1,7 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hijri/hijri_calendar.dart';
+import 'package:adhan_dart/adhan_dart.dart';
 import '../../utils/theme.dart';
 
 class PrayerTimesScreen extends StatefulWidget {
@@ -58,41 +58,9 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     }
   }
 
-  Map<String, double> _computeTimes(double lat, double lon) {
-    final now = DateTime.now();
-    final tzHours = now.timeZoneOffset.inMinutes / 60.0;
-    final calc = _SolarCalc(now.year, now.month, now.day, lat, lon);
-
-    final dhuhrUtc = calc.midDayUtc();
-    final fajrUtc = calc.angleHour(-18.0, morning: true, refUtc: dhuhrUtc);
-    final sunriseUtc = calc.angleHour(-0.833, morning: true, refUtc: dhuhrUtc);
-    final asrUtc = calc.asrUtc(dhuhrUtc);
-    final maghribUtc = calc.angleHour(-0.833, morning: false, refUtc: dhuhrUtc);
-    final ishaUtc = calc.angleHour(-18.0, morning: false, refUtc: dhuhrUtc);
-
-    double local(double utcHours) {
-      var t = utcHours + tzHours - lon / 15.0;
-      t = t % 24.0;
-      if (t < 0) t += 24.0;
-      return t;
-    }
-
-    return {
-      'الفجر': local(fajrUtc),
-      'الشروق': local(sunriseUtc),
-      'الظهر': local(dhuhrUtc),
-      'العصر': local(asrUtc),
-      'المغرب': local(maghribUtc),
-      'العشاء': local(ishaUtc),
-    };
-  }
-
-  String _fmt(double hours) {
-    final h = hours.floor() % 24;
-    var m = ((hours - hours.floor()) * 60).round();
-    var hh = h;
-    if (m == 60) { m = 0; hh = (h + 1) % 24; }
-    return '${hh.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}';
+  String _fmt(DateTime utcTime) {
+    final local = utcTime.toLocal();
+    return '${local.hour.toString().padLeft(2, '0')}:${local.minute.toString().padLeft(2, '0')}';
   }
 
   @override
@@ -132,21 +100,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   }
 
   Widget _buildContent(HijriCalendar hijri) {
-    final times = _computeTimes(_position!.latitude, _position!.longitude);
+    final coordinates = Coordinates(_position!.latitude, _position!.longitude);
+    final params = CalculationMethodParameters.muslimWorldLeague();
+    params.madhab = Madhab.shafi;
 
-    final iconsColors = <String, (IconData, Color)>{
-      'الفجر': (Icons.nightlight_round, const Color(0xFF1A237E)),
-      'الشروق': (Icons.wb_sunny, const Color(0xFFFF9800)),
-      'الظهر': (Icons.brightness_high, const Color(0xFFFFC107)),
-      'العصر': (Icons.wb_cloudy, const Color(0xFFFF6F00)),
-      'المغرب': (Icons.nights_stay, const Color(0xFFE65100)),
-      'العشاء': (Icons.dark_mode, const Color(0xFF4A148C)),
-    };
+    final prayerTimes = PrayerTimes(
+      coordinates: coordinates,
+      date: DateTime.now(),
+      calculationParameters: params,
+    );
 
-    final order = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
     final prayers = [
-      for (final name in order)
-        _PrayerTime(name, _fmt(times[name]!), iconsColors[name]!.$1, iconsColors[name]!.$2),
+      _PrayerTime('الفجر', _fmt(prayerTimes.fajr!), Icons.nightlight_round, const Color(0xFF1A237E)),
+      _PrayerTime('الشروق', _fmt(prayerTimes.sunrise!), Icons.wb_sunny, const Color(0xFFFF9800)),
+      _PrayerTime('الظهر', _fmt(prayerTimes.dhuhr!), Icons.brightness_high, const Color(0xFFFFC107)),
+      _PrayerTime('العصر', _fmt(prayerTimes.asr!), Icons.wb_cloudy, const Color(0xFFFF6F00)),
+      _PrayerTime('المغرب', _fmt(prayerTimes.maghrib!), Icons.nights_stay, const Color(0xFFE65100)),
+      _PrayerTime('العشاء', _fmt(prayerTimes.isha!), Icons.dark_mode, const Color(0xFF4A148C)),
     ];
 
     final now = DateTime.now();
@@ -195,94 +165,6 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
         ],
       ),
     );
-  }
-}
-
-class _SolarCalc {
-  static const double _deg = 180.0 / math.pi;
-
-  final double _jdBase;
-  final double _lat;
-  final double _lng;
-
-  _SolarCalc(int year, int month, int day, this._lat, this._lng)
-      : _jdBase = _julian(year, month, day);
-
-  static double _julian(int y, int m, int d) {
-    if (m <= 2) { y -= 1; m += 12; }
-    final a = (y / 100).floor();
-    final b = 2 - a + (a / 4).floor();
-    return (365.25 * (y + 4716)).floor() +
-        (30.6001 * (m + 1)).floor() +
-        d + b - 1524.5;
-  }
-
-  static double _fixAngle(double a) {
-    var r = a % 360.0;
-    if (r < 0) r += 360.0;
-    return r;
-  }
-
-  static double _fixHour(double a) {
-    var r = a % 24.0;
-    if (r < 0) r += 24.0;
-    return r;
-  }
-
-  /// Returns [declination in degrees, equation-of-time in hours].
-  List<double> _sunPosition(double jd) {
-    final d = jd - 2451545.0;
-    final g = _fixAngle(357.529 + 0.98560028 * d);
-    final q = _fixAngle(280.459 + 0.98564736 * d);
-    final l = _fixAngle(q + 1.915 * math.sin(g / _deg) + 0.020 * math.sin(2 * g / _deg));
-    final e = 23.439 - 0.00000036 * d;
-    final ra = _fixAngle(math.atan2(math.cos(e / _deg) * math.sin(l / _deg),
-            math.cos(l / _deg)) *
-        _deg) /
-        15.0;
-    final decl = math.asin(math.sin(e / _deg) * math.sin(l / _deg)) * _deg;
-    final eqt = q / 15.0 - ra;
-    return [decl, eqt];
-  }
-
-  /// Solar noon in UTC hours for today's date at this longitude.
-  double midDayUtc() {
-    final jd = _jdBase - _lng / (15.0 * 24.0);
-    final pos = _sunPosition(jd + 0.5 - _lng / 360.0);
-    return _fixHour(12.0 - pos[1]);
-  }
-
-  double _hourAngleFor(double angleDeg, double decl) {
-    final cosH =
-        (-math.sin(angleDeg / _deg) - math.sin(decl / _deg) * math.sin(_lat / _deg)) /
-            (math.cos(decl / _deg) * math.cos(_lat / _deg));
-    if (cosH > 1 || cosH < -1) return double.nan;
-    return math.acos(cosH) * _deg / 15.0;
-  }
-
-  /// Time when sun reaches [angleDeg] altitude, in UTC hours.
-  double angleHour(double angleDeg, {required bool morning, required double refUtc}) {
-    final jd = _jdBase - _lng / (15.0 * 24.0);
-    final pos = _sunPosition(jd + (refUtc / 24.0));
-    final ha = _hourAngleFor(angleDeg, pos[0]);
-    final base = _fixHour(12.0 - pos[1]);
-    if (ha.isNaN) {
-      return morning ? base - 6.0 : base + 6.0;
-    }
-    return _fixHour(morning ? base - ha : base + ha);
-  }
-
-  /// Asr (Shafi'i, shadow factor 1) in UTC hours.
-  double asrUtc(double refUtc) {
-    final jd = _jdBase - _lng / (15.0 * 24.0);
-    final pos = _sunPosition(jd + (refUtc / 24.0));
-    final decl = pos[0];
-    final angle =
-        -(math.atan(1.0 / (1.0 + math.tan(((_lat - decl).abs()) / _deg)))) * _deg;
-    final ha = _hourAngleFor(angle, decl);
-    final base = _fixHour(12.0 - pos[1]);
-    if (ha.isNaN) return _fixHour(base + 3.0);
-    return _fixHour(base + ha);
   }
 }
 

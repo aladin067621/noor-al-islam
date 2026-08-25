@@ -23,7 +23,7 @@ dependencies:
   hijri: ^3.0.0
   geolocator: ^13.0.1
   geocoding: ^3.0.0
-  adhan_dart: ^0.0.2
+  adhan_dart: ^2.0.1
 
 dev_dependencies:
   flutter_test:
