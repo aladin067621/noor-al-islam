@@ -10,8 +10,9 @@ class HijriCalendarScreen extends StatefulWidget {
 }
 
 class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
-  late HijriCalendar _currentMonth;
-  final _today = HijriCalendar.now();
+  int _viewYear = 0;
+  int _viewMonth = 1;
+  late final HijriCalendar _today = HijriCalendar.now();
 
   static const List<String> _monthNames = [
     '', 'محرّم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
@@ -21,102 +22,77 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
 
   static const List<String> _weekDays = ['أحد', 'إثنين', 'ثلا', 'أرب', 'خمي', 'جمع', 'سبت'];
 
-  static const Map<String, List<Map<String, dynamic>>> _islamicEvents = {
-    'محرّم': [
-      {'day': 1, 'title': 'رأس السنة الهجرية', 'desc': 'أول محرم'},
+  static const Map<int, List<Map<String, String>>> _islamicEvents = {
+    1: [
+      {'day': '1', 'title': 'رأس السنة الهجرية', 'desc': 'بداية السنة الهجرية الجديدة'},
+      {'day': '10', 'title': 'يوم عاشوراء', 'desc': 'يوم صيام عاشوراء'},
     ],
-    'صفر': [
-      {'day': 10, 'title': 'يوم عاشوراء', 'desc': 'صيام يوم عاشوراء'},
+    3: [
+      {'day': '12', 'title': 'المولد النبوي', 'desc': 'ذكرى مولد النبي صلى الله عليه وسلم'},
     ],
-    'ربيع الأول': [
-      {'day': 12, 'title': 'المولد النبوي', 'desc': 'ولد النبي صلى الله عليه وسلم'},
+    7: [
+      {'day': '27', 'title': 'الإسراء والمعراج', 'desc': 'ذكرى ليلة الإسراء والمعراج'},
     ],
-    'ربيع الثاني': [
-      {'day': 11, 'title': 'المولد النبوي (ال חג)', 'desc': 'احتفال المولد النبوي'},
+    8: [
+      {'day': '15', 'title': 'ليلة النصف من شعبان', 'desc': 'ليلة مباركة'},
     ],
-    'رجب': [
-      {'day': 27, 'title': 'الإسراء والمعراج', 'desc': 'ليلة الإسراء والمعراج'},
+    9: [
+      {'day': '1', 'title': 'بداية رمضان', 'desc': 'شهر الصيام'},
+      {'day': '27', 'title': 'ليلة القدر', 'desc': 'خير من ألف شهر'},
     ],
-    'شعبان': [
-      {'day': 15, 'title': 'ليلة النصف من شعبان', 'desc': 'ليلة مباركة'},
+    10: [
+      {'day': '1', 'title': 'عيد الفطر', 'desc': 'عيد الفطر المبارك'},
     ],
-    'رمضان': [
-      {'day': 1, 'title': 'بداية رمضان', 'desc': 'شهر الصيام'},
-      {'day': 27, 'title': 'ليلة القدر', 'desc': 'خير من ألف شهر'},
-    ],
-    'شوال': [
-      {'day': 1, 'title': 'عيد الفطر', 'desc': 'عيد الفطر المبارك'},
-    ],
-    'ذو الحجة': [
-      {'day': 9, 'title': 'يوم عرفة', 'desc': 'يوم عرفة'},
-      {'day': 10, 'title': 'عيد الأضحى', 'desc': 'عيد الأضحى المبارك'},
+    12: [
+      {'day': '9', 'title': 'يوم عرفة', 'desc': 'يوم عرفة'},
+      {'day': '10', 'title': 'عيد الأضحى', 'desc': 'عيد الأضحى المبارك'},
     ],
   };
 
   @override
   void initState() {
     super.initState();
-    _currentMonth = HijriCalendar.now();
+    _viewYear = _today.hYear;
+    _viewMonth = _today.hMonth;
   }
 
-  int _daysInMonth(int month, int year) {
-    if (month % 2 == 1) return 30;
-    if (month < 12) return 29;
-    return _isLeapYear(year) ? 30 : 29;
-  }
-
-  bool _isLeapYear(int year) {
-    return ((11 * year + 14) % 30) < 11;
-  }
+  int get _daysInMonth => HijriCalendar().getDaysInMonth(_viewYear, _viewMonth);
 
   void _prevMonth() {
     setState(() {
-      if (_currentMonth.hMonth == 1) {
-        _currentMonth = HijriCalendar(hDay: 1, hMonth: 12, hYear: _currentMonth.hYear - 1);
+      if (_viewMonth == 1) {
+        _viewMonth = 12;
+        _viewYear -= 1;
       } else {
-        _currentMonth = HijriCalendar(hDay: 1, hMonth: _currentMonth.hMonth - 1, hYear: _currentMonth.hYear);
+        _viewMonth -= 1;
       }
     });
   }
 
   void _nextMonth() {
     setState(() {
-      if (_currentMonth.hMonth == 12) {
-        _currentMonth = HijriCalendar(hDay: 1, hMonth: 1, hYear: _currentMonth.hYear + 1);
+      if (_viewMonth == 12) {
+        _viewMonth = 1;
+        _viewYear += 1;
       } else {
-        _currentMonth = HijriCalendar(hDay: 1, hMonth: _currentMonth.hMonth + 1, hYear: _currentMonth.hYear);
+        _viewMonth += 1;
       }
     });
   }
 
   void _goToToday() {
-    setState(() => _currentMonth = HijriCalendar.now());
+    setState(() {
+      _viewYear = _today.hYear;
+      _viewMonth = _today.hMonth;
+    });
   }
+
+  bool _isToday(int day) =>
+      day == _today.hDay && _viewMonth == _today.hMonth && _viewYear == _today.hYear;
 
   @override
   Widget build(BuildContext context) {
-    final monthName = _monthNames[_currentMonth.hMonth];
-    final days = _daysInMonth(_currentMonth.hMonth, _currentMonth.hYear);
-    final firstDayWeekday = HijriCalendar()
-      ..hDay = 1
-      ..hMonth = _currentMonth.hMonth
-      ..hYear = _currentMonth.hYear;
-
-    int startWeekday = 6;
-    try {
-      final gregDate = HijriCalendar(
-        hDay: 1,
-        hMonth: _currentMonth.hMonth,
-        hYear: _currentMonth.hYear,
-      ).hijriToGregorian(
-        _currentMonth.hYear,
-        _currentMonth.hMonth,
-        1,
-      );
-      startWeekday = gregDate.weekday % 7;
-    } catch (_) {}
-
-    final events = _islamicEvents[monthName] ?? [];
+    final events = _islamicEvents[_viewMonth] ?? [];
 
     return Scaffold(
       appBar: AppBar(
@@ -134,11 +110,11 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
           children: [
             _buildTodayCard(),
             const SizedBox(height: 16),
-            _buildMonthHeader(monthName),
+            _buildMonthHeader(),
             const SizedBox(height: 12),
             _buildWeekdayHeader(),
             const SizedBox(height: 4),
-            _buildCalendarGrid(days, startWeekday),
+            _buildCalendarGrid(),
             if (events.isNotEmpty) ...[
               const SizedBox(height: 20),
               _buildEventsSection(events),
@@ -150,12 +126,11 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
   }
 
   Widget _buildTodayCard() {
-    final today = HijriCalendar.now();
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [AppTheme.primaryGreen, AppTheme.darkGreen],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -165,7 +140,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
           const Text('اليوم', style: TextStyle(color: Colors.white70, fontSize: 14)),
           const SizedBox(height: 4),
           Text(
-            '${today.hDay} ${_monthNames[today.hMonth]} ${today.hYear}',
+            '${_today.hDay} ${_monthNames[_today.hMonth]} ${_today.hYear}',
             style: const TextStyle(
               fontFamily: AppTheme.quranFontFamily,
               color: Colors.white,
@@ -188,18 +163,15 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
     return names[weekday - 1];
   }
 
-  Widget _buildMonthHeader(String monthName) {
+  Widget _buildMonthHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          icon: const Icon(Icons.chevron_right),
-          onPressed: _prevMonth,
-        ),
+        IconButton(icon: const Icon(Icons.chevron_right), onPressed: _prevMonth),
         Column(
           children: [
             Text(
-              monthName,
+              _monthNames[_viewMonth],
               style: const TextStyle(
                 fontFamily: AppTheme.quranFontFamily,
                 fontSize: 22,
@@ -207,46 +179,50 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
                 color: AppTheme.primaryGreen,
               ),
             ),
-            Text(
-              '${_currentMonth.hYear} هـ',
-              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-            ),
+            Text('$_viewYear هـ',
+                style: TextStyle(fontSize: 14, color: Colors.grey[600])),
           ],
         ),
-        IconButton(
-          icon: const Icon(Icons.chevron_left),
-          onPressed: _nextMonth,
-        ),
+        IconButton(icon: const Icon(Icons.chevron_left), onPressed: _nextMonth),
       ],
     );
   }
 
   Widget _buildWeekdayHeader() {
     return Row(
-      children: _weekDays.map((d) => Expanded(
-        child: Center(
-          child: Text(
-            d,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: d == 'جمع' ? AppTheme.gold : Colors.grey[600],
-            ),
-          ),
-        ),
-      )).toList(),
+      children: _weekDays
+          .map((d) => Expanded(
+                child: Center(
+                  child: Text(
+                    d,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: d == 'جمع' ? AppTheme.gold : Colors.grey[600],
+                    ),
+                  ),
+                ),
+              ))
+          .toList(),
     );
   }
 
-  Widget _buildCalendarGrid(int days, int startWeekday) {
+  Widget _buildCalendarGrid() {
     final cells = <Widget>[];
+
+    int startWeekday = 6;
+    try {
+      final gregDate =
+          HijriCalendar().hijriToGregorian(_viewYear, _viewMonth, 1);
+      startWeekday = gregDate.weekday % 7;
+    } catch (_) {}
+
     for (int i = 0; i < startWeekday; i++) {
       cells.add(const SizedBox());
     }
-    for (int day = 1; day <= days; day++) {
-      final isToday = day == _today.hDay &&
-          _currentMonth.hMonth == _today.hMonth &&
-          _currentMonth.hYear == _today.hYear;
+
+    for (int day = 1; day <= _daysInMonth; day++) {
+      final isToday = _isToday(day);
       cells.add(
         Center(
           child: Container(
@@ -269,6 +245,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
         ),
       );
     }
+
     return GridView.count(
       crossAxisCount: 7,
       shrinkWrap: true,
@@ -279,7 +256,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
     );
   }
 
-  Widget _buildEventsSection(List<Map<String, dynamic>> events) {
+  Widget _buildEventsSection(List<Map<String, String>> events) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -287,15 +264,18 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         ...events.map((e) => Card(
-          child: ListTile(
-            leading: CircleAvatar(
-              backgroundColor: AppTheme.gold.withOpacity(0.15),
-              child: Text('${e['day']}', style: const TextStyle(color: AppTheme.gold, fontWeight: FontWeight.bold)),
-            ),
-            title: Text(e['title'] as String, style: const TextStyle(fontWeight: FontWeight.bold)),
-            subtitle: Text(e['desc'] as String),
-          ),
-        )),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: AppTheme.gold.withOpacity(0.15),
+                  child: Text(e['day']!,
+                      style: const TextStyle(
+                          color: AppTheme.gold, fontWeight: FontWeight.bold)),
+                ),
+                title: Text(e['title']!,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text(e['desc']!),
+              ),
+            )),
       ],
     );
   }

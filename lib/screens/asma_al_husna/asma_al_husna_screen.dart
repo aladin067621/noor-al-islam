@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../utils/theme.dart';
-import '../../utils/constants.dart';
 
 class AsmaAlHusnaScreen extends StatefulWidget {
   const AsmaAlHusnaScreen({super.key});
