@@ -1,0 +1,56 @@
+
+Running Gradle task 'assembleRelease'...                        
+
+FAILURE: Build completed with 3 failures.
+
+1: Task failed with an exception.
+-----------
+* Where:
+Build file '/home/runner/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/android/build.gradle' line: 29
+
+* What went wrong:
+A problem occurred evaluating project ':geolocator_android'.
+> Could not get unknown property 'flutter' for extension 'android' of type com.android.build.gradle.LibraryExtension.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+A problem occurred configuring project ':geolocator_android'.
+> Failed to notify project evaluation listener.
+   > Cannot invoke method substring() on null object
+   > compileSdkVersion is not specified. Please add it to build.gradle
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+3: Task failed with an exception.
+-----------
+* What went wrong:
+Failed to query the value of property 'buildFlowServiceProperty'.
+> Could not isolate value org.jetbrains.kotlin.gradle.plugin.statistics.BuildFlowService$Parameters_Decorated@8a4b27e of type BuildFlowService.Parameters
+   > A problem occurred configuring project ':geolocator_android'.
+      > Failed to notify project evaluation listener.
+         > Cannot invoke method substring() on null object
+         > compileSdkVersion is not specified. Please add it to build.gradle
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+BUILD FAILED in 1m 41s
+Running Gradle task 'assembleRelease'...                          101.9s
+Gradle task assembleRelease failed with exit code 1
