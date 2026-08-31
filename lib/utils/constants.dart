@@ -17,7 +17,8 @@ class AppConstants {
     'evening': 'assets/adhkar/evening.json',
     'before_sleep': 'assets/adhkar/before_sleep.json',
     'travel': 'assets/adhkar/travel.json',
-    'misc': 'assets/adhkar/misc.json',
+    'prayer': 'assets/adhkar/prayer_adhkar.json',
+    'other': 'assets/adhkar/other_adhkar.json',
   };
 
   static const String prayerStepsFile = 'assets/prayer/prayer_steps.json';
@@ -36,6 +37,11 @@ class AppConstants {
   static const String keyPopupEnabled = 'popup_enabled';
   static const String keyPopupInterval = 'popup_interval_minutes';
   static const String keyPopupAdhkar = 'popup_adhkar_list';
+
+  // مفاتيح تخصيص الأذكار (shared_preferences)
+  static const String keyAdhkarOrder = 'adhkar_order';
+  static const String keySubAdhkarOrder = 'adhkar_sub_order';
+  static const String keyPinnedAdhkar = 'adhkar_pinned_list';
 
   // القيم الافتراضية
   static const double defaultFontSize = 18.0;

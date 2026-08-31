@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
 import '../../models/dhikr.dart';
+import '../../models/adhkar_category.dart';
 import '../../services/data_service.dart';
 import '../../widgets/dhikr_card.dart';
 
 class AdhkarListScreen extends StatelessWidget {
   final String categoryKey;
   final String title;
+  final AdhkarCategory? category;
 
-  const AdhkarListScreen({super.key, required this.categoryKey, required this.title});
+  const AdhkarListScreen(
+      {super.key,
+      required this.categoryKey,
+      required this.title,
+      this.category});
+
+  Future<List<Dhikr>> _load() {
+    if (category != null) {
+      return Future.value(category!.items);
+    }
+    if (categoryKey == 'hisn_all') {
+      return DataService.instance.loadHisnAdhkar();
+    }
+    if (categoryKey == 'wabil_all') {
+      return DataService.instance.loadWabilAdhkar();
+    }
+    return DataService.instance.loadAdhkar(categoryKey);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: FutureBuilder<List<Dhikr>>(
-        future: categoryKey == 'hisn_all'
-            ? DataService.instance.loadHisnAdhkar()
-            : categoryKey == 'wabil_all'
-                ? DataService.instance.loadWabilAdhkar()
-                : DataService.instance.loadAdhkar(categoryKey),
+        future: _load(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());

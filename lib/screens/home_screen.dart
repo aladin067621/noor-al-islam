@@ -2,7 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:hijri/hijri_calendar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/dhikr.dart';
 import '../utils/constants.dart';
 import '../utils/theme.dart';
 import '../widgets/card_item.dart';
@@ -10,6 +12,7 @@ import '../widgets/app_drawer.dart';
 import '../services/data_service.dart';
 
 import 'adhkar/adhkar_categories_screen.dart';
+import 'adhkar/adhkar_list_screen.dart';
 import 'tasbih/tasbih_screen.dart';
 import 'asma_al_husna/asma_al_husna_screen.dart';
 import 'prayer/prayer_screen.dart';
@@ -37,6 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
   int _verseIndex = 0;
   Timer? _timer;
 
+  List<String> _adhkarTexts = [];
+  List<String> _pinnedAdhkar = [];
+
   static const List<String> _hijriMonths = [
     '', 'محرّم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
     'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان',
@@ -53,6 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _loadVerses();
+    _loadAdhkarTexts();
+    _loadPinned();
   }
 
   Future<void> _loadVerses() async {
@@ -61,9 +69,71 @@ class _HomeScreenState extends State<HomeScreen> {
     if (!mounted) return;
     setState(() => _verses = list);
     _timer = Timer.periodic(const Duration(seconds: 8), (_) {
-      if (_verses.isEmpty || !mounted) return;
-      setState(() => _verseIndex = (_verseIndex + 1) % _verses.length);
+      if (!mounted) return;
+      final total = _currentTexts().length;
+      if (total == 0) return;
+      setState(() => _verseIndex = (_verseIndex + 1) % total);
     });
+  }
+
+  // القائمة الحالية للنصوص الدوّارة (تفضيل الأذكار ثم الأدعية)
+  List<String> _currentTexts() =>
+      _adhkarTexts.isNotEmpty ? _adhkarTexts : _verses;
+
+  String _displayedText() {
+    final list = _currentTexts();
+    if (list.isEmpty) return '';
+    return list[_verseIndex % list.length];
+  }
+
+  int _textKey() {
+    final list = _currentTexts();
+    if (list.isEmpty) return 0;
+    final idx = _verseIndex % list.length;
+    return '$idx::${list[idx]}'.hashCode;
+  }
+
+  /// تحميل نصوص أذكار دوّارة (من أذكار الصباح والمساء) لعرضها في العنوان
+  Future<void> _loadAdhkarTexts() async {
+    try {
+      final morning = await DataService.instance.loadAdhkar('morning');
+      final evening = await DataService.instance.loadAdhkar('evening');
+      final texts = [...morning, ...evening]
+          .map((d) => d.text)
+          .where((t) => t.isNotEmpty)
+          .toList();
+      if (!mounted) return;
+      setState(() => _adhkarTexts = texts);
+    } catch (_) {
+      // تجاهل — لا نريد كسر الشاشة إذا فشل التحميل
+    }
+  }
+
+  /// تحميل الأقسام المثبّتة في الصفحة الرئيسية
+  Future<void> _loadPinned() async {
+    final prefs = await SharedPreferences.getInstance();
+    final pinned =
+        prefs.getStringList(AppConstants.keyPinnedAdhkar) ?? [];
+    if (!mounted) return;
+    setState(() => _pinnedAdhkar = pinned);
+  }
+
+  /// فتح قسم مثبّت من الصفحة الرئيسية
+  void _openPinned(String key) {
+    final titles = {
+      'morning': 'أذكار الصباح',
+      'evening': 'أذكار المساء',
+      'before_sleep': 'أذكار قبل النوم',
+      'travel': 'أذكار السفر',
+      'prayer': 'أذكار الصلاة',
+    };
+    final title = titles[key] ?? key;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => AdhkarListScreen(categoryKey: key, title: title),
+      ),
+    );
   }
 
   @override
@@ -178,19 +248,19 @@ class _HomeScreenState extends State<HomeScreen> {
                              if (currentChild != null) currentChild,
                            ],
                          ),
-                         child: Text(
-                           _verses.isEmpty ? '' : _verses[_verseIndex],
-                           key: ValueKey(_verseIndex),
-                           textAlign: TextAlign.right,
-                           maxLines: 2,
-                           overflow: TextOverflow.ellipsis,
-                           style: const TextStyle(
-                             color: Colors.white,
-                             fontFamily: AppTheme.quranFontFamily,
-                             fontSize: 16,
-                             height: 1.6,
-                           ),
-                         ),
+                          child: Text(
+                            _displayedText(),
+                            key: ValueKey(_textKey()),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontFamily: AppTheme.quranFontFamily,
+                              fontSize: 16,
+                              height: 1.6,
+                            ),
+                          ),
                        ),
                      ),
                    ),
@@ -198,6 +268,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          if (_pinnedAdhkar.isNotEmpty)
+            SliverToBoxAdapter(
+              child: _PinnedBar(
+                pinnedKeys: _pinnedAdhkar,
+                onOpen: _openPinned,
+              ),
+            ),
           SliverPadding(
             padding: const EdgeInsets.all(14),
             sliver: SliverGrid(
@@ -238,3 +315,65 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+/// شريط الأقسام المثبّتة في الصفحة الرئيسية
+class _PinnedBar extends StatelessWidget {
+  final List<String> pinnedKeys;
+  final void Function(String key) onOpen;
+  const _PinnedBar({required this.pinnedKeys, required this.onOpen});
+
+  static const _titles = {
+    'morning': 'أذكار الصباح',
+    'evening': 'أذكار المساء',
+    'before_sleep': 'أذكار قبل النوم',
+    'travel': 'أذكار السفر',
+    'prayer': 'أذكار الصلاة',
+  };
+
+  static const _icons = {
+    'morning': Icons.wb_sunny,
+    'evening': Icons.nightlight_round,
+    'before_sleep': Icons.bedtime,
+    'travel': Icons.flight,
+    'prayer': Icons.mosque,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final valid = pinnedKeys.where(_titles.containsKey).toList();
+    if (valid.isEmpty) return const SizedBox.shrink();
+    return Container(
+      color: AppTheme.primaryGreen.withOpacity(0.06),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(bottom: 6),
+            child: Text(
+              'أذكاري المثبّتة',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+            ),
+          ),
+          SizedBox(
+            height: 46,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: valid.length,
+              separatorBuilder: (_, __) => const SizedBox(width: 8),
+              itemBuilder: (context, index) {
+                final key = valid[index];
+                return ActionChip(
+                  avatar: Icon(_icons[key], size: 18, color: AppTheme.primaryGreen),
+                  label: Text(_titles[key]!),
+                  onPressed: () => onOpen(key),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+

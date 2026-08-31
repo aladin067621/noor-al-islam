@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/dhikr.dart';
+import '../models/adhkar_category.dart';
 import '../models/prayer_step.dart';
 import '../models/book.dart';
 import '../models/chapter.dart';
@@ -46,6 +47,25 @@ class DataService {
   Future<String> adhkarTitle(String key) async {
     final data = await _loadJson(AppConstants.adhkarFiles[key]!);
     return data['title'] ?? key;
+  }
+
+  /// فئات حصن المسلم (مع عناصرها) — تُستخدم في شاشة "أذكار أخرى"
+  Future<List<AdhkarCategory>> loadHisnCategories() async {
+    final data = await _loadJson(AppConstants.hisnAdhkarPath);
+    return (data['categories'] as List)
+        .map((c) =>
+            AdhkarCategory.fromJson(c as Map<String, dynamic>, book: 'حصن المسلم'))
+        .toList();
+  }
+
+  /// فئات الوابل الصيب (مع عناصرها) — تُستخدم في شاشة "أذكار أخرى"
+  Future<List<AdhkarCategory>> loadWabilCategories() async {
+    final data = await _loadJson(AppConstants.wabilAdhkarPath);
+    return (data['categories'] as List)
+        .map((c) => AdhkarCategory.fromJson(
+            c as Map<String, dynamic>,
+            book: 'الوابل الصيب'))
+        .toList();
   }
 
   /// كل الأذكار (لكل الفئات) — للبحث والمفضلة
