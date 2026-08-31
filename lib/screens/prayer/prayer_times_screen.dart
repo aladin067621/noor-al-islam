@@ -48,7 +48,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
         return;
       }
       final pos = await Geolocator.getCurrentPosition(
-        locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
+        desiredAccuracy: LocationAccuracy.high,
       );
       if (!mounted) return;
       setState(() { _position = pos; _loading = false; });
