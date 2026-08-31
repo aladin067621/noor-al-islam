@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - master
 
 permissions:
   contents: write
@@ -17,6 +16,12 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -40,28 +45,26 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: noor-al-islam-build-log
+          name: noor-al-islam-build-log-${{ github.run_number }}
           path: build.log
           if-no-files-found: warn
 
-      - name: Publish diagnostic log branch
-        if: failure()
-        env:
-          RUN_ID: ${{ github.run_id }}
-        run: |
-          cp build.log /tmp/build.log
-          git checkout --orphan "build-diagnostics-${RUN_ID}"
-          git rm -rf .
-          cp /tmp/build.log build.log
-          git add build.log
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Publish build diagnostics"
-          git push origin "HEAD:build-diagnostics-${RUN_ID}"
-
-      - name: Upload APK
+      - name: Upload APK artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: noor-al-islam-release-apk
+          name: noor-al-islam-release-apk-${{ github.run_number }}
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 30
+
+      - name: Publish downloadable Release
+        if: success()
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: إصدار التطبيق ${{ github.run_number }}
+          body: |
+            حمّل التطبيق من الملف المرفق أدناه (app-release.apk).
+            بعد التحميل افتح الملف على هاتفك واسمح بالتثبيت من مصادر غير معروفة.
+          files: build/app/outputs/flutter-apk/app-release.apk
