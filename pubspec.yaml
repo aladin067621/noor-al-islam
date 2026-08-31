@@ -30,6 +30,12 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^4.0.0
 
+# إصلاح خطأ البناء في Flutter 3.24.x: geolocator_android 4.6.2 يستخدم
+# flutter.compileSdkVersion الذي لا يتوفّر في هذه النسخة من Flutter.
+# تثبيت 4.6.1 يمنع خطأ "compileSdkVersion is not specified".
+dependency_overrides:
+  geolocator_android: 4.6.1
+
 flutter:
   uses-material-design: true
 
