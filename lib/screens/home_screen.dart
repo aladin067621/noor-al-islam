@@ -10,6 +10,7 @@ import '../utils/constants.dart';
 import '../utils/theme.dart';
 import '../widgets/card_item.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/daily_reminders_card.dart';
 import '../services/data_service.dart';
 import '../services/notification_service.dart';
 
@@ -40,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> _verses = [];
   int _verseIndex = 0;
   Timer? _timer;
+  bool _showDailyReminders = true;
 
   List<String> _adhkarTexts = [];
   List<String> _pinnedAdhkar = [];
@@ -62,7 +64,20 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadVerses();
     _loadAdhkarTexts();
     _loadPinned();
+    _loadReminderVisibility();
     WidgetsBinding.instance.addPostFrameCallback((_) => _maybeShowFirstLaunchDialog());
+  }
+
+  /// التذكيرات اليومية تظهر في الصفحة الرئيسية في الزيارة الأولى فقط،
+  /// ثم تبقى متاحة من الإعدادات.
+  Future<void> _loadReminderVisibility() async {
+    final prefs = await SharedPreferences.getInstance();
+    final seen = prefs.getBool(AppConstants.keyDailyRemindersSeen) ?? false;
+    if (!seen) {
+      await prefs.setBool(AppConstants.keyDailyRemindersSeen, true);
+    }
+    if (!mounted) return;
+    setState(() => _showDailyReminders = !seen);
   }
 
   /// نافذة طلب الأذونات عند أول استخدام للتطبيق (الإشعارات + الموقع)
@@ -274,9 +289,9 @@ SliverAppBar(
                   ),
                 ),
                  child: Padding(
-                   padding: const EdgeInsets.fromLTRB(28, 62, 28, 20),
+                   padding: const EdgeInsets.symmetric(horizontal: 28),
                    child: Align(
-                     alignment: Alignment.topCenter,
+                     alignment: Alignment.center,
                      child: SizedBox(
                        height: 58,
                        width: double.infinity,
@@ -310,10 +325,9 @@ SliverAppBar(
               ),
             ),
           ),
-SliverToBoxAdapter(
-            child: _HijriDateCard(dateStr: _hijriDateStr()),
-          ),
-          const SliverToBoxAdapter(child: _DailyRemindersCard()),
+SliverToBoxAdapter(child: _HijriDateCard(dateStr: _hijriDateStr())),
+          if (_showDailyReminders)
+            const SliverToBoxAdapter(child: DailyRemindersCard()),
           if (_pinnedAdhkar.isNotEmpty)
             SliverToBoxAdapter(
               child: _PinnedBar(
@@ -458,173 +472,6 @@ class _HijriDateCard extends StatelessWidget {
   }
 }
 
-/// قسم التذكيرات اليومية في الصفحة الرئيسية (سورة الكهف + صيام الاثنين/الخميس + الأيام البيض)
-class _DailyRemindersCard extends StatefulWidget {
-  const _DailyRemindersCard();
-
-  @override
-  State<_DailyRemindersCard> createState() => _DailyRemindersCardState();
-}
-
-class _DailyRemindersCardState extends State<_DailyRemindersCard> {
-  bool _enabled = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
-
-  Future<void> _load() async {
-    final prefs = await SharedPreferences.getInstance();
-    final enabled = prefs.getBool(AppConstants.keySunnahReminders) ?? true;
-    if (!mounted) return;
-    setState(() => _enabled = enabled);
-  }
-
-  Future<void> _toggle(bool value) async {
-    if (!mounted) return;
-    setState(() => _enabled = value);
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(AppConstants.keySunnahReminders, value);
-    if (value) {
-      NotificationService.instance.scheduleSunnahReminders();
-    } else {
-      NotificationService.instance.cancelSunnahReminders();
-      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-        const SnackBar(content: Text('تم إيقاف تذكيرات السنن اليومية')),
-      );
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.fromLTRB(14, 12, 14, 0),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(14, 8, 14, 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Icon(Icons.notifications_active, color: AppTheme.primaryGreen),
-                const SizedBox(width: 8),
-                const Expanded(
-                  child: Text(
-                    'التذكيرات اليومية',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                ),
-                Switch(value: _enabled, onChanged: _toggle),
-              ],
-            ),
-            const Divider(height: 8),
-            const _ReminderRow(
-              icon: Icons.menu_book,
-              day: 'الجمعة',
-              title: 'قراءة سورة الكهف',
-              hadith: '«من قرأ سورة الكهف يوم الجمعة أضاء له من النور ما بين الجمعتين»',
-              source: 'رواه الحاكم والبيهقي، وصححه الألباني',
-            ),
-            const _ReminderRow(
-              icon: Icons.restaurant,
-              day: 'الاثنين والخميس',
-              title: 'صيام مندوب — من الأفضل الصيام فيهما',
-              hadith: '«تُعرَض الأعمال يوم الاثنين والخميس، فأحب أن يُعرَض عملي وأنا صائم»',
-              source: 'رواه الترمذي وابن ماجه، وحسّنه الترمذي',
-            ),
-            const _ReminderRow(
-              icon: Icons.dark_mode,
-              day: 'الأيام البيض',
-              title: 'الصيام 13/14/15 من كل شهر هجري',
-              hadith: '«يا أبا ذرّ، إذا صُمتَ من الشهر ثلاثةَ أيامٍ فصُم ثلاثَ عشرةَ وأربعَ عشرةَ وخمسَ عشرةَ»',
-              source: 'رواه الترمذي والنسائي، وحسّنه الترمذي',
-              secondaryHadith: '«صيام ثلاثة أيام من كل شهر صيام الدهر»',
-              secondarySource: 'رواه أحمد والدارمي',
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _ReminderRow extends StatelessWidget {
-  final IconData icon;
-  final String day;
-  final String title;
-  final String hadith;
-  final String source;
-  final String? secondaryHadith;
-  final String? secondarySource;
-
-  const _ReminderRow({
-    required this.icon,
-    required this.day,
-    required this.title,
-    required this.hadith,
-    required this.source,
-    this.secondaryHadith,
-    this.secondarySource,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            radius: 18,
-            backgroundColor: AppTheme.gold.withOpacity(0.15),
-            child: Icon(icon, size: 18, color: AppTheme.gold),
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '$day — $title',
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  hadith,
-                  style: TextStyle(
-                    fontSize: 13,
-                    height: 1.6,
-                    color: Colors.grey[800],
-                    fontFamily: AppTheme.quranFontFamily,
-                  ),
-                ),
-                if (secondaryHadith != null)
-                  Text(
-                    secondaryHadith!,
-                    style: TextStyle(
-                      fontSize: 13,
-                      height: 1.6,
-                      color: Colors.grey[800],
-                      fontFamily: AppTheme.quranFontFamily,
-                    ),
-                  ),
-                Text(
-                  '($source)',
-                  style: TextStyle(fontSize: 12, color: Colors.grey[500]),
-                ),
-                if (secondarySource != null)
-                  Text(
-                    '($secondarySource)',
-                    style: TextStyle(fontSize: 12, color: Colors.grey[500]),
-                  ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+/// قسم التذكيرات اليومية موجود الآن في widgets/daily_reminders_card.dart
+/// ويُعرض في الصفحة الرئيسية في الزيارة الأولى فقط.
 

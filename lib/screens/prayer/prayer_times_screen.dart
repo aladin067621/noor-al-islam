@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hijri/hijri_calendar.dart';
@@ -21,6 +23,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   Position? _position;
   bool _loading = true;
   String? _error;
+  bool _locationLocked = false;
 
   int _methodIndex = 0;
   int _dayOffset = 0;
@@ -41,24 +44,50 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
-        setState(() { _error = 'خدمة الموقع غير مفعّلة'; _loading = false; });
+        setState(() {
+          _error = 'خدمة الموقع غير مفعّلة';
+          _loading = false;
+          _locationLocked = true;
+        });
         return;
       }
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          setState(() { _error = 'الرجاء تفعيل صلاحية الموقع'; _loading = false; });
+          setState(() {
+            _error = 'الرجاء تفعيل صلاحية الموقع';
+            _loading = false;
+            _locationLocked = true;
+          });
           return;
         }
       }
       if (permission == LocationPermission.deniedForever) {
-        setState(() { _error = 'صلاحية الموقع ممنوعة نهائياً — يُرجى تفعيلها من الإعدادات'; _loading = false; });
+        setState(() {
+          _error = 'صلاحية الموقع ممنوعة نهائياً — يُرجى تفعيلها من الإعدادات';
+          _loading = false;
+          _locationLocked = true;
+        });
         return;
       }
-      final pos = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
+      Position pos;
+      try {
+        pos = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,
+        ).timeout(const Duration(seconds: 15));
+      } on TimeoutException {
+        final last = await Geolocator.getLastKnownPosition();
+        if (last == null) {
+          setState(() {
+            _error = 'تعذّر تحديد موقعك — تأكد من تفعيل خدمة الموقع ثم أعد المحاولة';
+            _loading = false;
+            _locationLocked = true;
+          });
+          return;
+        }
+        pos = last;
+      }
       if (!mounted) return;
       setState(() { _position = pos; _loading = false; });
     } catch (e) {
@@ -94,13 +123,6 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('مواقيت الصلاة'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.calendar_today),
-            tooltip: 'اختر طريقة الحساب',
-            onPressed: _showMethodPicker,
-          ),
-        ],
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
@@ -155,10 +177,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
             Text(_error!, textAlign: TextAlign.center, style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 20),
             ElevatedButton.icon(
-              onPressed: () => setState(() { _loading = true; _error = null; _init(); }),
+              onPressed: () => setState(() { _loading = true; _error = null; _locationLocked = false; _init(); }),
               icon: const Icon(Icons.refresh),
               label: const Text('إعادة المحاولة'),
             ),
+            if (_locationLocked) ...[
+              const SizedBox(height: 8),
+              OutlinedButton.icon(
+                onPressed: () => Geolocator.openLocationSettings(),
+                icon: const Icon(Icons.settings),
+                label: const Text('فتح إعدادات الموقع'),
+              ),
+            ],
           ],
         ),
       ),
@@ -204,7 +234,9 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
         ? 'اليوم'
         : _dayOffset == 1
             ? 'غداً'
-            : 'بعد غد';
+            : _dayOffset == 2
+                ? 'بعد غد'
+                : 'بعد $_dayOffset أيام';
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),

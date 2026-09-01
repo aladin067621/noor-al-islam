@@ -107,7 +107,7 @@ class MemorizationScreen extends StatelessWidget {
         'desc': 'غضّ بصرك عن المحرمات، فإنها تُظلم القلب وتُذهب نور الإيمان وتعيق حفظ القرآن.',
       },
       {
-        'icon': Icons.self_improvement_outlined,
+        'icon': Icons.cleaning_services_outlined,
         'title': 'صفاء القلب والخشوع',
         'desc': 'طهّر قلبك بالاستغفار وترك الذنوب، فالإخلاص والطهارة من أعظم أسباب التوفيق للحفظ.',
       },

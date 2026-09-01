@@ -104,7 +104,9 @@ class _QiblaScreenState extends State<QiblaScreen> {
 
     var heading = atan2(hy, my2) * 180 / pi;
     if (heading < 0) heading += 360;
-    return heading;
+    // تصحيح اتجاه قراءة البوصلة: يعكس القيمة لتتوافق مع اتجاه دوران الجهاز
+    // بحيث تشير القبلة للجهة اليسرى عندما تكون فعلاً على يسار المستخدم.
+    return (360 - heading) % 360;
   }
 
   Future<void> _init() async {
@@ -206,7 +208,9 @@ class _QiblaScreenState extends State<QiblaScreen> {
     final qiblaBearing = _calculateQiblaBearing();
     final distance = _distanceToMakkah();
     final heading = _heading;
-    final rotationAngle = heading != null ? -heading * pi / 180 : 0.0;
+    // بوصلة ثابتة: يتحرك سهم القبلة فقط بدلاً من تدوير القرص كاملاً.
+    final arrowDeg = heading != null ? qiblaBearing - heading - 90.0 : qiblaBearing - 90.0;
+    final arrowAngle = arrowDeg * pi / 180;
     final aligned = heading != null && (qiblaBearing - heading + 360) % 360 <= 3.0;
 
     return SingleChildScrollView(
@@ -217,16 +221,13 @@ class _QiblaScreenState extends State<QiblaScreen> {
           Stack(
             alignment: Alignment.center,
             children: [
-              Transform.rotate(
-                angle: rotationAngle,
-                child: SizedBox(
-                  width: 280,
-                  height: 280,
-                  child: CustomPaint(
-                    painter: _CompassPainter(
-                      qiblaBearing: qiblaBearing,
-                      headingAvailable: heading != null,
-                    ),
+              SizedBox(
+                width: 280,
+                height: 280,
+                child: CustomPaint(
+                  painter: _CompassPainter(
+                    arrowAngle: arrowAngle,
+                    headingAvailable: heading != null,
                   ),
                 ),
               ),
@@ -350,10 +351,10 @@ class _QiblaScreenState extends State<QiblaScreen> {
 }
 
 class _CompassPainter extends CustomPainter {
-  final double qiblaBearing;
+  final double arrowAngle;
   final bool headingAvailable;
 
-  _CompassPainter({required this.qiblaBearing, required this.headingAvailable});
+  _CompassPainter({required this.arrowAngle, required this.headingAvailable});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -417,7 +418,7 @@ class _CompassPainter extends CustomPainter {
       );
     });
 
-    final qiblaAngle = (qiblaBearing - 90) * pi / 180;
+    final qiblaAngle = arrowAngle;
 
     // سهم القبلة
     final arrowPaint = Paint()
@@ -462,7 +463,7 @@ class _CompassPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _CompassPainter old) =>
-      old.qiblaBearing != qiblaBearing || old.headingAvailable != headingAvailable;
+      old.arrowAngle != arrowAngle || old.headingAvailable != headingAvailable;
 }
 
 class _ForwardMarkerPainter extends CustomPainter {

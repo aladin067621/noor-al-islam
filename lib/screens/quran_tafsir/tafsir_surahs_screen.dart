@@ -13,21 +13,35 @@ class TafsirSurahsScreen extends StatefulWidget {
 class _TafsirSurahsScreenState extends State<TafsirSurahsScreen> {
   String _query = '';
 
+  /// تطبيع النص العربي للبحث (إزالة التشكيل وتوحيد الألف والهاء)
+  String _normalize(String s) {
+    final diacritics = RegExp('[\u064B-\u0652\u0670]');
+    return s
+        .replaceAll(diacritics, '')
+        .replaceAll(RegExp('[إأآا]'), 'ا')
+        .replaceAll('ى', 'ي')
+        .replaceAll('ة', 'ه')
+        .replaceAll('ـ', '')
+        .trim();
+  }
+
   List<Map<String, dynamic>> _matchSurahs(List<dynamic> surahs, String q) {
+    final query = _normalize(q);
     return surahs
-        .where((s) => (s['name'] as String).contains(q))
+        .where((s) => _normalize(s['name'] as String).contains(query))
         .cast<Map<String, dynamic>>()
         .toList();
   }
 
   /// البحث عن الآيات: يظهر اقتراحًا لكل آية يبدأ/يحتوي نصها على ما كتبه المستخدم
   List<Map<String, dynamic>> _matchAyat(List<dynamic> surahs, String q) {
+    final query = _normalize(q);
     final results = <Map<String, dynamic>>[];
     for (final s in surahs) {
       final ayat = (s['ayat'] as List?) ?? [];
       for (final a in ayat) {
         final text = (a['text'] as String? ?? '');
-        if (text.contains(q)) {
+        if (_normalize(text).contains(query)) {
           results.add({
             'surahId': s['id'],
             'surahName': s['name'],

@@ -5,6 +5,7 @@ import '../../services/settings_provider.dart';
 import '../../services/notification_service.dart';
 import '../../utils/constants.dart';
 import '../../utils/theme.dart';
+import '../../widgets/daily_reminders_card.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -83,6 +84,23 @@ class SettingsScreen extends StatelessWidget {
                 await NotificationService.instance.scheduleEvening(picked);
               }
             },
+          ),
+          const Divider(),
+          _header('التذكيرات اليومية'),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: Text(
+              'تذكيرات السنن اليومية: سورة الكهف يوم الجمعة، وصيام الاثنين والخميس، والأيام البيض.',
+              style: TextStyle(fontSize: 13, color: Colors.grey),
+            ),
+          ),
+          const DailyRemindersCard(),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(16, 8, 16, 0),
+            child: Text(
+              'هذا القسم يظهر في الصفحة الرئيسية في أول زيارة فقط، وهو متاح دائماً هنا.',
+              style: TextStyle(fontSize: 12, color: Colors.grey),
+            ),
           ),
           const Divider(),
           _header('الأذكار المنبثقة'),
