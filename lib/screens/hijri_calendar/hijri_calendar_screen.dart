@@ -20,21 +20,11 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
     'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة',
   ];
 
-  static const List<String> _weekDays = ['أحد', 'إثنين', 'ثلا', 'أرب', 'خمي', 'جمع', 'سبت'];
+  static const List<String> _weekDays = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
 
   static const Map<int, List<Map<String, String>>> _islamicEvents = {
     1: [
-      {'day': '1', 'title': 'رأس السنة الهجرية', 'desc': 'بداية السنة الهجرية الجديدة'},
       {'day': '10', 'title': 'يوم عاشوراء', 'desc': 'يوم صيام عاشوراء'},
-    ],
-    3: [
-      {'day': '12', 'title': 'المولد النبوي', 'desc': 'ذكرى مولد النبي صلى الله عليه وسلم'},
-    ],
-    7: [
-      {'day': '27', 'title': 'الإسراء والمعراج', 'desc': 'ذكرى ليلة الإسراء والمعراج'},
-    ],
-    8: [
-      {'day': '15', 'title': 'ليلة النصف من شعبان', 'desc': 'ليلة مباركة'},
     ],
     9: [
       {'day': '1', 'title': 'بداية رمضان', 'desc': 'شهر الصيام'},
@@ -167,7 +157,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(icon: const Icon(Icons.chevron_right), onPressed: _prevMonth),
+        IconButton(icon: const Icon(Icons.chevron_left), onPressed: _prevMonth),
         Column(
           children: [
             Text(
@@ -183,7 +173,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
                 style: TextStyle(fontSize: 14, color: Colors.grey[600])),
           ],
         ),
-        IconButton(icon: const Icon(Icons.chevron_left), onPressed: _nextMonth),
+        IconButton(icon: const Icon(Icons.chevron_right), onPressed: _nextMonth),
       ],
     );
   }
@@ -198,7 +188,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen> {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: d == 'جمع' ? AppTheme.gold : Colors.grey[600],
+                      color: d == 'الجمعة' ? AppTheme.gold : Colors.grey[600],
                     ),
                   ),
                 ),

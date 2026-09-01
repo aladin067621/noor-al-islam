@@ -90,7 +90,7 @@ class _StepsList extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Text(s.description, style: const TextStyle(height: 1.8)),
                 ),
-              if (s.dhikr.isNotEmpty) ...[
+              if (s.dhikr.isNotEmpty || s.dhikrVariants.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 Container(
                   width: double.infinity,
@@ -101,12 +101,30 @@ class _StepsList extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Text(
-                        s.dhikr,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontFamily: AppTheme.quranFontFamily, fontSize: 18, height: 1.9),
-                      ),
+                      if (s.dhikr.isNotEmpty)
+                        Text(
+                          s.dhikr,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontFamily: AppTheme.quranFontFamily, fontSize: 18, height: 1.9),
+                        ),
+                      if (s.dhikrVariants.isNotEmpty) ...[
+                        const SizedBox(height: 6),
+                        for (var i = 0; i < s.dhikrVariants.length; i++) ...[
+                          if (s.dhikr.isNotEmpty && i == 0)
+                            const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6),
+                              child: Divider(thickness: 1),
+                            ),
+                          Text(
+                            s.dhikrVariants[i],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontFamily: AppTheme.quranFontFamily, fontSize: 18, height: 1.9),
+                          ),
+                          if (i != s.dhikrVariants.length - 1) const SizedBox(height: 10),
+                        ],
+                      ],
                       if (s.dhikrRepetitions > 1)
                         Padding(
                           padding: const EdgeInsets.only(top: 6),

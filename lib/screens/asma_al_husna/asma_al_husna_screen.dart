@@ -13,11 +13,12 @@ class _AsmaAlHusnaScreenState extends State<AsmaAlHusnaScreen> {
   bool _showMeanings = false;
 
   static const List<Map<String, String>> _names = [
+    {'ar': 'الله', 'en': 'Allah', 'desc': 'الاسم الأعظم الجامع لجميع صفات الكمال'},
     {'ar': 'الرَّحْمَن', 'en': 'The Most Merciful', 'desc': 'الذي وسعت رحمته كل شيء'},
     {'ar': 'الرَّحِيم', 'en': 'The Especially Merciful', 'desc': 'الذي خصّ رحمته بالمؤمنين'},
     {'ar': 'المَلِك', 'en': 'The King', 'desc': 'المالك المتصرف بملكه كيف يشاء'},
     {'ar': 'القُدُّوس', 'en': 'The Holy', 'desc': 'المنزه عن كل نقص'},
-    {'ar': 'السَّلاَم', 'en': 'The Source of Peace', 'desc': 'السالم من العيوب والعيوب'},
+    {'ar': 'السَّلاَم', 'en': 'The Source of Peace', 'desc': 'السالم من كل عيب ونقص'},
     {'ar': 'المُؤْمِن', 'en': 'The Giver of Security', 'desc': 'المصدق لرسله بالآيات'},
     {'ar': 'المُهَيْمِن', 'en': 'The Guardian', 'desc': 'الرقيب الحافظ لكل شيء'},
     {'ar': 'العَزِيز', 'en': 'The Almighty', 'desc': 'الغالب الذي لا يُغلب'},
@@ -50,7 +51,7 @@ class _AsmaAlHusnaScreenState extends State<AsmaAlHusnaScreen> {
     {'ar': 'الشَّكُور', 'en': 'The Appreciative', 'desc': 'يُثيب على القليل كثيراً'},
     {'ar': 'العَلِيّ', 'en': 'The Most High', 'desc': 'منتهى العلو بلا حد'},
     {'ar': 'الكَبِير', 'en': 'The Greatest', 'desc': 'الجامع لصفات الجلال'},
-    {'ar': 'الحَفِيظ', 'en': 'The Preserver', 'desc': 'ال守护 كل ما خلق'},
+    {'ar': 'الحَفِيظ', 'en': 'The Preserver', 'desc': 'الحافظ لكل شيء، الذي لا يضيع عنده شيء'},
     {'ar': 'المُقِيت', 'en': 'The Sustainer', 'desc': 'الكافي لخلقه'},
     {'ar': 'الحَسِيب', 'en': 'The Reckoner', 'desc': 'المحاسب للعباد'},
     {'ar': 'الجَلِيل', 'en': 'The Majestic', 'desc': 'الجامع لصفات الجلال'},

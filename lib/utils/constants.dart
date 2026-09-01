@@ -38,6 +38,10 @@ class AppConstants {
   static const String keyPopupInterval = 'popup_interval_minutes';
   static const String keyPopupAdhkar = 'popup_adhkar_list';
 
+  // مفاتيح الإذن الأول والتذكيرات اليومية
+  static const String keyFirstLaunchDone = 'first_launch_done';
+  static const String keySunnahReminders = 'sunnah_reminders_enabled';
+
   // مفاتيح تخصيص الأذكار (shared_preferences)
   static const String keyAdhkarOrder = 'adhkar_order';
   static const String keySubAdhkarOrder = 'adhkar_sub_order';
@@ -72,7 +76,6 @@ class HomeSection {
 
 const List<HomeSection> homeSections = [
   HomeSection(id: 'adhkar', title: 'الأذكار', icon: Icons.spa, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'tasbih', title: 'السبحة', icon: Icons.circle, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'asma', title: 'أسماء الله الحسنى', icon: Icons.auto_awesome, color: Color(0xFFB8860B)),
   HomeSection(id: 'prayer', title: 'الصلاة', icon: Icons.mosque, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'prayer_times', title: 'مواقيت الصلاة', icon: Icons.access_time, color: Color(0xFF2E7D5B)),

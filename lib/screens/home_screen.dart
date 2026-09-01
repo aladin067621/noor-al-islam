@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../models/dhikr.dart';
 import '../utils/constants.dart';
@@ -10,10 +11,10 @@ import '../utils/theme.dart';
 import '../widgets/card_item.dart';
 import '../widgets/app_drawer.dart';
 import '../services/data_service.dart';
+import '../services/notification_service.dart';
 
 import 'adhkar/adhkar_categories_screen.dart';
 import 'adhkar/adhkar_list_screen.dart';
-import 'tasbih/tasbih_screen.dart';
 import 'asma_al_husna/asma_al_husna_screen.dart';
 import 'prayer/prayer_screen.dart';
 import 'prayer/prayer_times_screen.dart';
@@ -61,6 +62,50 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadVerses();
     _loadAdhkarTexts();
     _loadPinned();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _maybeShowFirstLaunchDialog());
+  }
+
+  /// نافذة طلب الأذونات عند أول استخدام للتطبيق (الإشعارات + الموقع)
+  Future<void> _maybeShowFirstLaunchDialog() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool(AppConstants.keyFirstLaunchDone) ?? false) return;
+    await prefs.setBool(AppConstants.keyFirstLaunchDone, true);
+    if (!mounted) return;
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('تفعيل الأذونات'),
+        content: const Text(
+          'لكي يعمل التطبيق بالشكل الصحيح:\n'
+          '• السماح بالإشعارات: تذكيرك بالأذكار والسنن اليومية.\n'
+          '• السماح بتحديد الموقع: مواقيت الصلاة واتجاه القبلة.',
+          textAlign: TextAlign.right,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('لاحقاً'),
+          ),
+          FilledButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _grantPermissions();
+            },
+            child: const Text('موافق'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _grantPermissions() async {
+    try {
+      await NotificationService.instance.requestNotificationPermission();
+    } catch (_) {}
+    try {
+      await Geolocator.requestPermission();
+    } catch (_) {}
+    await NotificationService.instance.scheduleSunnahReminders();
   }
 
   Future<void> _loadVerses() async {
@@ -93,14 +138,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return '$idx::${list[idx]}'.hashCode;
   }
 
-  /// تحميل نصوص أذكار دوّارة (من أذكار الصباح والمساء) لعرضها في العنوان
+  /// تحميل نصوص أذكار دوّارة قصيرة (من أذكار الصباح والمساء) لعرضها في العنوان
   Future<void> _loadAdhkarTexts() async {
     try {
       final morning = await DataService.instance.loadAdhkar('morning');
       final evening = await DataService.instance.loadAdhkar('evening');
       final texts = [...morning, ...evening]
           .map((d) => d.text)
-          .where((t) => t.isNotEmpty)
+          .where((t) => t.isNotEmpty && t.length <= 90)
           .toList();
       if (!mounted) return;
       setState(() => _adhkarTexts = texts);
@@ -147,9 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (id) {
       case 'adhkar':
         screen = const AdhkarCategoriesScreen();
-        break;
-      case 'tasbih':
-        screen = const TasbihScreen();
         break;
       case 'asma':
         screen = const AsmaAlHusnaScreen();
@@ -210,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const AppDrawer(),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
+SliverAppBar(
             expandedHeight: 170,
             pinned: true,
             leading: Builder(
@@ -221,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(_hijriDateStr()),
+              title: const Text(''),
               centerTitle: true,
               background: Container(
                 decoration: const BoxDecoration(
@@ -239,35 +281,39 @@ class _HomeScreenState extends State<HomeScreen> {
                        height: 58,
                        width: double.infinity,
                      child: AnimatedSwitcher(
-                         duration: const Duration(milliseconds: 500),
-                         layoutBuilder: (currentChild, previousChildren) =>
-                             Stack(
-                           alignment: Alignment.topCenter,
-                           children: [
-                             ...previousChildren,
-                             if (currentChild != null) currentChild,
-                           ],
-                         ),
-                          child: Text(
-                            _displayedText(),
-                            key: ValueKey(_textKey()),
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: AppTheme.quranFontFamily,
-                              fontSize: 16,
-                              height: 1.6,
-                            ),
+                          duration: const Duration(milliseconds: 500),
+                          layoutBuilder: (currentChild, previousChildren) =>
+                              Stack(
+                            alignment: Alignment.topCenter,
+                            children: [
+                              ...previousChildren,
+                              if (currentChild != null) currentChild,
+                            ],
                           ),
-                       ),
+                           child: Text(
+                             _displayedText(),
+                             key: ValueKey(_textKey()),
+                             textAlign: TextAlign.center,
+                             maxLines: 2,
+                             overflow: TextOverflow.ellipsis,
+                             style: const TextStyle(
+                               color: Colors.white,
+                               fontFamily: AppTheme.quranFontFamily,
+                               fontSize: 16,
+                               height: 1.6,
+                             ),
+                           ),
+                        ),
                      ),
                    ),
                  ),
               ),
             ),
           ),
+SliverToBoxAdapter(
+            child: _HijriDateCard(dateStr: _hijriDateStr()),
+          ),
+          const SliverToBoxAdapter(child: _DailyRemindersCard()),
           if (_pinnedAdhkar.isNotEmpty)
             SliverToBoxAdapter(
               child: _PinnedBar(
@@ -369,6 +415,211 @@ class _PinnedBar extends StatelessWidget {
                   onPressed: () => onOpen(key),
                 );
               },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// بطاقة التاريخ الهجري المعروضة أسفل الترويسة
+class _HijriDateCard extends StatelessWidget {
+  final String dateStr;
+  const _HijriDateCard({required this.dateStr});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(14, 10, 14, 0),
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+      decoration: BoxDecoration(
+        color: AppTheme.primaryGreen.withOpacity(0.06),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppTheme.primaryGreen.withOpacity(0.25)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.calendar_today, size: 20, color: AppTheme.primaryGreen),
+          const SizedBox(width: 10),
+          Text(
+            dateStr,
+            style: const TextStyle(
+              fontFamily: AppTheme.quranFontFamily,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppTheme.darkGreen,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// قسم التذكيرات اليومية في الصفحة الرئيسية (سورة الكهف + صيام الاثنين/الخميس + الأيام البيض)
+class _DailyRemindersCard extends StatefulWidget {
+  const _DailyRemindersCard();
+
+  @override
+  State<_DailyRemindersCard> createState() => _DailyRemindersCardState();
+}
+
+class _DailyRemindersCardState extends State<_DailyRemindersCard> {
+  bool _enabled = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    final prefs = await SharedPreferences.getInstance();
+    final enabled = prefs.getBool(AppConstants.keySunnahReminders) ?? true;
+    if (!mounted) return;
+    setState(() => _enabled = enabled);
+  }
+
+  Future<void> _toggle(bool value) async {
+    if (!mounted) return;
+    setState(() => _enabled = value);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(AppConstants.keySunnahReminders, value);
+    if (value) {
+      NotificationService.instance.scheduleSunnahReminders();
+    } else {
+      NotificationService.instance.cancelSunnahReminders();
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        const SnackBar(content: Text('تم إيقاف تذكيرات السنن اليومية')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.fromLTRB(14, 12, 14, 0),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 8, 14, 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.notifications_active, color: AppTheme.primaryGreen),
+                const SizedBox(width: 8),
+                const Expanded(
+                  child: Text(
+                    'التذكيرات اليومية',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                ),
+                Switch(value: _enabled, onChanged: _toggle),
+              ],
+            ),
+            const Divider(height: 8),
+            const _ReminderRow(
+              icon: Icons.menu_book,
+              day: 'الجمعة',
+              title: 'قراءة سورة الكهف',
+              hadith: '«من قرأ سورة الكهف يوم الجمعة أضاء له من النور ما بين الجمعتين»',
+              source: 'رواه الحاكم والبيهقي، وصححه الألباني',
+            ),
+            const _ReminderRow(
+              icon: Icons.restaurant,
+              day: 'الاثنين والخميس',
+              title: 'صيام مندوب — من الأفضل الصيام فيهما',
+              hadith: '«تُعرَض الأعمال يوم الاثنين والخميس، فأحب أن يُعرَض عملي وأنا صائم»',
+              source: 'رواه الترمذي وابن ماجه، وحسّنه الترمذي',
+            ),
+            const _ReminderRow(
+              icon: Icons.dark_mode,
+              day: 'الأيام البيض',
+              title: 'الصيام 13/14/15 من كل شهر هجري',
+              hadith: '«يا أبا ذرّ، إذا صُمتَ من الشهر ثلاثةَ أيامٍ فصُم ثلاثَ عشرةَ وأربعَ عشرةَ وخمسَ عشرةَ»',
+              source: 'رواه الترمذي والنسائي، وحسّنه الترمذي',
+              secondaryHadith: '«صيام ثلاثة أيام من كل شهر صيام الدهر»',
+              secondarySource: 'رواه أحمد والدارمي',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ReminderRow extends StatelessWidget {
+  final IconData icon;
+  final String day;
+  final String title;
+  final String hadith;
+  final String source;
+  final String? secondaryHadith;
+  final String? secondarySource;
+
+  const _ReminderRow({
+    required this.icon,
+    required this.day,
+    required this.title,
+    required this.hadith,
+    required this.source,
+    this.secondaryHadith,
+    this.secondarySource,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 18,
+            backgroundColor: AppTheme.gold.withOpacity(0.15),
+            child: Icon(icon, size: 18, color: AppTheme.gold),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$day — $title',
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  hadith,
+                  style: TextStyle(
+                    fontSize: 13,
+                    height: 1.6,
+                    color: Colors.grey[800],
+                    fontFamily: AppTheme.quranFontFamily,
+                  ),
+                ),
+                if (secondaryHadith != null)
+                  Text(
+                    secondaryHadith!,
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.6,
+                      color: Colors.grey[800],
+                      fontFamily: AppTheme.quranFontFamily,
+                    ),
+                  ),
+                Text(
+                  '($source)',
+                  style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                ),
+                if (secondarySource != null)
+                  Text(
+                    '($secondarySource)',
+                    style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                  ),
+              ],
             ),
           ),
         ],

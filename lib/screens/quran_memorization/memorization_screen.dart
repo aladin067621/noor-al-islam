@@ -7,7 +7,7 @@ class MemorizationScreen extends StatelessWidget {
   static const _strategies = [
     {
       'icon': Icons.repeat,
-      'title': 'التكرار المتباعد (Spaced Repetition)',
+      'title': 'التكرار المتباعد',
       'desc': 'احفظ 3 إلى 5 آيات يوميًا، مع مراجعة محفوظ الأسبوع السابق باستمرار لترسيخه في الذاكرة بعيدة المدى.',
     },
     {
@@ -42,8 +42,6 @@ class MemorizationScreen extends StatelessWidget {
             ),
             child: const Column(
               children: [
-                Icon(Icons.psychology, size: 40, color: AppTheme.primaryGreen),
-                SizedBox(height: 8),
                 Text(
                   'استراتيجية الحفظ المنظم',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -84,8 +82,72 @@ class MemorizationScreen extends StatelessWidget {
                   ),
                 ),
               )),
+          const SizedBox(height: 18),
+          _buildAdviceSection(),
         ],
       ),
+    );
+  }
+
+  Widget _buildAdviceSection() {
+    const advice = [
+      {
+        'icon': Icons.bedtime_outlined,
+        'title': 'النوم المبكر والكفاية من النوم',
+        'desc': 'حافظ على نومك باكرًا ونم قسطًا كافيًا، فالعقل الصافي أنشط للحفظ وتركيز أسرع.',
+      },
+      {
+        'icon': Icons.restaurant_outlined,
+        'title': 'الاعتدال في الأكل',
+        'desc': 'لا تسرف في الطعام؛ فكثرة الأكل تورث الكسل وتذهب النشاط وتعيق الحفظ والتركيز.',
+      },
+      {
+        'icon': Icons.visibility_off_outlined,
+        'title': 'غض البصر',
+        'desc': 'غضّ بصرك عن المحرمات، فإنها تُظلم القلب وتُذهب نور الإيمان وتعيق حفظ القرآن.',
+      },
+      {
+        'icon': Icons.self_improvement_outlined,
+        'title': 'صفاء القلب والخشوع',
+        'desc': 'طهّر قلبك بالاستغفار وترك الذنوب، فالإخلاص والطهارة من أعظم أسباب التوفيق للحفظ.',
+      },
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'نصائح تعين على الحفظ',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        ...advice.map((a) => Card(
+              margin: const EdgeInsets.symmetric(vertical: 6),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(a['icon'] as IconData, color: AppTheme.gold, size: 28),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(a['title'] as String,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16)),
+                          const SizedBox(height: 6),
+                          Text(a['desc'] as String,
+                              style: const TextStyle(height: 1.8)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )),
+      ],
     );
   }
 }

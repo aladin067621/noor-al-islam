@@ -32,6 +32,7 @@ class PrayerStep {
   final String title;
   final String description;
   final String dhikr;
+  final List<String> dhikrVariants;
   final int dhikrRepetitions;
   final String evidence;
   final String source;
@@ -42,6 +43,7 @@ class PrayerStep {
     required this.title,
     required this.description,
     this.dhikr = '',
+    this.dhikrVariants = const [],
     this.dhikrRepetitions = 0,
     this.evidence = '',
     this.source = '',
@@ -54,6 +56,9 @@ class PrayerStep {
       title: json['title'] ?? '',
       description: json['description'] ?? '',
       dhikr: json['dhikr'] ?? '',
+      dhikrVariants: (json['dhikrVariants'] as List? ?? [])
+          .map((e) => e.toString())
+          .toList(),
       dhikrRepetitions: json['dhikrRepetitions'] ?? 0,
       evidence: json['evidence'] ?? '',
       source: json['source'] ?? '',

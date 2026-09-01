@@ -22,6 +22,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   bool _loading = true;
   String? _error;
 
+  int _methodIndex = 0;
+  int _dayOffset = 0;
+
+  static const List<Map<String, String>> _methods = [
+    {'name': 'رابطة العالم الإسلامي', 'desc': 'زاوية 18°'} ,
+    {'name': 'أم القرى (مكة)', 'desc': '18.5° والعشاء بعد 90 دقيقة'} ,
+    {'name': 'الهيئة المصرية', 'desc': '19.5°'} ,
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -58,6 +67,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     }
   }
 
+  CalculationParameters _paramsForMethod(int index) {
+    final CalculationParameters params;
+    switch (index) {
+      case 0:
+        params = CalculationMethodParameters.muslimWorldLeague();
+        break;
+      case 1:
+        params = CalculationMethodParameters.ummAlQura();
+        break;
+      default:
+        params = CalculationMethodParameters.egyptian();
+        break;
+    }
+    params.madhab = Madhab.shafi;
+    return params;
+  }
+
   String _fmt(DateTime utcTime) {
     final local = utcTime.toLocal();
     return '${local.hour.toString().padLeft(2, '0')}:${local.minute.toString().padLeft(2, '0')}';
@@ -65,15 +91,55 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final hijri = HijriCalendar.now();
-
     return Scaffold(
-      appBar: AppBar(title: const Text('مواقيت الصلاة')),
+      appBar: AppBar(
+        title: const Text('مواقيت الصلاة'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.calendar_today),
+            tooltip: 'اختر طريقة الحساب',
+            onPressed: _showMethodPicker,
+          ),
+        ],
+      ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : _error != null
               ? _buildError()
-              : _buildContent(hijri),
+              : _buildContent(),
+    );
+  }
+
+  void _showMethodPicker() {
+    showModalBottomSheet<void>(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Text('طريقة حساب المواقيت',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
+            ..._methods.asMap().entries.map((e) => RadioListTile<int>(
+                  value: e.key,
+                  groupValue: _methodIndex,
+                  title: Text(e.value['name']!),
+                  subtitle: Text(e.value['desc']!),
+                  onChanged: (v) {
+                    if (v == null) return;
+                    setState(() => _methodIndex = v);
+                    Navigator.pop(context);
+                  },
+                )),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
     );
   }
 
@@ -99,14 +165,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     );
   }
 
-  Widget _buildContent(HijriCalendar hijri) {
+  Widget _buildContent() {
     final coordinates = Coordinates(_position!.latitude, _position!.longitude);
-    final params = CalculationMethodParameters.muslimWorldLeague();
-    params.madhab = Madhab.shafi;
+    final targetDate = DateTime.now().add(Duration(days: _dayOffset));
+    final hijriFrom = HijriCalendar.fromDate(targetDate);
+    final params = _paramsForMethod(_methodIndex);
 
     final prayerTimes = PrayerTimes(
       coordinates: coordinates,
-      date: DateTime.now(),
+      date: targetDate,
       calculationParameters: params,
     );
 
@@ -121,13 +188,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
 
     final now = DateTime.now();
     String nextPrayer = 'الفجر';
-    for (final p in prayers) {
-      if (p.name == 'الشروق') continue;
-      final parts = p.time.split(':');
-      final t = DateTime(now.year, now.month, now.day,
-          int.parse(parts[0]), int.parse(parts[1]));
-      if (t.isAfter(now)) { nextPrayer = p.name; break; }
+    if (_dayOffset == 0) {
+      for (final p in prayers) {
+        if (p.name == 'الشروق') continue;
+        final parts = p.time.split(':');
+        final t = DateTime(now.year, now.month, now.day,
+            int.parse(parts[0]), int.parse(parts[1]));
+        if (t.isAfter(now)) { nextPrayer = p.name; break; }
+      }
+    } else {
+      nextPrayer = '';
     }
+
+    final dayLabel = _dayOffset == 0
+        ? 'اليوم'
+        : _dayOffset == 1
+            ? 'غداً'
+            : 'بعد غد';
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -145,7 +222,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
             child: Column(
               children: [
                 Text(
-                  '${hijri.hDay} ${_hijriMonths[hijri.hMonth]} ${hijri.hYear}',
+                  '$dayLabel — ${hijriFrom.hDay} ${_hijriMonths[hijriFrom.hMonth]} ${hijriFrom.hYear}',
                   style: const TextStyle(
                     color: Colors.white,
                     fontFamily: AppTheme.quranFontFamily,
@@ -160,8 +237,78 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(_methods[_methodIndex]['name']!,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+              TextButton.icon(
+                onPressed: _showMethodPicker,
+                icon: const Icon(Icons.tune, size: 18),
+                label: const Text('تغيير الطريقة'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+            decoration: BoxDecoration(
+              color: AppTheme.primaryGreen.withOpacity(0.06),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.chevron_left),
+                  onPressed: _dayOffset > 0
+                      ? () => setState(() => _dayOffset--)
+                      : null,
+                  tooltip: 'اليوم السابق',
+                ),
+                Text(dayLabel,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                IconButton(
+                  icon: const Icon(Icons.chevron_right),
+                  onPressed: () => setState(() => _dayOffset++),
+                  tooltip: 'اليوم التالي',
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
           ...prayers.map((p) => _PrayerTile(prayer: p, isNext: p.name == nextPrayer)),
+          const SizedBox(height: 20),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: AppTheme.gold.withOpacity(0.08),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppTheme.gold.withOpacity(0.4)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
+                  children: [
+                    Icon(Icons.info_outline, size: 20, color: AppTheme.gold),
+                    SizedBox(width: 8),
+                    Text('تنبيه مهم',
+                        style: TextStyle(fontWeight: FontWeight.bold, color: AppTheme.gold)),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'هذه المواقيت محسوبة بحسب موقعك وطريقة الحساب المختارة، وقد تختلف عن الأذان المحلي بفارق دقائق لاختلاف طرق الحساب وظروف المكان. '
+                  'ينبغي للمصلي أن يتحرّى وقت الصلاة بنفسه، فالاحتياط للعبادة أولى، خاصة في الفجر والعشاء.',
+                  style: TextStyle(height: 1.8, fontSize: 14),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
