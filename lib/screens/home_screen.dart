@@ -310,11 +310,11 @@ child: Center(
                              textAlign: TextAlign.center,
                              maxLines: 2,
                              overflow: TextOverflow.ellipsis,
-                             style: const TextStyle(
-                               color: Colors.white,
-                               fontFamily: AppTheme.quranFontFamily,
-                               fontSize: 16,
-height: 1.6,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontFamily: AppTheme.quranFontFamily,
+                                fontSize: 16,
+                                height: 1.6,
                               ),
                             ),
                     ),
@@ -322,7 +322,8 @@ height: 1.6,
               ),
             ),
           ),
-SliverToBoxAdapter(child: _HijriDateCard(dateStr: _hijriDateStr())),
+        ),
+          SliverToBoxAdapter(child: _HijriDateCard(dateStr: _hijriDateStr())),
           if (_showDailyReminders)
             const SliverToBoxAdapter(child: DailyRemindersCard()),
           if (_pinnedAdhkar.isNotEmpty)

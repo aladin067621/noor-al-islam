@@ -34,7 +34,7 @@ class AppTheme {
           color: Colors.white,
         ),
       ),
-      tabBarTheme: const TabBarThemeData(
+      tabBarTheme: const TabBarTheme(
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white70,
         indicatorColor: gold,
@@ -71,7 +71,7 @@ class AppTheme {
           color: Colors.white,
         ),
       ),
-      tabBarTheme: const TabBarThemeData(
+      tabBarTheme: const TabBarTheme(
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white70,
         indicatorColor: lightGold,
