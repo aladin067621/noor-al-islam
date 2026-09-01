@@ -25,6 +25,8 @@ dependencies:
   geocoding: ^3.0.0
   adhan_dart: ^2.0.1
   sensors_plus: ^6.1.2
+  http: ^1.2.0
+  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_test:

@@ -2,12 +2,49 @@ import 'package:flutter/material.dart';
 import '../../models/book.dart';
 import '../../models/chapter.dart';
 import '../../services/data_service.dart';
+import '../../services/book_download_service.dart';
 import '../../utils/theme.dart';
 import 'chapter_reader_screen.dart';
 
-class BookChaptersScreen extends StatelessWidget {
+class BookChaptersScreen extends StatefulWidget {
   final Book book;
   const BookChaptersScreen({super.key, required this.book});
+
+  @override
+  State<BookChaptersScreen> createState() => _BookChaptersScreenState();
+}
+
+class _BookChaptersScreenState extends State<BookChaptersScreen> {
+  bool _downloading = false;
+  String? _downloadedPath;
+
+  Book get book => widget.book;
+
+  Future<void> _downloadBook() async {
+    if (_downloading) return;
+    final url = book.downloadUrl;
+    if (url.isEmpty) {
+      _snack('لا يوجد رابط تحميل لهذا الكتاب');
+      return;
+    }
+    setState(() => _downloading = true);
+    try {
+      final path = await BookDownloadService.instance.download(book.id, url);
+      if (!mounted) return;
+      setState(() => _downloadedPath = path);
+      _snack('تم تنزيل نسخة الكتاب من GitHub وحفظها على جهازك');
+    } catch (e) {
+      if (!mounted) return;
+      _snack('تعذر التحميل — تأكد من الاتصال بالإنترنت');
+    } finally {
+      if (mounted) setState(() => _downloading = false);
+    }
+  }
+
+  void _snack(String msg) {
+    ScaffoldMessenger.maybeOf(context)
+        ?.showSnackBar(SnackBar(content: Text(msg)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +77,29 @@ class BookChaptersScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       Text('المرجع: ${book.reference}',
                           style: TextStyle(fontSize: 12, color: Colors.grey.shade500)),
+                      const SizedBox(height: 12),
+                      FilledButton.icon(
+                        onPressed: _downloading ? null : _downloadBook,
+                        icon: _downloading
+                            ? const SizedBox(
+                                width: 18,
+                                height: 18,
+                                child: CircularProgressIndicator(strokeWidth: 2),
+                              )
+                            : Icon(_downloadedPath != null
+                                ? Icons.check_circle_outline
+                                : Icons.download),
+                        label: Text(_downloading
+                            ? 'جارٍ التنزيل...'
+                            : _downloadedPath != null
+                                ? 'تم التنزيل من GitHub'
+                                : 'تحميل نسخة من GitHub'),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'يُنزَّل الكتاب من مستودع التطبيق على GitHub مباشرة، ويُحفظ على جهازك للقراءة دون اتصال.',
+                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600, height: 1.6),
+                      ),
                     ],
                   ),
                 ),

@@ -9,6 +9,7 @@ class Book {
   final String intro; // مقدمة / نبذة عن المؤلف
   final String reference; // المصدر الرقمي
   final String assetFile; // ملف الفصول
+  final String downloadUrl; // رابط مباشر للتَّحميل من GitHub
   final List<Chapter> chapters;
 
   Book({
@@ -19,6 +20,7 @@ class Book {
     required this.intro,
     required this.reference,
     required this.assetFile,
+    this.downloadUrl = '',
     this.chapters = const [],
   });
 
@@ -31,6 +33,7 @@ class Book {
       intro: json['intro'] ?? '',
       reference: json['reference'] ?? '',
       assetFile: json['file'] ?? '',
+      downloadUrl: json['downloadUrl'] ?? '',
     );
   }
 
@@ -42,6 +45,7 @@ class Book {
         intro: intro,
         reference: reference,
         assetFile: assetFile,
+        downloadUrl: downloadUrl,
         chapters: ch,
       );
 }
