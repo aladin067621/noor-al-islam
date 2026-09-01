@@ -247,18 +247,13 @@ class NotificationService {
     await _plugin.cancel(popupBaseId);
     if (intervalMinutes < 1) intervalMinutes = 1;
     final dhikr = adhkar[Random().nextInt(adhkar.length)];
-    final now = tz.TZDateTime.now(tz.local);
-    final start = now.add(Duration(minutes: intervalMinutes));
-    await _plugin.zonedSchedule(
+    await _plugin.periodicallyShowWithDuration(
       popupBaseId,
       'تذكير بالذكر',
       dhikr,
-      start,
+      Duration(minutes: intervalMinutes),
       _details,
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      repeatInterval: Duration(minutes: intervalMinutes),
     );
   }
 
