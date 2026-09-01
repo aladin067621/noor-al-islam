@@ -112,25 +112,19 @@ class SettingsScreen extends StatelessWidget {
             onChanged: (v) async {
               await s.setPopupEnabled(v);
               if (v) {
-                await NotificationService.instance.showRandomDhikr(s.popupAdhkar);
+                await NotificationService.instance
+                    .schedulePopupDhikr(s.popupAdhkar, s.popupInterval);
+              } else {
+                await NotificationService.instance.cancelPopupDhikr();
               }
             },
           ),
           ListTile(
             leading: const Icon(Icons.timer),
             title: const Text('فترة الأذكار المنبثقة'),
-            trailing: DropdownButton<int>(
-              value: s.popupInterval,
-              items: const [
-                DropdownMenuItem(value: 30, child: Text('كل 30 دقيقة')),
-                DropdownMenuItem(value: 60, child: Text('كل ساعة')),
-                DropdownMenuItem(value: 120, child: Text('كل ساعتين')),
-                DropdownMenuItem(value: 180, child: Text('كل 3 ساعات')),
-              ],
-              onChanged: (v) {
-                if (v != null) s.setPopupInterval(v);
-              },
-            ),
+            subtitle: Text('كل ${s.popupInterval} دقيقة'),
+            trailing: const Icon(Icons.edit, size: 18),
+            onTap: () => _editPopupInterval(context, s),
           ),
           ListTile(
             leading: const Icon(Icons.list_alt),
@@ -198,6 +192,58 @@ class SettingsScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<void> _editPopupInterval(BuildContext context, SettingsProvider s) async {
+    final controller =
+        TextEditingController(text: '${s.popupInterval}');
+    final result = await showDialog<int>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('فترة الأذكار المنبثقة'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          decoration: const InputDecoration(
+            labelText: 'عدد الدقائق بين كل ذكر وآخر',
+            hintText: 'مثال: 30 أو 60 أو 1000',
+            border: OutlineInputBorder(),
+          ),
+          onSubmitted: (v) {
+            final n = int.tryParse(v.trim());
+            if (n != null && n > 0) Navigator.pop(ctx, n);
+          },
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('إلغاء'),
+          ),
+          FilledButton(
+            onPressed: () {
+              final n = int.tryParse(controller.text.trim());
+              if (n != null && n > 0) {
+                Navigator.pop(ctx, n);
+              } else {
+                ScaffoldMessenger.of(ctx).showSnackBar(
+                  const SnackBar(content: Text('أدخل رقمًا صحيحًا بالدقائق')),
+                );
+              }
+            },
+            child: const Text('حفظ'),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (result == null) return;
+    await s.setPopupInterval(result);
+    if (s.popupEnabled) {
+      await NotificationService.instance
+          .schedulePopupDhikr(s.popupAdhkar, result);
+    }
   }
 
   Future<void> _editPopupAdhkar(BuildContext context, SettingsProvider s) async {

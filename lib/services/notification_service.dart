@@ -239,6 +239,35 @@ class NotificationService {
     await _plugin.show(popupBaseId, 'تذكير بالذكر', dhikr, _details);
   }
 
+  /// جدولة الأذكار المنبثقة بشكل دوري بفترة حرّة (بالدقائق).
+  /// تُلغى أي جدولة سابقة ثم تُعاد جدولتها بالفترة الجديدة.
+  Future<void> schedulePopupDhikr(
+      List<String> adhkar, int intervalMinutes) async {
+    if (!_ready || adhkar.isEmpty) return;
+    await _plugin.cancel(popupBaseId);
+    if (intervalMinutes < 1) intervalMinutes = 1;
+    final dhikr = adhkar[Random().nextInt(adhkar.length)];
+    final now = tz.TZDateTime.now(tz.local);
+    final start = now.add(Duration(minutes: intervalMinutes));
+    await _plugin.zonedSchedule(
+      popupBaseId,
+      'تذكير بالذكر',
+      dhikr,
+      start,
+      _details,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      repeatInterval: Duration(minutes: intervalMinutes),
+    );
+  }
+
+  /// إلغاء إشعارات الأذكار المنبثقة
+  Future<void> cancelPopupDhikr() async {
+    if (!_ready) return;
+    await _plugin.cancel(popupBaseId);
+  }
+
   /// إلغاء كل الإشعارات
   Future<void> cancelAll() async {
     if (!_ready) return;
