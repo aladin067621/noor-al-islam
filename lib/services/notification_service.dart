@@ -35,12 +35,8 @@ class NotificationService {
 
       await _plugin.initialize(settings);
 
-      // طلب أذونات أندرويد 13+
-      final androidImpl = _plugin.resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>();
-      await androidImpl?.requestNotificationsPermission();
-      await androidImpl?.requestExactAlarmsPermission();
-
+      // لا تُطلب أذونات النظام هنا — تُعرض نافذة شرح أول تشغيل،
+      // وتُطلب الأذونات بعد موافقة المستخدم.
       _ready = true;
     } catch (_) {
       // المنصات غير المدعومة (الويب/سطح المكتب) — تجاهل بهدوء
@@ -54,6 +50,17 @@ class NotificationService {
       final androidImpl = _plugin.resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>();
       await androidImpl?.requestNotificationsPermission();
+    } catch (_) {
+      // تجاهل — المنصات التي لا تدعم الطلب
+    }
+  }
+
+  /// طلب إذن التنبيهات الدقيقة (يُطلب بعد موافقة المستخدم في أول تشغيل)
+  Future<void> requestExactAlarmsPermission() async {
+    try {
+      final androidImpl = _plugin.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
+      await androidImpl?.requestExactAlarmsPermission();
     } catch (_) {
       // تجاهل — المنصات التي لا تدعم الطلب
     }

@@ -28,7 +28,8 @@ class _TafsirSurahScreenState extends State<TafsirSurahScreen> {
     super.initState();
     _highlightedAyah = widget.initialAyah;
     if (widget.initialAyah != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToAyah());
+      WidgetsBinding.instance
+          .addPostFrameCallback((_) => _scrollToAyah(widget.initialAyah!));
     }
   }
 
@@ -38,9 +39,7 @@ class _TafsirSurahScreenState extends State<TafsirSurahScreen> {
     super.dispose();
   }
 
-  void _scrollToAyah() {
-    final target = widget.initialAyah;
-    if (target == null) return;
+  void _scrollToAyah(int target) {
     final ayat = (widget.surah['ayat'] as List?) ?? [];
     final index = ayat.indexWhere((a) => a['number'] == target);
     if (index < 0) return;
@@ -64,6 +63,63 @@ class _TafsirSurahScreenState extends State<TafsirSurahScreen> {
     });
   }
 
+  /// الانتقال المباشر إلى رقم آية يكتبه المستخدم
+  Future<void> _promptJumpToAyah(int total) async {
+    final controller = TextEditingController();
+    final entered = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('الانتقال إلى آية'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(
+            hintText: 'أدخل رقم الآية (1 – $total)',
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+          onSubmitted: (v) => Navigator.pop(context, v.trim()),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('إلغاء'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, controller.text.trim()),
+            child: const Text('انتقال'),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (entered == null || entered.isEmpty) return;
+    final n = int.tryParse(entered);
+    if (n == null || n < 1 || n > total) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('رقم الآية غير صحيح — أدخل رقمًا بين 1 و $total')),
+      );
+      return;
+    }
+    if (!mounted) return;
+    setState(() => _highlightedAyah = n);
+    _scrollToAyah(n);
+    Future<void>.delayed(const Duration(milliseconds: 150), () {
+      if (!mounted) return;
+      setState(() {});
+      final ctx = _ayahKeys[n]?.currentContext;
+      if (ctx != null) {
+        Scrollable.ensureVisible(
+          ctx,
+          duration: const Duration(milliseconds: 350),
+          alignment: 0.3,
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final favorites = context.watch<FavoritesService>();
@@ -74,6 +130,11 @@ class _TafsirSurahScreenState extends State<TafsirSurahScreen> {
       appBar: AppBar(
         title: Text('سورة $surahName'),
         actions: [
+          IconButton(
+            tooltip: 'الانتقال إلى آية',
+            icon: const Icon(Icons.numbers),
+            onPressed: () => _promptJumpToAyah(ayat.length),
+          ),
           Row(
             children: [
               const Text('التفسير', style: TextStyle(fontSize: 13)),

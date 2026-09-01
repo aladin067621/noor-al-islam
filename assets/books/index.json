@@ -6,9 +6,7 @@
       "author": "الإمام محمد بن عبد الوهاب",
       "benefit": "أساس العقيدة: معرفة العبد لربه ودينه ونبيه ﷺ",
       "intro": "رسالة مختصرة جامعة لأصول الدين الثلاثة التي يُسأل عنها العبد في قبره: من ربك؟ وما دينك؟ ومن نبيك؟ ألّفها الإمام محمد بن عبد الوهاب (1115–1206هـ) لتعليم المبتدئين أصول العقيدة.",
-      "reference": "https://archive.org",
-      "file": "assets/books/three_foundations.json",
-      "downloadUrl": "https://raw.githubusercontent.com/aladin067621/noor-al-islam/main/assets/books/three_foundations.json"
+      "file": "assets/books/three_foundations.json"
     },
     {
       "id": "four_rules",
@@ -16,9 +14,7 @@
       "author": "الإمام محمد بن عبد الوهاب",
       "benefit": "فهم التوحيد والشرك بصورة مختصرة عبر أربع قواعد",
       "intro": "رسالة وجيزة تبيّن القواعد الأربع التي يُعرف بها حقيقة التوحيد والشرك، والفرق بين دعوة المشركين ودعوة الموحدين.",
-      "reference": "https://archive.org",
-      "file": "assets/books/four_rules.json",
-      "downloadUrl": "https://raw.githubusercontent.com/aladin067621/noor-al-islam/main/assets/books/four_rules.json"
+      "file": "assets/books/four_rules.json"
     },
     {
       "id": "nawaqid",
@@ -26,9 +22,7 @@
       "author": "الإمام محمد بن عبد الوهاب",
       "benefit": "بيان النواقض العشرة المشهورة التي تُخرج من الإسلام",
       "intro": "رسالة مختصرة جدًّا ذكر فيها المؤلف أعظم نواقض الإسلام العشرة ليحذرها المسلم.",
-      "reference": "https://archive.org",
-      "file": "assets/books/nawaqid.json",
-      "downloadUrl": "https://raw.githubusercontent.com/aladin067621/noor-al-islam/main/assets/books/nawaqid.json"
+      "file": "assets/books/nawaqid.json"
     },
     {
       "id": "tawheed_book",
@@ -36,9 +30,7 @@
       "author": "الإمام محمد بن عبد الوهاب",
       "benefit": "توحيد العبادة وبيان أنواع الشرك والتحذير منها",
       "intro": "من أشهر كتب العقيدة، جمع فيه المؤلف أبواب التوحيد مدعّمة بالآيات والأحاديث ومسائل كل باب. (مختارات من الأبواب)",
-      "reference": "https://archive.org",
-      "file": "assets/books/tawheed_book.json",
-      "downloadUrl": "https://raw.githubusercontent.com/aladin067621/noor-al-islam/main/assets/books/tawheed_book.json"
+      "file": "assets/books/tawheed_book.json"
     },
     {
       "id": "kashf_shubhat",
@@ -46,9 +38,7 @@
       "author": "الإمام محمد بن عبد الوهاب",
       "benefit": "الرد على الشبهات المتعلقة بالتوحيد",
       "intro": "رسالة في الرد على شبهات المشركين في باب التوحيد وكشفها بالأدلة. (مقتطفات)",
-      "reference": "https://archive.org",
-      "file": "assets/books/kashf_shubhat.json",
-      "downloadUrl": "https://raw.githubusercontent.com/aladin067621/noor-al-islam/main/assets/books/kashf_shubhat.json"
+      "file": "assets/books/kashf_shubhat.json"
     },
     {
       "id": "arbaeen",
@@ -56,9 +46,7 @@
       "author": "الإمام يحيى بن شرف النووي",
       "benefit": "أهم الأحاديث الجامعة لأصول الإسلام",
       "intro": "اثنان وأربعون حديثًا جمعها الإمام النووي، عليها مدار الإسلام وقواعد الدين. (مختارات)",
-      "reference": "https://archive.org",
-      "file": "assets/books/arbaeen.json",
-      "downloadUrl": "https://raw.githubusercontent.com/aladin067621/noor-al-islam/main/assets/books/arbaeen.json"
+      "file": "assets/books/arbaeen.json"
     }
   ]
 }

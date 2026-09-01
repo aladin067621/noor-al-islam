@@ -118,6 +118,9 @@ class _HomeScreenState extends State<HomeScreen> {
       await NotificationService.instance.requestNotificationPermission();
     } catch (_) {}
     try {
+      await NotificationService.instance.requestExactAlarmsPermission();
+    } catch (_) {}
+    try {
       await Geolocator.requestPermission();
     } catch (_) {}
     await NotificationService.instance.scheduleSunnahReminders();
@@ -290,16 +293,12 @@ SliverAppBar(
                 ),
                  child: Padding(
                    padding: const EdgeInsets.symmetric(horizontal: 28),
-                   child: Align(
-                     alignment: Alignment.center,
-                     child: SizedBox(
-                       height: 58,
-                       width: double.infinity,
-                     child: AnimatedSwitcher(
+child: Center(
+                       child: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 500),
                           layoutBuilder: (currentChild, previousChildren) =>
                               Stack(
-                            alignment: Alignment.topCenter,
+                            alignment: Alignment.center,
                             children: [
                               ...previousChildren,
                               if (currentChild != null) currentChild,
@@ -315,13 +314,11 @@ SliverAppBar(
                                color: Colors.white,
                                fontFamily: AppTheme.quranFontFamily,
                                fontSize: 16,
-                               height: 1.6,
-                             ),
-                           ),
-                        ),
-                     ),
-                   ),
-                 ),
+height: 1.6,
+                              ),
+                            ),
+                    ),
+                  ),
               ),
             ),
           ),

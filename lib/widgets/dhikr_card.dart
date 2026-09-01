@@ -73,8 +73,6 @@ class _DhikrCardState extends State<DhikrCard> {
                 _detail('درجة الحديث', widget.dhikr.grading!),
               if (widget.dhikr.sourcePage != null)
                 _detail('صفحة الكتاب', '${widget.dhikr.sourcePage}'),
-              if (widget.dhikr.virtue?.isNotEmpty == true)
-                _detail('الفضل الوارد في المصدر', widget.dhikr.virtue!),
             ],
           ),
         ),
@@ -133,18 +131,36 @@ class _DhikrCardState extends State<DhikrCard> {
             if (widget.dhikr.virtue != null && widget.dhikr.virtue!.isNotEmpty)
               Container(
                 margin: const EdgeInsets.only(bottom: 10),
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: AppTheme.gold.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Text(
-                  'الفضل: ${widget.dhikr.virtue}',
-                  style: const TextStyle(fontSize: 13, color: AppTheme.gold, fontWeight: FontWeight.bold),
+                child: Column(
+                  children: [
+                    Text(
+                      'الفضل: ${widget.dhikr.virtue}',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: AppTheme.gold,
+                          fontWeight: FontWeight.bold,
+                          height: 1.7),
+                    ),
+                    if (widget.dhikr.source.isNotEmpty) ...[
+                      const SizedBox(height: 6),
+                      Text(
+                        widget.dhikr.source,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600, height: 1.5),
+                      ),
+                    ],
+                  ],
                 ),
               ),
-            // المصدر
-            if (widget.dhikr.source.isNotEmpty)
+            // المصدر (يظهر سطرًا مستقلاً فقط إذا لم يرد فضل مذكور داخل الصندوق)
+            if (widget.dhikr.source.isNotEmpty &&
+                (widget.dhikr.virtue == null || widget.dhikr.virtue!.isEmpty))
               Text(
                 widget.dhikr.source,
                 textAlign: TextAlign.center,

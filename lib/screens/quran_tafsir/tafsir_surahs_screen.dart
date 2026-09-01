@@ -13,12 +13,13 @@ class TafsirSurahsScreen extends StatefulWidget {
 class _TafsirSurahsScreenState extends State<TafsirSurahsScreen> {
   String _query = '';
 
-  /// تطبيع النص العربي للبحث (إزالة التشكيل وتوحيد الألف والهاء)
+  /// تطبيع النص العربي للبحث (إزالة التشكيل والعلامات القرآنية وتوحيد الألف والهاء)
   String _normalize(String s) {
-    final diacritics = RegExp('[\u064B-\u0652\u0670]');
+    final diacritics = RegExp(
+        '[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED\u08D3-\u08FF]');
     return s
         .replaceAll(diacritics, '')
-        .replaceAll(RegExp('[إأآا]'), 'ا')
+        .replaceAll(RegExp('[إأآٱ]'), 'ا')
         .replaceAll('ى', 'ي')
         .replaceAll('ة', 'ه')
         .replaceAll('ـ', '')
