@@ -85,7 +85,7 @@ const List<HomeSection> homeSections = [
   HomeSection(id: 'tawheed', title: 'التوحيد', icon: Icons.brightness_7, color: Color(0xFFB8860B)),
   HomeSection(id: 'pillars', title: 'أركان الإسلام', icon: Icons.auto_stories, color: Color(0xFF8B6914)),
   HomeSection(id: 'tafsir', title: 'تفسير القرآن', icon: Icons.menu_book, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'library', title: 'المكتبة الإسلامية', icon: Icons.library_books, color: Color(0xFF1B6B5A)),
+  HomeSection(id: 'library', title: 'المكتبة', icon: Icons.library_books, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'memorization', title: 'حفظ القرآن', icon: Icons.psychology, color: Color(0xFFB8860B)),
   HomeSection(id: 'favorites', title: 'المفضلة', icon: Icons.favorite, color: Color(0xFFC0392B)),
   HomeSection(id: 'notes', title: 'الملاحظات', icon: Icons.edit_note, color: Color(0xFF8B6914)),

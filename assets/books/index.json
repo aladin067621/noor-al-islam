@@ -47,6 +47,366 @@
       "benefit": "أهم الأحاديث الجامعة لأصول الإسلام",
       "intro": "اثنان وأربعون حديثًا جمعها الإمام النووي، عليها مدار الإسلام وقواعد الدين. (مختارات)",
       "file": "assets/books/arbaeen.json"
+    },
+    {
+      "id": "aqeedah_errors",
+      "title": "أخطاء في العقيدة",
+      "author": "",
+      "benefit": "بيان الأخطاء الشائعة في العقيدة الإسلامية",
+      "intro": "كتاب يبيّن الأخطاء في العقيدة ويبيّن الصواب منها.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/aqeedah_errors.pdf"
+    },
+    {
+      "id": "brotherhood_ethics",
+      "title": "الأخوة والأخلاق الإسلامية",
+      "author": "",
+      "benefit": "آداب الأخوة الإسلامية والأخلاق الشرعية",
+      "intro": "كتاب في بيان آداب الأخوة في الإسلام والأخلاق التي يجب أن يتميز بها المسلم.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/brotherhood_ethics.pdf"
+    },
+    {
+      "id": "arbaeen_nawawi",
+      "title": "الأربعون النووية (الكتاب الكامل)",
+      "author": "الإمام يحيى بن شرف النووي",
+      "benefit": "الأحاديث النبوية الصحيحة الجامعة لقواعد الدين",
+      "intro": "الكتاب الكامل للحديث النووي مع الشرح والبيان.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/arbaeen_nawawi.pdf"
+    },
+    {
+      "id": "usul_thalatha",
+      "title": "الأصول الثلاثة",
+      "author": "الإمام محمد بن عبد الوهاب",
+      "benefit": "الكتاب الكامل لأصول الدين الثلاثة",
+      "intro": "الكتاب الكامل مع الشرح والبيان.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/usul_thalatha.pdf"
+    },
+    {
+      "id": "aqeedah_wasitiyyah",
+      "title": "العقيدة الواسطية",
+      "author": "شيخ الإسلام أحمد بن تيمية",
+      "benefit": "بيان عقيدة أهل السنة والجماعة",
+      "intro": "رسالة جامعة في عقيدة أهل السنة والجماعة موجهة لأهل واسط.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/aqeedah_wasitiyyah.pdf"
+    },
+    {
+      "id": "qawaaid_arba",
+      "title": "القواعد الأربع",
+      "author": "الإمام محمد بن عبد الوهاب",
+      "benefit": "الكتاب الكامل للقواعد الأربع",
+      "intro": "الكتاب الكامل مع الشرح والبيان.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/qawaaid_arba.pdf"
+    },
+    {
+      "id": "muwatta",
+      "title": "الموطأ",
+      "author": "الإمام مالك بن أنس",
+      "benefit": "أول مصنف في الحديث والفقه",
+      "intro": "أول كتاب جامع في الحديث النبوي والفقه الإسلامي، جمع الإمام مالك فيه أحاديث النبي ﷺ وأقوال الصحابة والتابعين وعمل أهل المدينة.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/muwatta.pdf"
+    },
+    {
+      "id": "wabil_sayyib",
+      "title": "الوابل الصيب من الكلم الطيب",
+      "author": "الإمام ابن قيم الجوزية",
+      "benefit": "فضل الدعاء والذكر والاستغفار",
+      "intro": "كتاب في فضل الدعاء والذكر والاستغفار.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/wabil_sayyib.pdf"
+    },
+    {
+      "id": "bulugh_maram",
+      "title": "بلوغ المرام من أدلة الأحكام",
+      "author": "الحافظ ابن حجر العسقلاني",
+      "benefit": "جمع أدلة الأحكام الفقهية من الأحاديث النبوية",
+      "intro": "كتاب جامع لأحاديث الأحكام الفقهية المختصرة، ألفه ابن حجر لمن أراد معرفة أحاديث الأحكام.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/bulugh_maram.pdf"
+    },
+    {
+      "id": "tafsir_saadi",
+      "title": "تفسير السعدي",
+      "author": "الشيخ عبد الرحمن بن ناصر السعدي",
+      "benefit": "تفسير ميسّر لكتاب الله تعالى",
+      "intro": "تيسير الكريم الرحمن في تفسير كلام المنان — تفسير مختصر مفيد يهتم بالمعنى والحكمة.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/tafsir_saadi.pdf"
+    },
+    {
+      "id": "tirmidhi",
+      "title": "جامع الترمذي (سنن الترمذي)",
+      "author": "الإمام محمد بن عيسى الترمذي",
+      "benefit": "من أمهات كتب الحديث النبوي",
+      "intro": "جامع الترمذي من أصح كتب الحديث، فيه تراجم الأبواب وبيان المراتب.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/tirmidhi_single.pdf"
+    },
+    {
+      "id": "hisn_muslim",
+      "title": "حصن المسلم من أذكار الكتاب والسنة",
+      "author": "سعيد بن علي بن وهف القحطاني",
+      "benefit": "جمع أذكار المسلم اليومية من الكتاب والسنة",
+      "intro": "كتاب شامل لأذكار المسلم الصباح والمساء وأذكار المناسبات من القرآن الكريم والحديث النبوي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/hisn_muslim.pdf"
+    },
+    {
+      "id": "riyadh_salihin",
+      "title": "رياض الصالحين",
+      "author": "الإمام يحيى بن شرف النووي",
+      "benefit": "من أشهر كتب الحديث الشريف المرتبة على الأبواب",
+      "intro": "كتاب جامع لأشهر أحاديث النبي ﷺ مرتبة على أبواب العبادات والمعاملات.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/riyadh_salihin.pdf"
+    },
+    {
+      "id": "zad_mustaqni",
+      "title": "زاد المستقنع في اختصار المقنع",
+      "author": "موسى بن أحمد الحجاوي",
+      "benefit": "مختصر في الفقه الحنبلي",
+      "intro": "كتاب مختصر في الفقه الحنبلي في أبواب العبادات والمعاملات.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/zad_mustaqni.pdf"
+    },
+    {
+      "id": "abu_dawud",
+      "title": "سنن أبي داود",
+      "author": "الإمام أبو داود سليمان بن الأشعث",
+      "benefit": "من أمهات كتب الحديث النبوي",
+      "intro": "سنن أبي داود من أصح كتب الحديث النبوي، فيه الأحاديث المرتبة على الأبواب.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/abu_dawud_single.pdf"
+    },
+    {
+      "id": "ibn_majah",
+      "title": "سنن ابن ماجه",
+      "author": "الإمام محمد بن يزيد ابن ماجه",
+      "benefit": "من أمهات كتب الحديث النبوي",
+      "intro": "سنن ابن ماجه من كتب الحديث الستة.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/ibn_majah.pdf"
+    },
+    {
+      "id": "salat_conditions",
+      "title": "شروط الصلاة وأركانها وواجباتها",
+      "author": "الإمام محمد بن عبد الوهاب",
+      "benefit": "بيان أركان الصلاة وشروطها وواجباتها",
+      "intro": "رسالة مختصرة في شروط الصلاة وأركانها وواجباتها.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/salat_conditions.pdf"
+    },
+    {
+      "id": "bukhari",
+      "title": "صحيح البخاري",
+      "author": "الإمام محمد بن إسماعيل البخاري",
+      "benefit": "أصح كتاب بعد كتاب الله تعالى",
+      "intro": "صحيح البخاري أصح كتاب بعد كتاب الله تعالى، جمع فيه الإمام البخاري أحاديث النبي ﷺ الصحيحة.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/bukhari.pdf"
+    },
+    {
+      "id": "muslim",
+      "title": "صحيح مسلم",
+      "author": "الإمام مسلم بن الحجاج",
+      "benefit": "ثاني أصح كتاب بعد صحيح البخاري",
+      "intro": "صحيح مسلم ثاني أصح كتاب بعد صحيح البخاري.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/muslim.pdf"
+    },
+    {
+      "id": "umdah_ahkam",
+      "title": "عمدة الأحكام",
+      "author": "عبد الغني المقدسي",
+      "benefit": "جمع لأحاديث الأحكام الفقهية",
+      "intro": "كتاب جامع لأحاديث الأحكام الفقهية.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/umdah_ahkam.pdf"
+    },
+    {
+      "id": "umdah_fiqh",
+      "title": "عمدة الفقه",
+      "author": "موفق الدين عبد الله بن أحمد بن قدامة المقدسي",
+      "benefit": "كتاب في الفقه الحنبلي",
+      "intro": "كتاب جامع في الفقه الحنبلي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/umdah_fiqh.pdf"
+    },
+    {
+      "id": "kitab_tawheed",
+      "title": "كتاب التوحيد",
+      "author": "الإمام محمد بن عبد الوهاب",
+      "benefit": "الكتاب الكامل لكتاب التوحيد",
+      "intro": "الكتاب الكامل مع جميع الأبواب والشروح.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/kitab_tawheed.pdf"
+    },
+    {
+      "id": "kashf_shubhat_pdf",
+      "title": "كشف الشبهات (الكتاب الكامل)",
+      "author": "الإمام محمد بن عبد الوهاب",
+      "benefit": "الكتاب الكامل لكشف الشبهات",
+      "intro": "الكتاب الكامل مع جميع الشبهات والأدلة.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/kashf_shubhat.pdf"
+    },
+    {
+      "id": "nawaqid_pdf",
+      "title": "نواقض الإسلام (الكتاب الكامل)",
+      "author": "الإمام محمد بن عبد الوهاب",
+      "benefit": "الكتاب الكامل لنواقض الإسلام",
+      "intro": "الكتاب الكامل مع جميع النواقض والتحذيرات.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nawaqid.pdf"
+    },
+    {
+      "id": "tirmidhi_p1",
+      "title": "جامع الترمذي — الجزء الأول",
+      "author": "الإمام محمد بن عيسى الترمذي",
+      "benefit": "الجزء الأول من جامع الترمذي",
+      "intro": "الجزء الأول من جامع الترمذي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/tirmidhi_p1.pdf"
+    },
+    {
+      "id": "tirmidhi_p2",
+      "title": "جامع الترمذي — الجزء الثاني",
+      "author": "الإمام محمد بن عيسى الترمذي",
+      "benefit": "الجزء الثاني من جامع الترمذي",
+      "intro": "الجزء الثاني من جامع الترمذي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/tirmidhi_p2.pdf"
+    },
+    {
+      "id": "tirmidhi_p3",
+      "title": "جامع الترمذي — الجزء الثالث",
+      "author": "الإمام محمد بن عيسى الترمذي",
+      "benefit": "الجزء الثالث من جامع الترمذي",
+      "intro": "الجزء الثالث من جامع الترمذي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/tirmidhi_p3.pdf"
+    },
+    {
+      "id": "tirmidhi_p4",
+      "title": "جامع الترمذي — الجزء الرابع",
+      "author": "الإمام محمد بن عيسى الترمذي",
+      "benefit": "الجزء الرابع من جامع الترمذي",
+      "intro": "الجزء الرابع من جامع الترمذي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/tirmidhi_p4.pdf"
+    },
+    {
+      "id": "tirmidhi_p5",
+      "title": "جامع الترمذي — الجزء الخامس",
+      "author": "الإمام محمد بن عيسى الترمذي",
+      "benefit": "الجزء الخامس من جامع الترمذي",
+      "intro": "الجزء الخامس من جامع الترمذي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/tirmidhi_p5.pdf"
+    },
+    {
+      "id": "abu_dawud_p1",
+      "title": "سنن أبي داود — الجزء الأول",
+      "author": "الإمام أبو داود سليمان بن الأشعث",
+      "benefit": "الجزء الأول من سنن أبي داود",
+      "intro": "الجزء الأول من سنن أبي داود.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/abu_dawud_p1.pdf"
+    },
+    {
+      "id": "abu_dawud_p2",
+      "title": "سنن أبي داود — الجزء الثاني",
+      "author": "الإمام أبو داود سليمان بن الأشعث",
+      "benefit": "الجزء الثاني من سنن أبي داود",
+      "intro": "الجزء الثاني من سنن أبي داود.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/abu_dawud_p2.pdf"
+    },
+    {
+      "id": "abu_dawud_p3",
+      "title": "سنن أبي داود — الجزء الثالث",
+      "author": "الإمام أبو داود سليمان بن الأشعث",
+      "benefit": "الجزء الثالث من سنن أبي داود",
+      "intro": "الجزء الثالث من سنن أبي داود.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/abu_dawud_p3.pdf"
+    },
+    {
+      "id": "abu_dawud_p4",
+      "title": "سنن أبي داود — الجزء الرابع",
+      "author": "الإمام أبو داود سليمان بن الأشعث",
+      "benefit": "الجزء الرابع من سنن أبي داود",
+      "intro": "الجزء الرابع من سنن أبي داود.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/abu_dawud_p4.pdf"
+    },
+    {
+      "id": "abu_dawud_p5",
+      "title": "سنن أبي داود — الجزء الخامس",
+      "author": "الإمام أبو داود سليمان بن الأشعث",
+      "benefit": "الجزء الخامس من سنن أبي داود",
+      "intro": "الجزء الخامس من سنن أبي داود.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/abu_dawud_p5.pdf"
+    },
+    {
+      "id": "abu_dawud_p6",
+      "title": "سنن أبي داود — الجزء السادس",
+      "author": "الإمام أبو داود سليمان بن الأشعث",
+      "benefit": "الجزء السادس من سنن أبي داود",
+      "intro": "الجزء السادس من سنن أبي داود.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/abu_dawud_p6.pdf"
+    },
+    {
+      "id": "nasaai_p0",
+      "title": "سنن النسائي — المقدمة",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "مقدمة سنن النسائي",
+      "intro": "مقدمة سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p0.pdf"
+    },
+    {
+      "id": "nasaai_p1",
+      "title": "سنن النسائي — الجزء الأول",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء الأول من سنن النسائي",
+      "intro": "الجزء الأول من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p1.pdf"
+    },
+    {
+      "id": "nasaai_p2",
+      "title": "سنن النسائي — الجزء الثاني",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء الثاني من سنن النسائي",
+      "intro": "الجزء الثاني من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p2.pdf"
+    },
+    {
+      "id": "nasaai_p3",
+      "title": "سنن النسائي — الجزء الثالث",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء الثالث من سنن النسائي",
+      "intro": "الجزء الثالث من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p3.pdf"
+    },
+    {
+      "id": "nasaai_p4",
+      "title": "سنن النسائي — الجزء الرابع",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء الرابع من سنن النسائي",
+      "intro": "الجزء الرابع من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p4.pdf"
+    },
+    {
+      "id": "nasaai_p5",
+      "title": "سنن النسائي — الجزء الخامس",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء الخامس من سنن النسائي",
+      "intro": "الجزء الخامس من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p5.pdf"
+    },
+    {
+      "id": "nasaai_p6",
+      "title": "سنن النسائي — الجزء السادس",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء السادس من سنن النسائي",
+      "intro": "الجزء السادس من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p6.pdf"
+    },
+    {
+      "id": "nasaai_p7",
+      "title": "سنن النسائي — الجزء السابع",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء السابع من سنن النسائي",
+      "intro": "الجزء السابع من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p7.pdf"
+    },
+    {
+      "id": "nasaai_p8",
+      "title": "سنن النسائي — الجزء الثامن",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء الثامن من سنن النسائي",
+      "intro": "الجزء الثامن من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p8.pdf"
+    },
+    {
+      "id": "nasaai_p9",
+      "title": "سنن النسائي — الجزء التاسع",
+      "author": "الإمام أحمد بن شعيب النسائي",
+      "benefit": "الجزء التاسع من سنن النسائي",
+      "intro": "الجزء التاسع من سنن النسائي.",
+      "downloadUrl": "https://github.com/aladin067621/noor-al-islam/releases/download/v1.0.25/nasaai_p9.pdf"
     }
   ]
 }

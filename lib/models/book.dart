@@ -9,7 +9,7 @@ class Book {
   final String intro; // مقدمة / نبذة عن المؤلف
   final String reference; // المصدر الرقمي
   final String assetFile; // ملف الفصول
-  final String downloadUrl; // رابط مباشر للتَّحميل من GitHub
+  final String downloadUrl; // رابط مباشر لملف PDF على GitHub
   final List<Chapter> chapters;
 
   Book({

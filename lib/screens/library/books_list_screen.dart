@@ -10,7 +10,7 @@ class BooksListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('المكتبة الإسلامية')),
+      appBar: AppBar(title: const Text('المكتبة')),
       body: FutureBuilder<List<Book>>(
         future: DataService.instance.loadBooksIndex(),
         builder: (context, snapshot) {
@@ -31,8 +31,24 @@ class BooksListScreen extends StatelessWidget {
                     backgroundColor: AppTheme.gold.withOpacity(0.15),
                     child: const Icon(Icons.menu_book, color: AppTheme.gold),
                   ),
-                  title: Text(b.title,
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(b.title,
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                      ),
+                      if (b.downloadUrl.isNotEmpty)
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: Colors.red.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: const Text('PDF',
+                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.red)),
+                        ),
+                    ],
+                  ),
                   subtitle: Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: Text('${b.author}\n${b.benefit}',

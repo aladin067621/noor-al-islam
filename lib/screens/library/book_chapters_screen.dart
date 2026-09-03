@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/book.dart';
 import '../../models/chapter.dart';
 import '../../services/data_service.dart';
@@ -21,6 +22,7 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
   List<Chapter> _chapters = [];
 
   Book get book => widget.book;
+  bool get _isPdfBook => book.downloadUrl.isNotEmpty;
 
   Future<void> _saveCopy() async {
     if (_downloading) return;
@@ -51,6 +53,15 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
     );
   }
 
+  Future<void> _openPdf() async {
+    final uri = Uri.parse(book.downloadUrl);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      _snack('تعذر فتح ملف PDF');
+    }
+  }
+
   void _snack(String msg) {
     ScaffoldMessenger.maybeOf(context)
         ?.showSnackBar(SnackBar(content: Text(msg)));
@@ -58,6 +69,54 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_isPdfBook) return _buildPdfView();
+    return _buildChaptersView();
+  }
+
+  Widget _buildPdfView() {
+    return Scaffold(
+      appBar: AppBar(title: Text(book.title)),
+      body: ListView(
+        padding: const EdgeInsets.all(12),
+        children: [
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(book.title,
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 4),
+                  Text('المؤلف: ${book.author}',
+                      style: const TextStyle(color: AppTheme.gold, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
+                  Text(book.intro, style: const TextStyle(height: 1.8)),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      onPressed: _openPdf,
+                      icon: const Icon(Icons.picture_as_pdf),
+                      label: const Text('فتح الكتاب PDF'),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'اضغط لفتح ملف الكتاب كاملاً بصيغة PDF.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600, height: 1.6),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildChaptersView() {
     return Scaffold(
       appBar: AppBar(title: Text(book.title)),
       body: FutureBuilder<List<Chapter>>(
@@ -73,7 +132,6 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
-              // مقدمة / نبذة عن المؤلف
               Card(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
