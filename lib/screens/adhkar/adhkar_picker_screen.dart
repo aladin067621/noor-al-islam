@@ -9,10 +9,7 @@ class AdhkarPickerScreen extends StatefulWidget {
   /// مفاتيح الفئات المضافة مسبقاً (يُستبعد عرضها لأنها مضافة بالفعل)
   final Set<String> exclude;
 
-  /// كل مفاتيح الفئات المتاحة
-  final Set<String> allKeys;
-
-  const AdhkarPickerScreen({super.key, this.exclude = const {}, this.allKeys = const {}});
+  const AdhkarPickerScreen({super.key, this.exclude = const {}});
 
   @override
   State<AdhkarPickerScreen> createState() => _AdhkarPickerScreenState();

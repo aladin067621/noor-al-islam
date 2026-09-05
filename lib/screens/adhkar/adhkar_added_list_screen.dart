@@ -57,7 +57,7 @@ class _AdhkarAddedListScreenState extends State<AdhkarAddedListScreen> {
     final selected = await Navigator.push<List<String>>(
       context,
       MaterialPageRoute(
-        builder: (_) => AdhkarPickerScreen(exclude: existing, allKeys: byKey.keys.toList()),
+        builder: (_) => AdhkarPickerScreen(exclude: existing),
       ),
     );
     if (selected != null && selected.isNotEmpty) {
