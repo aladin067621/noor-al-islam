@@ -45,6 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<String> _adhkarTexts = [];
   List<String> _pinnedAdhkar = [];
+  List<HomeSection> _sections = [];
+  bool _editMode = false;
 
   static const List<String> _hijriMonths = [
     '', 'محرّم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
@@ -64,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadVerses();
     _loadAdhkarTexts();
     _loadPinned();
+    _loadSections();
     _loadReminderVisibility();
     WidgetsBinding.instance.addPostFrameCallback((_) => _maybeShowFirstLaunchDialog());
   }
@@ -181,6 +184,65 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() => _pinnedAdhkar = pinned);
   }
 
+  /// تحميل ترتيب أقسام الصفحة الرئيسية (مع الحفاظ على الترتيب الافتراضي للجديد)
+  Future<void> _loadSections() async {
+    final prefs = await SharedPreferences.getInstance();
+    final stored = prefs.getStringList(AppConstants.keyHomeSectionsOrder) ?? [];
+    if (stored.isEmpty || stored.length != homeSections.length) {
+      if (mounted) setState(() => _sections = List.of(homeSections));
+      return;
+    }
+    final byId = {for (final s in homeSections) s.id: s};
+    final ordered = <HomeSection>[];
+    for (final id in stored) {
+      final s = byId[id];
+      if (s != null) ordered.add(s);
+    }
+    for (final s in homeSections) {
+      if (!ordered.any((x) => x.id == s.id)) ordered.add(s);
+    }
+    if (mounted) setState(() => _sections = ordered);
+  }
+
+  Future<void> _saveSectionsOrder() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(
+        AppConstants.keyHomeSectionsOrder, _sections.map((s) => s.id).toList());
+  }
+
+  void _toggleEditMode() => setState(() => _editMode = !_editMode);
+
+  void _onReorder(int oldIndex, int newIndex) {
+    setState(() {
+      if (newIndex > oldIndex) newIndex--;
+      final s = _sections.removeAt(oldIndex);
+      _sections.insert(newIndex, s);
+    });
+    _saveSectionsOrder();
+  }
+
+  /// عرض الأقسام في وضع التعديل لإعادة ترتيبها (شبكة قابلة للسحب والإفلات)
+  Widget _buildReorderSliver() {
+    return SliverPadding(
+      padding: EdgeInsets.zero,
+      sliver: SliverReorderableList(
+        itemCount: _sections.length,
+        onReorder: _onReorder,
+        itemBuilder: (context, index) {
+          final section = _sections[index];
+          return ReorderableDelayedDragStartListener(
+            key: ValueKey(section.id),
+            index: index,
+            child: CardItem(
+              section: section,
+              onTap: () => _open(context, section.id),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   /// فتح قسم مثبّت من الصفحة الرئيسية
   void _openPinned(String key) {
     final titles = {
@@ -252,7 +314,11 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
     }
     if (screen != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => screen!));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => screen!))
+          .then((_) {
+        // عند العودة: أعد تحميل الأقسام المثبّتة (إذ قد تتغيّر في شاشة الأذكار)
+        _loadPinned();
+      });
     }
   }
 
@@ -280,6 +346,16 @@ SliverAppBar(
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
+            actions: [
+              TextButton.icon(
+                onPressed: _toggleEditMode,
+                style: TextButton.styleFrom(foregroundColor: Colors.white),
+                icon: Icon(
+                    _editMode ? Icons.check : Icons.edit,
+                    size: 18),
+                label: Text(_editMode ? 'تم' : 'تعديل'),
+              ),
+            ],
             flexibleSpace: FlexibleSpaceBar(
               title: const Text(''),
               centerTitle: true,
@@ -333,26 +409,39 @@ child: Center(
                 onOpen: _openPinned,
               ),
             ),
-          SliverPadding(
-            padding: const EdgeInsets.all(14),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 14,
-                crossAxisSpacing: 14,
-                childAspectRatio: 1.05,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final section = homeSections[index];
-                  return CardItem(
-                    section: section,
-                    onTap: () => _open(context, section.id),
-                  );
-                },
-                childCount: homeSections.length,
+          if (_editMode)
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(14, 8, 14, 0),
+                child: Text(
+                  'اضغط مطوّلاً على أي قسم واسحب لإعادة ترتيبه، ثم اضغط "تم"',
+                  style: TextStyle(fontSize: 13, color: Colors.grey),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
+          SliverPadding(
+            padding: const EdgeInsets.all(14),
+            sliver: _editMode
+                ? _buildReorderSliver()
+                : SliverGrid(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 14,
+                      crossAxisSpacing: 14,
+                      childAspectRatio: 1.05,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        final section = _sections[index];
+                        return CardItem(
+                          section: section,
+                          onTap: () => _open(context, section.id),
+                        );
+                      },
+                      childCount: _sections.length,
+                    ),
+                  ),
           ),
           SliverToBoxAdapter(
             child: Padding(

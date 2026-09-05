@@ -68,6 +68,18 @@ class DataService {
         .toList();
   }
 
+  /// كل فئات حصن المسلم والوابل الصيب مصغرة (بدون عناصر) — للتعرف على المفاتيح
+  Future<Map<String, AdhkarCategory>> loadHisnWabilCategoriesByKey() async {
+    final map = <String, AdhkarCategory>{};
+    for (final c in await loadHisnCategories()) {
+      map[c.uniqueKey] = c;
+    }
+    for (final c in await loadWabilCategories()) {
+      map[c.uniqueKey] = c;
+    }
+    return map;
+  }
+
   /// كل الأذكار (لكل الفئات) — للبحث والمفضلة
   Future<List<Dhikr>> loadAllAdhkar() async {
     final all = <Dhikr>[];

@@ -4,9 +4,15 @@ import '../../models/adhkar_category.dart';
 import '../../utils/theme.dart';
 
 /// شاشة البحث والإضافة: تعرض كل الفئات المتاحة (حصن + وابل) مع خانات اختيار
-/// يمكن البحث فيها، ومن ثم اختيار عدة فئات لإضافتها.
+/// يمكن البحث فيها، ومن ثم اختيار عدة فئات لإضافتها إلى "القائمة الإضافية".
 class AdhkarPickerScreen extends StatefulWidget {
-  const AdhkarPickerScreen({super.key});
+  /// مفاتيح الفئات المضافة مسبقاً (يُستبعد عرضها لأنها مضافة بالفعل)
+  final Set<String> exclude;
+
+  /// كل مفاتيح الفئات المتاحة
+  final Set<String> allKeys;
+
+  const AdhkarPickerScreen({super.key, this.exclude = const {}, this.allKeys = const {}});
 
   @override
   State<AdhkarPickerScreen> createState() => _AdhkarPickerScreenState();
@@ -29,7 +35,9 @@ class _AdhkarPickerScreenState extends State<AdhkarPickerScreen> {
     final wabil = await DataService.instance.loadWabilCategories();
     if (mounted) {
       setState(() {
-        _all = [...hisn, ...wabil];
+        _all = [...hisn, ...wabil]
+            .where((c) => !widget.exclude.contains(c.uniqueKey))
+            .toList();
         _loaded = true;
       });
     }

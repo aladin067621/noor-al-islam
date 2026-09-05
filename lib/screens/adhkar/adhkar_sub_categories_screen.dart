@@ -6,7 +6,23 @@ import '../../services/data_service.dart';
 import '../../utils/theme.dart';
 import '../../utils/constants.dart';
 import 'adhkar_list_screen.dart';
-import 'adhkar_picker_screen.dart';
+import 'adhkar_added_list_screen.dart';
+
+/// المفاتيح التي تكرّر أقسام الصباح/المساء/النوم/السفر/الصلاة الموجودة أصلاً
+/// كأقسام رئيسية — تُستبعد من "أذكار أخرى" لتجنّب التكرار.
+const Set<String> _duplicateUniqueKeys = {
+  'حصن المسلم::hisn_27', // أذكار الصباح والمساء
+  'حصن المسلم::hisn_28', // أذكار النوم
+  'حصن المسلم::hisn_96', // دعاء السفر
+  'حصن المسلم::hisn_15', // أذكار الآذان
+  'حصن المسلم::hisn_16', // دعاء الاستفتاح (صلاة)
+  'حصن المسلم::hisn_25', // الأذكار بعد السلام
+  'الوابل الصيب::ch286', // طرفي النهار
+  'الوابل الصيب::ch294', // أذكار النوم
+  'الوابل الصيب::ch312', // أذكار الأذان
+  'الوابل الصيب::ch317', // أذكار الاستفتاح
+  'الوابل الصيب::ch330', // الأذكار بعد السلام
+};
 
 /// شاشة "أذكار أخرى": تعرض فئات حصن المسلم والوابل الصيب معاً،
 /// قابلة لإعادة الترتيب بالسحب ويمكن تثبيتها.
@@ -39,7 +55,9 @@ class _AdhkarSubCategoriesScreenState extends State<AdhkarSubCategoriesScreen> {
       items: otherDhikr,
       book: 'أذكار متنوعة',
     );
-    final all = [otherCat, ...hisn, ...wabil];
+    final all = [otherCat, ...hisn, ...wabil]
+        .where((c) => !_duplicateUniqueKeys.contains(c.uniqueKey))
+        .toList();
 
     // طبق الترتيب المحفوظ إن وُجد
     final prefs = await SharedPreferences.getInstance();
@@ -77,17 +95,12 @@ class _AdhkarSubCategoriesScreenState extends State<AdhkarSubCategoriesScreen> {
     _saveOrder();
   }
 
-  Future<void> _openPicker() async {
-    final selected = await Navigator.push<List<String>>(
+  Future<void> _openAddedList() async {
+    await Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => const AdhkarPickerScreen()),
+      MaterialPageRoute(builder: (_) => const AdhkarAddedListScreen()),
     );
-    if (selected != null && selected.isNotEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text('تمّت إضافة ${selected.length} فئة إلى أذكار أخرى')),
-      );
-    }
+    await _load();
   }
 
   @override
@@ -151,7 +164,7 @@ class _AdhkarSubCategoriesScreenState extends State<AdhkarSubCategoriesScreen> {
               ],
             ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _openPicker,
+        onPressed: _openAddedList,
         backgroundColor: AppTheme.primaryGreen,
         foregroundColor: Colors.white,
         icon: const Icon(Icons.add),

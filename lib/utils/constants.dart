@@ -47,6 +47,10 @@ class AppConstants {
   static const String keyAdhkarOrder = 'adhkar_order';
   static const String keySubAdhkarOrder = 'adhkar_sub_order';
   static const String keyPinnedAdhkar = 'adhkar_pinned_list';
+  static const String keyAddedAdhkarCategories = 'adhkar_added_categories';
+
+  // ترتيب أقسام الصفحة الرئيسية
+  static const String keyHomeSectionsOrder = 'home_sections_order';
 
   // القيم الافتراضية
   static const double defaultFontSize = 18.0;
