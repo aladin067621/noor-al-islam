@@ -250,17 +250,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   /// إخفاء اختصار من الصفحة الرئيسية (يُضاف إلى قائمة المخفية — لا يُحذف)
   void _removeSection(String id) {
-    HomeSection? s;
-    for (final x in _sections) {
-      if (x.id == id) {
-        s = x;
-        break;
-      }
-    }
-    if (s == null) return;
+    final i = _sections.indexWhere((x) => x.id == id);
+    if (i < 0) return;
+    final sec = _sections[i];
     setState(() {
-      _sections.remove(s);
-      _hiddenSections.add(s);
+      _sections.removeAt(i);
+      _hiddenSections.add(sec);
     });
     _saveSections();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -271,17 +266,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   /// إظهار اختصار مخفي مرة أخرى في نهاية القائمة
   void _addSection(String id) {
-    HomeSection? s;
-    for (final x in _hiddenSections) {
-      if (x.id == id) {
-        s = x;
-        break;
-      }
-    }
-    if (s == null) return;
+    final i = _hiddenSections.indexWhere((x) => x.id == id);
+    if (i < 0) return;
+    final sec = _hiddenSections[i];
     setState(() {
-      _hiddenSections.remove(s);
-      _sections.add(s);
+      _hiddenSections.removeAt(i);
+      _sections.add(sec);
     });
     _saveSections();
   }
