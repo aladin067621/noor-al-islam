@@ -104,7 +104,7 @@ class _NotesScreenState extends State<NotesScreen> {
                           ],
                         ),
                         trailing: IconButton(
-                          icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+                          icon: const Icon(Icons.delete_outline, color: AppTheme.dangerRed),
                           onPressed: () => _delete(n),
                         ),
                         onTap: () => _openEditor(n),

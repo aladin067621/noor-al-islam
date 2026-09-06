@@ -146,7 +146,7 @@ class _AdhkarPersonalListScreenState extends State<AdhkarPersonalListScreen> {
                             IconButton(
                               tooltip: 'إزالة من أذكاري',
                               icon: const Icon(Icons.delete_outline,
-                                  color: Colors.redAccent),
+                                  color: AppTheme.dangerRed),
                               onPressed: () => service.remove(dhikr.refKey),
                             ),
                             ReorderableDragStartListener(

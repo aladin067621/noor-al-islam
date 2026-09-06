@@ -8,6 +8,9 @@ class AppTheme {
   static const Color gold = Color(0xFFB8860B);
   static const Color lightGold = Color(0xFFD4AF37);
   static const Color cream = Color(0xFFF7F4EC);
+  // ألوان دلالية
+  static const Color successGreen = Color(0xFF2E7D5B);
+  static const Color dangerRed = Color(0xFFC62828);
 
   static const String fontFamily = 'NotoNaskhArabic';
   static const String quranFontFamily = 'Amiri';

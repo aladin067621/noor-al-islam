@@ -85,7 +85,7 @@ class FavoritesScreen extends StatelessWidget {
                             IconButton(
                               visualDensity: VisualDensity.compact,
                               icon: const Icon(Icons.delete_outline,
-                                  size: 18, color: Colors.redAccent),
+                                  size: 18, color: AppTheme.dangerRed),
                               onPressed: () => favorites.remove(item.key),
                             ),
                           ],

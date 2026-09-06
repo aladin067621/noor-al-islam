@@ -38,7 +38,7 @@ class ChapterReaderScreen extends StatelessWidget {
           IconButton(
             tooltip: 'المفضلة',
             icon: Icon(isFav ? Icons.favorite : Icons.favorite_border,
-                color: isFav ? Colors.redAccent : null),
+                color: isFav ? AppTheme.dangerRed : null),
             onPressed: () => favorites.toggle(FavoriteItem(
               key: chapter.favoriteKey,
               type: 'chapter',

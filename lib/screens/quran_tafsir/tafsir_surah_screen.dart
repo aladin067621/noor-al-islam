@@ -198,7 +198,7 @@ class _TafsirSurahScreenState extends State<TafsirSurahScreen> {
                           visualDensity: VisualDensity.compact,
                           tooltip: 'المفضلة',
                           icon: Icon(isFav ? Icons.favorite : Icons.favorite_border,
-                              size: 20, color: isFav ? Colors.red : null),
+                              size: 20, color: isFav ? AppTheme.dangerRed : null),
                           onPressed: () => favorites.toggle(FavoriteItem(
                             key: favKey,
                             type: 'ayah',

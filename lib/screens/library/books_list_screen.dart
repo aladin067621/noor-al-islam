@@ -42,11 +42,11 @@ class BooksListScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
-                            color: Colors.red.withOpacity(0.1),
+                            color: AppTheme.dangerRed.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: const Text('PDF',
-                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.red)),
+                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: AppTheme.dangerRed)),
                         ),
                     ],
                   ),

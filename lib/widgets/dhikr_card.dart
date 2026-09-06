@@ -187,7 +187,7 @@ class _DhikrCardState extends State<DhikrCard> {
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
                       color: done
-                          ? Colors.green.withOpacity(0.15)
+                          ? AppTheme.successGreen.withOpacity(0.15)
                           : Theme.of(context).colorScheme.primary.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(24),
                     ),
@@ -196,13 +196,13 @@ class _DhikrCardState extends State<DhikrCard> {
                       children: [
                         Icon(done ? Icons.check_circle : Icons.touch_app,
                             size: 20,
-                            color: done ? Colors.green : Theme.of(context).colorScheme.primary),
+                            color: done ? AppTheme.successGreen : Theme.of(context).colorScheme.primary),
                         const SizedBox(width: 6),
                         Text(
                           done ? 'تم' : '$_remaining',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: done ? Colors.green : Theme.of(context).colorScheme.primary,
+                            color: done ? AppTheme.successGreen : Theme.of(context).colorScheme.primary,
                           ),
                         ),
                       ],
@@ -234,7 +234,7 @@ class _DhikrCardState extends State<DhikrCard> {
                     IconButton(
                       tooltip: 'المفضلة',
                       icon: Icon(isFav ? Icons.favorite : Icons.favorite_border,
-                          color: isFav ? Colors.red : null),
+                          color: isFav ? AppTheme.dangerRed : null),
                       onPressed: () => favorites.toggle(_favItem()),
                     ),
                   ],

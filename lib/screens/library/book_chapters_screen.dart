@@ -187,7 +187,7 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                     TextButton(
                       onPressed: _removePdf,
                       child: const Text('إزالة النسخة المحفوظة',
-                          style: TextStyle(color: Colors.redAccent)),
+                          style: TextStyle(color: AppTheme.dangerRed)),
                     ),
                   const SizedBox(height: 6),
                   OutlinedButton.icon(
@@ -265,7 +265,7 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                         TextButton(
                           onPressed: _removeSaved,
                           child: const Text('إزالة النسخة المحفوظة',
-                              style: TextStyle(color: Colors.redAccent)),
+                              style: TextStyle(color: AppTheme.dangerRed)),
                         ),
                       const SizedBox(height: 6),
                       Text(

@@ -76,7 +76,7 @@ class ContentSectionCard extends StatelessWidget {
                 IconButton(
                   tooltip: 'المفضلة',
                   icon: Icon(isFav ? Icons.favorite : Icons.favorite_border,
-                      color: isFav ? Colors.red : null),
+                      color: isFav ? AppTheme.dangerRed : null),
                   onPressed: () => favorites.toggle(FavoriteItem(
                     key: _favKey,
                     type: 'section',

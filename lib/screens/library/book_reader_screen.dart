@@ -80,7 +80,7 @@ class BookReaderScreen extends StatelessWidget {
                               : Icons.favorite_border,
                           size: 20,
                           color: favorites.isFavorite(chapters[i].favoriteKey)
-                              ? Colors.redAccent
+                              ? AppTheme.dangerRed
                               : null),
                       onPressed: () => favorites.toggle(FavoriteItem(
                         key: chapters[i].favoriteKey,
