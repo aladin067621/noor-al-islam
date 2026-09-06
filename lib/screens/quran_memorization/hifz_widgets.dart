@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../models/quran_models.dart';
-import '../services/hifz_service.dart';
-import '../services/quran_audio_service.dart';
-import '../utils/theme.dart';
-import '../widgets/tajweed_text.dart';
+import '../../models/quran_models.dart';
+import '../../services/hifz_service.dart';
+import '../../services/quran_audio_service.dart';
+import '../../utils/theme.dart';
+import '../../widgets/tajweed_text.dart';
 
 /// لون حالة الحفظ للآية
 Color hifzStatusColor(int? status) {

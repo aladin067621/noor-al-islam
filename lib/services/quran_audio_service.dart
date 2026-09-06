@@ -11,8 +11,7 @@ import '../utils/constants.dart';
 /// خدمة التلاوة من alquran.cloud — بث/تنزيل الآية مرّة واحدة ثم تشغيلها محليًا،
 /// مع دعم التكرار (لأغراض الحفظ) دون أي استخدام للميكروفون.
 class QuranAudioService extends ChangeNotifier {
-  QuranAudioService._() {
-    _player = AudioPlayer();
+  QuranAudioService._() : _player = AudioPlayer() {
     _player.onPlayerComplete.listen((_) => _onPlayerComplete());
   }
 
