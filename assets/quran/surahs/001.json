@@ -1,0 +1,113 @@
+{
+  "id": 1,
+  "type": "makkan",
+  "nameArabic": "الفَاتِحَة",
+  "nameTransliteration": "Al-Fatihah",
+  "nameEnglish": "The Opener",
+  "numberOfAyahs": 7,
+  "pageStart": 1,
+  "pageEnd": 1,
+  "numberOfPages": 1,
+  "firstJuz": 1,
+  "lastJuz": 1,
+  "juzs": [
+    1
+  ],
+  "revelationOrder": 5,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al fatiha",
+    "al-fatihah",
+    "the-opener",
+    "al fatihah",
+    "alfatihah",
+    "fatihah",
+    "faatihah",
+    "faatiha",
+    "al-faatiha",
+    "alfaatiha",
+    "al faatiha"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+      "textTransliteration": "Bismi Allahi alrrahmani alrraheemi",
+      "textEnglishSaheeh": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+      "textEnglishMustafa": "In the Name of Allah—the Most Compassionate, Most Merciful.",
+      "juz": 1,
+      "page": 1,
+      "wordCount": 4,
+      "letterCount": 19
+    },
+    {
+      "id": 2,
+      "textArabic": "ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَٰلَمِينَ",
+      "textTransliteration": "Alhamdu lillahi rabbi alAAalameena",
+      "textEnglishSaheeh": "[All] praise is [due] to Allah, Lord of the worlds -",
+      "textEnglishMustafa": "All praise is for Allah—Lord of all worlds,",
+      "juz": 1,
+      "page": 1,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 3,
+      "textArabic": "ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+      "textTransliteration": "Alrrahmani alrraheemi",
+      "textEnglishSaheeh": "The Entirely Merciful, the Especially Merciful,",
+      "textEnglishMustafa": "the Most Compassionate, Most Merciful,",
+      "juz": 1,
+      "page": 1,
+      "wordCount": 2,
+      "letterCount": 12
+    },
+    {
+      "id": 4,
+      "textArabic": "مَٰلِكِ يَوۡمِ ٱلدِّينِ",
+      "textTransliteration": "Maliki yawmi alddeeni",
+      "textEnglishSaheeh": "Sovereign of the Day of Recompense.",
+      "textEnglishMustafa": "Master of the Day of Judgment.",
+      "juz": 1,
+      "page": 1,
+      "wordCount": 3,
+      "letterCount": 11
+    },
+    {
+      "id": 5,
+      "textArabic": "إِيَّاكَ نَعۡبُدُ وَإِيَّاكَ نَسۡتَعِينُ",
+      "textTransliteration": "Iyyaka naAAbudu waiyyaka nastaAAeenu",
+      "textEnglishSaheeh": "It is You we worship and You we ask for help.",
+      "textEnglishMustafa": "You ˹alone˺ we worship and You ˹alone˺ we ask for help.",
+      "juz": 1,
+      "page": 1,
+      "wordCount": 4,
+      "letterCount": 19
+    },
+    {
+      "id": 6,
+      "textArabic": "ٱهۡدِنَا ٱلصِّرَٰطَ ٱلۡمُسۡتَقِيمَ",
+      "textTransliteration": "Ihdina alssirata almustaqeema",
+      "textEnglishSaheeh": "Guide us to the straight path -",
+      "textEnglishMustafa": "Guide us along the Straight Path,",
+      "juz": 1,
+      "page": 1,
+      "wordCount": 3,
+      "letterCount": 18
+    },
+    {
+      "id": 7,
+      "textArabic": "صِرَٰطَ ٱلَّذِينَ أَنۡعَمۡتَ عَلَيۡهِمۡ غَيۡرِ ٱلۡمَغۡضُوبِ عَلَيۡهِمۡ وَلَا ٱلضَّآلِّينَ",
+      "textTransliteration": "Sirata allatheena anAAamta AAalayhim ghayri almaghdoobi AAalayhim wala alddalleena",
+      "textEnglishSaheeh": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray.",
+      "textEnglishMustafa": "the Path of those You have blessed—not those You are displeased with, or those who are astray.",
+      "juz": 1,
+      "page": 1,
+      "wordCount": 9,
+      "letterCount": 43
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 29,
+  "letterCount": 139
+}

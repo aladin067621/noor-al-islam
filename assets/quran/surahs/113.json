@@ -1,0 +1,85 @@
+{
+  "id": 113,
+  "type": "makkan",
+  "nameArabic": "الفَلَق",
+  "nameTransliteration": "Al-Falaq",
+  "nameEnglish": "The Daybreak",
+  "numberOfAyahs": 5,
+  "pageStart": 604,
+  "pageEnd": 604,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 20,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-falaq",
+    "the-daybreak",
+    "al falaq",
+    "alfalaq",
+    "falaq"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "قُلۡ أَعُوذُ بِرَبِّ ٱلۡفَلَقِ",
+      "textTransliteration": "Qul aAAoothu birabbi alfalaqi",
+      "textEnglishSaheeh": "Say, \"I seek refuge in the Lord of daybreak",
+      "textEnglishMustafa": "Say, ˹O Prophet,˺ “I seek refuge in the Lord of the daybreak",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 2,
+      "textArabic": "مِن شَرِّ مَا خَلَقَ",
+      "textTransliteration": "Min sharri ma khalaqa",
+      "textEnglishSaheeh": "From the evil of that which He created",
+      "textEnglishMustafa": "from the evil of whatever He has created,",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 4,
+      "letterCount": 9
+    },
+    {
+      "id": 3,
+      "textArabic": "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ",
+      "textTransliteration": "Wamin sharri ghasiqin itha waqaba",
+      "textEnglishSaheeh": "And from the evil of darkness when it settles",
+      "textEnglishMustafa": "and from the evil of the night when it grows dark,",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 5,
+      "letterCount": 15
+    },
+    {
+      "id": 4,
+      "textArabic": "وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِي ٱلۡعُقَدِ",
+      "textTransliteration": "Wamin sharri alnnaffathati fee alAAuqadi",
+      "textEnglishSaheeh": "And from the evil of the blowers in knots",
+      "textEnglishMustafa": "and from the evil of those ˹witches casting spells by˺ blowing onto knots,",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 5,
+      "textArabic": "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+      "textTransliteration": "Wamin sharri hasidin itha hasada",
+      "textEnglishSaheeh": "And from the evil of an envier when he envies.\"",
+      "textEnglishMustafa": "and from the evil of an envier when they envy.”",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 5,
+      "letterCount": 15
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 23,
+  "letterCount": 71
+}

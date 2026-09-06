@@ -1,0 +1,122 @@
+{
+  "id": 102,
+  "type": "makkan",
+  "nameArabic": "التَّكاثُر",
+  "nameTransliteration": "At-Takathur",
+  "nameEnglish": "The Rivalry in world increase",
+  "numberOfAyahs": 8,
+  "pageStart": 600,
+  "pageEnd": 600,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 16,
+  "revelationExceptions": "",
+  "similarNames": [
+    "at-takathur",
+    "the-rivalry-in-world-increase",
+    "greed for more",
+    "piling up",
+    "striving for more",
+    "the emulous desire",
+    "at takathur",
+    "attakathur",
+    "takathur"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "أَلۡهَىٰكُمُ ٱلتَّكَاثُرُ",
+      "textTransliteration": "Alhakumu alttakathuru",
+      "textEnglishSaheeh": "Competition in [worldly] increase diverts you",
+      "textEnglishMustafa": "Competition for more ˹gains˺ diverts you ˹from Allah˺,",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 2,
+      "letterCount": 13
+    },
+    {
+      "id": 2,
+      "textArabic": "حَتَّىٰ زُرۡتُمُ ٱلۡمَقَابِرَ",
+      "textTransliteration": "Hatta zurtumu almaqabira",
+      "textEnglishSaheeh": "Until you visit the graveyards.",
+      "textEnglishMustafa": "until you end up in ˹your˺ graves.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 3,
+      "textArabic": "كـَلَّا سَوۡفَ تَعۡلَمُونَ",
+      "textTransliteration": "Kalla sawfa taAAlamoona",
+      "textEnglishSaheeh": "No! You are going to know.",
+      "textEnglishMustafa": "But no! You will soon come to know.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 4,
+      "textArabic": "ثُمَّ كـَلَّا سَوۡفَ تَعۡلَمُونَ",
+      "textTransliteration": "Thumma kalla sawfa taAAlamoona",
+      "textEnglishSaheeh": "Then no! You are going to know.",
+      "textEnglishMustafa": "Again, no! You will soon come to know.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 5,
+      "textArabic": "كـَلَّا لَوۡ تَعۡلَمُونَ عِلۡمَ ٱلۡيَقِينِ",
+      "textTransliteration": "Kalla law taAAlamoona AAilma alyaqeeni",
+      "textEnglishSaheeh": "No! If you only knew with knowledge of certainty...",
+      "textEnglishMustafa": "Indeed, if you were to know ˹your fate˺ with certainty, ˹you would have acted differently˺.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 5,
+      "letterCount": 20
+    },
+    {
+      "id": 6,
+      "textArabic": "لَتَرَوُنَّ ٱلۡجَحِيمَ",
+      "textTransliteration": "Latarawunna aljaheema",
+      "textEnglishSaheeh": "You will surely see the Hellfire.",
+      "textEnglishMustafa": "˹But˺ you will surely see the Hellfire.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 2,
+      "letterCount": 11
+    },
+    {
+      "id": 7,
+      "textArabic": "ثُمَّ لَتَرَوُنَّهَا عَيۡنَ ٱلۡيَقِينِ",
+      "textTransliteration": "Thumma latarawunnaha AAayna alyaqeeni",
+      "textEnglishSaheeh": "Then you will surely see it with the eye of certainty.",
+      "textEnglishMustafa": "Again, you will surely see it with the eye of certainty.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 18
+    },
+    {
+      "id": 8,
+      "textArabic": "ثُمَّ لَتُسۡـَٔلُنَّ يَوۡمَئِذٍ عَنِ ٱلنَّعِيمِ",
+      "textTransliteration": "Thumma latusalunna yawmaithin AAani alnnaAAeemi",
+      "textEnglishSaheeh": "Then you will surely be asked that Day about pleasure.",
+      "textEnglishMustafa": "Then, on that Day, you will definitely be questioned about ˹your worldly˺ pleasures.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 5,
+      "letterCount": 20
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 28,
+  "letterCount": 122
+}

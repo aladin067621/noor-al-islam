@@ -1,0 +1,250 @@
+{
+  "id": 90,
+  "type": "makkan",
+  "nameArabic": "البَلَد",
+  "nameTransliteration": "Al-Balad",
+  "nameEnglish": "The City",
+  "numberOfAyahs": 20,
+  "pageStart": 594,
+  "pageEnd": 595,
+  "numberOfPages": 2,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 35,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-balad",
+    "the-city",
+    "al balad",
+    "albalad",
+    "balad"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "لَآ أُقۡسِمُ بِهَٰذَا ٱلۡبَلَدِ",
+      "textTransliteration": "La oqsimu bihatha albaladi",
+      "textEnglishSaheeh": "I swear by this city, Mecca -",
+      "textEnglishMustafa": "I do swear by this city ˹of Mecca˺—",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 2,
+      "textArabic": "وَأَنتَ حِلُّۢ بِهَٰذَا ٱلۡبَلَدِ",
+      "textTransliteration": "Waanta hillun bihatha albaladi",
+      "textEnglishSaheeh": "And you, [O Muhammad], are free of restriction in this city -",
+      "textEnglishMustafa": "even though you ˹O Prophet˺ are subject to abuse in this city—",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 3,
+      "textArabic": "وَوَالِدٖ وَمَا وَلَدَ",
+      "textTransliteration": "Wawalidin wama walada",
+      "textEnglishSaheeh": "And [by] the father and that which was born [of him],",
+      "textEnglishMustafa": "and by every parent and ˹their˺ child!",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 3,
+      "letterCount": 11
+    },
+    {
+      "id": 4,
+      "textArabic": "لَقَدۡ خَلَقۡنَا ٱلۡإِنسَٰنَ فِي كَبَدٍ",
+      "textTransliteration": "Laqad khalaqna alinsana fee kabadin",
+      "textEnglishSaheeh": "We have certainly created man into hardship.",
+      "textEnglishMustafa": "Indeed, We have created humankind in ˹constant˺ struggle.",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 5,
+      "letterCount": 19
+    },
+    {
+      "id": 5,
+      "textArabic": "أَيَحۡسَبُ أَن لَّن يَقۡدِرَ عَلَيۡهِ أَحَدٞ",
+      "textTransliteration": "Ayahsabu an lan yaqdira AAalayhi ahadun",
+      "textEnglishSaheeh": "Does he think that never will anyone overcome him?",
+      "textEnglishMustafa": "Do they think that no one has power over them,",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 6,
+      "letterCount": 20
+    },
+    {
+      "id": 6,
+      "textArabic": "يَقُولُ أَهۡلَكۡتُ مَالٗا لُّبَدًا",
+      "textTransliteration": "Yaqoolu ahlaktu malan lubadan",
+      "textEnglishSaheeh": "He says, \"I have spent wealth in abundance.\"",
+      "textEnglishMustafa": "boasting, “I have wasted enormous wealth!”?",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 7,
+      "textArabic": "أَيَحۡسَبُ أَن لَّمۡ يَرَهُۥٓ أَحَدٌ",
+      "textTransliteration": "Ayahsabu an lam yarahu ahadun",
+      "textEnglishSaheeh": "Does he think that no one has seen him?",
+      "textEnglishMustafa": "Do they think that no one sees them?",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 5,
+      "letterCount": 15
+    },
+    {
+      "id": 8,
+      "textArabic": "أَلَمۡ نَجۡعَل لَّهُۥ عَيۡنَيۡنِ",
+      "textTransliteration": "Alam najAAal lahu AAaynayni",
+      "textEnglishSaheeh": "Have We not made for him two eyes?",
+      "textEnglishMustafa": "Have We not given them two eyes,",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 9,
+      "textArabic": "وَلِسَانٗا وَشَفَتَيۡنِ",
+      "textTransliteration": "Walisanan washafatayni",
+      "textEnglishSaheeh": "And a tongue and two lips?",
+      "textEnglishMustafa": "a tongue, and two lips;",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 2,
+      "letterCount": 12
+    },
+    {
+      "id": 10,
+      "textArabic": "وَهَدَيۡنَٰهُ ٱلنَّجۡدَيۡنِ",
+      "textTransliteration": "Wahadaynahu alnnajdayni",
+      "textEnglishSaheeh": "And have shown him the two ways?",
+      "textEnglishMustafa": "and shown them the two ways ˹of right and wrong˺?",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 2,
+      "letterCount": 13
+    },
+    {
+      "id": 11,
+      "textArabic": "فَلَا ٱقۡتَحَمَ ٱلۡعَقَبَةَ",
+      "textTransliteration": "Fala iqtahama alAAaqabata",
+      "textEnglishSaheeh": "But he has not broken through the difficult pass.",
+      "textEnglishMustafa": "If only they had attempted the challenging path ˹of goodness instead˺!",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 12,
+      "textArabic": "وَمَآ أَدۡرَىٰكَ مَا ٱلۡعَقَبَةُ",
+      "textTransliteration": "Wama adraka ma alAAaqabatu",
+      "textEnglishSaheeh": "And what can make you know what is [breaking through] the difficult pass?",
+      "textEnglishMustafa": "And what will make you realize what ˹attempting˺ the challenging path is?",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 13,
+      "textArabic": "فَكُّ رَقَبَةٍ",
+      "textTransliteration": "Fakku raqabatin",
+      "textEnglishSaheeh": "It is the freeing of a slave",
+      "textEnglishMustafa": "It is to free a slave;",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 2,
+      "letterCount": 6
+    },
+    {
+      "id": 14,
+      "textArabic": "أَوۡ إِطۡعَٰمٞ فِي يَوۡمٖ ذِي مَسۡغَبَةٖ",
+      "textTransliteration": "Aw itAAamun fee yawmin thee masghabatin",
+      "textEnglishSaheeh": "Or feeding on a day of severe hunger",
+      "textEnglishMustafa": "or to give food in times of famine",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 6,
+      "letterCount": 18
+    },
+    {
+      "id": 15,
+      "textArabic": "يَتِيمٗا ذَا مَقۡرَبَةٍ",
+      "textTransliteration": "Yateeman tha maqrabatin",
+      "textEnglishSaheeh": "An orphan of near relationship",
+      "textEnglishMustafa": "to an orphaned relative",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 16,
+      "textArabic": "أَوۡ مِسۡكِينٗا ذَا مَتۡرَبَةٖ",
+      "textTransliteration": "Aw miskeenan tha matrabatin",
+      "textEnglishSaheeh": "Or a needy person in misery",
+      "textEnglishMustafa": "or to a poor person in distress;",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 17,
+      "textArabic": "ثُمَّ كَانَ مِنَ ٱلَّذِينَ ءَامَنُواْ وَتَوَاصَوۡاْ بِٱلصَّبۡرِ وَتَوَاصَوۡاْ بِٱلۡمَرۡحَمَةِ",
+      "textTransliteration": "Thumma kana mina allatheena amanoo watawasaw bialssabri watawasaw bialmarhamati",
+      "textEnglishSaheeh": "And then being among those who believed and advised one another to patience and advised one another to compassion.",
+      "textEnglishMustafa": "and—above all—to be one of those who have faith and urge each other to perseverance and urge each other to compassion.",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 9,
+      "letterCount": 46
+    },
+    {
+      "id": 18,
+      "textArabic": "أُوْلَٰٓئِكَ أَصۡحَٰبُ ٱلۡمَيۡمَنَةِ",
+      "textTransliteration": "Olaika ashabu almaymanati",
+      "textEnglishSaheeh": "Those are the companions of the right.",
+      "textEnglishMustafa": "These are the people of the right.",
+      "juz": 30,
+      "page": 594,
+      "wordCount": 3,
+      "letterCount": 16
+    },
+    {
+      "id": 19,
+      "textArabic": "وَٱلَّذِينَ كَفَرُواْ بِـَٔايَٰتِنَا هُمۡ أَصۡحَٰبُ ٱلۡمَشۡـَٔمَةِ",
+      "textTransliteration": "Waallatheena kafaroo biayatina hum ashabu almashamati",
+      "textEnglishSaheeh": "But they who disbelieved in Our signs - those are the companions of the left.",
+      "textEnglishMustafa": "As for those who deny Our signs, they are the people of the left.",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 6,
+      "letterCount": 29
+    },
+    {
+      "id": 20,
+      "textArabic": "عَلَيۡهِمۡ نَارٞ مُّؤۡصَدَةُۢ",
+      "textTransliteration": "AAalayhim narun musadatun",
+      "textEnglishSaheeh": "Over them will be fire closed in.",
+      "textEnglishMustafa": "The Fire will be sealed over them.",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 13
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 82,
+  "letterCount": 336
+}

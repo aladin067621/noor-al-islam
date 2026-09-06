@@ -1,0 +1,156 @@
+{
+  "id": 93,
+  "type": "makkan",
+  "nameArabic": "الضُّحَى",
+  "nameTransliteration": "Ad-Duhaa",
+  "nameEnglish": "The Morning Hours",
+  "numberOfAyahs": 11,
+  "pageStart": 596,
+  "pageEnd": 596,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 11,
+  "revelationExceptions": "",
+  "similarNames": [
+    "ad duha",
+    "ad-duhaa",
+    "the-morning-hours",
+    "the glorious morning light",
+    "the early hours",
+    "the forenoon",
+    "the sunrise",
+    "ad duhaa",
+    "adduhaa",
+    "duhaa"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "وَٱلضُّحَىٰ",
+      "textTransliteration": "Waaldduha",
+      "textEnglishSaheeh": "By the morning brightness",
+      "textEnglishMustafa": "By the morning sunlight,",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 1,
+      "letterCount": 6
+    },
+    {
+      "id": 2,
+      "textArabic": "وَٱلَّيۡلِ إِذَا سَجَىٰ",
+      "textTransliteration": "Waallayli itha saja",
+      "textEnglishSaheeh": "And [by] the night when it covers with darkness,",
+      "textEnglishMustafa": "and the night when it falls still!",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 3,
+      "letterCount": 11
+    },
+    {
+      "id": 3,
+      "textArabic": "مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ",
+      "textTransliteration": "Ma waddaAAaka rabbuka wama qala",
+      "textEnglishSaheeh": "Your Lord has not taken leave of you, [O Muhammad], nor has He detested [you].",
+      "textEnglishMustafa": "Your Lord ˹O Prophet˺ has not abandoned you, nor has He become hateful ˹of you˺.",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 5,
+      "letterCount": 15
+    },
+    {
+      "id": 4,
+      "textArabic": "وَلَلۡأٓخِرَةُ خَيۡرٞ لَّكَ مِنَ ٱلۡأُولَىٰ",
+      "textTransliteration": "Walalakhiratu khayrun laka mina aloola",
+      "textEnglishSaheeh": "And the Hereafter is better for you than the first [life].",
+      "textEnglishMustafa": "And the next life is certainly far better for you than this one.",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 5,
+      "letterCount": 20
+    },
+    {
+      "id": 5,
+      "textArabic": "وَلَسَوۡفَ يُعۡطِيكَ رَبُّكَ فَتَرۡضَىٰٓ",
+      "textTransliteration": "Walasawfa yuAAteeka rabbuka fatarda",
+      "textEnglishSaheeh": "And your Lord is going to give you, and you will be satisfied.",
+      "textEnglishMustafa": "And ˹surely˺ your Lord will give so much to you that you will be pleased.",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 4,
+      "letterCount": 18
+    },
+    {
+      "id": 6,
+      "textArabic": "أَلَمۡ يَجِدۡكَ يَتِيمٗا فَـَٔاوَىٰ",
+      "textTransliteration": "Alam yajidka yateeman faawa",
+      "textEnglishSaheeh": "Did He not find you an orphan and give [you] refuge?",
+      "textEnglishMustafa": "Did He not find you as an orphan then shelter you?",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 7,
+      "textArabic": "وَوَجَدَكَ ضَآلّٗا فَهَدَىٰ",
+      "textTransliteration": "Wawajadaka dallan fahada",
+      "textEnglishSaheeh": "And He found you lost and guided [you],",
+      "textEnglishMustafa": "Did He not find you unguided then guide you?",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 3,
+      "letterCount": 13
+    },
+    {
+      "id": 8,
+      "textArabic": "وَوَجَدَكَ عَآئِلٗا فَأَغۡنَىٰ",
+      "textTransliteration": "Wawajadaka AAailan faaghna",
+      "textEnglishSaheeh": "And He found you poor and made [you] self-sufficient.",
+      "textEnglishMustafa": "And did He not find you needy then satisfy your needs?",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 9,
+      "textArabic": "فَأَمَّا ٱلۡيَتِيمَ فَلَا تَقۡهَرۡ",
+      "textTransliteration": "Faamma alyateema fala taqhar",
+      "textEnglishSaheeh": "So as for the orphan, do not oppress [him].",
+      "textEnglishMustafa": "So do not oppress the orphan,",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 10,
+      "textArabic": "وَأَمَّا ٱلسَّآئِلَ فَلَا تَنۡهَرۡ",
+      "textTransliteration": "Waamma alssaila fala tanhar",
+      "textEnglishSaheeh": "And as for the petitioner, do not repel [him].",
+      "textEnglishMustafa": "nor repulse the beggar.",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 11,
+      "textArabic": "وَأَمَّا بِنِعۡمَةِ رَبِّكَ فَحَدِّثۡ",
+      "textTransliteration": "Waamma biniAAmati rabbika fahaddith",
+      "textEnglishSaheeh": "But as for the favor of your Lord, report [it].",
+      "textEnglishMustafa": "And proclaim the blessings of your Lord.",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 4,
+      "letterCount": 16
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 40,
+  "letterCount": 164
+}

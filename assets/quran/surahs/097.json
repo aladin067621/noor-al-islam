@@ -1,0 +1,90 @@
+{
+  "id": 97,
+  "type": "makkan",
+  "nameArabic": "القَدر",
+  "nameTransliteration": "Al-Qadr",
+  "nameEnglish": "The Power",
+  "numberOfAyahs": 5,
+  "pageStart": 598,
+  "pageEnd": 598,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 25,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-qadr",
+    "the-power",
+    "the night of destiny",
+    "power",
+    "glory",
+    "honour",
+    "decree",
+    "al qadr",
+    "alqadr",
+    "qadr"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "إِنَّآ أَنزَلۡنَٰهُ فِي لَيۡلَةِ ٱلۡقَدۡرِ",
+      "textTransliteration": "Inna anzalnahu fee laylati alqadri",
+      "textEnglishSaheeh": "Indeed, We sent the Qur'an down during the Night of Decree.",
+      "textEnglishMustafa": "Indeed, ˹It is˺ We ˹Who˺ sent this ˹Quran˺ down on the Night of Glory.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 5,
+      "letterCount": 20
+    },
+    {
+      "id": 2,
+      "textArabic": "وَمَآ أَدۡرَىٰكَ مَا لَيۡلَةُ ٱلۡقَدۡرِ",
+      "textTransliteration": "Wama adraka ma laylatu alqadri",
+      "textEnglishSaheeh": "And what can make you know what is the Night of Decree?",
+      "textEnglishMustafa": "And what will make you realize what the Night of Glory is?",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 5,
+      "letterCount": 19
+    },
+    {
+      "id": 3,
+      "textArabic": "لَيۡلَةُ ٱلۡقَدۡرِ خَيۡرٞ مِّنۡ أَلۡفِ شَهۡرٖ",
+      "textTransliteration": "Laylatu alqadri khayrun min alfi shahrin",
+      "textEnglishSaheeh": "The Night of Decree is better than a thousand months.",
+      "textEnglishMustafa": "The Night of Glory is better than a thousand months.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 6,
+      "letterCount": 20
+    },
+    {
+      "id": 4,
+      "textArabic": "تَنَزَّلُ ٱلۡمَلَٰٓئِكَةُ وَٱلرُّوحُ فِيهَا بِإِذۡنِ رَبِّهِم مِّن كُلِّ أَمۡرٖ",
+      "textTransliteration": "Tanazzalu almalaikatu waalrroohu feeha biithni rabbihim min kulli amrin",
+      "textEnglishSaheeh": "The angels and the Spirit descend therein by permission of their Lord for every matter.",
+      "textEnglishMustafa": "That night the angels and the ˹holy˺ spirit descend, by the permission of their Lord, for every ˹decreed˺ matter.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 9,
+      "letterCount": 36
+    },
+    {
+      "id": 5,
+      "textArabic": "سَلَٰمٌ هِيَ حَتَّىٰ مَطۡلَعِ ٱلۡفَجۡرِ",
+      "textTransliteration": "Salamun hiya hatta matlaAAi alfajri",
+      "textEnglishSaheeh": "Peace it is until the emergence of dawn.",
+      "textEnglishMustafa": "It is all peace until the break of dawn.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 5,
+      "letterCount": 17
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 30,
+  "letterCount": 112
+}

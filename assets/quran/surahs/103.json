@@ -1,0 +1,66 @@
+{
+  "id": 103,
+  "type": "makkan",
+  "nameArabic": "العَصر",
+  "nameTransliteration": "Al-'Asr",
+  "nameEnglish": "The Declining Day",
+  "numberOfAyahs": 3,
+  "pageStart": 601,
+  "pageEnd": 601,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 13,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al--asr",
+    "the-declining-day",
+    "passage of time",
+    "time through the ages",
+    "al-'asr",
+    "al 'asr",
+    "al'asr",
+    "'asr"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "وَٱلۡعَصۡرِ",
+      "textTransliteration": "WaalAAasri",
+      "textEnglishSaheeh": "By time,",
+      "textEnglishMustafa": "By the ˹passage of˺ time!",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 1,
+      "letterCount": 6
+    },
+    {
+      "id": 2,
+      "textArabic": "إِنَّ ٱلۡإِنسَٰنَ لَفِي خُسۡرٍ",
+      "textTransliteration": "Inna alinsana lafee khusrin",
+      "textEnglishSaheeh": "Indeed, mankind is in loss,",
+      "textEnglishMustafa": "Surely humanity is in ˹grave˺ loss,",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 3,
+      "textArabic": "إِلَّا ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّٰلِحَٰتِ وَتَوَاصَوۡاْ بِٱلۡحَقِّ وَتَوَاصَوۡاْ بِٱلصَّبۡرِ",
+      "textTransliteration": "Illa allatheena amanoo waAAamiloo alssalihati watawasaw bialhaqqi watawasaw bialssabri",
+      "textEnglishSaheeh": "Except for those who have believed and done righteous deeds and advised each other to truth and advised each other to patience.",
+      "textEnglishMustafa": "except those who have faith, do good, and urge each other to the truth, and urge each other to perseverance.",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 9,
+      "letterCount": 51
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 14,
+  "letterCount": 71
+}

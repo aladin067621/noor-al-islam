@@ -27,6 +27,18 @@ class AppConstants {
   static const String booksIndexFile = 'assets/books/index.json';
   static const String tafsirFile = 'assets/tafsir/tafsir.json';
 
+  // مسارات أصول القرآن (نص + ألوان تجويد — من Quran-Tajweed-Engine دون تعديل)
+  static const String quranSurahsPath = 'assets/quran/surahs';
+  static const String quranTajweedPath = 'assets/quran/tajweed';
+  static const String quranRulesPath = 'assets/quran/tajweed-rules.json';
+  static const String quranJuzPath = 'assets/quran/juz.json';
+  static const String quranUthmaniFont = 'QuranUthmani';
+  static const String quranIndopakFont = 'QuranIndopak';
+
+  // الصوت — alquran.cloud (Islamic Network) — بث + تخزين مؤقت للآيات
+  static const String quranAudioBase = 'https://cdn.islamic.network/quran/audio/128';
+  static const String defaultReciter = 'ar.husary'; // محمود خليل الحصري (مرتّل)
+
   // مفاتيح shared_preferences
   static const String keyDarkMode = 'dark_mode';
   static const String keyFontSize = 'font_size';
@@ -52,6 +64,11 @@ class AppConstants {
   static const String keyHomeSectionsOrder = 'home_sections_order';
   // الأقسام الظاهرة في الصفحة الرئيسية (مع الترتيب) — الأقسام التي لا تظهر محفوظة ضمنها
   static const String keyHomeSectionsVisible = 'home_sections_visible';
+
+  // مفاتيح قسم حفظ القرآن (محلية فقط — لا يوجد تسجيل/إعلانات/ميكروفون)
+  static const String keyHifzStatus = 'hifz_status_v1';
+  static const String keyHifzSessions = 'hifz_sessions_v1';
+  static const String keyHifzSettings = 'hifz_settings_v1';
 
   // القيم الافتراضية
   static const double defaultFontSize = 18.0;

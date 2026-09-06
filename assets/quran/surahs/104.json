@@ -1,0 +1,132 @@
+{
+  "id": 104,
+  "type": "makkan",
+  "nameArabic": "الهُمَزَة",
+  "nameTransliteration": "Al-Humazah",
+  "nameEnglish": "The Traducer",
+  "numberOfAyahs": 9,
+  "pageStart": 601,
+  "pageEnd": 601,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 32,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al humaza",
+    "al-humazah",
+    "the-traducer",
+    "the backbiter",
+    "scandalmonger",
+    "al humazah",
+    "alhumazah",
+    "humazah"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "وَيۡلٞ لِّكُلِّ هُمَزَةٖ لُّمَزَةٍ",
+      "textTransliteration": "Waylun likulli humazatin lumazatin",
+      "textEnglishSaheeh": "Woe to every scorner and mocker",
+      "textEnglishMustafa": "Woe to every backbiter, slanderer,",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 2,
+      "textArabic": "ٱلَّذِي جَمَعَ مَالٗا وَعَدَّدَهُۥ",
+      "textTransliteration": "Allathee jamaAAa malan waAAaddadahu",
+      "textEnglishSaheeh": "Who collects wealth and [continuously] counts it.",
+      "textEnglishMustafa": "who amasses wealth ˹greedily˺ and counts it ˹repeatedly˺,",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 3,
+      "textArabic": "يَحۡسَبُ أَنَّ مَالَهُۥٓ أَخۡلَدَهُۥ",
+      "textTransliteration": "Yahsabu anna malahu akhladahu",
+      "textEnglishSaheeh": "He thinks that his wealth will make him immortal.",
+      "textEnglishMustafa": "thinking that their wealth will make them immortal!",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 4,
+      "textArabic": "كـَلَّاۖ لَيُنۢبَذَنَّ فِي ٱلۡحُطَمَةِ",
+      "textTransliteration": "Kalla layunbathanna fee alhutamati",
+      "textEnglishSaheeh": "No! He will surely be thrown into the Crusher.",
+      "textEnglishMustafa": "Not at all! Such a person will certainly be tossed into the Crusher.",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 5,
+      "textArabic": "وَمَآ أَدۡرَىٰكَ مَا ٱلۡحُطَمَةُ",
+      "textTransliteration": "Wama adraka ma alhutamatu",
+      "textEnglishSaheeh": "And what can make you know what is the Crusher?",
+      "textEnglishMustafa": "And what will make you realize what the Crusher is?",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 6,
+      "textArabic": "نَارُ ٱللَّهِ ٱلۡمُوقَدَةُ",
+      "textTransliteration": "Naru Allahi almooqadatu",
+      "textEnglishSaheeh": "It is the fire of Allah, [eternally] fueled,",
+      "textEnglishMustafa": "˹It is˺ Allah’s kindled Fire,",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 7,
+      "textArabic": "ٱلَّتِي تَطَّلِعُ عَلَى ٱلۡأَفۡـِٔدَةِ",
+      "textTransliteration": "Allatee tattaliAAu AAala alafidati",
+      "textEnglishSaheeh": "Which mounts directed at the hearts.",
+      "textEnglishMustafa": "which rages over the hearts.",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 8,
+      "textArabic": "إِنَّهَا عَلَيۡهِم مُّؤۡصَدَةٞ",
+      "textTransliteration": "lnnaha AAalayhim musadatun",
+      "textEnglishSaheeh": "Indeed, Hellfire will be closed down upon them",
+      "textEnglishMustafa": "It will be sealed over them,",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 9,
+      "textArabic": "فِي عَمَدٖ مُّمَدَّدَةِۭ",
+      "textTransliteration": "Fee AAamadin mumaddadatin",
+      "textEnglishSaheeh": "In extended columns.",
+      "textEnglishMustafa": "˹tightly secured˺ with long braces.",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 3,
+      "letterCount": 10
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 33,
+  "letterCount": 133
+}

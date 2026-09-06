@@ -1,0 +1,160 @@
+[
+ {
+  "surah": 110,
+  "ayah": 1,
+  "annotations": [
+   {
+    "start": 4,
+    "end": 5,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 8,
+    "end": 10,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 15,
+    "end": 19,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 20,
+    "end": 21,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 21,
+    "end": 22,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 30,
+    "end": 31,
+    "rule": "hamzatWaslSilent"
+   }
+  ]
+ },
+ {
+  "surah": 110,
+  "ayah": 2,
+  "annotations": [
+   {
+    "start": 2,
+    "end": 4,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 11,
+    "end": 12,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 12,
+    "end": 13,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 13,
+    "end": 16,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 16,
+    "end": 17,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 22,
+    "end": 24,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 24,
+    "end": 26,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 28,
+    "end": 29,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 34,
+    "end": 35,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 38,
+    "end": 39,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 42,
+    "end": 43,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 43,
+    "end": 44,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 56,
+    "end": 57,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 59,
+    "end": 60,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 110,
+  "ayah": 3,
+  "annotations": [
+   {
+    "start": 19,
+    "end": 21,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 29,
+    "end": 30,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 34,
+    "end": 36,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 46,
+    "end": 49,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 51,
+    "end": 52,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 55,
+    "end": 56,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 64,
+    "end": 65,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 68,
+    "end": 69,
+    "rule": "maddNatural"
+   }
+  ]
+ }
+]

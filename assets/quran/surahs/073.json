@@ -1,0 +1,253 @@
+{
+  "id": 73,
+  "type": "makkan",
+  "nameArabic": "المُزَّمِّل",
+  "nameTransliteration": "Al-Muzzammil",
+  "nameEnglish": "The Enshrouded One",
+  "numberOfAyahs": 20,
+  "pageStart": 574,
+  "pageEnd": 575,
+  "numberOfPages": 2,
+  "firstJuz": 29,
+  "lastJuz": 29,
+  "juzs": [
+    29
+  ],
+  "revelationOrder": 3,
+  "revelationExceptions": "Except 10, 11 and 20, from Madinah",
+  "similarNames": [
+    "al-muzzammil",
+    "the-enshrouded-one",
+    "the wrapped one",
+    "enfolded",
+    "the one wrapped in garments",
+    "al muzzammil",
+    "almuzzammil",
+    "muzzammil"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "يَٰٓأَيُّهَا ٱلۡمُزَّمِّلُ",
+      "textTransliteration": "Ya ayyuha almuzzammilu",
+      "textEnglishSaheeh": "O you who wraps himself [in clothing],",
+      "textEnglishMustafa": "O you wrapped ˹in your clothes˺!",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 2,
+      "letterCount": 11
+    },
+    {
+      "id": 2,
+      "textArabic": "قُمِ ٱلَّيۡلَ إِلَّا قَلِيلٗا",
+      "textTransliteration": "Qumi allayla illa qaleelan",
+      "textEnglishSaheeh": "Arise [to pray] the night, except for a little -",
+      "textEnglishMustafa": "Stand all night ˹in prayer˺ except a little—",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 3,
+      "textArabic": "نِّصۡفَهُۥٓ أَوِ ٱنقُصۡ مِنۡهُ قَلِيلًا",
+      "textTransliteration": "Nisfahu awi onqus minhu qaleelan",
+      "textEnglishSaheeh": "Half of it - or subtract from it a little",
+      "textEnglishMustafa": "˹pray˺ half the night, or a little less,",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 4,
+      "textArabic": "أَوۡ زِدۡ عَلَيۡهِ وَرَتِّلِ ٱلۡقُرۡءَانَ تَرۡتِيلًا",
+      "textTransliteration": "Aw zid AAalayhi warattili alqurana tarteelan",
+      "textEnglishSaheeh": "Or add to it, and recite the Qur'an with measured recitation.",
+      "textEnglishMustafa": "or a little more—and recite the Quran ˹properly˺ in a measured way.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 6,
+      "letterCount": 25
+    },
+    {
+      "id": 5,
+      "textArabic": "إِنَّا سَنُلۡقِي عَلَيۡكَ قَوۡلٗا ثَقِيلًا",
+      "textTransliteration": "Inna sanulqee AAalayka qawlan thaqeelan",
+      "textEnglishSaheeh": "Indeed, We will cast upon you a heavy word.",
+      "textEnglishMustafa": "˹For˺ We will soon send upon you a weighty revelation.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 5,
+      "letterCount": 21
+    },
+    {
+      "id": 6,
+      "textArabic": "إِنَّ نَاشِئَةَ ٱلَّيۡلِ هِيَ أَشَدُّ وَطۡـٔٗا وَأَقۡوَمُ قِيلًا",
+      "textTransliteration": "Inna nashiata allayli hiya ashaddu watan waaqwamu qeelan",
+      "textEnglishSaheeh": "Indeed, the hours of the night are more effective for concurrence [of heart and tongue] and more suitable for words.",
+      "textEnglishMustafa": "Indeed, worship in the night is more impactful and suitable for recitation.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 8,
+      "letterCount": 28
+    },
+    {
+      "id": 7,
+      "textArabic": "إِنَّ لَكَ فِي ٱلنَّهَارِ سَبۡحٗا طَوِيلٗا",
+      "textTransliteration": "Inna laka fee alnnahari sabhan taweelan",
+      "textEnglishSaheeh": "Indeed, for you by day is prolonged occupation.",
+      "textEnglishMustafa": "For during the day you are over-occupied ˹with worldly duties˺.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 6,
+      "letterCount": 21
+    },
+    {
+      "id": 8,
+      "textArabic": "وَٱذۡكُرِ ٱسۡمَ رَبِّكَ وَتَبَتَّلۡ إِلَيۡهِ تَبۡتِيلٗا",
+      "textTransliteration": "Waothkuri isma rabbika watabattal ilayhi tabteelan",
+      "textEnglishSaheeh": "And remember the name of your Lord and devote yourself to Him with [complete] devotion.",
+      "textEnglishMustafa": "˹Always˺ remember the Name of your Lord, and devote yourself to Him wholeheartedly.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 6,
+      "letterCount": 26
+    },
+    {
+      "id": 9,
+      "textArabic": "رَّبُّ ٱلۡمَشۡرِقِ وَٱلۡمَغۡرِبِ لَآ إِلَٰهَ إِلَّا هُوَ فَٱتَّخِذۡهُ وَكِيلٗا",
+      "textTransliteration": "Rabbu almashriqi waalmaghribi la ilaha illa huwa faittakhithhu wakeelan",
+      "textEnglishSaheeh": "[He is] the Lord of the East and the West; there is no deity except Him, so take Him as Disposer of [your] affairs.",
+      "textEnglishMustafa": "˹He is the˺ Lord of the east and the west. There is no god ˹worthy of worship˺ except Him, so take Him ˹alone˺ as a Trustee of Affairs.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 9,
+      "letterCount": 36
+    },
+    {
+      "id": 10,
+      "textArabic": "وَٱصۡبِرۡ عَلَىٰ مَا يَقُولُونَ وَٱهۡجُرۡهُمۡ هَجۡرٗا جَمِيلٗا",
+      "textTransliteration": "Waisbir AAala ma yaqooloona waohjurhum hajran jameelan",
+      "textEnglishSaheeh": "And be patient over what they say and avoid them with gracious avoidance.",
+      "textEnglishMustafa": "Be patient ˹O Prophet˺ with what they say, and depart from them courteously.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 7,
+      "letterCount": 32
+    },
+    {
+      "id": 11,
+      "textArabic": "وَذَرۡنِي وَٱلۡمُكَذِّبِينَ أُوْلِي ٱلنَّعۡمَةِ وَمَهِّلۡهُمۡ قَلِيلًا",
+      "textTransliteration": "Watharnee waalmukaththibeena olee alnnaAAmati wamahhilhum qaleelan",
+      "textEnglishSaheeh": "And leave Me with [the matter of] the deniers, those of ease [in life], and allow them respite a little.",
+      "textEnglishMustafa": "And leave to Me the deniers—the people of luxury—and bear with them for a little while.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 6,
+      "letterCount": 35
+    },
+    {
+      "id": 12,
+      "textArabic": "إِنَّ لَدَيۡنَآ أَنكَالٗا وَجَحِيمٗا",
+      "textTransliteration": "Inna ladayna ankalan wajaheeman",
+      "textEnglishSaheeh": "Indeed, with Us [for them] are shackles and burning fire",
+      "textEnglishMustafa": "˹For˺ We certainly have shackles, a ˹raging˺ Fire,",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 4,
+      "letterCount": 19
+    },
+    {
+      "id": 13,
+      "textArabic": "وَطَعَامٗا ذَا غُصَّةٖ وَعَذَابًا أَلِيمٗا",
+      "textTransliteration": "WataAAaman tha ghussatin waAAathaban aleeman",
+      "textEnglishSaheeh": "And food that chokes and a painful punishment -",
+      "textEnglishMustafa": "choking food, and a painful punishment ˹in store for them˺",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 5,
+      "letterCount": 22
+    },
+    {
+      "id": 14,
+      "textArabic": "يَوۡمَ تَرۡجُفُ ٱلۡأَرۡضُ وَٱلۡجِبَالُ وَكَانَتِ ٱلۡجِبَالُ كَثِيبٗا مَّهِيلًا",
+      "textTransliteration": "Yawma tarjufu alardu waaljibalu wakanati aljibalu katheeban maheelan",
+      "textEnglishSaheeh": "On the Day the earth and the mountains will convulse and the mountains will become a heap of sand pouring down.",
+      "textEnglishMustafa": "on the Day the earth and mountains will shake ˹violently˺, and mountains will be ˹reduced to˺ dunes of shifting sand.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 8,
+      "letterCount": 40
+    },
+    {
+      "id": 15,
+      "textArabic": "إِنَّآ أَرۡسَلۡنَآ إِلَيۡكُمۡ رَسُولٗا شَٰهِدًا عَلَيۡكُمۡ كَمَآ أَرۡسَلۡنَآ إِلَىٰ فِرۡعَوۡنَ رَسُولٗا",
+      "textTransliteration": "Inna arsalna ilaykum rasoolan shahidan AAalaykum kama arsalna ila firAAawna rasoolan",
+      "textEnglishSaheeh": "Indeed, We have sent to you a Messenger as a witness upon you just as We sent to Pharaoh a messenger.",
+      "textEnglishMustafa": "Indeed, We have sent to you a messenger as a witness over you, just as We sent a messenger to Pharaoh.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 11,
+      "letterCount": 50
+    },
+    {
+      "id": 16,
+      "textArabic": "فَعَصَىٰ فِرۡعَوۡنُ ٱلرَّسُولَ فَأَخَذۡنَٰهُ أَخۡذٗا وَبِيلٗا",
+      "textTransliteration": "FaAAasa firAAawnu alrrasoola faakhathnahu akhthan wabeelan",
+      "textEnglishSaheeh": "But Pharaoh disobeyed the messenger, so We seized him with a ruinous seizure.",
+      "textEnglishMustafa": "But Pharaoh disobeyed the messenger, so We seized him with a stern grip.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 6,
+      "letterCount": 30
+    },
+    {
+      "id": 17,
+      "textArabic": "فَكَيۡفَ تَتَّقُونَ إِن كَفَرۡتُمۡ يَوۡمٗا يَجۡعَلُ ٱلۡوِلۡدَٰنَ شِيبًا",
+      "textTransliteration": "Fakayfa tattaqoona in kafartum yawman yajAAalu alwildana sheeban",
+      "textEnglishSaheeh": "Then how can you fear, if you disbelieve, a Day that will make the children white- haired?",
+      "textEnglishMustafa": "If you ˹pagans˺ persist in disbelief, then how will you guard yourselves against ˹the horrors of˺ a Day which will turn children’s hair grey?",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 8,
+      "letterCount": 34
+    },
+    {
+      "id": 18,
+      "textArabic": "ٱلسَّمَآءُ مُنفَطِرُۢ بِهِۦۚ كَانَ وَعۡدُهُۥ مَفۡعُولًا",
+      "textTransliteration": "Alssamao munfatirun bihi kana waAAduhu mafAAoolan",
+      "textEnglishSaheeh": "The heaven will break apart therefrom; ever is His promise fulfilled.",
+      "textEnglishMustafa": "It will ˹even˺ cause the sky to split apart. His promise ˹of judgment˺ must be fulfilled.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 6,
+      "letterCount": 26
+    },
+    {
+      "id": 19,
+      "textArabic": "إِنَّ هَٰذِهِۦ تَذۡكِرَةٞۖ فَمَن شَآءَ ٱتَّخَذَ إِلَىٰ رَبِّهِۦ سَبِيلًا",
+      "textTransliteration": "Inna hathihi tathkiratun faman shaa ittakhatha ila rabbihi sabeelan",
+      "textEnglishSaheeh": "Indeed, this is a reminder, so whoever wills may take to his Lord a way.",
+      "textEnglishMustafa": "Surely this is a reminder. So let whoever wills take the ˹Right˺ Way to their Lord.",
+      "juz": 29,
+      "page": 574,
+      "wordCount": 9,
+      "letterCount": 31
+    },
+    {
+      "id": 20,
+      "textArabic": "۞ إِنَّ رَبَّكَ يَعۡلَمُ أَنَّكَ تَقُومُ أَدۡنَىٰ مِن ثُلُثَيِ ٱلَّيۡلِ وَنِصۡفَهُۥ وَثُلُثَهُۥ وَطَآئِفَةٞ مِّنَ ٱلَّذِينَ مَعَكَۚ وَٱللَّهُ يُقَدِّرُ ٱلَّيۡلَ وَٱلنَّهَارَۚ عَلِمَ أَن لَّن تُحۡصُوهُ فَتَابَ عَلَيۡكُمۡۖ فَٱقۡرَءُواْ مَا تَيَسَّرَ مِنَ ٱلۡقُرۡءَانِۚ عَلِمَ أَن سَيَكُونُ مِنكُم مَّرۡضَىٰ وَءَاخَرُونَ يَضۡرِبُونَ فِي ٱلۡأَرۡضِ يَبۡتَغُونَ مِن فَضۡلِ ٱللَّهِ وَءَاخَرُونَ يُقَٰتِلُونَ فِي سَبِيلِ ٱللَّهِۖ فَٱقۡرَءُواْ مَا تَيَسَّرَ مِنۡهُۚ وَأَقِيمُواْ ٱلصَّلَوٰةَ وَءَاتُواْ ٱلزَّكَوٰةَ وَأَقۡرِضُواْ ٱللَّهَ قَرۡضًا حَسَنٗاۚ وَمَا تُقَدِّمُواْ لِأَنفُسِكُم مِّنۡ خَيۡرٖ تَجِدُوهُ عِندَ ٱللَّهِ هُوَ خَيۡرٗا وَأَعۡظَمَ أَجۡرٗاۚ وَٱسۡتَغۡفِرُواْ ٱللَّهَۖ إِنَّ ٱللَّهَ غَفُورٞ رَّحِيمُۢ",
+      "textTransliteration": "Inna rabbaka yaAAlamu annaka taqoomu adna min thuluthayi allayli wanisfahu wathuluthahu wataifatun mina allatheena maAAaka waAllahu yuqaddiru allayla waalnnahara AAalima an lan tuhsoohu fataba AAalaykum faiqraoo ma tayassara mina alqurani AAalima an sayakoonu minkum marda waakharoona yadriboona fee alardi yabtaghoona min fadli Allahi waakharoona yuqatiloona fee sabeeli Allahi faiqraoo ma tayassara minhu waaqeemoo alssalata waatoo alzzakata waaqridoo Allaha qardan hasanan wama tuqaddimoo lianfusikum min khayrin tajidoohu AAinda Allahi huwa khayran waaAAthama ajran waistaghfiroo Allaha inna Allaha ghafoorun raheemun",
+      "textEnglishSaheeh": "Indeed, your Lord knows, [O Muhammad], that you stand [in prayer] almost two thirds of the night or half of it or a third of it, and [so do] a group of those with you. And Allah determines [the extent of] the night and the day. He has known that you [Muslims] will not be able to do it and has turned to you in forgiveness, so recite what is easy [for you] of the Qur'an. He has known that there will be among you those who are ill and others traveling throughout the land seeking [something] of the bounty of Allah and others fighting for the cause of Allah. So recite what is easy from it and establish prayer and give zakah and loan Allah a goodly loan. And whatever good you put forward for yourselves - you will find it with Allah. It is better and greater in reward. And seek forgiveness of Allah. Indeed, Allah is Forgiving and Merciful.",
+      "textEnglishMustafa": "Surely your Lord knows that you ˹O Prophet˺ stand ˹in prayer˺ for nearly two-thirds of the night, or ˹sometimes˺ half of it, or a third, as do some of those with you. Allah ˹alone˺ keeps a ˹precise˺ measure of the day and night. He knows that you ˹believers˺ are unable to endure this, and has turned to you in mercy. So recite ˹in prayer˺ whatever you can from the Quran. He knows that some of you will be sick, some will be travelling throughout the land seeking Allah’s bounty, and some fighting in the cause of Allah. So recite whatever you can from it. And ˹continue to˺ perform ˹regular˺ prayers, pay alms-tax, and lend to Allah a good loan. Whatever good you send forth for yourselves, you will find it with Allah far better and more rewarding. And seek Allah’s forgiveness. Surely Allah is All-Forgiving, Most Merciful.",
+      "juz": 29,
+      "page": 575,
+      "wordCount": 79,
+      "letterCount": 330
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 200,
+  "letterCount": 849
+}

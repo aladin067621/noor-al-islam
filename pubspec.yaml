@@ -27,6 +27,7 @@ dependencies:
   sensors_plus: ^6.1.2
   http: ^1.2.0
   path_provider: ^2.1.4
+  audioplayers: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,10 @@ flutter:
     - assets/tafsir/
     - assets/config/
     - assets/references.md
+    - assets/quran/surahs/
+    - assets/quran/tajweed/
+    - assets/quran/
+    - assets/quran/fonts/
 
   fonts:
     - family: NotoNaskhArabic
@@ -63,3 +68,9 @@ flutter:
         - asset: assets/fonts/Amiri-Regular.ttf
         - asset: assets/fonts/Amiri-Bold.ttf
           weight: 700
+    - family: QuranUthmani
+      fonts:
+        - asset: assets/quran/fonts/Uthmani.ttf
+    - family: QuranIndopak
+      fonts:
+        - asset: assets/quran/fonts/Indopak.ttf

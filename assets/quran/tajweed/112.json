@@ -1,0 +1,101 @@
+[
+ {
+  "surah": 112,
+  "ayah": 1,
+  "annotations": [
+   {
+    "start": 0,
+    "end": 2,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 10,
+    "end": 11,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 11,
+    "end": 12,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 22,
+    "end": 24,
+    "rule": "qalqalah"
+   }
+  ]
+ },
+ {
+  "surah": 112,
+  "ayah": 2,
+  "annotations": [
+   {
+    "start": 1,
+    "end": 2,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 8,
+    "end": 9,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 9,
+    "end": 10,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 10,
+    "end": 13,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 15,
+    "end": 17,
+    "rule": "qalqalah"
+   }
+  ]
+ },
+ {
+  "surah": 112,
+  "ayah": 3,
+  "annotations": [
+   {
+    "start": 9,
+    "end": 11,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 21,
+    "end": 22,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 24,
+    "end": 26,
+    "rule": "qalqalah"
+   }
+  ]
+ },
+ {
+  "surah": 112,
+  "ayah": 4,
+  "annotations": [
+   {
+    "start": 11,
+    "end": 12,
+    "rule": "idghamBilaGhunnah"
+   },
+   {
+    "start": 18,
+    "end": 19,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 32,
+    "end": 35,
+    "rule": "qalqalah"
+   }
+  ]
+ }
+]

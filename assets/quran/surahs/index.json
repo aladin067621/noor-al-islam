@@ -1,0 +1,3403 @@
+[
+  {
+    "id": 1,
+    "type": "makkan",
+    "nameArabic": "الفَاتِحَة",
+    "nameTransliteration": "Al-Fatihah",
+    "nameEnglish": "The Opener",
+    "numberOfAyahs": 7,
+    "pageStart": 1,
+    "pageEnd": 1,
+    "numberOfPages": 1,
+    "firstJuz": 1,
+    "lastJuz": 1,
+    "juzs": [
+      1
+    ],
+    "revelationOrder": 5,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al fatiha",
+      "al-fatihah",
+      "the-opener",
+      "al fatihah",
+      "alfatihah",
+      "fatihah",
+      "faatihah",
+      "faatiha",
+      "al-faatiha",
+      "alfaatiha",
+      "al faatiha"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 29,
+    "letterCount": 139
+  },
+  {
+    "id": 2,
+    "type": "madinan",
+    "nameArabic": "البَقَرَة",
+    "nameTransliteration": "Al-Baqarah",
+    "nameEnglish": "The Cow",
+    "numberOfAyahs": 286,
+    "pageStart": 2,
+    "pageEnd": 49,
+    "numberOfPages": 48,
+    "firstJuz": 1,
+    "lastJuz": 3,
+    "juzs": [
+      1,
+      2,
+      3
+    ],
+    "revelationOrder": 87,
+    "revelationExceptions": "Except 281 from Mina at the time of the Last Hajj",
+    "similarNames": [
+      "al baqara",
+      "al-baqarah",
+      "the-cow",
+      "the heifer",
+      "the calf",
+      "al baqarah",
+      "albaqarah",
+      "baqarah"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 6136,
+    "letterCount": 25842
+  },
+  {
+    "id": 3,
+    "type": "madinan",
+    "nameArabic": "آلِ عِمرَان",
+    "nameTransliteration": "Ali 'Imran",
+    "nameEnglish": "Family of Imran",
+    "numberOfAyahs": 200,
+    "pageStart": 50,
+    "pageEnd": 76,
+    "numberOfPages": 27,
+    "firstJuz": 3,
+    "lastJuz": 4,
+    "juzs": [
+      3,
+      4
+    ],
+    "revelationOrder": 89,
+    "revelationExceptions": "",
+    "similarNames": [
+      "ali--imran",
+      "family-of-imran",
+      "ali 'imran",
+      "ali'imran"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 3491,
+    "letterCount": 14724
+  },
+  {
+    "id": 4,
+    "type": "madinan",
+    "nameArabic": "النِّسَاء",
+    "nameTransliteration": "An-Nisa",
+    "nameEnglish": "The Women",
+    "numberOfAyahs": 176,
+    "pageStart": 77,
+    "pageEnd": 106,
+    "numberOfPages": 30,
+    "firstJuz": 4,
+    "lastJuz": 6,
+    "juzs": [
+      4,
+      5,
+      6
+    ],
+    "revelationOrder": 92,
+    "revelationExceptions": "",
+    "similarNames": [
+      "an-nisa",
+      "the-women",
+      "an nisa",
+      "annisa",
+      "nisa",
+      "an nisaa",
+      "annisaa",
+      "nisaa"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 3758,
+    "letterCount": 16052
+  },
+  {
+    "id": 5,
+    "type": "madinan",
+    "nameArabic": "المَائِدَة",
+    "nameTransliteration": "Al-Ma'idah",
+    "nameEnglish": "The Table Spread",
+    "numberOfAyahs": 120,
+    "pageStart": 106,
+    "pageEnd": 127,
+    "numberOfPages": 22,
+    "firstJuz": 6,
+    "lastJuz": 7,
+    "juzs": [
+      6,
+      7
+    ],
+    "revelationOrder": 112,
+    "revelationExceptions": "Except 3, revealed at Arafat on Last Hajj",
+    "similarNames": [
+      "al ma ida",
+      "al-ma-idah",
+      "the-table-spread",
+      "the feast",
+      "the table spread with food",
+      "al-ma'idah",
+      "al ma'idah",
+      "alma'idah",
+      "ma'idah"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 2812,
+    "letterCount": 12008
+  },
+  {
+    "id": 6,
+    "type": "makkan",
+    "nameArabic": "الأَنعَام",
+    "nameTransliteration": "Al-An'am",
+    "nameEnglish": "The Cattle",
+    "numberOfAyahs": 165,
+    "pageStart": 128,
+    "pageEnd": 150,
+    "numberOfPages": 23,
+    "firstJuz": 7,
+    "lastJuz": 8,
+    "juzs": [
+      7,
+      8
+    ],
+    "revelationOrder": 55,
+    "revelationExceptions": "Except 20, 23, 91, 93, 114, 151, 152, 153, from Madinah",
+    "similarNames": [
+      "al-an-am",
+      "the-cattle",
+      "livestock",
+      "al-an'am",
+      "al an'am",
+      "alan'am",
+      "an'am"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 3059,
+    "letterCount": 12539
+  },
+  {
+    "id": 7,
+    "type": "makkan",
+    "nameArabic": "الأَعرَاف",
+    "nameTransliteration": "Al-A'raf",
+    "nameEnglish": "The Heights",
+    "numberOfAyahs": 206,
+    "pageStart": 151,
+    "pageEnd": 176,
+    "numberOfPages": 26,
+    "firstJuz": 8,
+    "lastJuz": 9,
+    "juzs": [
+      8,
+      9
+    ],
+    "revelationOrder": 39,
+    "revelationExceptions": "Except 163-170, from Madinah",
+    "similarNames": [
+      "al-a-raf",
+      "the-heights",
+      "the wall with elevations",
+      "al-a'raf",
+      "al a'raf",
+      "ala'raf",
+      "a'raf"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 3329,
+    "letterCount": 14203
+  },
+  {
+    "id": 8,
+    "type": "madinan",
+    "nameArabic": "الأَنفَال",
+    "nameTransliteration": "Al-Anfal",
+    "nameEnglish": "The Spoils of War",
+    "numberOfAyahs": 75,
+    "pageStart": 177,
+    "pageEnd": 186,
+    "numberOfPages": 10,
+    "firstJuz": 9,
+    "lastJuz": 10,
+    "juzs": [
+      9,
+      10
+    ],
+    "revelationOrder": 88,
+    "revelationExceptions": "Except 30-36 from Makkah",
+    "similarNames": [
+      "al-anfal",
+      "the-spoils-of-war",
+      "battle gains",
+      "al anfal",
+      "alanfal",
+      "anfal"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 1237,
+    "letterCount": 5341
+  },
+  {
+    "id": 9,
+    "type": "madinan",
+    "nameArabic": "التَّوبَة",
+    "nameTransliteration": "At-Tawbah",
+    "nameEnglish": "The Repentance",
+    "numberOfAyahs": 129,
+    "pageStart": 187,
+    "pageEnd": 207,
+    "numberOfPages": 21,
+    "firstJuz": 10,
+    "lastJuz": 11,
+    "juzs": [
+      10,
+      11
+    ],
+    "revelationOrder": 113,
+    "revelationExceptions": "Except last two verses from Makkah",
+    "similarNames": [
+      "at tawba",
+      "at-tawbah",
+      "the-repentance",
+      "baraatun",
+      "baraat",
+      "immunity",
+      "at tauba",
+      "at tawbah",
+      "attawbah",
+      "tawbah"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 2506,
+    "letterCount": 10928
+  },
+  {
+    "id": 10,
+    "type": "makkan",
+    "nameArabic": "يُونُس",
+    "nameTransliteration": "Yunus",
+    "nameEnglish": "Jonah",
+    "numberOfAyahs": 109,
+    "pageStart": 208,
+    "pageEnd": 221,
+    "numberOfPages": 14,
+    "firstJuz": 11,
+    "lastJuz": 11,
+    "juzs": [
+      11
+    ],
+    "revelationOrder": 51,
+    "revelationExceptions": "Except 40, 94, 95, 96, from Madinah",
+    "similarNames": [
+      "jona",
+      "yunus"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1838,
+    "letterCount": 7499
+  },
+  {
+    "id": 11,
+    "type": "makkan",
+    "nameArabic": "هُود",
+    "nameTransliteration": "Hud",
+    "nameEnglish": "Hud",
+    "numberOfAyahs": 123,
+    "pageStart": 221,
+    "pageEnd": 235,
+    "numberOfPages": 15,
+    "firstJuz": 11,
+    "lastJuz": 12,
+    "juzs": [
+      11,
+      12
+    ],
+    "revelationOrder": 52,
+    "revelationExceptions": "Except 12, 17, 114, from Madinah",
+    "similarNames": [
+      "hud"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 1923,
+    "letterCount": 7709
+  },
+  {
+    "id": 12,
+    "type": "makkan",
+    "nameArabic": "يُوسُف",
+    "nameTransliteration": "Yusuf",
+    "nameEnglish": "Joseph",
+    "numberOfAyahs": 111,
+    "pageStart": 235,
+    "pageEnd": 248,
+    "numberOfPages": 14,
+    "firstJuz": 12,
+    "lastJuz": 13,
+    "juzs": [
+      12,
+      13
+    ],
+    "revelationOrder": 53,
+    "revelationExceptions": "Except 1, 2, 3, 7, from Madinah",
+    "similarNames": [
+      "yusuf"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 1782,
+    "letterCount": 7184
+  },
+  {
+    "id": 13,
+    "type": "madinan",
+    "nameArabic": "الرَّعد",
+    "nameTransliteration": "Ar-Ra'd",
+    "nameEnglish": "The Thunder",
+    "numberOfAyahs": 43,
+    "pageStart": 249,
+    "pageEnd": 255,
+    "numberOfPages": 7,
+    "firstJuz": 13,
+    "lastJuz": 13,
+    "juzs": [
+      13
+    ],
+    "revelationOrder": 96,
+    "revelationExceptions": "",
+    "similarNames": [
+      "ar-ra-d",
+      "the-thunder",
+      "ar raad",
+      "ar-ra'd",
+      "ar ra'd",
+      "arra'd",
+      "ra'd",
+      "raad"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 857,
+    "letterCount": 3489
+  },
+  {
+    "id": 14,
+    "type": "makkan",
+    "nameArabic": "إِبرَاهِيم",
+    "nameTransliteration": "Ibrahim",
+    "nameEnglish": "Abraham",
+    "numberOfAyahs": 52,
+    "pageStart": 255,
+    "pageEnd": 261,
+    "numberOfPages": 7,
+    "firstJuz": 13,
+    "lastJuz": 13,
+    "juzs": [
+      13
+    ],
+    "revelationOrder": 72,
+    "revelationExceptions": "Except 28, 29, from Madinah",
+    "similarNames": [
+      "abraham",
+      "ibrahim"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 832,
+    "letterCount": 3491
+  },
+  {
+    "id": 15,
+    "type": "makkan",
+    "nameArabic": "الحِجر",
+    "nameTransliteration": "Al-Hijr",
+    "nameEnglish": "The Rocky Tract",
+    "numberOfAyahs": 99,
+    "pageStart": 262,
+    "pageEnd": 267,
+    "numberOfPages": 6,
+    "firstJuz": 14,
+    "lastJuz": 14,
+    "juzs": [
+      14
+    ],
+    "revelationOrder": 54,
+    "revelationExceptions": "Except 87, from Madinah",
+    "similarNames": [
+      "al-hijr",
+      "the-rocky-tract",
+      "the rocky path",
+      "the stoneland",
+      "al hijr",
+      "alhijr",
+      "hijr"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 655,
+    "letterCount": 2823
+  },
+  {
+    "id": 16,
+    "type": "makkan",
+    "nameArabic": "النَّحل",
+    "nameTransliteration": "An-Nahl",
+    "nameEnglish": "The Bee",
+    "numberOfAyahs": 128,
+    "pageStart": 267,
+    "pageEnd": 281,
+    "numberOfPages": 15,
+    "firstJuz": 14,
+    "lastJuz": 14,
+    "juzs": [
+      14
+    ],
+    "revelationOrder": 70,
+    "revelationExceptions": "Except the last three verses from Madinah",
+    "similarNames": [
+      "an-nahl",
+      "the-bee",
+      "an nahl",
+      "annahl",
+      "nahl"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1849,
+    "letterCount": 7695
+  },
+  {
+    "id": 17,
+    "type": "makkan",
+    "nameArabic": "الإِسرَاء",
+    "nameTransliteration": "Al-Israa",
+    "nameEnglish": "The Night Journey",
+    "numberOfAyahs": 111,
+    "pageStart": 282,
+    "pageEnd": 293,
+    "numberOfPages": 12,
+    "firstJuz": 15,
+    "lastJuz": 15,
+    "juzs": [
+      15
+    ],
+    "revelationOrder": 50,
+    "revelationExceptions": "Except 26, 32, 33, 57, 73-80, from Madinah",
+    "similarNames": [
+      "al isra",
+      "al-israa",
+      "the-night-journey",
+      "bani israel",
+      "the journey by night",
+      "the children of israel",
+      "al israa",
+      "alisraa",
+      "israa"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1560,
+    "letterCount": 6545
+  },
+  {
+    "id": 18,
+    "type": "makkan",
+    "nameArabic": "الكَهف",
+    "nameTransliteration": "Al-Kahf",
+    "nameEnglish": "The Cave",
+    "numberOfAyahs": 110,
+    "pageStart": 293,
+    "pageEnd": 304,
+    "numberOfPages": 12,
+    "firstJuz": 15,
+    "lastJuz": 16,
+    "juzs": [
+      15,
+      16
+    ],
+    "revelationOrder": 69,
+    "revelationExceptions": "Except 28, 83-101, from Madinah",
+    "similarNames": [
+      "al-kahf",
+      "the-cave",
+      "al kahf",
+      "alkahf",
+      "kahf"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 1584,
+    "letterCount": 6478
+  },
+  {
+    "id": 19,
+    "type": "makkan",
+    "nameArabic": "مَريَم",
+    "nameTransliteration": "Maryam",
+    "nameEnglish": "Mary",
+    "numberOfAyahs": 98,
+    "pageStart": 305,
+    "pageEnd": 312,
+    "numberOfPages": 8,
+    "firstJuz": 16,
+    "lastJuz": 16,
+    "juzs": [
+      16
+    ],
+    "revelationOrder": 44,
+    "revelationExceptions": "Except 58 and 71, from Madinah",
+    "similarNames": [
+      "maryam"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 963,
+    "letterCount": 3861
+  },
+  {
+    "id": 20,
+    "type": "makkan",
+    "nameArabic": "طه",
+    "nameTransliteration": "Taha",
+    "nameEnglish": "Ta-Ha",
+    "numberOfAyahs": 135,
+    "pageStart": 312,
+    "pageEnd": 321,
+    "numberOfPages": 10,
+    "firstJuz": 16,
+    "lastJuz": 16,
+    "juzs": [
+      16
+    ],
+    "revelationOrder": 45,
+    "revelationExceptions": "Except 130 and 131, from Madinah",
+    "similarNames": [
+      "ta-ha",
+      "taha"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1338,
+    "letterCount": 5325
+  },
+  {
+    "id": 21,
+    "type": "makkan",
+    "nameArabic": "الأَنبِيَاء",
+    "nameTransliteration": "Al-Anbya",
+    "nameEnglish": "The Prophets",
+    "numberOfAyahs": 112,
+    "pageStart": 322,
+    "pageEnd": 331,
+    "numberOfPages": 10,
+    "firstJuz": 17,
+    "lastJuz": 17,
+    "juzs": [
+      17
+    ],
+    "revelationOrder": 73,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-anbya",
+      "the-prophets",
+      "anbiyaa",
+      "al anbya",
+      "alanbya",
+      "anbya"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1172,
+    "letterCount": 4969
+  },
+  {
+    "id": 22,
+    "type": "madinan",
+    "nameArabic": "الحَج",
+    "nameTransliteration": "Al-Hajj",
+    "nameEnglish": "The Pilgrimage",
+    "numberOfAyahs": 78,
+    "pageStart": 332,
+    "pageEnd": 341,
+    "numberOfPages": 10,
+    "firstJuz": 17,
+    "lastJuz": 17,
+    "juzs": [
+      17
+    ],
+    "revelationOrder": 103,
+    "revelationExceptions": "Except 52-55, revealed between Makkah and Madinah",
+    "similarNames": [
+      "al-hajj",
+      "the-pilgrimage",
+      "al hajj",
+      "alhajj",
+      "hajj"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1277,
+    "letterCount": 5230
+  },
+  {
+    "id": 23,
+    "type": "makkan",
+    "nameArabic": "المُؤمِنُون",
+    "nameTransliteration": "Al-Mu'minun",
+    "nameEnglish": "The Believers",
+    "numberOfAyahs": 118,
+    "pageStart": 342,
+    "pageEnd": 349,
+    "numberOfPages": 8,
+    "firstJuz": 18,
+    "lastJuz": 18,
+    "juzs": [
+      18
+    ],
+    "revelationOrder": 74,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-mu-minun",
+      "the-believers",
+      "al-mu'minun",
+      "al mu'minun",
+      "almu'minun",
+      "mu'minun"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1052,
+    "letterCount": 4386
+  },
+  {
+    "id": 24,
+    "type": "madinan",
+    "nameArabic": "النُّور",
+    "nameTransliteration": "An-Noor",
+    "nameEnglish": "The Light",
+    "numberOfAyahs": 64,
+    "pageStart": 350,
+    "pageEnd": 359,
+    "numberOfPages": 10,
+    "firstJuz": 18,
+    "lastJuz": 18,
+    "juzs": [
+      18
+    ],
+    "revelationOrder": 102,
+    "revelationExceptions": "",
+    "similarNames": [
+      "an-noor",
+      "the-light",
+      "an noor",
+      "annoor",
+      "noor"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1319,
+    "letterCount": 5647
+  },
+  {
+    "id": 25,
+    "type": "makkan",
+    "nameArabic": "الفُرقَان",
+    "nameTransliteration": "Al-Furqan",
+    "nameEnglish": "The Criterion",
+    "numberOfAyahs": 77,
+    "pageStart": 359,
+    "pageEnd": 366,
+    "numberOfPages": 8,
+    "firstJuz": 18,
+    "lastJuz": 19,
+    "juzs": [
+      18,
+      19
+    ],
+    "revelationOrder": 42,
+    "revelationExceptions": "Except 68-70, from Madinah",
+    "similarNames": [
+      "al-furqan",
+      "the-criterion",
+      "the differentiator",
+      "al furqan",
+      "alfurqan",
+      "furqan"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 895,
+    "letterCount": 3818
+  },
+  {
+    "id": 26,
+    "type": "makkan",
+    "nameArabic": "الشُّعَرَاء",
+    "nameTransliteration": "Ash-Shu'ara",
+    "nameEnglish": "The Poets",
+    "numberOfAyahs": 227,
+    "pageStart": 367,
+    "pageEnd": 376,
+    "numberOfPages": 10,
+    "firstJuz": 19,
+    "lastJuz": 19,
+    "juzs": [
+      19
+    ],
+    "revelationOrder": 47,
+    "revelationExceptions": "Except 197 and 224-227, from Madinah",
+    "similarNames": [
+      "ash-shu-ara",
+      "the-poets",
+      "ash-shu'ara",
+      "ash shu'ara",
+      "ashshu'ara",
+      "shu'ara"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1321,
+    "letterCount": 5552
+  },
+  {
+    "id": 27,
+    "type": "makkan",
+    "nameArabic": "النَّمل",
+    "nameTransliteration": "An-Naml",
+    "nameEnglish": "The Ant",
+    "numberOfAyahs": 93,
+    "pageStart": 377,
+    "pageEnd": 385,
+    "numberOfPages": 9,
+    "firstJuz": 19,
+    "lastJuz": 20,
+    "juzs": [
+      19,
+      20
+    ],
+    "revelationOrder": 48,
+    "revelationExceptions": "",
+    "similarNames": [
+      "an-naml",
+      "the-ant",
+      "an naml",
+      "annaml",
+      "naml"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 1153,
+    "letterCount": 4736
+  },
+  {
+    "id": 28,
+    "type": "makkan",
+    "nameArabic": "القَصَص",
+    "nameTransliteration": "Al-Qasas",
+    "nameEnglish": "The Stories",
+    "numberOfAyahs": 88,
+    "pageStart": 385,
+    "pageEnd": 396,
+    "numberOfPages": 12,
+    "firstJuz": 20,
+    "lastJuz": 20,
+    "juzs": [
+      20
+    ],
+    "revelationOrder": 49,
+    "revelationExceptions": "Except 52-55 from Madinah and 85 from Juhfa at the time of the Hijra",
+    "similarNames": [
+      "al-qasas",
+      "the-stories",
+      "the story",
+      "narration",
+      "the narrative",
+      "al qasas",
+      "alqasas",
+      "qasas"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1434,
+    "letterCount": 5850
+  },
+  {
+    "id": 29,
+    "type": "makkan",
+    "nameArabic": "العَنكَبُوت",
+    "nameTransliteration": "Al-'Ankabut",
+    "nameEnglish": "The Spider",
+    "numberOfAyahs": 69,
+    "pageStart": 396,
+    "pageEnd": 404,
+    "numberOfPages": 9,
+    "firstJuz": 20,
+    "lastJuz": 21,
+    "juzs": [
+      20,
+      21
+    ],
+    "revelationOrder": 85,
+    "revelationExceptions": "Except 1-11, from Madinah",
+    "similarNames": [
+      "al--ankabut",
+      "the-spider",
+      "al-'ankabut",
+      "al 'ankabut",
+      "al'ankabut",
+      "'ankabut"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 978,
+    "letterCount": 4241
+  },
+  {
+    "id": 30,
+    "type": "makkan",
+    "nameArabic": "الرُّوم",
+    "nameTransliteration": "Ar-Rum",
+    "nameEnglish": "The Romans",
+    "numberOfAyahs": 60,
+    "pageStart": 404,
+    "pageEnd": 410,
+    "numberOfPages": 7,
+    "firstJuz": 21,
+    "lastJuz": 21,
+    "juzs": [
+      21
+    ],
+    "revelationOrder": 84,
+    "revelationExceptions": "Except 17, from Madinah",
+    "similarNames": [
+      "ar-rum",
+      "the-romans",
+      "the byzantines",
+      "ar rum",
+      "arrum",
+      "rum"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 819,
+    "letterCount": 3420
+  },
+  {
+    "id": 31,
+    "type": "makkan",
+    "nameArabic": "لُقمَان",
+    "nameTransliteration": "Luqman",
+    "nameEnglish": "Luqman",
+    "numberOfAyahs": 34,
+    "pageStart": 411,
+    "pageEnd": 414,
+    "numberOfPages": 4,
+    "firstJuz": 21,
+    "lastJuz": 21,
+    "juzs": [
+      21
+    ],
+    "revelationOrder": 57,
+    "revelationExceptions": "Except 27-29, from Madinah",
+    "similarNames": [
+      "luqman the wise",
+      "luqman"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 547,
+    "letterCount": 2130
+  },
+  {
+    "id": 32,
+    "type": "makkan",
+    "nameArabic": "السَّجدَة",
+    "nameTransliteration": "As-Sajdah",
+    "nameEnglish": "The Prostration",
+    "numberOfAyahs": 30,
+    "pageStart": 415,
+    "pageEnd": 417,
+    "numberOfPages": 3,
+    "firstJuz": 21,
+    "lastJuz": 21,
+    "juzs": [
+      21
+    ],
+    "revelationOrder": 75,
+    "revelationExceptions": "Except 16-20, from Madinah",
+    "similarNames": [
+      "as sajda",
+      "as-sajdah",
+      "the-prostration",
+      "bowing down in worship",
+      "as sajdah",
+      "assajdah",
+      "sajdah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 373,
+    "letterCount": 1536
+  },
+  {
+    "id": 33,
+    "type": "madinan",
+    "nameArabic": "الأَحزَاب",
+    "nameTransliteration": "Al-Ahzab",
+    "nameEnglish": "The Combined Forces",
+    "numberOfAyahs": 73,
+    "pageStart": 418,
+    "pageEnd": 427,
+    "numberOfPages": 10,
+    "firstJuz": 21,
+    "lastJuz": 22,
+    "juzs": [
+      21,
+      22
+    ],
+    "revelationOrder": 90,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-ahzab",
+      "the-combined-forces",
+      "the joint forces",
+      "allies",
+      "the clans",
+      "al ahzab",
+      "alahzab",
+      "ahzab"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 1291,
+    "letterCount": 5659
+  },
+  {
+    "id": 34,
+    "type": "makkan",
+    "nameArabic": "سَبَإ",
+    "nameTransliteration": "Saba",
+    "nameEnglish": "Sheba",
+    "numberOfAyahs": 54,
+    "pageStart": 428,
+    "pageEnd": 434,
+    "numberOfPages": 7,
+    "firstJuz": 22,
+    "lastJuz": 22,
+    "juzs": [
+      22
+    ],
+    "revelationOrder": 58,
+    "revelationExceptions": "",
+    "similarNames": [
+      "the city of saba",
+      "sheba",
+      "saba"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 886,
+    "letterCount": 3541
+  },
+  {
+    "id": 35,
+    "type": "makkan",
+    "nameArabic": "فَاطِر",
+    "nameTransliteration": "Fatir",
+    "nameEnglish": "Originator",
+    "numberOfAyahs": 45,
+    "pageStart": 434,
+    "pageEnd": 440,
+    "numberOfPages": 7,
+    "firstJuz": 22,
+    "lastJuz": 22,
+    "juzs": [
+      22
+    ],
+    "revelationOrder": 43,
+    "revelationExceptions": "",
+    "similarNames": [
+      "malaika",
+      "originator of creation",
+      "the creator",
+      "the angels",
+      "fatir"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 777,
+    "letterCount": 3183
+  },
+  {
+    "id": 36,
+    "type": "makkan",
+    "nameArabic": "يسٓ",
+    "nameTransliteration": "Ya-Sin",
+    "nameEnglish": "Ya Sin",
+    "numberOfAyahs": 83,
+    "pageStart": 440,
+    "pageEnd": 445,
+    "numberOfPages": 6,
+    "firstJuz": 22,
+    "lastJuz": 23,
+    "juzs": [
+      22,
+      23
+    ],
+    "revelationOrder": 41,
+    "revelationExceptions": "Except 45, from Madinah",
+    "similarNames": [
+      "ya-sin",
+      "ya sin",
+      "yasin",
+      "yaseen",
+      "ya-seen",
+      "ya seen"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 726,
+    "letterCount": 3015
+  },
+  {
+    "id": 37,
+    "type": "makkan",
+    "nameArabic": "الصَّافَّات",
+    "nameTransliteration": "As-Saffat",
+    "nameEnglish": "Those who set the Ranks",
+    "numberOfAyahs": 182,
+    "pageStart": 446,
+    "pageEnd": 452,
+    "numberOfPages": 7,
+    "firstJuz": 23,
+    "lastJuz": 23,
+    "juzs": [
+      23
+    ],
+    "revelationOrder": 56,
+    "revelationExceptions": "",
+    "similarNames": [
+      "as-saffat",
+      "those-who-set-the-ranks",
+      "ranged in rows",
+      "drawn up in ranks",
+      "those ranged in ranks",
+      "as saffat",
+      "assaffat",
+      "saffat"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 864,
+    "letterCount": 3818
+  },
+  {
+    "id": 38,
+    "type": "makkan",
+    "nameArabic": "ص",
+    "nameTransliteration": "Sad",
+    "nameEnglish": "The Letter \"Saad\"",
+    "numberOfAyahs": 88,
+    "pageStart": 453,
+    "pageEnd": 458,
+    "numberOfPages": 6,
+    "firstJuz": 23,
+    "lastJuz": 23,
+    "juzs": [
+      23
+    ],
+    "revelationOrder": 38,
+    "revelationExceptions": "",
+    "similarNames": [
+      "the letter sad",
+      "the-letter--saad",
+      "sad"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 735,
+    "letterCount": 3009
+  },
+  {
+    "id": 39,
+    "type": "makkan",
+    "nameArabic": "الزُّمَر",
+    "nameTransliteration": "Az-Zumar",
+    "nameEnglish": "The Troops",
+    "numberOfAyahs": 75,
+    "pageStart": 458,
+    "pageEnd": 467,
+    "numberOfPages": 10,
+    "firstJuz": 23,
+    "lastJuz": 24,
+    "juzs": [
+      23,
+      24
+    ],
+    "revelationOrder": 59,
+    "revelationExceptions": "",
+    "similarNames": [
+      "az-zumar",
+      "the-troops",
+      "the crowds",
+      "the companies",
+      "the throngs",
+      "az zumar",
+      "azzumar",
+      "zumar"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 1175,
+    "letterCount": 4776
+  },
+  {
+    "id": 40,
+    "type": "makkan",
+    "nameArabic": "غَافِر",
+    "nameTransliteration": "Ghafir",
+    "nameEnglish": "The Forgiver",
+    "numberOfAyahs": 85,
+    "pageStart": 467,
+    "pageEnd": 476,
+    "numberOfPages": 10,
+    "firstJuz": 24,
+    "lastJuz": 24,
+    "juzs": [
+      24
+    ],
+    "revelationOrder": 60,
+    "revelationExceptions": "Except 56, 57, from Madinah",
+    "similarNames": [
+      "the-forgiver",
+      "ghafer",
+      "momin",
+      "the most forgiving",
+      "the forgiver god",
+      "the believer",
+      "ghafir"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 1222,
+    "letterCount": 5029
+  },
+  {
+    "id": 41,
+    "type": "makkan",
+    "nameArabic": "فُصِّلَت",
+    "nameTransliteration": "Fussilat",
+    "nameEnglish": "Explained in Detail",
+    "numberOfAyahs": 54,
+    "pageStart": 477,
+    "pageEnd": 482,
+    "numberOfPages": 6,
+    "firstJuz": 24,
+    "lastJuz": 25,
+    "juzs": [
+      24,
+      25
+    ],
+    "revelationOrder": 61,
+    "revelationExceptions": "",
+    "similarNames": [
+      "explained-in-detail",
+      "ha mem sajda",
+      "ha mim sajda",
+      "the detailed explanation",
+      "revelation",
+      "verses made distinct",
+      "fussilat"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 797,
+    "letterCount": 3326
+  },
+  {
+    "id": 42,
+    "type": "makkan",
+    "nameArabic": "الشُّورَى",
+    "nameTransliteration": "Ash-Shuraa",
+    "nameEnglish": "The Consultation",
+    "numberOfAyahs": 53,
+    "pageStart": 483,
+    "pageEnd": 489,
+    "numberOfPages": 7,
+    "firstJuz": 25,
+    "lastJuz": 25,
+    "juzs": [
+      25
+    ],
+    "revelationOrder": 62,
+    "revelationExceptions": "Except 23, 24, 25, 27, from Madinah",
+    "similarNames": [
+      "ash shura",
+      "ash-shuraa",
+      "the-consultation",
+      "ash shuraa",
+      "ashshuraa",
+      "shuraa"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 863,
+    "letterCount": 3466
+  },
+  {
+    "id": 43,
+    "type": "makkan",
+    "nameArabic": "الزُّخرُف",
+    "nameTransliteration": "Az-Zukhruf",
+    "nameEnglish": "The Ornaments of Gold",
+    "numberOfAyahs": 89,
+    "pageStart": 489,
+    "pageEnd": 495,
+    "numberOfPages": 7,
+    "firstJuz": 25,
+    "lastJuz": 25,
+    "juzs": [
+      25
+    ],
+    "revelationOrder": 63,
+    "revelationExceptions": "Except 54, from Madinah",
+    "similarNames": [
+      "az-zukhruf",
+      "the-ornaments-of-gold",
+      "the gold adornments",
+      "az zukhruf",
+      "azzukhruf",
+      "zukhruf"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 832,
+    "letterCount": 3544
+  },
+  {
+    "id": 44,
+    "type": "makkan",
+    "nameArabic": "الدُّخَان",
+    "nameTransliteration": "Ad-Dukhan",
+    "nameEnglish": "The Smoke",
+    "numberOfAyahs": 59,
+    "pageStart": 496,
+    "pageEnd": 498,
+    "numberOfPages": 3,
+    "firstJuz": 25,
+    "lastJuz": 25,
+    "juzs": [
+      25
+    ],
+    "revelationOrder": 64,
+    "revelationExceptions": "",
+    "similarNames": [
+      "ad-dukhan",
+      "the-smoke",
+      "the mist",
+      "ad dukhan",
+      "addukhan",
+      "dukhan"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 347,
+    "letterCount": 1452
+  },
+  {
+    "id": 45,
+    "type": "makkan",
+    "nameArabic": "الجَاثِيَة",
+    "nameTransliteration": "Al-Jathiyah",
+    "nameEnglish": "The Crouching",
+    "numberOfAyahs": 37,
+    "pageStart": 499,
+    "pageEnd": 502,
+    "numberOfPages": 4,
+    "firstJuz": 25,
+    "lastJuz": 25,
+    "juzs": [
+      25
+    ],
+    "revelationOrder": 65,
+    "revelationExceptions": "Except 14, from Madinah",
+    "similarNames": [
+      "al jathiya",
+      "al-jathiyah",
+      "the-crouching",
+      "bowing the knee",
+      "the kneeling down",
+      "al jathiyah",
+      "aljathiyah",
+      "jathiyah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 489,
+    "letterCount": 2041
+  },
+  {
+    "id": 46,
+    "type": "makkan",
+    "nameArabic": "الأَحقَاف",
+    "nameTransliteration": "Al-Ahqaf",
+    "nameEnglish": "The Wind-Curved Sandhills",
+    "numberOfAyahs": 35,
+    "pageStart": 502,
+    "pageEnd": 506,
+    "numberOfPages": 5,
+    "firstJuz": 26,
+    "lastJuz": 26,
+    "juzs": [
+      26
+    ],
+    "revelationOrder": 66,
+    "revelationExceptions": "Except 10, 15, 35, from Madinah",
+    "similarNames": [
+      "al-ahqaf",
+      "the-wind-curved-sandhills",
+      "the sand dunes",
+      "the sandhills",
+      "winding sand tracts",
+      "al ahqaf",
+      "alahqaf",
+      "ahqaf"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 644,
+    "letterCount": 2620
+  },
+  {
+    "id": 47,
+    "type": "madinan",
+    "nameArabic": "مُحَمَّد",
+    "nameTransliteration": "Muhammad",
+    "nameEnglish": "Muhammad",
+    "numberOfAyahs": 38,
+    "pageStart": 507,
+    "pageEnd": 510,
+    "numberOfPages": 4,
+    "firstJuz": 26,
+    "lastJuz": 26,
+    "juzs": [
+      26
+    ],
+    "revelationOrder": 95,
+    "revelationExceptions": "Except 13, revealed during the Prophet's Hijrah",
+    "similarNames": [
+      "al qital",
+      "the fighting",
+      "muhammad",
+      "mohammad",
+      "mohamed",
+      "mohammed",
+      "muhammed",
+      "muhamad",
+      "mohamad"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 541,
+    "letterCount": 2385
+  },
+  {
+    "id": 48,
+    "type": "madinan",
+    "nameArabic": "الفَتح",
+    "nameTransliteration": "Al-Fath",
+    "nameEnglish": "The Victory",
+    "numberOfAyahs": 29,
+    "pageStart": 511,
+    "pageEnd": 515,
+    "numberOfPages": 5,
+    "firstJuz": 26,
+    "lastJuz": 26,
+    "juzs": [
+      26
+    ],
+    "revelationOrder": 111,
+    "revelationExceptions": "Revealed while returning from Hudaybiyya",
+    "similarNames": [
+      "al-fath",
+      "the-victory",
+      "triumph",
+      "al fath",
+      "alfath",
+      "fath"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 561,
+    "letterCount": 2474
+  },
+  {
+    "id": 49,
+    "type": "madinan",
+    "nameArabic": "الحُجُرَات",
+    "nameTransliteration": "Al-Hujurat",
+    "nameEnglish": "The Rooms",
+    "numberOfAyahs": 18,
+    "pageStart": 515,
+    "pageEnd": 517,
+    "numberOfPages": 3,
+    "firstJuz": 26,
+    "lastJuz": 26,
+    "juzs": [
+      26
+    ],
+    "revelationOrder": 106,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-hujurat",
+      "the-rooms",
+      "the apartments",
+      "the private rooms",
+      "the dwellings",
+      "the chambers",
+      "the inner apartments",
+      "al hujurat",
+      "alhujurat",
+      "hujurat"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 348,
+    "letterCount": 1507
+  },
+  {
+    "id": 50,
+    "type": "makkan",
+    "nameArabic": "ق",
+    "nameTransliteration": "Qaf",
+    "nameEnglish": "The Letter \"Qaf\"",
+    "numberOfAyahs": 45,
+    "pageStart": 518,
+    "pageEnd": 520,
+    "numberOfPages": 3,
+    "firstJuz": 26,
+    "lastJuz": 26,
+    "juzs": [
+      26
+    ],
+    "revelationOrder": 34,
+    "revelationExceptions": "Except 38, from Madinah",
+    "similarNames": [
+      "the-letter--qaf",
+      "qaf"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 374,
+    "letterCount": 1488
+  },
+  {
+    "id": 51,
+    "type": "makkan",
+    "nameArabic": "الذَّارِيَات",
+    "nameTransliteration": "Adh-Dhariyat",
+    "nameEnglish": "The Winnowing Winds",
+    "numberOfAyahs": 60,
+    "pageStart": 520,
+    "pageEnd": 523,
+    "numberOfPages": 4,
+    "firstJuz": 26,
+    "lastJuz": 27,
+    "juzs": [
+      26,
+      27
+    ],
+    "revelationOrder": 67,
+    "revelationExceptions": "",
+    "similarNames": [
+      "adh-dhariyat",
+      "the-winnowing-winds",
+      "the winds that scatter",
+      "scattering winds",
+      "adh dhariyat",
+      "adhdhariyat",
+      "dhariyat"
+    ],
+    "juzChangesWithinSurah": true,
+    "wordCount": 361,
+    "letterCount": 1522
+  },
+  {
+    "id": 52,
+    "type": "makkan",
+    "nameArabic": "الطُّور",
+    "nameTransliteration": "At-Tur",
+    "nameEnglish": "The Mount",
+    "numberOfAyahs": 49,
+    "pageStart": 523,
+    "pageEnd": 525,
+    "numberOfPages": 3,
+    "firstJuz": 27,
+    "lastJuz": 27,
+    "juzs": [
+      27
+    ],
+    "revelationOrder": 76,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-tur",
+      "the-mount",
+      "the mount sinai",
+      "the mountain",
+      "at tur",
+      "attur",
+      "tur"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 313,
+    "letterCount": 1301
+  },
+  {
+    "id": 53,
+    "type": "makkan",
+    "nameArabic": "النَّجم",
+    "nameTransliteration": "An-Najm",
+    "nameEnglish": "The Star",
+    "numberOfAyahs": 62,
+    "pageStart": 526,
+    "pageEnd": 528,
+    "numberOfPages": 3,
+    "firstJuz": 27,
+    "lastJuz": 27,
+    "juzs": [
+      27
+    ],
+    "revelationOrder": 23,
+    "revelationExceptions": "Except 32, from Madinah",
+    "similarNames": [
+      "an-najm",
+      "the-star",
+      "an najm",
+      "annajm",
+      "najm"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 361,
+    "letterCount": 1416
+  },
+  {
+    "id": 54,
+    "type": "makkan",
+    "nameArabic": "القَمَر",
+    "nameTransliteration": "Al-Qamar",
+    "nameEnglish": "The Moon",
+    "numberOfAyahs": 55,
+    "pageStart": 528,
+    "pageEnd": 531,
+    "numberOfPages": 4,
+    "firstJuz": 27,
+    "lastJuz": 27,
+    "juzs": [
+      27
+    ],
+    "revelationOrder": 37,
+    "revelationExceptions": "Except 44-46, from Madinah",
+    "similarNames": [
+      "al-qamar",
+      "the-moon",
+      "al qamar",
+      "alqamar",
+      "qamar"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 343,
+    "letterCount": 1460
+  },
+  {
+    "id": 55,
+    "type": "madinan",
+    "nameArabic": "الرَّحمَٰن",
+    "nameTransliteration": "Ar-Rahman",
+    "nameEnglish": "The Beneficent",
+    "numberOfAyahs": 78,
+    "pageStart": 531,
+    "pageEnd": 534,
+    "numberOfPages": 4,
+    "firstJuz": 27,
+    "lastJuz": 27,
+    "juzs": [
+      27
+    ],
+    "revelationOrder": 97,
+    "revelationExceptions": "",
+    "similarNames": [
+      "ar-rahman",
+      "the-beneficent",
+      "the most gracious",
+      "merciful",
+      "the lord of mercy",
+      "ar rahman",
+      "arrahman",
+      "rahman",
+      "rahmaan",
+      "ar-rahmaan",
+      "al-rahmaan",
+      "al-rahman"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 351,
+    "letterCount": 1652
+  },
+  {
+    "id": 56,
+    "type": "makkan",
+    "nameArabic": "الوَاقِعَة",
+    "nameTransliteration": "Al-Waqi'ah",
+    "nameEnglish": "The Inevitable",
+    "numberOfAyahs": 96,
+    "pageStart": 534,
+    "pageEnd": 537,
+    "numberOfPages": 4,
+    "firstJuz": 27,
+    "lastJuz": 27,
+    "juzs": [
+      27
+    ],
+    "revelationOrder": 46,
+    "revelationExceptions": "Except 81 and 82, from Madinah",
+    "similarNames": [
+      "al waqi a",
+      "al-waqi-ah",
+      "the-inevitable",
+      "the event",
+      "the inevitable event",
+      "that which is coming",
+      "al-waqi'ah",
+      "al waqi'ah",
+      "alwaqi'ah",
+      "waqi'ah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 380,
+    "letterCount": 1710
+  },
+  {
+    "id": 57,
+    "type": "madinan",
+    "nameArabic": "الحَدِيد",
+    "nameTransliteration": "Al-Hadid",
+    "nameEnglish": "The Iron",
+    "numberOfAyahs": 29,
+    "pageStart": 537,
+    "pageEnd": 541,
+    "numberOfPages": 5,
+    "firstJuz": 27,
+    "lastJuz": 27,
+    "juzs": [
+      27
+    ],
+    "revelationOrder": 94,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-hadid",
+      "the-iron",
+      "al hadid",
+      "alhadid",
+      "hadid"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 575,
+    "letterCount": 2500
+  },
+  {
+    "id": 58,
+    "type": "madinan",
+    "nameArabic": "المُجَادِلَة",
+    "nameTransliteration": "Al-Mujadila",
+    "nameEnglish": "The Pleading Woman",
+    "numberOfAyahs": 22,
+    "pageStart": 542,
+    "pageEnd": 545,
+    "numberOfPages": 4,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 105,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-mujadila",
+      "the-pleading-woman",
+      "the woman who pleads",
+      "she that disputeth",
+      "the dispute",
+      "al mujadila",
+      "almujadila",
+      "mujadila"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 473,
+    "letterCount": 2007
+  },
+  {
+    "id": 59,
+    "type": "madinan",
+    "nameArabic": "الحَشر",
+    "nameTransliteration": "Al-Hashr",
+    "nameEnglish": "The Exile",
+    "numberOfAyahs": 24,
+    "pageStart": 545,
+    "pageEnd": 548,
+    "numberOfPages": 4,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 101,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-hashr",
+      "the-exile",
+      "banishment",
+      "the gathering of forces",
+      "the mustering",
+      "al hashr",
+      "alhashr",
+      "hashr"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 446,
+    "letterCount": 1930
+  },
+  {
+    "id": 60,
+    "type": "madinan",
+    "nameArabic": "المُمتَحَنَة",
+    "nameTransliteration": "Al-Mumtahanah",
+    "nameEnglish": "She that is to be examined",
+    "numberOfAyahs": 13,
+    "pageStart": 549,
+    "pageEnd": 551,
+    "numberOfPages": 3,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 91,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al mumtahana",
+      "al-mumtahanah",
+      "she-that-is-to-be-examined",
+      "women tested",
+      "the examined women",
+      "that which examines",
+      "al mumtahanah",
+      "almumtahanah",
+      "mumtahanah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 349,
+    "letterCount": 1536
+  },
+  {
+    "id": 61,
+    "type": "madinan",
+    "nameArabic": "الصَّف",
+    "nameTransliteration": "As-Saf",
+    "nameEnglish": "The Ranks",
+    "numberOfAyahs": 14,
+    "pageStart": 551,
+    "pageEnd": 552,
+    "numberOfPages": 2,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 109,
+    "revelationExceptions": "",
+    "similarNames": [
+      "as-saf",
+      "the-ranks",
+      "the battle array",
+      "solid lines",
+      "the row",
+      "as saf",
+      "assaf",
+      "saf"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 221,
+    "letterCount": 943
+  },
+  {
+    "id": 62,
+    "type": "madinan",
+    "nameArabic": "الجُمُعَة",
+    "nameTransliteration": "Al-Jumu'ah",
+    "nameEnglish": "The Congregation, Friday",
+    "numberOfAyahs": 11,
+    "pageStart": 553,
+    "pageEnd": 554,
+    "numberOfPages": 2,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 110,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al jumu a",
+      "al-jumu-ah",
+      "the-congregation--friday",
+      "the day of congregation",
+      "the congregation",
+      "friday",
+      "al-jumu'ah",
+      "al jumu'ah",
+      "aljumu'ah",
+      "jumu'ah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 175,
+    "letterCount": 754
+  },
+  {
+    "id": 63,
+    "type": "madinan",
+    "nameArabic": "المُنَافِقُون",
+    "nameTransliteration": "Al-Munafiqun",
+    "nameEnglish": "The Hypocrites",
+    "numberOfAyahs": 11,
+    "pageStart": 554,
+    "pageEnd": 555,
+    "numberOfPages": 2,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 104,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-munafiqun",
+      "the-hypocrites",
+      "al munafiqun",
+      "almunafiqun",
+      "munafiqun"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 181,
+    "letterCount": 787
+  },
+  {
+    "id": 64,
+    "type": "madinan",
+    "nameArabic": "التَّغَابُن",
+    "nameTransliteration": "At-Taghabun",
+    "nameEnglish": "The Mutual Disillusion",
+    "numberOfAyahs": 18,
+    "pageStart": 556,
+    "pageEnd": 557,
+    "numberOfPages": 2,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 108,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-taghabun",
+      "the-mutual-disillusion",
+      "mutual neglect",
+      "at taghabun",
+      "attaghabun",
+      "taghabun"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 241,
+    "letterCount": 1069
+  },
+  {
+    "id": 65,
+    "type": "madinan",
+    "nameArabic": "الطَّلَاق",
+    "nameTransliteration": "At-Talaq",
+    "nameEnglish": "The Divorce",
+    "numberOfAyahs": 12,
+    "pageStart": 558,
+    "pageEnd": 559,
+    "numberOfPages": 2,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 99,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-talaq",
+      "the-divorce",
+      "at talaq",
+      "attalaq",
+      "talaq"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 287,
+    "letterCount": 1179
+  },
+  {
+    "id": 66,
+    "type": "madinan",
+    "nameArabic": "التَّحرِيم",
+    "nameTransliteration": "At-Tahrim",
+    "nameEnglish": "The Prohibition",
+    "numberOfAyahs": 12,
+    "pageStart": 560,
+    "pageEnd": 561,
+    "numberOfPages": 2,
+    "firstJuz": 28,
+    "lastJuz": 28,
+    "juzs": [
+      28
+    ],
+    "revelationOrder": 107,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-tahrim",
+      "the-prohibition",
+      "at tahrim",
+      "attahrim",
+      "tahrim"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 249,
+    "letterCount": 1072
+  },
+  {
+    "id": 67,
+    "type": "makkan",
+    "nameArabic": "المُلك",
+    "nameTransliteration": "Al-Mulk",
+    "nameEnglish": "The Sovereignty",
+    "numberOfAyahs": 30,
+    "pageStart": 562,
+    "pageEnd": 564,
+    "numberOfPages": 3,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 77,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-mulk",
+      "the-sovereignty",
+      "dominion",
+      "control",
+      "al mulk",
+      "almulk",
+      "mulk"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 333,
+    "letterCount": 1328
+  },
+  {
+    "id": 68,
+    "type": "makkan",
+    "nameArabic": "القَلَم",
+    "nameTransliteration": "Al-Qalam",
+    "nameEnglish": "The Pen",
+    "numberOfAyahs": 52,
+    "pageStart": 564,
+    "pageEnd": 566,
+    "numberOfPages": 3,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 2,
+    "revelationExceptions": "Except 17-33 and 48-50, from Madinah",
+    "similarNames": [
+      "al-qalam",
+      "the-pen",
+      "al qalam",
+      "alqalam",
+      "qalam"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 300,
+    "letterCount": 1262
+  },
+  {
+    "id": 69,
+    "type": "makkan",
+    "nameArabic": "الحَاقَّة",
+    "nameTransliteration": "Al-Haqqah",
+    "nameEnglish": "The Reality",
+    "numberOfAyahs": 52,
+    "pageStart": 566,
+    "pageEnd": 568,
+    "numberOfPages": 3,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 78,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al haqqa",
+      "al-haqqah",
+      "the-reality",
+      "the inevitable hour",
+      "sure reality",
+      "al haqqah",
+      "alhaqqah",
+      "haqqah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 258,
+    "letterCount": 1111
+  },
+  {
+    "id": 70,
+    "type": "makkan",
+    "nameArabic": "المَعَارِج",
+    "nameTransliteration": "Al-Ma'arij",
+    "nameEnglish": "The Ascending Stairways",
+    "numberOfAyahs": 44,
+    "pageStart": 568,
+    "pageEnd": 570,
+    "numberOfPages": 3,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 79,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-ma-arij",
+      "almarij",
+      "the-ascending-stairways",
+      "the ways of ascent",
+      "al-ma'arij",
+      "al ma'arij",
+      "alma'arij",
+      "ma'arij"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 218,
+    "letterCount": 949
+  },
+  {
+    "id": 71,
+    "type": "makkan",
+    "nameArabic": "نُوح",
+    "nameTransliteration": "Nuh",
+    "nameEnglish": "Noah",
+    "numberOfAyahs": 28,
+    "pageStart": 570,
+    "pageEnd": 571,
+    "numberOfPages": 2,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 71,
+    "revelationExceptions": "",
+    "similarNames": [
+      "noa",
+      "nuh"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 226,
+    "letterCount": 952
+  },
+  {
+    "id": 72,
+    "type": "makkan",
+    "nameArabic": "الجِنّ",
+    "nameTransliteration": "Al-Jinn",
+    "nameEnglish": "The Jinn",
+    "numberOfAyahs": 28,
+    "pageStart": 572,
+    "pageEnd": 573,
+    "numberOfPages": 2,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 40,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-jinn",
+      "the-jinn",
+      "spirits",
+      "al jinn",
+      "aljinn",
+      "jinn"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 285,
+    "letterCount": 1094
+  },
+  {
+    "id": 73,
+    "type": "makkan",
+    "nameArabic": "المُزَّمِّل",
+    "nameTransliteration": "Al-Muzzammil",
+    "nameEnglish": "The Enshrouded One",
+    "numberOfAyahs": 20,
+    "pageStart": 574,
+    "pageEnd": 575,
+    "numberOfPages": 2,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 3,
+    "revelationExceptions": "Except 10, 11 and 20, from Madinah",
+    "similarNames": [
+      "al-muzzammil",
+      "the-enshrouded-one",
+      "the wrapped one",
+      "enfolded",
+      "the one wrapped in garments",
+      "al muzzammil",
+      "almuzzammil",
+      "muzzammil"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 200,
+    "letterCount": 849
+  },
+  {
+    "id": 74,
+    "type": "makkan",
+    "nameArabic": "المُدَّثِّر",
+    "nameTransliteration": "Al-Muddaththir",
+    "nameEnglish": "The Cloaked One",
+    "numberOfAyahs": 56,
+    "pageStart": 575,
+    "pageEnd": 577,
+    "numberOfPages": 3,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 4,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-muddaththir",
+      "the-cloaked-one",
+      "wrapped in his cloak",
+      "the one enveloped",
+      "the one wrapped up",
+      "al muddaththir",
+      "almuddaththir",
+      "muddaththir"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 255,
+    "letterCount": 1022
+  },
+  {
+    "id": 75,
+    "type": "makkan",
+    "nameArabic": "القِيَامَة",
+    "nameTransliteration": "Al-Qiyamah",
+    "nameEnglish": "The Resurrection",
+    "numberOfAyahs": 40,
+    "pageStart": 577,
+    "pageEnd": 578,
+    "numberOfPages": 2,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 31,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al qiyama",
+      "al-qiyamah",
+      "the-resurrection",
+      "the day of resurrection",
+      "al qiyamah",
+      "alqiyamah",
+      "qiyamah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 164,
+    "letterCount": 666
+  },
+  {
+    "id": 76,
+    "type": "madinan",
+    "nameArabic": "الإِنسَان",
+    "nameTransliteration": "Al-Insan",
+    "nameEnglish": "The Man",
+    "numberOfAyahs": 31,
+    "pageStart": 578,
+    "pageEnd": 580,
+    "numberOfPages": 3,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 98,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-insan",
+      "the-man",
+      "ad dahr",
+      "time",
+      "man",
+      "the humanbeing",
+      "al insan",
+      "alinsan",
+      "insan"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 244,
+    "letterCount": 1075
+  },
+  {
+    "id": 77,
+    "type": "makkan",
+    "nameArabic": "المُرسَلَات",
+    "nameTransliteration": "Al-Mursalat",
+    "nameEnglish": "The Emissaries",
+    "numberOfAyahs": 50,
+    "pageStart": 580,
+    "pageEnd": 581,
+    "numberOfPages": 2,
+    "firstJuz": 29,
+    "lastJuz": 29,
+    "juzs": [
+      29
+    ],
+    "revelationOrder": 33,
+    "revelationExceptions": "Except 48, from Madinah",
+    "similarNames": [
+      "al-mursalat",
+      "the-emissaries",
+      "those sent forth",
+      "winds sent forth",
+      "al mursalat",
+      "almursalat",
+      "mursalat"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 181,
+    "letterCount": 819
+  },
+  {
+    "id": 78,
+    "type": "makkan",
+    "nameArabic": "النَّبَإ",
+    "nameTransliteration": "An-Naba",
+    "nameEnglish": "The Tidings",
+    "numberOfAyahs": 40,
+    "pageStart": 582,
+    "pageEnd": 583,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 80,
+    "revelationExceptions": "",
+    "similarNames": [
+      "an-naba",
+      "the-tidings",
+      "the great news",
+      "tidings",
+      "the announcement",
+      "an naba",
+      "annaba",
+      "naba"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 173,
+    "letterCount": 775
+  },
+  {
+    "id": 79,
+    "type": "makkan",
+    "nameArabic": "النَّازِعَات",
+    "nameTransliteration": "An-Nazi'at",
+    "nameEnglish": "Those who drag forth",
+    "numberOfAyahs": 46,
+    "pageStart": 583,
+    "pageEnd": 584,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 81,
+    "revelationExceptions": "",
+    "similarNames": [
+      "an-nazi-at",
+      "those-who-drag-forth",
+      "the pluckers",
+      "those that tear",
+      "the forceful chargers",
+      "those who pull out",
+      "an-nazi'at",
+      "an nazi'at",
+      "annazi'at",
+      "nazi'at"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 179,
+    "letterCount": 769
+  },
+  {
+    "id": 80,
+    "type": "makkan",
+    "nameArabic": "عَبَس",
+    "nameTransliteration": "'Abasa",
+    "nameEnglish": "He Frowned",
+    "numberOfAyahs": 42,
+    "pageStart": 585,
+    "pageEnd": 586,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 24,
+    "revelationExceptions": "",
+    "similarNames": [
+      "he-frowned",
+      "'abasa"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 133,
+    "letterCount": 546
+  },
+  {
+    "id": 81,
+    "type": "makkan",
+    "nameArabic": "التَّكوِير",
+    "nameTransliteration": "At-Takwir",
+    "nameEnglish": "The Overthrowing",
+    "numberOfAyahs": 29,
+    "pageStart": 586,
+    "pageEnd": 586,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 7,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-takwir",
+      "the-overthrowing",
+      "the folding up",
+      "shrouded in darkness",
+      "wound round and lost its light",
+      "at takwir",
+      "attakwir",
+      "takwir"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 104,
+    "letterCount": 431
+  },
+  {
+    "id": 82,
+    "type": "makkan",
+    "nameArabic": "الإنفِطَار",
+    "nameTransliteration": "Al-Infitar",
+    "nameEnglish": "The Cleaving",
+    "numberOfAyahs": 19,
+    "pageStart": 587,
+    "pageEnd": 587,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 82,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-infitar",
+      "the-cleaving",
+      "the splitting apart",
+      "torn apart",
+      "the cleaving asunder",
+      "al infitar",
+      "alinfitar",
+      "infitar"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 80,
+    "letterCount": 328
+  },
+  {
+    "id": 83,
+    "type": "makkan",
+    "nameArabic": "المُطَفِّفِين",
+    "nameTransliteration": "Al-Mutaffifin",
+    "nameEnglish": "The Defrauding",
+    "numberOfAyahs": 36,
+    "pageStart": 587,
+    "pageEnd": 589,
+    "numberOfPages": 3,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 86,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-mutaffifin",
+      "the-defrauding",
+      "dealing in fraud",
+      "those who give short measure",
+      "dealers in fraud",
+      "al mutaffifin",
+      "almutaffifin",
+      "mutaffifin"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 169,
+    "letterCount": 744
+  },
+  {
+    "id": 84,
+    "type": "makkan",
+    "nameArabic": "الإنشِقَاق",
+    "nameTransliteration": "Al-Inshiqaq",
+    "nameEnglish": "The Sundering",
+    "numberOfAyahs": 25,
+    "pageStart": 589,
+    "pageEnd": 590,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 83,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-inshiqaq",
+      "the-sundering",
+      "bursting open",
+      "rending asunder",
+      "ripped apart",
+      "splitting asunder",
+      "al inshiqaq",
+      "alinshiqaq",
+      "inshiqaq"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 107,
+    "letterCount": 440
+  },
+  {
+    "id": 85,
+    "type": "makkan",
+    "nameArabic": "البُرُوج",
+    "nameTransliteration": "Al-Buruj",
+    "nameEnglish": "The Mansions of the Stars",
+    "numberOfAyahs": 22,
+    "pageStart": 590,
+    "pageEnd": 590,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 27,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-buruj",
+      "the-mansions-of-the-stars",
+      "the towering constellations",
+      "zodiacal signs",
+      "the big stars",
+      "al buruj",
+      "alburuj",
+      "buruj"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 109,
+    "letterCount": 463
+  },
+  {
+    "id": 86,
+    "type": "makkan",
+    "nameArabic": "الطَّارِق",
+    "nameTransliteration": "At-Tariq",
+    "nameEnglish": "The Nightcommer",
+    "numberOfAyahs": 17,
+    "pageStart": 591,
+    "pageEnd": 591,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 36,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-tariq",
+      "the-nightcommer",
+      "the visitor in the night",
+      "the night star",
+      "the morning star",
+      "at tariq",
+      "attariq",
+      "tariq",
+      "taariq"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 61,
+    "letterCount": 252
+  },
+  {
+    "id": 87,
+    "type": "makkan",
+    "nameArabic": "الأَعلَى",
+    "nameTransliteration": "Al-A'la",
+    "nameEnglish": "The Most High",
+    "numberOfAyahs": 19,
+    "pageStart": 591,
+    "pageEnd": 592,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 8,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-a-la",
+      "the-most-high",
+      "al-a'la",
+      "al a'la",
+      "ala'la",
+      "a'la"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 72,
+    "letterCount": 295
+  },
+  {
+    "id": 88,
+    "type": "makkan",
+    "nameArabic": "الغَاشِية",
+    "nameTransliteration": "Al-Ghashiyah",
+    "nameEnglish": "The Overwhelming",
+    "numberOfAyahs": 26,
+    "pageStart": 592,
+    "pageEnd": 593,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 68,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al ghashiya",
+      "al-ghashiyah",
+      "the-overwhelming",
+      "al gashiya",
+      "the overwhelming event",
+      "al ghashiyah",
+      "alghashiyah",
+      "ghashiyah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 92,
+    "letterCount": 380
+  },
+  {
+    "id": 89,
+    "type": "makkan",
+    "nameArabic": "الفَجر",
+    "nameTransliteration": "Al-Fajr",
+    "nameEnglish": "The Dawn",
+    "numberOfAyahs": 30,
+    "pageStart": 593,
+    "pageEnd": 594,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 10,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-fajr",
+      "the-dawn",
+      "daybreak",
+      "al fajr",
+      "alfajr",
+      "fajr"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 137,
+    "letterCount": 575
+  },
+  {
+    "id": 90,
+    "type": "makkan",
+    "nameArabic": "البَلَد",
+    "nameTransliteration": "Al-Balad",
+    "nameEnglish": "The City",
+    "numberOfAyahs": 20,
+    "pageStart": 594,
+    "pageEnd": 595,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 35,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-balad",
+      "the-city",
+      "al balad",
+      "albalad",
+      "balad"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 82,
+    "letterCount": 336
+  },
+  {
+    "id": 91,
+    "type": "makkan",
+    "nameArabic": "الشَّمس",
+    "nameTransliteration": "Ash-Shams",
+    "nameEnglish": "The Sun",
+    "numberOfAyahs": 15,
+    "pageStart": 595,
+    "pageEnd": 595,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 26,
+    "revelationExceptions": "",
+    "similarNames": [
+      "ash-shams",
+      "the-sun",
+      "ash shams",
+      "ashshams",
+      "shams"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 54,
+    "letterCount": 250
+  },
+  {
+    "id": 92,
+    "type": "makkan",
+    "nameArabic": "اللَّيل",
+    "nameTransliteration": "Al-Layl",
+    "nameEnglish": "The Night",
+    "numberOfAyahs": 21,
+    "pageStart": 595,
+    "pageEnd": 596,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 9,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-layl",
+      "the-night",
+      "al layl",
+      "allayl",
+      "layl"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 71,
+    "letterCount": 313
+  },
+  {
+    "id": 93,
+    "type": "makkan",
+    "nameArabic": "الضُّحَى",
+    "nameTransliteration": "Ad-Duhaa",
+    "nameEnglish": "The Morning Hours",
+    "numberOfAyahs": 11,
+    "pageStart": 596,
+    "pageEnd": 596,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 11,
+    "revelationExceptions": "",
+    "similarNames": [
+      "ad duha",
+      "ad-duhaa",
+      "the-morning-hours",
+      "the glorious morning light",
+      "the early hours",
+      "the forenoon",
+      "the sunrise",
+      "ad duhaa",
+      "adduhaa",
+      "duhaa"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 40,
+    "letterCount": 164
+  },
+  {
+    "id": 94,
+    "type": "makkan",
+    "nameArabic": "الشَّرح",
+    "nameTransliteration": "Ash-Sharh",
+    "nameEnglish": "The Relief",
+    "numberOfAyahs": 8,
+    "pageStart": 596,
+    "pageEnd": 597,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 12,
+    "revelationExceptions": "",
+    "similarNames": [
+      "ash-sharh",
+      "the-relief",
+      "expansion of chest",
+      "the expansion",
+      "the opening forth",
+      "ash sharh",
+      "ashsharh",
+      "sharh"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 27,
+    "letterCount": 102
+  },
+  {
+    "id": 95,
+    "type": "makkan",
+    "nameArabic": "التِّين",
+    "nameTransliteration": "At-Tin",
+    "nameEnglish": "The Fig",
+    "numberOfAyahs": 8,
+    "pageStart": 597,
+    "pageEnd": 597,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 28,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-tin",
+      "the-fig",
+      "the fig tree",
+      "at tin",
+      "attin",
+      "tin"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 34,
+    "letterCount": 157
+  },
+  {
+    "id": 96,
+    "type": "makkan",
+    "nameArabic": "العَلَق",
+    "nameTransliteration": "Al-'Alaq",
+    "nameEnglish": "The Clot",
+    "numberOfAyahs": 19,
+    "pageStart": 597,
+    "pageEnd": 598,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 1,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al--alaq",
+      "the-clot",
+      "the clinging form",
+      "the clinging clot",
+      "al-'alaq",
+      "al 'alaq",
+      "al'alaq",
+      "'alaq"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 72,
+    "letterCount": 285
+  },
+  {
+    "id": 97,
+    "type": "makkan",
+    "nameArabic": "القَدر",
+    "nameTransliteration": "Al-Qadr",
+    "nameEnglish": "The Power",
+    "numberOfAyahs": 5,
+    "pageStart": 598,
+    "pageEnd": 598,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 25,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-qadr",
+      "the-power",
+      "the night of destiny",
+      "power",
+      "glory",
+      "honour",
+      "decree",
+      "al qadr",
+      "alqadr",
+      "qadr"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 30,
+    "letterCount": 112
+  },
+  {
+    "id": 98,
+    "type": "madinan",
+    "nameArabic": "البَيِّنَة",
+    "nameTransliteration": "Al-Bayyinah",
+    "nameEnglish": "The Clear Proof",
+    "numberOfAyahs": 8,
+    "pageStart": 598,
+    "pageEnd": 599,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 100,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al bayyina",
+      "al-bayyinah",
+      "the-clear-proof",
+      "al baiyina",
+      "the clear evidence",
+      "al bayyinah",
+      "albayyinah",
+      "bayyinah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 94,
+    "letterCount": 397
+  },
+  {
+    "id": 99,
+    "type": "madinan",
+    "nameArabic": "الزَّلزَلَة",
+    "nameTransliteration": "Az-Zalzalah",
+    "nameEnglish": "The Earthquake",
+    "numberOfAyahs": 8,
+    "pageStart": 599,
+    "pageEnd": 599,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 93,
+    "revelationExceptions": "",
+    "similarNames": [
+      "az zalzala",
+      "az-zalzalah",
+      "the-earthquake",
+      "az zalzalah",
+      "azzalzalah",
+      "zalzalah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 36,
+    "letterCount": 156
+  },
+  {
+    "id": 100,
+    "type": "makkan",
+    "nameArabic": "العَادِيَات",
+    "nameTransliteration": "Al-'Adiyat",
+    "nameEnglish": "The Courser",
+    "numberOfAyahs": 11,
+    "pageStart": 599,
+    "pageEnd": 600,
+    "numberOfPages": 2,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 14,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al--adiyat",
+      "the-courser",
+      "the snorting horses",
+      "the charging steeds",
+      "those that run",
+      "al-'adiyat",
+      "al 'adiyat",
+      "al'adiyat",
+      "'adiyat"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 41,
+    "letterCount": 164
+  },
+  {
+    "id": 101,
+    "type": "makkan",
+    "nameArabic": "القَارِعَة",
+    "nameTransliteration": "Al-Qari'ah",
+    "nameEnglish": "The Calamity",
+    "numberOfAyahs": 11,
+    "pageStart": 600,
+    "pageEnd": 600,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 30,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al qari a",
+      "al-qari-ah",
+      "the-calamity",
+      "the clatterer",
+      "day of noise chaos",
+      "the crashing blow",
+      "the great calamity",
+      "the striking hour",
+      "al-qari'ah",
+      "al qari'ah",
+      "alqari'ah",
+      "qari'ah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 36,
+    "letterCount": 158
+  },
+  {
+    "id": 102,
+    "type": "makkan",
+    "nameArabic": "التَّكاثُر",
+    "nameTransliteration": "At-Takathur",
+    "nameEnglish": "The Rivalry in world increase",
+    "numberOfAyahs": 8,
+    "pageStart": 600,
+    "pageEnd": 600,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 16,
+    "revelationExceptions": "",
+    "similarNames": [
+      "at-takathur",
+      "the-rivalry-in-world-increase",
+      "greed for more",
+      "piling up",
+      "striving for more",
+      "the emulous desire",
+      "at takathur",
+      "attakathur",
+      "takathur"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 28,
+    "letterCount": 122
+  },
+  {
+    "id": 103,
+    "type": "makkan",
+    "nameArabic": "العَصر",
+    "nameTransliteration": "Al-'Asr",
+    "nameEnglish": "The Declining Day",
+    "numberOfAyahs": 3,
+    "pageStart": 601,
+    "pageEnd": 601,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 13,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al--asr",
+      "the-declining-day",
+      "passage of time",
+      "time through the ages",
+      "al-'asr",
+      "al 'asr",
+      "al'asr",
+      "'asr"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 14,
+    "letterCount": 71
+  },
+  {
+    "id": 104,
+    "type": "makkan",
+    "nameArabic": "الهُمَزَة",
+    "nameTransliteration": "Al-Humazah",
+    "nameEnglish": "The Traducer",
+    "numberOfAyahs": 9,
+    "pageStart": 601,
+    "pageEnd": 601,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 32,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al humaza",
+      "al-humazah",
+      "the-traducer",
+      "the backbiter",
+      "scandalmonger",
+      "al humazah",
+      "alhumazah",
+      "humazah"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 33,
+    "letterCount": 133
+  },
+  {
+    "id": 105,
+    "type": "makkan",
+    "nameArabic": "الفِيل",
+    "nameTransliteration": "Al-Fil",
+    "nameEnglish": "The Elephant",
+    "numberOfAyahs": 5,
+    "pageStart": 601,
+    "pageEnd": 601,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 19,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-fil",
+      "the-elephant",
+      "al fil",
+      "alfil",
+      "fil"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 23,
+    "letterCount": 96
+  },
+  {
+    "id": 106,
+    "type": "makkan",
+    "nameArabic": "قُرَيش",
+    "nameTransliteration": "Quraysh",
+    "nameEnglish": "Quraysh",
+    "numberOfAyahs": 4,
+    "pageStart": 602,
+    "pageEnd": 602,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 29,
+    "revelationExceptions": "",
+    "similarNames": [
+      "the tribe quraish",
+      "custodians of kaaba",
+      "quraysh"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 17,
+    "letterCount": 75
+  },
+  {
+    "id": 107,
+    "type": "makkan",
+    "nameArabic": "المَاعُون",
+    "nameTransliteration": "Al-Ma'un",
+    "nameEnglish": "The Small kindnesses",
+    "numberOfAyahs": 7,
+    "pageStart": 602,
+    "pageEnd": 602,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 17,
+    "revelationExceptions": "Only 1-3 from Makkah; the rest from Madinah",
+    "similarNames": [
+      "al-ma-un",
+      "the-small-kindnesses",
+      "small things",
+      "common kindnesses",
+      "neighbourly needs",
+      "neighbourly assistance",
+      "al-ma'un",
+      "al ma'un",
+      "alma'un",
+      "ma'un"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 25,
+    "letterCount": 114
+  },
+  {
+    "id": 108,
+    "type": "makkan",
+    "nameArabic": "الكَوثر",
+    "nameTransliteration": "Al-Kawthar",
+    "nameEnglish": "The Abundance",
+    "numberOfAyahs": 3,
+    "pageStart": 602,
+    "pageEnd": 602,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 15,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-kawthar",
+      "the-abundance",
+      "a river in paradise",
+      "al kawthar",
+      "alkawthar",
+      "kawthar"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 10,
+    "letterCount": 42
+  },
+  {
+    "id": 109,
+    "type": "makkan",
+    "nameArabic": "الكَافِرُون",
+    "nameTransliteration": "Al-Kafirun",
+    "nameEnglish": "The Disbelievers",
+    "numberOfAyahs": 6,
+    "pageStart": 603,
+    "pageEnd": 603,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 18,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-kafirun",
+      "the-disbelievers",
+      "those who deny the truth",
+      "those who reject faith",
+      "al kafirun",
+      "alkafirun",
+      "kafirun"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 26,
+    "letterCount": 95
+  },
+  {
+    "id": 110,
+    "type": "madinan",
+    "nameArabic": "النَّصر",
+    "nameTransliteration": "An-Nasr",
+    "nameEnglish": "The Divine Support",
+    "numberOfAyahs": 3,
+    "pageStart": 603,
+    "pageEnd": 603,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 114,
+    "revelationExceptions": "Revealed at Mina on Last Hajj, but regarded as Madinan sura",
+    "similarNames": [
+      "an-nasr",
+      "the-divine-support",
+      "the help",
+      "an nasr",
+      "annasr",
+      "nasr"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 19,
+    "letterCount": 80
+  },
+  {
+    "id": 111,
+    "type": "makkan",
+    "nameArabic": "المَسَد",
+    "nameTransliteration": "Al-Masad",
+    "nameEnglish": "The Palm Fiber",
+    "numberOfAyahs": 5,
+    "pageStart": 603,
+    "pageEnd": 603,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 6,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-masad",
+      "the-palm-fiber",
+      "al lahab",
+      "the twisted fibre",
+      "palm fibre",
+      "the flame",
+      "al masad",
+      "almasad",
+      "masad"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 23,
+    "letterCount": 81
+  },
+  {
+    "id": 112,
+    "type": "makkan",
+    "nameArabic": "الإِخلَاص",
+    "nameTransliteration": "Al-Ikhlas",
+    "nameEnglish": "The Sincerity",
+    "numberOfAyahs": 4,
+    "pageStart": 604,
+    "pageEnd": 604,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 22,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-ikhlas",
+      "the-sincerity",
+      "oneness",
+      "the purity",
+      "al ikhlas",
+      "alikhlas",
+      "ikhlas"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 15,
+    "letterCount": 47
+  },
+  {
+    "id": 113,
+    "type": "makkan",
+    "nameArabic": "الفَلَق",
+    "nameTransliteration": "Al-Falaq",
+    "nameEnglish": "The Daybreak",
+    "numberOfAyahs": 5,
+    "pageStart": 604,
+    "pageEnd": 604,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 20,
+    "revelationExceptions": "",
+    "similarNames": [
+      "al-falaq",
+      "the-daybreak",
+      "al falaq",
+      "alfalaq",
+      "falaq"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 23,
+    "letterCount": 71
+  },
+  {
+    "id": 114,
+    "type": "makkan",
+    "nameArabic": "النَّاس",
+    "nameTransliteration": "An-Nas",
+    "nameEnglish": "Mankind",
+    "numberOfAyahs": 6,
+    "pageStart": 604,
+    "pageEnd": 604,
+    "numberOfPages": 1,
+    "firstJuz": 30,
+    "lastJuz": 30,
+    "juzs": [
+      30
+    ],
+    "revelationOrder": 21,
+    "revelationExceptions": "",
+    "similarNames": [
+      "an-nas",
+      "people",
+      "man",
+      "an nas",
+      "annas",
+      "nas"
+    ],
+    "juzChangesWithinSurah": false,
+    "wordCount": 20,
+    "letterCount": 80
+  }
+]

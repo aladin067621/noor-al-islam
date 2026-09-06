@@ -1,0 +1,172 @@
+[
+ {
+  "surah": 105,
+  "ayah": 1,
+  "annotations": [
+   {
+    "start": 9,
+    "end": 11,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 26,
+    "end": 28,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 38,
+    "end": 40,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 40,
+    "end": 43,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 46,
+    "end": 47,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 51,
+    "end": 52,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 105,
+  "ayah": 2,
+  "annotations": [
+   {
+    "start": 9,
+    "end": 11,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 29,
+    "end": 30,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 33,
+    "end": 35,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 37,
+    "end": 38,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 105,
+  "ayah": 3,
+  "annotations": [
+   {
+    "start": 4,
+    "end": 6,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 22,
+    "end": 24,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 26,
+    "end": 28,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 34,
+    "end": 35,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 37,
+    "end": 38,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 105,
+  "ayah": 4,
+  "annotations": [
+   {
+    "start": 2,
+    "end": 4,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 6,
+    "end": 7,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 9,
+    "end": 10,
+    "rule": "iqlaab"
+   },
+   {
+    "start": 17,
+    "end": 18,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 18,
+    "end": 20,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 20,
+    "end": 22,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 23,
+    "end": 26,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 26,
+    "end": 27,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 33,
+    "end": 34,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 105,
+  "ayah": 5,
+  "annotations": [
+   {
+    "start": 17,
+    "end": 19,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 19,
+    "end": 21,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 22,
+    "end": 25,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 29,
+    "end": 30,
+    "rule": "maddNatural"
+   }
+  ]
+ }
+]

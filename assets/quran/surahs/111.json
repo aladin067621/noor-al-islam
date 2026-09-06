@@ -1,0 +1,89 @@
+{
+  "id": 111,
+  "type": "makkan",
+  "nameArabic": "المَسَد",
+  "nameTransliteration": "Al-Masad",
+  "nameEnglish": "The Palm Fiber",
+  "numberOfAyahs": 5,
+  "pageStart": 603,
+  "pageEnd": 603,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 6,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-masad",
+    "the-palm-fiber",
+    "al lahab",
+    "the twisted fibre",
+    "palm fibre",
+    "the flame",
+    "al masad",
+    "almasad",
+    "masad"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "تَبَّتۡ يَدَآ أَبِي لَهَبٖ وَتَبَّ",
+      "textTransliteration": "Tabbat yada abee lahabin watabba",
+      "textEnglishSaheeh": "May the hands of Abu Lahab be ruined, and ruined is he.",
+      "textEnglishMustafa": "May the hands of Abu Lahab perish, and he ˹himself˺ perish!",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 5,
+      "letterCount": 15
+    },
+    {
+      "id": 2,
+      "textArabic": "مَآ أَغۡنَىٰ عَنۡهُ مَالُهُۥ وَمَا كَسَبَ",
+      "textTransliteration": "Ma aghna AAanhu maluhu wama kasaba",
+      "textEnglishSaheeh": "His wealth will not avail him or that which he gained.",
+      "textEnglishMustafa": "Neither his wealth nor ˹worldly˺ gains will benefit him.",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 6,
+      "letterCount": 19
+    },
+    {
+      "id": 3,
+      "textArabic": "سَيَصۡلَىٰ نَارٗا ذَاتَ لَهَبٖ",
+      "textTransliteration": "Sayasla naran thata lahabin",
+      "textEnglishSaheeh": "He will [enter to] burn in a Fire of [blazing] flame",
+      "textEnglishMustafa": "He will burn in a flaming Fire,",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 4,
+      "textArabic": "وَٱمۡرَأَتُهُۥ حَمَّالَةَ ٱلۡحَطَبِ",
+      "textTransliteration": "Waimraatuhu hammalata alhatabi",
+      "textEnglishSaheeh": "And his wife [as well] - the carrier of firewood.",
+      "textEnglishMustafa": "and ˹so will˺ his wife, the carrier of ˹thorny˺ kindling,",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 3,
+      "letterCount": 17
+    },
+    {
+      "id": 5,
+      "textArabic": "فِي جِيدِهَا حَبۡلٞ مِّن مَّسَدِۭ",
+      "textTransliteration": "Fee jeediha hablun min masadin",
+      "textEnglishSaheeh": "Around her neck is a rope of [twisted] fiber.",
+      "textEnglishMustafa": "around her neck will be a rope of palm-fibre.",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 5,
+      "letterCount": 15
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 23,
+  "letterCount": 81
+}

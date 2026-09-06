@@ -1,0 +1,119 @@
+{
+  "id": 99,
+  "type": "madinan",
+  "nameArabic": "الزَّلزَلَة",
+  "nameTransliteration": "Az-Zalzalah",
+  "nameEnglish": "The Earthquake",
+  "numberOfAyahs": 8,
+  "pageStart": 599,
+  "pageEnd": 599,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 93,
+  "revelationExceptions": "",
+  "similarNames": [
+    "az zalzala",
+    "az-zalzalah",
+    "the-earthquake",
+    "az zalzalah",
+    "azzalzalah",
+    "zalzalah"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "إِذَا زُلۡزِلَتِ ٱلۡأَرۡضُ زِلۡزَالَهَا",
+      "textTransliteration": "Itha zulzilati alardu zilzalaha",
+      "textEnglishSaheeh": "When the earth is shaken with its [final] earthquake",
+      "textEnglishMustafa": "When the earth is shaken ˹in˺ its ultimate quaking,",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 4,
+      "letterCount": 20
+    },
+    {
+      "id": 2,
+      "textArabic": "وَأَخۡرَجَتِ ٱلۡأَرۡضُ أَثۡقَالَهَا",
+      "textTransliteration": "Waakhrajati alardu athqalaha",
+      "textEnglishSaheeh": "And the earth discharges its burdens",
+      "textEnglishMustafa": "and when the earth throws out ˹all˺ its contents,",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 3,
+      "letterCount": 18
+    },
+    {
+      "id": 3,
+      "textArabic": "وَقَالَ ٱلۡإِنسَٰنُ مَا لَهَا",
+      "textTransliteration": "Waqala alinsanu ma laha",
+      "textEnglishSaheeh": "And man says, \"What is [wrong] with it?\" -",
+      "textEnglishMustafa": "and humanity cries, “What is wrong with it?”—",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 4,
+      "textArabic": "يَوۡمَئِذٖ تُحَدِّثُ أَخۡبَارَهَا",
+      "textTransliteration": "Yawmaithin tuhaddithu akhbaraha",
+      "textEnglishSaheeh": "That Day, it will report its news",
+      "textEnglishMustafa": "on that Day the earth will recount everything,",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 3,
+      "letterCount": 16
+    },
+    {
+      "id": 5,
+      "textArabic": "بِأَنَّ رَبَّكَ أَوۡحَىٰ لَهَا",
+      "textTransliteration": "Bianna rabbaka awha laha",
+      "textEnglishSaheeh": "Because your Lord has commanded it.",
+      "textEnglishMustafa": "having been inspired by your Lord ˹to do so˺.",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 4,
+      "letterCount": 13
+    },
+    {
+      "id": 6,
+      "textArabic": "يَوۡمَئِذٖ يَصۡدُرُ ٱلنَّاسُ أَشۡتَاتٗا لِّيُرَوۡاْ أَعۡمَٰلَهُمۡ",
+      "textTransliteration": "Yawmaithin yasduru alnnasu ashtatan liyuraw aAAmalahum",
+      "textEnglishSaheeh": "That Day, the people will depart separated [into categories] to be shown [the result of] their deeds.",
+      "textEnglishMustafa": "On that Day people will proceed in separate groups to be shown ˹the consequences of˺ their deeds.",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 6,
+      "letterCount": 31
+    },
+    {
+      "id": 7,
+      "textArabic": "فَمَن يَعۡمَلۡ مِثۡقَالَ ذَرَّةٍ خَيۡرٗا يَرَهُۥ",
+      "textTransliteration": "Faman yaAAmal mithqala tharratin khayran yarahu",
+      "textEnglishSaheeh": "So whoever does an atom's weight of good will see it,",
+      "textEnglishMustafa": "So whoever does an atom’s weight of good will see it.",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 6,
+      "letterCount": 22
+    },
+    {
+      "id": 8,
+      "textArabic": "وَمَن يَعۡمَلۡ مِثۡقَالَ ذَرَّةٖ شَرّٗا يَرَهُۥ",
+      "textTransliteration": "Waman yaAAmal mithqala tharratin sharran yarahu",
+      "textEnglishSaheeh": "And whoever does an atom's weight of evil will see it.",
+      "textEnglishMustafa": "And whoever does an atom’s weight of evil will see it.",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 6,
+      "letterCount": 21
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 36,
+  "letterCount": 156
+}

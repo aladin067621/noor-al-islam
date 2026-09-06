@@ -1,0 +1,64 @@
+{
+  "id": 108,
+  "type": "makkan",
+  "nameArabic": "الكَوثر",
+  "nameTransliteration": "Al-Kawthar",
+  "nameEnglish": "The Abundance",
+  "numberOfAyahs": 3,
+  "pageStart": 602,
+  "pageEnd": 602,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 15,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-kawthar",
+    "the-abundance",
+    "a river in paradise",
+    "al kawthar",
+    "alkawthar",
+    "kawthar"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "إِنَّآ أَعۡطَيۡنَٰكَ ٱلۡكَوۡثَرَ",
+      "textTransliteration": "Inna aAAtaynaka alkawthara",
+      "textEnglishSaheeh": "Indeed, We have granted you, [O Muhammad], al-Kawthar.",
+      "textEnglishMustafa": "Indeed, We have granted you ˹O Prophet˺ abundant goodness.",
+      "juz": 30,
+      "page": 602,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 2,
+      "textArabic": "فَصَلِّ لِرَبِّكَ وَٱنۡحَرۡ",
+      "textTransliteration": "Fasalli lirabbika wainhar",
+      "textEnglishSaheeh": "So pray to your Lord and sacrifice [to Him alone].",
+      "textEnglishMustafa": "So pray and sacrifice to your Lord ˹alone˺.",
+      "juz": 30,
+      "page": 602,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 3,
+      "textArabic": "إِنَّ شَانِئَكَ هُوَ ٱلۡأَبۡتَرُ",
+      "textTransliteration": "Inna shaniaka huwa alabtaru",
+      "textEnglishSaheeh": "Indeed, your enemy is the one cut off.",
+      "textEnglishMustafa": "Only the one who hates you is truly cut off ˹from any goodness˺.",
+      "juz": 30,
+      "page": 602,
+      "wordCount": 4,
+      "letterCount": 15
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 10,
+  "letterCount": 42
+}

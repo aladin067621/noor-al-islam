@@ -1,0 +1,85 @@
+{
+  "id": 105,
+  "type": "makkan",
+  "nameArabic": "الفِيل",
+  "nameTransliteration": "Al-Fil",
+  "nameEnglish": "The Elephant",
+  "numberOfAyahs": 5,
+  "pageStart": 601,
+  "pageEnd": 601,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 19,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-fil",
+    "the-elephant",
+    "al fil",
+    "alfil",
+    "fil"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "أَلَمۡ تَرَ كَيۡفَ فَعَلَ رَبُّكَ بِأَصۡحَٰبِ ٱلۡفِيلِ",
+      "textTransliteration": "Alam tara kayfa faAAala rabbuka biashabi alfeeli",
+      "textEnglishSaheeh": "Have you not considered, [O Muhammad], how your Lord dealt with the companions of the elephant?",
+      "textEnglishMustafa": "Have you not seen ˹O Prophet˺ how your Lord dealt with the Army of the Elephant?",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 7,
+      "letterCount": 24
+    },
+    {
+      "id": 2,
+      "textArabic": "أَلَمۡ يَجۡعَلۡ كَيۡدَهُمۡ فِي تَضۡلِيلٖ",
+      "textTransliteration": "Alam yajAAal kaydahum fee tadleelin",
+      "textEnglishSaheeh": "Did He not make their plan into misguidance?",
+      "textEnglishMustafa": "Did He not frustrate their scheme?",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 5,
+      "letterCount": 19
+    },
+    {
+      "id": 3,
+      "textArabic": "وَأَرۡسَلَ عَلَيۡهِمۡ طَيۡرًا أَبَابِيلَ",
+      "textTransliteration": "Waarsala AAalayhim tayran ababeela",
+      "textEnglishSaheeh": "And He sent against them birds in flocks,",
+      "textEnglishMustafa": "For He sent against them flocks of birds,",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 20
+    },
+    {
+      "id": 4,
+      "textArabic": "تَرۡمِيهِم بِحِجَارَةٖ مِّن سِجِّيلٖ",
+      "textTransliteration": "Tarmeehim bihijaratin min sijjeelin",
+      "textEnglishSaheeh": "Striking them with stones of hard clay,",
+      "textEnglishMustafa": "that pelted them with stones of baked clay,",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 4,
+      "letterCount": 18
+    },
+    {
+      "id": 5,
+      "textArabic": "فَجَعَلَهُمۡ كَعَصۡفٖ مَّأۡكُولِۭ",
+      "textTransliteration": "FajaAAalahum kaAAasfin makoolin",
+      "textEnglishSaheeh": "And He made them like eaten straw.",
+      "textEnglishMustafa": "leaving them like chewed up straw.",
+      "juz": 30,
+      "page": 601,
+      "wordCount": 3,
+      "letterCount": 15
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 23,
+  "letterCount": 96
+}

@@ -1,0 +1,151 @@
+[
+ {
+  "surah": 106,
+  "ayah": 1,
+  "annotations": [
+   {
+    "start": 4,
+    "end": 5,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 5,
+    "end": 8,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 11,
+    "end": 15,
+    "rule": "tafkhim"
+   }
+  ]
+ },
+ {
+  "surah": 106,
+  "ayah": 2,
+  "annotations": [
+   {
+    "start": 2,
+    "end": 6,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 22,
+    "end": 23,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 23,
+    "end": 24,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 29,
+    "end": 31,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 36,
+    "end": 37,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 37,
+    "end": 38,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 38,
+    "end": 41,
+    "rule": "tafkhim"
+   }
+  ]
+ },
+ {
+  "surah": 106,
+  "ayah": 3,
+  "annotations": [
+   {
+    "start": 12,
+    "end": 13,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 16,
+    "end": 18,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 22,
+    "end": 25,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 29,
+    "end": 30,
+    "rule": "hamzatWaslSilent"
+   }
+  ]
+ },
+ {
+  "surah": 106,
+  "ayah": 4,
+  "annotations": [
+   {
+    "start": 6,
+    "end": 8,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 11,
+    "end": 13,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 19,
+    "end": 20,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 21,
+    "end": 24,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 24,
+    "end": 25,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 28,
+    "end": 29,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 29,
+    "end": 31,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 36,
+    "end": 37,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 43,
+    "end": 44,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 45,
+    "end": 48,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 51,
+    "end": 53,
+    "rule": "tafkhim"
+   }
+  ]
+ }
+]

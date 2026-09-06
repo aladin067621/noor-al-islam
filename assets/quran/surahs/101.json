@@ -1,0 +1,158 @@
+{
+  "id": 101,
+  "type": "makkan",
+  "nameArabic": "القَارِعَة",
+  "nameTransliteration": "Al-Qari'ah",
+  "nameEnglish": "The Calamity",
+  "numberOfAyahs": 11,
+  "pageStart": 600,
+  "pageEnd": 600,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 30,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al qari a",
+    "al-qari-ah",
+    "the-calamity",
+    "the clatterer",
+    "day of noise chaos",
+    "the crashing blow",
+    "the great calamity",
+    "the striking hour",
+    "al-qari'ah",
+    "al qari'ah",
+    "alqari'ah",
+    "qari'ah"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "ٱلۡقَارِعَةُ",
+      "textTransliteration": "AlqariAAatu",
+      "textEnglishSaheeh": "The Striking Calamity -",
+      "textEnglishMustafa": "The Striking Disaster!",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 1,
+      "letterCount": 7
+    },
+    {
+      "id": 2,
+      "textArabic": "مَا ٱلۡقَارِعَةُ",
+      "textTransliteration": "Ma alqariAAatu",
+      "textEnglishSaheeh": "What is the Striking Calamity?",
+      "textEnglishMustafa": "What is the Striking Disaster?",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 2,
+      "letterCount": 9
+    },
+    {
+      "id": 3,
+      "textArabic": "وَمَآ أَدۡرَىٰكَ مَا ٱلۡقَارِعَةُ",
+      "textTransliteration": "Wama adraka ma alqariAAatu",
+      "textEnglishSaheeh": "And what can make you know what is the Striking Calamity?",
+      "textEnglishMustafa": "And what will make you realize what the Striking Disaster is?",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 4,
+      "textArabic": "يَوۡمَ يَكُونُ ٱلنَّاسُ كَٱلۡفَرَاشِ ٱلۡمَبۡثُوثِ",
+      "textTransliteration": "Yawma yakoonu alnnasu kaalfarashi almabthoothi",
+      "textEnglishSaheeh": "It is the Day when people will be like moths, dispersed,",
+      "textEnglishMustafa": "˹It is˺ the Day people will be like scattered moths,",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 5,
+      "letterCount": 26
+    },
+    {
+      "id": 5,
+      "textArabic": "وَتَكُونُ ٱلۡجِبَالُ كَٱلۡعِهۡنِ ٱلۡمَنفُوشِ",
+      "textTransliteration": "Watakoonu aljibalu kaalAAihni almanfooshi",
+      "textEnglishSaheeh": "And the mountains will be like wool, fluffed up.",
+      "textEnglishMustafa": "and the mountains will be like carded wool.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 24
+    },
+    {
+      "id": 6,
+      "textArabic": "فَأَمَّا مَن ثَقُلَتۡ مَوَٰزِينُهُۥ",
+      "textTransliteration": "Faamma man thaqulat mawazeenuhu",
+      "textEnglishSaheeh": "Then as for one whose scales are heavy [with good deeds],",
+      "textEnglishMustafa": "So as for those whose scale is heavy ˹with good deeds˺,",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 7,
+      "textArabic": "فَهُوَ فِي عِيشَةٖ رَّاضِيَةٖ",
+      "textTransliteration": "Fahuwa fee AAeeshatin radiyatin",
+      "textEnglishSaheeh": "He will be in a pleasant life.",
+      "textEnglishMustafa": "they will be in a life of bliss.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 8,
+      "textArabic": "وَأَمَّا مَنۡ خَفَّتۡ مَوَٰزِينُهُۥ",
+      "textTransliteration": "Waamma man khaffat mawazeenuhu",
+      "textEnglishSaheeh": "But as for one whose scales are light,",
+      "textEnglishMustafa": "And as for those whose scale is light,",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 9,
+      "textArabic": "فَأُمُّهُۥ هَاوِيَةٞ",
+      "textTransliteration": "Faommuhu hawiyatun",
+      "textEnglishSaheeh": "His refuge will be an abyss.",
+      "textEnglishMustafa": "their home will be the abyss.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 2,
+      "letterCount": 9
+    },
+    {
+      "id": 10,
+      "textArabic": "وَمَآ أَدۡرَىٰكَ مَا هِيَهۡ",
+      "textTransliteration": "Wama adraka ma hiyah",
+      "textEnglishSaheeh": "And what can make you know what that is?",
+      "textEnglishMustafa": "And what will make you realize what that is?",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 13
+    },
+    {
+      "id": 11,
+      "textArabic": "نَارٌ حَامِيَةُۢ",
+      "textTransliteration": "Narun hamiyatun",
+      "textEnglishSaheeh": "It is a Fire, intensely hot.",
+      "textEnglishMustafa": "˹It is˺ a scorching Fire.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 2,
+      "letterCount": 8
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 36,
+  "letterCount": 158
+}

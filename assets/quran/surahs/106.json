@@ -1,0 +1,72 @@
+{
+  "id": 106,
+  "type": "makkan",
+  "nameArabic": "قُرَيش",
+  "nameTransliteration": "Quraysh",
+  "nameEnglish": "Quraysh",
+  "numberOfAyahs": 4,
+  "pageStart": 602,
+  "pageEnd": 602,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 29,
+  "revelationExceptions": "",
+  "similarNames": [
+    "the tribe quraish",
+    "custodians of kaaba",
+    "quraysh"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "لِإِيلَٰفِ قُرَيۡشٍ",
+      "textTransliteration": "Lieelafi qurayshin",
+      "textEnglishSaheeh": "For the accustomed security of the Quraysh -",
+      "textEnglishMustafa": "˹At least˺ for ˹the favour of˺ making Quraysh habitually secure—",
+      "juz": 30,
+      "page": 602,
+      "wordCount": 2,
+      "letterCount": 9
+    },
+    {
+      "id": 2,
+      "textArabic": "إِۦلَٰفِهِمۡ رِحۡلَةَ ٱلشِّتَآءِ وَٱلصَّيۡفِ",
+      "textTransliteration": "Eelafihim rihlata alshshitai waalssayfi",
+      "textEnglishSaheeh": "Their accustomed security [in] the caravan of winter and summer -",
+      "textEnglishMustafa": "secure in their trading caravan ˹to Yemen˺ in the winter and ˹Syria˺ in the summer—",
+      "juz": 30,
+      "page": 602,
+      "wordCount": 4,
+      "letterCount": 21
+    },
+    {
+      "id": 3,
+      "textArabic": "فَلۡيَعۡبُدُواْ رَبَّ هَٰذَا ٱلۡبَيۡتِ",
+      "textTransliteration": "FalyaAAbudoo rabba hatha albayti",
+      "textEnglishSaheeh": "Let them worship the Lord of this House,",
+      "textEnglishMustafa": "let them worship the Lord of this ˹Sacred˺ House,",
+      "juz": 30,
+      "page": 602,
+      "wordCount": 4,
+      "letterCount": 18
+    },
+    {
+      "id": 4,
+      "textArabic": "ٱلَّذِيٓ أَطۡعَمَهُم مِّن جُوعٖ وَءَامَنَهُم مِّنۡ خَوۡفِۭ",
+      "textTransliteration": "Allathee atAAamahum min jooAAin waamanahum min khawfin",
+      "textEnglishSaheeh": "Who has fed them, [saving them] from hunger and made them safe, [saving them] from fear.",
+      "textEnglishMustafa": "Who has fed them against hunger and made them secure against fear.",
+      "juz": 30,
+      "page": 602,
+      "wordCount": 7,
+      "letterCount": 27
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 17,
+  "letterCount": 75
+}

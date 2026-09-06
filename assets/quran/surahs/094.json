@@ -1,0 +1,121 @@
+{
+  "id": 94,
+  "type": "makkan",
+  "nameArabic": "الشَّرح",
+  "nameTransliteration": "Ash-Sharh",
+  "nameEnglish": "The Relief",
+  "numberOfAyahs": 8,
+  "pageStart": 596,
+  "pageEnd": 597,
+  "numberOfPages": 2,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 12,
+  "revelationExceptions": "",
+  "similarNames": [
+    "ash-sharh",
+    "the-relief",
+    "expansion of chest",
+    "the expansion",
+    "the opening forth",
+    "ash sharh",
+    "ashsharh",
+    "sharh"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "أَلَمۡ نَشۡرَحۡ لَكَ صَدۡرَكَ",
+      "textTransliteration": "Alam nashrah laka sadraka",
+      "textEnglishSaheeh": "Did We not expand for you, [O Muhammad], your breast?",
+      "textEnglishMustafa": "Have We not uplifted your heart for you ˹O Prophet˺,",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 4,
+      "letterCount": 13
+    },
+    {
+      "id": 2,
+      "textArabic": "وَوَضَعۡنَا عَنكَ وِزۡرَكَ",
+      "textTransliteration": "WawadaAAna AAanka wizraka",
+      "textEnglishSaheeh": "And We removed from you your burden",
+      "textEnglishMustafa": "relieved you of the burden",
+      "juz": 30,
+      "page": 596,
+      "wordCount": 3,
+      "letterCount": 13
+    },
+    {
+      "id": 3,
+      "textArabic": "ٱلَّذِيٓ أَنقَضَ ظَهۡرَكَ",
+      "textTransliteration": "Allathee anqada thahraka",
+      "textEnglishSaheeh": "Which had weighed upon your back",
+      "textEnglishMustafa": "which weighed so heavily on your back,",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 4,
+      "textArabic": "وَرَفَعۡنَا لَكَ ذِكۡرَكَ",
+      "textTransliteration": "WarafaAAna laka thikraka",
+      "textEnglishSaheeh": "And raised high for you your repute.",
+      "textEnglishMustafa": "and elevated your renown for you?",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 5,
+      "textArabic": "فَإِنَّ مَعَ ٱلۡعُسۡرِ يُسۡرًا",
+      "textTransliteration": "Fainna maAAa alAAusri yusran",
+      "textEnglishSaheeh": "For indeed, with hardship [will be] ease.",
+      "textEnglishMustafa": "So, surely with hardship comes ease.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 6,
+      "textArabic": "إِنَّ مَعَ ٱلۡعُسۡرِ يُسۡرٗا",
+      "textTransliteration": "Inna maAAa alAAusri yusran",
+      "textEnglishSaheeh": "Indeed, with hardship [will be] ease.",
+      "textEnglishMustafa": "Surely with ˹that˺ hardship comes ˹more˺ ease.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 13
+    },
+    {
+      "id": 7,
+      "textArabic": "فَإِذَا فَرَغۡتَ فَٱنصَبۡ",
+      "textTransliteration": "Faitha faraghta fainsab",
+      "textEnglishSaheeh": "So when you have finished [your duties], then stand up [for worship].",
+      "textEnglishMustafa": "So once you have fulfilled ˹your duty˺, strive ˹in devotion˺,",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 13
+    },
+    {
+      "id": 8,
+      "textArabic": "وَإِلَىٰ رَبِّكَ فَٱرۡغَب",
+      "textTransliteration": "Waila rabbika fairghab",
+      "textEnglishSaheeh": "And to your Lord direct [your] longing.",
+      "textEnglishMustafa": "turning to your Lord ˹alone˺ with hope.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 12
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 27,
+  "letterCount": 102
+}

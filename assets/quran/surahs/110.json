@@ -1,0 +1,64 @@
+{
+  "id": 110,
+  "type": "madinan",
+  "nameArabic": "النَّصر",
+  "nameTransliteration": "An-Nasr",
+  "nameEnglish": "The Divine Support",
+  "numberOfAyahs": 3,
+  "pageStart": 603,
+  "pageEnd": 603,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 114,
+  "revelationExceptions": "Revealed at Mina on Last Hajj, but regarded as Madinan sura",
+  "similarNames": [
+    "an-nasr",
+    "the-divine-support",
+    "the help",
+    "an nasr",
+    "annasr",
+    "nasr"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "إِذَا جَآءَ نَصۡرُ ٱللَّهِ وَٱلۡفَتۡحُ",
+      "textTransliteration": "Itha jaa nasru Allahi waalfathu",
+      "textEnglishSaheeh": "When the victory of Allah has come and the conquest,",
+      "textEnglishMustafa": "When Allah’s ˹ultimate˺ help comes and the victory ˹over Mecca is achieved˺,",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 5,
+      "letterCount": 19
+    },
+    {
+      "id": 2,
+      "textArabic": "وَرَأَيۡتَ ٱلنَّاسَ يَدۡخُلُونَ فِي دِينِ ٱللَّهِ أَفۡوَاجٗا",
+      "textTransliteration": "Waraayta alnnasa yadkhuloona fee deeni Allahi afwajan",
+      "textEnglishSaheeh": "And you see the people entering into the religion of Allah in multitudes,",
+      "textEnglishMustafa": "and you ˹O Prophet˺ see the people embracing Allah’s Way in crowds,",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 7,
+      "letterCount": 31
+    },
+    {
+      "id": 3,
+      "textArabic": "فَسَبِّحۡ بِحَمۡدِ رَبِّكَ وَٱسۡتَغۡفِرۡهُۚ إِنَّهُۥ كَانَ تَوَّابَۢا",
+      "textTransliteration": "Fasabbih bihamdi rabbika waistaghfirhu innahu kana tawwaban",
+      "textEnglishSaheeh": "Then exalt [Him] with praise of your Lord and ask forgiveness of Him. Indeed, He is ever Accepting of repentance.",
+      "textEnglishMustafa": "then glorify the praises of your Lord and seek His forgiveness, for certainly He is ever Accepting of Repentance.",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 7,
+      "letterCount": 30
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 19,
+  "letterCount": 80
+}

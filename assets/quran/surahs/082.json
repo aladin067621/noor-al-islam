@@ -1,0 +1,242 @@
+{
+  "id": 82,
+  "type": "makkan",
+  "nameArabic": "الإنفِطَار",
+  "nameTransliteration": "Al-Infitar",
+  "nameEnglish": "The Cleaving",
+  "numberOfAyahs": 19,
+  "pageStart": 587,
+  "pageEnd": 587,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 82,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-infitar",
+    "the-cleaving",
+    "the splitting apart",
+    "torn apart",
+    "the cleaving asunder",
+    "al infitar",
+    "alinfitar",
+    "infitar"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "إِذَا ٱلسَّمَآءُ ٱنفَطَرَتۡ",
+      "textTransliteration": "Itha alssamao infatarat",
+      "textEnglishSaheeh": "When the sky breaks apart",
+      "textEnglishMustafa": "When the sky splits open,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 2,
+      "textArabic": "وَإِذَا ٱلۡكَوَاكِبُ ٱنتَثَرَتۡ",
+      "textTransliteration": "Waitha alkawakibu intatharat",
+      "textEnglishSaheeh": "And when the stars fall, scattering,",
+      "textEnglishMustafa": "and when the stars fall away,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 3,
+      "letterCount": 17
+    },
+    {
+      "id": 3,
+      "textArabic": "وَإِذَا ٱلۡبِحَارُ فُجِّرَتۡ",
+      "textTransliteration": "Waitha albiharu fujjirat",
+      "textEnglishSaheeh": "And when the seas are erupted",
+      "textEnglishMustafa": "and when the seas burst forth,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 4,
+      "textArabic": "وَإِذَا ٱلۡقُبُورُ بُعۡثِرَتۡ",
+      "textTransliteration": "Waitha alqubooru buAAthirat",
+      "textEnglishSaheeh": "And when the [contents of] graves are scattered,",
+      "textEnglishMustafa": "and when the graves spill out,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 5,
+      "textArabic": "عَلِمَتۡ نَفۡسٞ مَّا قَدَّمَتۡ وَأَخَّرَتۡ",
+      "textTransliteration": "AAalimat nafsun ma qaddamat waakhkharat",
+      "textEnglishSaheeh": "A soul will [then] know what it has put forth and kept back.",
+      "textEnglishMustafa": "˹then˺ each soul will know what it has sent forth or left behind.",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 6,
+      "textArabic": "يَٰٓأَيُّهَا ٱلۡإِنسَٰنُ مَا غَرَّكَ بِرَبِّكَ ٱلۡكَرِيمِ",
+      "textTransliteration": "Ya ayyuha alinsanu ma gharraka birabbika alkareemi",
+      "textEnglishSaheeh": "O mankind, what has deceived you concerning your Lord, the Generous,",
+      "textEnglishMustafa": "O humanity! What has emboldened you against your Lord, the Most Generous,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 6,
+      "letterCount": 26
+    },
+    {
+      "id": 7,
+      "textArabic": "ٱلَّذِي خَلَقَكَ فَسَوَّىٰكَ فَعَدَلَكَ",
+      "textTransliteration": "Allathee khalaqaka fasawwaka faAAadalaka",
+      "textEnglishSaheeh": "Who created you, proportioned you, and balanced you?",
+      "textEnglishMustafa": "Who created you, fashioned you, and perfected your design,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 4,
+      "letterCount": 18
+    },
+    {
+      "id": 8,
+      "textArabic": "فِيٓ أَيِّ صُورَةٖ مَّا شَآءَ رَكَّبَكَ",
+      "textTransliteration": "Fee ayyi sooratin ma shaa rakkabaka",
+      "textEnglishSaheeh": "In whatever form He willed has He assembled you.",
+      "textEnglishMustafa": "moulding you in whatever form He willed?",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 6,
+      "letterCount": 17
+    },
+    {
+      "id": 9,
+      "textArabic": "كـَلَّا بَلۡ تُكَذِّبُونَ بِٱلدِّينِ",
+      "textTransliteration": "Kalla bal tukaththiboona bialddeeni",
+      "textEnglishSaheeh": "No! But you deny the Recompense.",
+      "textEnglishMustafa": "But no! In fact, you deny the ˹final˺ Judgment,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 10,
+      "textArabic": "وَإِنَّ عَلَيۡكُمۡ لَحَٰفِظِينَ",
+      "textTransliteration": "Wainna AAalaykum lahafitheena",
+      "textEnglishSaheeh": "And indeed, [appointed] over you are keepers,",
+      "textEnglishMustafa": "while you are certainly observed by vigilant,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 11,
+      "textArabic": "كِرَامٗا كَٰتِبِينَ",
+      "textTransliteration": "Kiraman katibeena",
+      "textEnglishSaheeh": "Noble and recording;",
+      "textEnglishMustafa": "honourable angels, recording ˹everything˺.",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 2,
+      "letterCount": 10
+    },
+    {
+      "id": 12,
+      "textArabic": "يَعۡلَمُونَ مَا تَفۡعَلُونَ",
+      "textTransliteration": "YaAAlamoona ma tafAAaloona",
+      "textEnglishSaheeh": "They know whatever you do.",
+      "textEnglishMustafa": "They know whatever you do.",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 13,
+      "textArabic": "إِنَّ ٱلۡأَبۡرَارَ لَفِي نَعِيمٖ",
+      "textTransliteration": "Inna alabrara lafee naAAeemin",
+      "textEnglishSaheeh": "Indeed, the righteous will be in pleasure,",
+      "textEnglishMustafa": "Indeed, the virtuous will be in bliss,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 14,
+      "textArabic": "وَإِنَّ ٱلۡفُجَّارَ لَفِي جَحِيمٖ",
+      "textTransliteration": "Wainna alfujjara lafee jaheemin",
+      "textEnglishSaheeh": "And indeed, the wicked will be in Hellfire.",
+      "textEnglishMustafa": "and the wicked will be in Hell,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 15,
+      "textArabic": "يَصۡلَوۡنَهَا يَوۡمَ ٱلدِّينِ",
+      "textTransliteration": "Yaslawnaha yawma alddeeni",
+      "textEnglishSaheeh": "They will [enter to] burn therein on the Day of Recompense,",
+      "textEnglishMustafa": "burning in it on Judgment Day,",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 16,
+      "textArabic": "وَمَا هُمۡ عَنۡهَا بِغَآئِبِينَ",
+      "textTransliteration": "Wama hum AAanha bighaibeena",
+      "textEnglishSaheeh": "And never therefrom will they be absent.",
+      "textEnglishMustafa": "and they will have no escape from it.",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 17,
+      "textArabic": "وَمَآ أَدۡرَىٰكَ مَا يَوۡمُ ٱلدِّينِ",
+      "textTransliteration": "Wama adraka ma yawmu alddeeni",
+      "textEnglishSaheeh": "And what can make you know what is the Day of Recompense?",
+      "textEnglishMustafa": "What will make you realize what Judgment Day is?",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 18,
+      "textArabic": "ثُمَّ مَآ أَدۡرَىٰكَ مَا يَوۡمُ ٱلدِّينِ",
+      "textTransliteration": "Thumma ma adraka ma yawmu alddeeni",
+      "textEnglishSaheeh": "Then, what can make you know what is the Day of Recompense?",
+      "textEnglishMustafa": "Again, what will make you realize what Judgment Day is?",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 6,
+      "letterCount": 19
+    },
+    {
+      "id": 19,
+      "textArabic": "يَوۡمَ لَا تَمۡلِكُ نَفۡسٞ لِّنَفۡسٖ شَيۡـٔٗاۖ وَٱلۡأَمۡرُ يَوۡمَئِذٖ لِّلَّهِ",
+      "textTransliteration": "Yawma la tamliku nafsun linafsin shayan waalamru yawmaithin lillahi",
+      "textEnglishSaheeh": "It is the Day when a soul will not possess for another soul [power to do] a thing; and the command, that Day, is [entirely] with Allah.",
+      "textEnglishMustafa": "˹It is˺ the Day no soul will be of ˹any˺ benefit to another whatsoever, for all authority on that Day belongs to Allah ˹entirely˺.",
+      "juz": 30,
+      "page": 587,
+      "wordCount": 9,
+      "letterCount": 33
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 80,
+  "letterCount": 328
+}

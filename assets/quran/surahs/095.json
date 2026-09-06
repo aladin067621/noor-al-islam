@@ -1,0 +1,119 @@
+{
+  "id": 95,
+  "type": "makkan",
+  "nameArabic": "التِّين",
+  "nameTransliteration": "At-Tin",
+  "nameEnglish": "The Fig",
+  "numberOfAyahs": 8,
+  "pageStart": 597,
+  "pageEnd": 597,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 28,
+  "revelationExceptions": "",
+  "similarNames": [
+    "at-tin",
+    "the-fig",
+    "the fig tree",
+    "at tin",
+    "attin",
+    "tin"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "وَٱلتِّينِ وَٱلزَّيۡتُونِ",
+      "textTransliteration": "Waaltteeni waalzzaytooni",
+      "textEnglishSaheeh": "By the fig and the olive",
+      "textEnglishMustafa": "By the fig and the olive ˹of Jerusalem˺,",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 2,
+      "letterCount": 14
+    },
+    {
+      "id": 2,
+      "textArabic": "وَطُورِ سِينِينَ",
+      "textTransliteration": "Watoori seeneena",
+      "textEnglishSaheeh": "And [by] Mount Sinai",
+      "textEnglishMustafa": "and Mount Sinai,",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 2,
+      "letterCount": 9
+    },
+    {
+      "id": 3,
+      "textArabic": "وَهَٰذَا ٱلۡبَلَدِ ٱلۡأَمِينِ",
+      "textTransliteration": "Wahatha albaladi alameeni",
+      "textEnglishSaheeh": "And [by] this secure city [Mecca],",
+      "textEnglishMustafa": "and this secure city ˹of Mecca˺!",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 4,
+      "textArabic": "لَقَدۡ خَلَقۡنَا ٱلۡإِنسَٰنَ فِيٓ أَحۡسَنِ تَقۡوِيمٖ",
+      "textTransliteration": "Laqad khalaqna alinsana fee ahsani taqweemin",
+      "textEnglishSaheeh": "We have certainly created man in the best of stature;",
+      "textEnglishMustafa": "Indeed, We created humans in the best form.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 6,
+      "letterCount": 25
+    },
+    {
+      "id": 5,
+      "textArabic": "ثُمَّ رَدَدۡنَٰهُ أَسۡفَلَ سَٰفِلِينَ",
+      "textTransliteration": "Thumma radadnahu asfala safileena",
+      "textEnglishSaheeh": "Then We return him to the lowest of the low,",
+      "textEnglishMustafa": "But We will reduce them to the lowest of the low ˹in Hell˺,",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 6,
+      "textArabic": "إِلَّا ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّٰلِحَٰتِ فَلَهُمۡ أَجۡرٌ غَيۡرُ مَمۡنُونٖ",
+      "textTransliteration": "Illa allatheena amanoo waAAamiloo alssalihati falahum ajrun ghayru mamnoonin",
+      "textEnglishSaheeh": "Except for those who believe and do righteous deeds, for they will have a reward uninterrupted.",
+      "textEnglishMustafa": "except those who believe and do good—they will have a never-ending reward.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 9,
+      "letterCount": 41
+    },
+    {
+      "id": 7,
+      "textArabic": "فَمَا يُكَذِّبُكَ بَعۡدُ بِٱلدِّينِ",
+      "textTransliteration": "Fama yukaththibuka baAAdu bialddeeni",
+      "textEnglishSaheeh": "So what yet causes you to deny the Recompense?",
+      "textEnglishMustafa": "Now, what makes you deny the ˹final˺ Judgment?",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 8,
+      "textArabic": "أَلَيۡسَ ٱللَّهُ بِأَحۡكَمِ ٱلۡحَٰكِمِينَ",
+      "textTransliteration": "Alaysa Allahu biahkami alhakimeena",
+      "textEnglishSaheeh": "Is not Allah the most just of judges?",
+      "textEnglishMustafa": "Is Allah not the most just of all judges?",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 20
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 34,
+  "letterCount": 157
+}

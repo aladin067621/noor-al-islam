@@ -1,0 +1,76 @@
+{
+  "id": 112,
+  "type": "makkan",
+  "nameArabic": "الإِخلَاص",
+  "nameTransliteration": "Al-Ikhlas",
+  "nameEnglish": "The Sincerity",
+  "numberOfAyahs": 4,
+  "pageStart": 604,
+  "pageEnd": 604,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 22,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-ikhlas",
+    "the-sincerity",
+    "oneness",
+    "the purity",
+    "al ikhlas",
+    "alikhlas",
+    "ikhlas"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "قُلۡ هُوَ ٱللَّهُ أَحَدٌ",
+      "textTransliteration": "Qul huwa Allahu ahadun",
+      "textEnglishSaheeh": "Say, \"He is Allah, [who is] One,",
+      "textEnglishMustafa": "Say, ˹O Prophet,˺ “He is Allah—One ˹and Indivisible˺;",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 4,
+      "letterCount": 11
+    },
+    {
+      "id": 2,
+      "textArabic": "ٱللَّهُ ٱلصَّمَدُ",
+      "textTransliteration": "Allahu alssamadu",
+      "textEnglishSaheeh": "Allah, the Eternal Refuge.",
+      "textEnglishMustafa": "Allah—the Sustainer ˹needed by all˺.",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 2,
+      "letterCount": 9
+    },
+    {
+      "id": 3,
+      "textArabic": "لَمۡ يَلِدۡ وَلَمۡ يُولَدۡ",
+      "textTransliteration": "Lam yalid walam yooladu",
+      "textEnglishSaheeh": "He neither begets nor is born,",
+      "textEnglishMustafa": "He has never had offspring, nor was He born.",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 4,
+      "letterCount": 12
+    },
+    {
+      "id": 4,
+      "textArabic": "وَلَمۡ يَكُن لَّهُۥ كُفُوًا أَحَدُۢ",
+      "textTransliteration": "Walam yakun lahu kufuwan ahadun",
+      "textEnglishSaheeh": "Nor is there to Him any equivalent.\"",
+      "textEnglishMustafa": "And there is none comparable to Him.”",
+      "juz": 30,
+      "page": 604,
+      "wordCount": 5,
+      "letterCount": 15
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 15,
+  "letterCount": 47
+}

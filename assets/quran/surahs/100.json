@@ -1,0 +1,155 @@
+{
+  "id": 100,
+  "type": "makkan",
+  "nameArabic": "العَادِيَات",
+  "nameTransliteration": "Al-'Adiyat",
+  "nameEnglish": "The Courser",
+  "numberOfAyahs": 11,
+  "pageStart": 599,
+  "pageEnd": 600,
+  "numberOfPages": 2,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 14,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al--adiyat",
+    "the-courser",
+    "the snorting horses",
+    "the charging steeds",
+    "those that run",
+    "al-'adiyat",
+    "al 'adiyat",
+    "al'adiyat",
+    "'adiyat"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "وَٱلۡعَٰدِيَٰتِ ضَبۡحٗا",
+      "textTransliteration": "WaalAAadiyati dabhan",
+      "textEnglishSaheeh": "By the racers, panting,",
+      "textEnglishMustafa": "’ By the galloping, panting horses,",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 2,
+      "letterCount": 11
+    },
+    {
+      "id": 2,
+      "textArabic": "فَٱلۡمُورِيَٰتِ قَدۡحٗا",
+      "textTransliteration": "Faalmooriyati qadhan",
+      "textEnglishSaheeh": "And the producers of sparks [when] striking",
+      "textEnglishMustafa": "striking sparks of fire ˹with their hoofs˺,",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 2,
+      "letterCount": 12
+    },
+    {
+      "id": 3,
+      "textArabic": "فَٱلۡمُغِيرَٰتِ صُبۡحٗا",
+      "textTransliteration": "Faalmugheerati subhan",
+      "textEnglishSaheeh": "And the chargers at dawn,",
+      "textEnglishMustafa": "launching raids at dawn,",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 2,
+      "letterCount": 12
+    },
+    {
+      "id": 4,
+      "textArabic": "فَأَثَرۡنَ بِهِۦ نَقۡعٗا",
+      "textTransliteration": "Faatharna bihi naqAAan",
+      "textEnglishSaheeh": "Stirring up thereby [clouds of] dust,",
+      "textEnglishMustafa": "stirring up ˹clouds of˺ dust,",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 3,
+      "letterCount": 11
+    },
+    {
+      "id": 5,
+      "textArabic": "فَوَسَطۡنَ بِهِۦ جَمۡعًا",
+      "textTransliteration": "Fawasatna bihi jamAAan",
+      "textEnglishSaheeh": "Arriving thereby in the center collectively,",
+      "textEnglishMustafa": "and penetrating into the heart of enemy lines!",
+      "juz": 30,
+      "page": 599,
+      "wordCount": 3,
+      "letterCount": 11
+    },
+    {
+      "id": 6,
+      "textArabic": "إِنَّ ٱلۡإِنسَٰنَ لِرَبِّهِۦ لَكَنُودٞ",
+      "textTransliteration": "Inna alinsana lirabbihi lakanoodun",
+      "textEnglishSaheeh": "Indeed mankind, to his Lord, is ungrateful.",
+      "textEnglishMustafa": "Surely humankind is ungrateful to their Lord—",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 7,
+      "textArabic": "وَإِنَّهُۥ عَلَىٰ ذَٰلِكَ لَشَهِيدٞ",
+      "textTransliteration": "Wainnahu AAala thalika lashaheedun",
+      "textEnglishSaheeh": "And indeed, he is to that a witness.",
+      "textEnglishMustafa": "and they certainly attest to this—",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 8,
+      "textArabic": "وَإِنَّهُۥ لِحُبِّ ٱلۡخَيۡرِ لَشَدِيدٌ",
+      "textTransliteration": "Wainnahu lihubbi alkhayri lashadeedun",
+      "textEnglishSaheeh": "And indeed he is, in love of wealth, intense.",
+      "textEnglishMustafa": "and they are truly extreme in their love of ˹worldly˺ gains.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 17
+    },
+    {
+      "id": 9,
+      "textArabic": "۞ أَفَلَا يَعۡلَمُ إِذَا بُعۡثِرَ مَا فِي ٱلۡقُبُورِ",
+      "textTransliteration": "Afala yaAAlamu itha buAAthira ma fee alquboori",
+      "textEnglishSaheeh": "But does he not know that when the contents of the graves are scattered",
+      "textEnglishMustafa": "Do they not know that when the contents of the graves will be spilled out,",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 8,
+      "letterCount": 25
+    },
+    {
+      "id": 10,
+      "textArabic": "وَحُصِّلَ مَا فِي ٱلصُّدُورِ",
+      "textTransliteration": "Wahussila ma fee alssudoori",
+      "textEnglishSaheeh": "And that within the breasts is obtained,",
+      "textEnglishMustafa": "and the secrets of the hearts will be laid bare—",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 11,
+      "textArabic": "إِنَّ رَبَّهُم بِهِمۡ يَوۡمَئِذٖ لَّخَبِيرُۢ",
+      "textTransliteration": "Inna rabbahum bihim yawmaithin lakhabeerun",
+      "textEnglishSaheeh": "Indeed, their Lord with them, that Day, is [fully] Acquainted.",
+      "textEnglishMustafa": "surely their Lord is All-Aware of them on that Day.",
+      "juz": 30,
+      "page": 600,
+      "wordCount": 5,
+      "letterCount": 19
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 41,
+  "letterCount": 164
+}

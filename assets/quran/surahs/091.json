@@ -1,0 +1,195 @@
+{
+  "id": 91,
+  "type": "makkan",
+  "nameArabic": "الشَّمس",
+  "nameTransliteration": "Ash-Shams",
+  "nameEnglish": "The Sun",
+  "numberOfAyahs": 15,
+  "pageStart": 595,
+  "pageEnd": 595,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 26,
+  "revelationExceptions": "",
+  "similarNames": [
+    "ash-shams",
+    "the-sun",
+    "ash shams",
+    "ashshams",
+    "shams"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "وَٱلشَّمۡسِ وَضُحَىٰهَا",
+      "textTransliteration": "Waalshshamsi waduhaha",
+      "textEnglishSaheeh": "By the sun and its brightness",
+      "textEnglishMustafa": "By the sun and its brightness,",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 2,
+      "letterCount": 12
+    },
+    {
+      "id": 2,
+      "textArabic": "وَٱلۡقَمَرِ إِذَا تَلَىٰهَا",
+      "textTransliteration": "Waalqamari itha talaha",
+      "textEnglishSaheeh": "And [by] the moon when it follows it",
+      "textEnglishMustafa": "and the moon as it follows it,",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 3,
+      "textArabic": "وَٱلنَّهَارِ إِذَا جَلَّىٰهَا",
+      "textTransliteration": "Waalnnahari itha jallaha",
+      "textEnglishSaheeh": "And [by] the day when it displays it",
+      "textEnglishMustafa": "and the day as it unveils it,",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 4,
+      "textArabic": "وَٱلَّيۡلِ إِذَا يَغۡشَىٰهَا",
+      "textTransliteration": "Waallayli itha yaghshaha",
+      "textEnglishSaheeh": "And [by] the night when it covers it",
+      "textEnglishMustafa": "and the night as it conceals it!",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 5,
+      "textArabic": "وَٱلسَّمَآءِ وَمَا بَنَىٰهَا",
+      "textTransliteration": "Waalssamai wama banaha",
+      "textEnglishSaheeh": "And [by] the sky and He who constructed it",
+      "textEnglishMustafa": "And by heaven and ˹the One˺ Who built it,",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 6,
+      "textArabic": "وَٱلۡأَرۡضِ وَمَا طَحَىٰهَا",
+      "textTransliteration": "Waalardi wama tahaha",
+      "textEnglishSaheeh": "And [by] the earth and He who spread it",
+      "textEnglishMustafa": "and the earth and ˹the One˺ Who spread it!",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 7,
+      "textArabic": "وَنَفۡسٖ وَمَا سَوَّىٰهَا",
+      "textTransliteration": "Wanafsin wama sawwaha",
+      "textEnglishSaheeh": "And [by] the soul and He who proportioned it",
+      "textEnglishMustafa": "And by the soul and ˹the One˺ Who fashioned it,",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 8,
+      "textArabic": "فَأَلۡهَمَهَا فُجُورَهَا وَتَقۡوَىٰهَا",
+      "textTransliteration": "Faalhamaha fujooraha wataqwaha",
+      "textEnglishSaheeh": "And inspired it [with discernment of] its wickedness and its righteousness,",
+      "textEnglishMustafa": "then with ˹the knowledge of˺ right and wrong inspired it!",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 20
+    },
+    {
+      "id": 9,
+      "textArabic": "قَدۡ أَفۡلَحَ مَن زَكَّىٰهَا",
+      "textTransliteration": "Qad aflaha man zakkaha",
+      "textEnglishSaheeh": "He has succeeded who purifies it,",
+      "textEnglishMustafa": "Successful indeed is the one who purifies their soul,",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 4,
+      "letterCount": 13
+    },
+    {
+      "id": 10,
+      "textArabic": "وَقَدۡ خَابَ مَن دَسَّىٰهَا",
+      "textTransliteration": "Waqad khaba man dassaha",
+      "textEnglishSaheeh": "And he has failed who instills it [with corruption].",
+      "textEnglishMustafa": "and doomed is the one who corrupts it!",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 4,
+      "letterCount": 13
+    },
+    {
+      "id": 11,
+      "textArabic": "كَذَّبَتۡ ثَمُودُ بِطَغۡوَىٰهَآ",
+      "textTransliteration": "Kaththabat thamoodu bitaghwaha",
+      "textEnglishSaheeh": "Thamud denied [their prophet] by reason of their transgression,",
+      "textEnglishMustafa": "Thamûd rejected ˹the truth˺ out of arrogance,",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 15
+    },
+    {
+      "id": 12,
+      "textArabic": "إِذِ ٱنۢبَعَثَ أَشۡقَىٰهَا",
+      "textTransliteration": "Ithi inbaAAatha ashqaha",
+      "textEnglishSaheeh": "When the most wretched of them was sent forth.",
+      "textEnglishMustafa": "when the most wicked of them was roused ˹to kill the she-camel˺.",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 13
+    },
+    {
+      "id": 13,
+      "textArabic": "فَقَالَ لَهُمۡ رَسُولُ ٱللَّهِ نَاقَةَ ٱللَّهِ وَسُقۡيَٰهَا",
+      "textTransliteration": "Faqala lahum rasoolu Allahi naqata Allahi wasuqyaha",
+      "textEnglishSaheeh": "And the messenger of Allah [Salih] said to them, \"[Do not harm] the she-camel of Allah or [prevent her from] her drink.\"",
+      "textEnglishMustafa": "But the messenger of Allah warned them, “˹Do not disturb˺ Allah’s camel and her ˹turn to˺ drink!”",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 7,
+      "letterCount": 29
+    },
+    {
+      "id": 14,
+      "textArabic": "فَكَذَّبُوهُ فَعَقَرُوهَا فَدَمۡدَمَ عَلَيۡهِمۡ رَبُّهُم بِذَنۢبِهِمۡ فَسَوَّىٰهَا",
+      "textTransliteration": "Fakaththaboohu faAAaqarooha fadamdama AAalayhim rabbuhum bithanbihim fasawwaha",
+      "textEnglishSaheeh": "But they denied him and hamstrung her. So their Lord brought down upon them destruction for their sin and made it equal [upon all of them].",
+      "textEnglishMustafa": "Still they defied him and slaughtered her. So their Lord crushed them for their crime, levelling all to the ground.",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 7,
+      "letterCount": 39
+    },
+    {
+      "id": 15,
+      "textArabic": "وَلَا يَخَافُ عُقۡبَٰهَا",
+      "textTransliteration": "Wala yakhafu AAuqbaha",
+      "textEnglishSaheeh": "And He does not fear the consequence thereof.",
+      "textEnglishMustafa": "He has no fear of consequences.",
+      "juz": 30,
+      "page": 595,
+      "wordCount": 3,
+      "letterCount": 12
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 54,
+  "letterCount": 250
+}

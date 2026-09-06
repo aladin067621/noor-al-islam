@@ -1,0 +1,98 @@
+{
+  "id": 109,
+  "type": "makkan",
+  "nameArabic": "الكَافِرُون",
+  "nameTransliteration": "Al-Kafirun",
+  "nameEnglish": "The Disbelievers",
+  "numberOfAyahs": 6,
+  "pageStart": 603,
+  "pageEnd": 603,
+  "numberOfPages": 1,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 18,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al-kafirun",
+    "the-disbelievers",
+    "those who deny the truth",
+    "those who reject faith",
+    "al kafirun",
+    "alkafirun",
+    "kafirun"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "قُلۡ يَٰٓأَيُّهَا ٱلۡكَٰفِرُونَ",
+      "textTransliteration": "Qul ya ayyuha alkafiroona",
+      "textEnglishSaheeh": "Say, \"O disbelievers,",
+      "textEnglishMustafa": "Say, ˹O Prophet,˺ “O you disbelievers!",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 2,
+      "textArabic": "لَآ أَعۡبُدُ مَا تَعۡبُدُونَ",
+      "textTransliteration": "La aAAbudu ma taAAbudoona",
+      "textEnglishSaheeh": "I do not worship what you worship.",
+      "textEnglishMustafa": "I do not worship what you worship,",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 3,
+      "textArabic": "وَلَآ أَنتُمۡ عَٰبِدُونَ مَآ أَعۡبُدُ",
+      "textTransliteration": "Wala antum AAabidoona ma aAAbudu",
+      "textEnglishSaheeh": "Nor are you worshippers of what I worship.",
+      "textEnglishMustafa": "nor do you worship what I worship.",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 4,
+      "textArabic": "وَلَآ أَنَا۠ عَابِدٞ مَّا عَبَدتُّمۡ",
+      "textTransliteration": "Wala ana AAabidun ma AAabadtum",
+      "textEnglishSaheeh": "Nor will I be a worshipper of what you worship.",
+      "textEnglishMustafa": "I will never worship what you worship,",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 5,
+      "letterCount": 17
+    },
+    {
+      "id": 5,
+      "textArabic": "وَلَآ أَنتُمۡ عَٰبِدُونَ مَآ أَعۡبُدُ",
+      "textTransliteration": "Wala antum AAabidoona ma aAAbudu",
+      "textEnglishSaheeh": "Nor will you be worshippers of what I worship.",
+      "textEnglishMustafa": "nor will you ever worship what I worship.",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 6,
+      "textArabic": "لَكُمۡ دِينُكُمۡ وَلِيَ دِينِ",
+      "textTransliteration": "Lakum deenukum waliya deeni",
+      "textEnglishSaheeh": "For you is your religion, and for me is my religion.\"",
+      "textEnglishMustafa": "You have your way, and I have my Way.”",
+      "juz": 30,
+      "page": 603,
+      "wordCount": 4,
+      "letterCount": 14
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 26,
+  "letterCount": 95
+}

@@ -1,0 +1,3419 @@
+[
+ {
+  "surah": 58,
+  "ayah": 1,
+  "annotations": [
+   {
+    "start": 0,
+    "end": 2,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 2,
+    "end": 4,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 12,
+    "end": 13,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 13,
+    "end": 14,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 20,
+    "end": 22,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 27,
+    "end": 28,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 33,
+    "end": 34,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 37,
+    "end": 40,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 49,
+    "end": 50,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 59,
+    "end": 60,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 71,
+    "end": 73,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 80,
+    "end": 81,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 81,
+    "end": 82,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 90,
+    "end": 91,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 91,
+    "end": 92,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 111,
+    "end": 112,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 114,
+    "end": 116,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 120,
+    "end": 123,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 126,
+    "end": 129,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 130,
+    "end": 131,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 131,
+    "end": 132,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 142,
+    "end": 143,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 143,
+    "end": 146,
+    "rule": "iqlaab"
+   },
+   {
+    "start": 149,
+    "end": 151,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 151,
+    "end": 152,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 152,
+    "end": 154,
+    "rule": "tafkhim"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 2,
+  "annotations": [
+   {
+    "start": 6,
+    "end": 7,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 12,
+    "end": 15,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 17,
+    "end": 19,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 19,
+    "end": 20,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 25,
+    "end": 26,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 28,
+    "end": 29,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 30,
+    "end": 34,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 35,
+    "end": 38,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 40,
+    "end": 42,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 46,
+    "end": 47,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 48,
+    "end": 51,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 51,
+    "end": 52,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 55,
+    "end": 58,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 61,
+    "end": 64,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 64,
+    "end": 67,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 82,
+    "end": 85,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 85,
+    "end": 88,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 102,
+    "end": 103,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 103,
+    "end": 108,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 117,
+    "end": 119,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 131,
+    "end": 134,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 143,
+    "end": 145,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 145,
+    "end": 146,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 148,
+    "end": 149,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 154,
+    "end": 155,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 157,
+    "end": 159,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 159,
+    "end": 160,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 161,
+    "end": 164,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 167,
+    "end": 168,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 170,
+    "end": 172,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 181,
+    "end": 182,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 182,
+    "end": 184,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 184,
+    "end": 186,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 191,
+    "end": 194,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 195,
+    "end": 196,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 196,
+    "end": 197,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 213,
+    "end": 215,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 217,
+    "end": 218,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 218,
+    "end": 220,
+    "rule": "tafkhim"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 3,
+  "annotations": [
+   {
+    "start": 2,
+    "end": 3,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 8,
+    "end": 9,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 14,
+    "end": 17,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 19,
+    "end": 21,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 21,
+    "end": 22,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 27,
+    "end": 28,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 29,
+    "end": 32,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 34,
+    "end": 36,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 45,
+    "end": 48,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 53,
+    "end": 54,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 56,
+    "end": 57,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 64,
+    "end": 65,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 66,
+    "end": 68,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 68,
+    "end": 69,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 71,
+    "end": 72,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 83,
+    "end": 84,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 84,
+    "end": 86,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 87,
+    "end": 91,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 93,
+    "end": 95,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 96,
+    "end": 99,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 99,
+    "end": 100,
+    "rule": "ikhfaaHeavy"
+   },
+   {
+    "start": 101,
+    "end": 103,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 103,
+    "end": 105,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 110,
+    "end": 111,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 118,
+    "end": 120,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 123,
+    "end": 125,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 126,
+    "end": 129,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 138,
+    "end": 139,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 141,
+    "end": 143,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 143,
+    "end": 144,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 151,
+    "end": 153,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 156,
+    "end": 157,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 157,
+    "end": 158,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 168,
+    "end": 169,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 178,
+    "end": 179,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 182,
+    "end": 184,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 186,
+    "end": 187,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 187,
+    "end": 189,
+    "rule": "tafkhim"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 4,
+  "annotations": [
+   {
+    "start": 4,
+    "end": 5,
+    "rule": "idghamBilaGhunnah"
+   },
+   {
+    "start": 16,
+    "end": 18,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 21,
+    "end": 23,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 25,
+    "end": 26,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 33,
+    "end": 35,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 46,
+    "end": 47,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 58,
+    "end": 59,
+    "rule": "ikhfaaHeavy"
+   },
+   {
+    "start": 60,
+    "end": 62,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 62,
+    "end": 64,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 69,
+    "end": 70,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 77,
+    "end": 79,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 82,
+    "end": 84,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 89,
+    "end": 90,
+    "rule": "idghamBilaGhunnah"
+   },
+   {
+    "start": 103,
+    "end": 105,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 112,
+    "end": 114,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 116,
+    "end": 117,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 125,
+    "end": 126,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 135,
+    "end": 136,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 136,
+    "end": 138,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 138,
+    "end": 140,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 141,
+    "end": 144,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 159,
+    "end": 160,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 165,
+    "end": 166,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 166,
+    "end": 167,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 175,
+    "end": 177,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 179,
+    "end": 180,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 184,
+    "end": 186,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 200,
+    "end": 201,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 204,
+    "end": 205,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 205,
+    "end": 206,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 219,
+    "end": 222,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 226,
+    "end": 227,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 234,
+    "end": 235,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 242,
+    "end": 243,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 5,
+  "annotations": [
+   {
+    "start": 2,
+    "end": 5,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 6,
+    "end": 7,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 12,
+    "end": 13,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 20,
+    "end": 22,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 25,
+    "end": 26,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 29,
+    "end": 30,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 30,
+    "end": 31,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 39,
+    "end": 41,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 43,
+    "end": 44,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 48,
+    "end": 49,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 56,
+    "end": 57,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 64,
+    "end": 65,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 73,
+    "end": 74,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 79,
+    "end": 80,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 85,
+    "end": 86,
+    "rule": "ikhfaaHeavy"
+   },
+   {
+    "start": 87,
+    "end": 89,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 89,
+    "end": 91,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 101,
+    "end": 103,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 103,
+    "end": 105,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 108,
+    "end": 109,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 115,
+    "end": 117,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 120,
+    "end": 121,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 121,
+    "end": 124,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 124,
+    "end": 127,
+    "rule": "iqlaab"
+   },
+   {
+    "start": 133,
+    "end": 136,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 136,
+    "end": 139,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 146,
+    "end": 149,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 153,
+    "end": 154,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 161,
+    "end": 162,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 162,
+    "end": 164,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 165,
+    "end": 168,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 170,
+    "end": 171,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 6,
+  "annotations": [
+   {
+    "start": 9,
+    "end": 11,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 20,
+    "end": 21,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 21,
+    "end": 22,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 32,
+    "end": 33,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 33,
+    "end": 35,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 35,
+    "end": 36,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 50,
+    "end": 51,
+    "rule": "iqlaab"
+   },
+   {
+    "start": 56,
+    "end": 57,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 64,
+    "end": 66,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 74,
+    "end": 76,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 76,
+    "end": 78,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 81,
+    "end": 82,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 82,
+    "end": 83,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 95,
+    "end": 96,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 102,
+    "end": 103,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 103,
+    "end": 104,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 114,
+    "end": 116,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 127,
+    "end": 129,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 134,
+    "end": 135,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 135,
+    "end": 137,
+    "rule": "qalqalah"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 7,
+  "annotations": [
+   {
+    "start": 9,
+    "end": 11,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 14,
+    "end": 17,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 18,
+    "end": 19,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 19,
+    "end": 20,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 37,
+    "end": 38,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 43,
+    "end": 44,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 44,
+    "end": 45,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 48,
+    "end": 54,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 61,
+    "end": 62,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 67,
+    "end": 68,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 72,
+    "end": 77,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 80,
+    "end": 81,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 86,
+    "end": 87,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 92,
+    "end": 93,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 94,
+    "end": 97,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 97,
+    "end": 99,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 101,
+    "end": 103,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 106,
+    "end": 109,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 119,
+    "end": 120,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 126,
+    "end": 128,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 128,
+    "end": 129,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 142,
+    "end": 143,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 144,
+    "end": 146,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 158,
+    "end": 159,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 167,
+    "end": 168,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 181,
+    "end": 183,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 186,
+    "end": 188,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 190,
+    "end": 192,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 195,
+    "end": 196,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 197,
+    "end": 200,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 209,
+    "end": 211,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 218,
+    "end": 220,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 226,
+    "end": 227,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 251,
+    "end": 252,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 255,
+    "end": 256,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 258,
+    "end": 259,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 265,
+    "end": 268,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 280,
+    "end": 281,
+    "rule": "iqlaab"
+   },
+   {
+    "start": 286,
+    "end": 287,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 294,
+    "end": 295,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 305,
+    "end": 306,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 308,
+    "end": 310,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 310,
+    "end": 313,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 321,
+    "end": 324,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 325,
+    "end": 326,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 326,
+    "end": 327,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 352,
+    "end": 353,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 8,
+  "annotations": [
+   {
+    "start": 9,
+    "end": 11,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 18,
+    "end": 19,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 24,
+    "end": 25,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 32,
+    "end": 33,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 41,
+    "end": 42,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 42,
+    "end": 43,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 43,
+    "end": 46,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 46,
+    "end": 48,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 50,
+    "end": 52,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 55,
+    "end": 58,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 63,
+    "end": 64,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 66,
+    "end": 67,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 74,
+    "end": 75,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 80,
+    "end": 81,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 97,
+    "end": 100,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 109,
+    "end": 110,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 121,
+    "end": 122,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 126,
+    "end": 128,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 128,
+    "end": 131,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 140,
+    "end": 142,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 147,
+    "end": 148,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 148,
+    "end": 149,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 149,
+    "end": 152,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 154,
+    "end": 155,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 165,
+    "end": 166,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 169,
+    "end": 171,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 173,
+    "end": 174,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 191,
+    "end": 192,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 213,
+    "end": 214,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 214,
+    "end": 215,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 225,
+    "end": 227,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 227,
+    "end": 228,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 230,
+    "end": 231,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 236,
+    "end": 238,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 241,
+    "end": 242,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 257,
+    "end": 258,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 272,
+    "end": 273,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 273,
+    "end": 274,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 284,
+    "end": 285,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 288,
+    "end": 290,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 290,
+    "end": 291,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 310,
+    "end": 313,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 318,
+    "end": 320,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 328,
+    "end": 330,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 340,
+    "end": 341,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 345,
+    "end": 347,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 347,
+    "end": 348,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 348,
+    "end": 350,
+    "rule": "tafkhim"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 9,
+  "annotations": [
+   {
+    "start": 0,
+    "end": 4,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 13,
+    "end": 14,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 19,
+    "end": 20,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 25,
+    "end": 26,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 30,
+    "end": 32,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 39,
+    "end": 40,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 43,
+    "end": 46,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 59,
+    "end": 60,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 65,
+    "end": 68,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 77,
+    "end": 78,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 89,
+    "end": 90,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 94,
+    "end": 96,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 96,
+    "end": 99,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 108,
+    "end": 110,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 115,
+    "end": 116,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 116,
+    "end": 117,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 117,
+    "end": 120,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 122,
+    "end": 123,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 130,
+    "end": 133,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 142,
+    "end": 143,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 153,
+    "end": 154,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 154,
+    "end": 155,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 158,
+    "end": 160,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 162,
+    "end": 165,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 168,
+    "end": 169,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 172,
+    "end": 174,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 174,
+    "end": 175,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 178,
+    "end": 179,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 179,
+    "end": 180,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 186,
+    "end": 187,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 192,
+    "end": 194,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 210,
+    "end": 212,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 212,
+    "end": 213,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 10,
+  "annotations": [
+   {
+    "start": 2,
+    "end": 5,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 9,
+    "end": 10,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 10,
+    "end": 11,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 11,
+    "end": 14,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 14,
+    "end": 16,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 18,
+    "end": 20,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 26,
+    "end": 27,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 27,
+    "end": 28,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 33,
+    "end": 36,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 50,
+    "end": 51,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 56,
+    "end": 57,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 62,
+    "end": 63,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 67,
+    "end": 68,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 82,
+    "end": 84,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 84,
+    "end": 86,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 108,
+    "end": 109,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 119,
+    "end": 120,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 120,
+    "end": 121,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 136,
+    "end": 137,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 137,
+    "end": 138,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 160,
+    "end": 161,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 171,
+    "end": 172,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 11,
+  "annotations": [
+   {
+    "start": 0,
+    "end": 4,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 13,
+    "end": 14,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 19,
+    "end": 20,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 25,
+    "end": 26,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 30,
+    "end": 32,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 39,
+    "end": 40,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 41,
+    "end": 43,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 43,
+    "end": 44,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 63,
+    "end": 64,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 71,
+    "end": 72,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 76,
+    "end": 79,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 86,
+    "end": 87,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 93,
+    "end": 94,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 106,
+    "end": 107,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 107,
+    "end": 108,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 128,
+    "end": 129,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 130,
+    "end": 132,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 132,
+    "end": 133,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 136,
+    "end": 137,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 137,
+    "end": 138,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 142,
+    "end": 143,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 148,
+    "end": 149,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 149,
+    "end": 150,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 154,
+    "end": 155,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 160,
+    "end": 162,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 167,
+    "end": 168,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 168,
+    "end": 169,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 175,
+    "end": 176,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 181,
+    "end": 182,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 187,
+    "end": 188,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 192,
+    "end": 193,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 198,
+    "end": 199,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 206,
+    "end": 207,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 212,
+    "end": 213,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 218,
+    "end": 219,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 221,
+    "end": 222,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 225,
+    "end": 226,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 237,
+    "end": 239,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 239,
+    "end": 242,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 242,
+    "end": 245,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 248,
+    "end": 249,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 249,
+    "end": 250,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 260,
+    "end": 261,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 270,
+    "end": 271,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 274,
+    "end": 276,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 278,
+    "end": 279,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 279,
+    "end": 281,
+    "rule": "tafkhim"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 12,
+  "annotations": [
+   {
+    "start": 0,
+    "end": 4,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 13,
+    "end": 14,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 19,
+    "end": 20,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 25,
+    "end": 26,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 30,
+    "end": 32,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 39,
+    "end": 40,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 41,
+    "end": 44,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 53,
+    "end": 54,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 54,
+    "end": 55,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 55,
+    "end": 58,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 60,
+    "end": 61,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 66,
+    "end": 68,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 73,
+    "end": 74,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 93,
+    "end": 95,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 97,
+    "end": 99,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 104,
+    "end": 106,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 108,
+    "end": 110,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 110,
+    "end": 113,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 114,
+    "end": 117,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 122,
+    "end": 124,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 126,
+    "end": 128,
+    "rule": "idghamBilaGhunnah"
+   },
+   {
+    "start": 141,
+    "end": 143,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 145,
+    "end": 148,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 153,
+    "end": 154,
+    "rule": "idghamBilaGhunnah"
+   },
+   {
+    "start": 167,
+    "end": 168,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 175,
+    "end": 178,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 179,
+    "end": 180,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 180,
+    "end": 181,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 187,
+    "end": 189,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 191,
+    "end": 192,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 192,
+    "end": 194,
+    "rule": "idghamBilaGhunnah"
+   },
+   {
+    "start": 195,
+    "end": 198,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 200,
+    "end": 201,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 13,
+  "annotations": [
+   {
+    "start": 8,
+    "end": 10,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 17,
+    "end": 18,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 21,
+    "end": 23,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 28,
+    "end": 29,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 48,
+    "end": 50,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 52,
+    "end": 54,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 59,
+    "end": 61,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 63,
+    "end": 66,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 66,
+    "end": 69,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 90,
+    "end": 91,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 98,
+    "end": 99,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 102,
+    "end": 103,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 103,
+    "end": 104,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 125,
+    "end": 127,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 127,
+    "end": 128,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 130,
+    "end": 131,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 134,
+    "end": 135,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 135,
+    "end": 136,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 136,
+    "end": 139,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 141,
+    "end": 143,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 150,
+    "end": 151,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 153,
+    "end": 154,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 157,
+    "end": 158,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 158,
+    "end": 159,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 164,
+    "end": 166,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 173,
+    "end": 175,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 175,
+    "end": 176,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 178,
+    "end": 179,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 182,
+    "end": 183,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 183,
+    "end": 184,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 192,
+    "end": 194,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 196,
+    "end": 197,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 201,
+    "end": 203,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 206,
+    "end": 207,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 207,
+    "end": 208,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 214,
+    "end": 216,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 218,
+    "end": 219,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 219,
+    "end": 222,
+    "rule": "iqlaab"
+   },
+   {
+    "start": 227,
+    "end": 228,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 237,
+    "end": 238,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 14,
+  "annotations": [
+   {
+    "start": 11,
+    "end": 13,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 20,
+    "end": 21,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 26,
+    "end": 27,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 42,
+    "end": 44,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 48,
+    "end": 49,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 50,
+    "end": 54,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 57,
+    "end": 58,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 58,
+    "end": 59,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 73,
+    "end": 74,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 75,
+    "end": 78,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 78,
+    "end": 79,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 82,
+    "end": 83,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 84,
+    "end": 87,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 87,
+    "end": 88,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 97,
+    "end": 98,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 118,
+    "end": 119,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 128,
+    "end": 129,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 153,
+    "end": 154,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 15,
+  "annotations": [
+   {
+    "start": 8,
+    "end": 9,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 9,
+    "end": 10,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 27,
+    "end": 28,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 28,
+    "end": 30,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 30,
+    "end": 31,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 36,
+    "end": 37,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 44,
+    "end": 47,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 54,
+    "end": 56,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 61,
+    "end": 62,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 65,
+    "end": 66,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 68,
+    "end": 69,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 80,
+    "end": 81,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 16,
+  "annotations": [
+   {
+    "start": 4,
+    "end": 6,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 8,
+    "end": 10,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 17,
+    "end": 20,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 29,
+    "end": 32,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 32,
+    "end": 34,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 37,
+    "end": 39,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 42,
+    "end": 43,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 48,
+    "end": 49,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 54,
+    "end": 55,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 58,
+    "end": 59,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 59,
+    "end": 60,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 79,
+    "end": 80,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 80,
+    "end": 82,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 83,
+    "end": 86,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 88,
+    "end": 89,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 17,
+  "annotations": [
+   {
+    "start": 3,
+    "end": 4,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 7,
+    "end": 9,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 27,
+    "end": 30,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 41,
+    "end": 43,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 48,
+    "end": 51,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 55,
+    "end": 56,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 57,
+    "end": 60,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 63,
+    "end": 64,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 64,
+    "end": 65,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 85,
+    "end": 89,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 96,
+    "end": 98,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 98,
+    "end": 101,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 104,
+    "end": 105,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 105,
+    "end": 106,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 106,
+    "end": 109,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 109,
+    "end": 110,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 121,
+    "end": 122,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 124,
+    "end": 125,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 126,
+    "end": 129,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 133,
+    "end": 134,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 18,
+  "annotations": [
+   {
+    "start": 9,
+    "end": 11,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 20,
+    "end": 21,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 21,
+    "end": 22,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 32,
+    "end": 33,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 33,
+    "end": 35,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 35,
+    "end": 36,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 47,
+    "end": 48,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 55,
+    "end": 56,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 61,
+    "end": 62,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 71,
+    "end": 72,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 92,
+    "end": 93,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 98,
+    "end": 101,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 110,
+    "end": 112,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 125,
+    "end": 127,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 130,
+    "end": 133,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 143,
+    "end": 144,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 146,
+    "end": 149,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 153,
+    "end": 154,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 19,
+  "annotations": [
+   {
+    "start": 23,
+    "end": 24,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 24,
+    "end": 25,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 30,
+    "end": 33,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 40,
+    "end": 41,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 43,
+    "end": 45,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 54,
+    "end": 56,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 57,
+    "end": 58,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 58,
+    "end": 59,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 70,
+    "end": 74,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 86,
+    "end": 87,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 87,
+    "end": 88,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 93,
+    "end": 96,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 104,
+    "end": 106,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 109,
+    "end": 112,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 120,
+    "end": 121,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 121,
+    "end": 122,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 127,
+    "end": 130,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 138,
+    "end": 139,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 141,
+    "end": 144,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 146,
+    "end": 148,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 148,
+    "end": 149,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 20,
+  "annotations": [
+   {
+    "start": 2,
+    "end": 5,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 6,
+    "end": 7,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 12,
+    "end": 13,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 20,
+    "end": 22,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 25,
+    "end": 26,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 29,
+    "end": 30,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 30,
+    "end": 31,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 39,
+    "end": 41,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 43,
+    "end": 44,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 48,
+    "end": 50,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 55,
+    "end": 59,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 68,
+    "end": 69,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 78,
+    "end": 79,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 21,
+  "annotations": [
+   {
+    "start": 7,
+    "end": 8,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 8,
+    "end": 9,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 19,
+    "end": 21,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 25,
+    "end": 28,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 33,
+    "end": 35,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 38,
+    "end": 40,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 44,
+    "end": 47,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 50,
+    "end": 53,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 54,
+    "end": 55,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 55,
+    "end": 56,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 62,
+    "end": 64,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 74,
+    "end": 75,
+    "rule": "maddNatural"
+   }
+  ]
+ },
+ {
+  "surah": 58,
+  "ayah": 22,
+  "annotations": [
+   {
+    "start": 3,
+    "end": 4,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 12,
+    "end": 14,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 16,
+    "end": 18,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 18,
+    "end": 19,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 28,
+    "end": 29,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 34,
+    "end": 35,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 35,
+    "end": 36,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 44,
+    "end": 45,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 54,
+    "end": 55,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 57,
+    "end": 59,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 59,
+    "end": 61,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 68,
+    "end": 70,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 73,
+    "end": 74,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 84,
+    "end": 86,
+    "rule": "maddNecessary"
+   },
+   {
+    "start": 90,
+    "end": 91,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 91,
+    "end": 92,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 100,
+    "end": 102,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 104,
+    "end": 105,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 109,
+    "end": 110,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 120,
+    "end": 121,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 123,
+    "end": 125,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 130,
+    "end": 131,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 133,
+    "end": 135,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 149,
+    "end": 151,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 153,
+    "end": 155,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 169,
+    "end": 171,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 171,
+    "end": 174,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 190,
+    "end": 191,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 191,
+    "end": 193,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 205,
+    "end": 209,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 223,
+    "end": 224,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 225,
+    "end": 227,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 229,
+    "end": 230,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 237,
+    "end": 238,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 242,
+    "end": 243,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 243,
+    "end": 246,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 260,
+    "end": 261,
+    "rule": "iqlaab"
+   },
+   {
+    "start": 264,
+    "end": 266,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 266,
+    "end": 267,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 267,
+    "end": 269,
+    "rule": "idghamGhunnah"
+   },
+   {
+    "start": 270,
+    "end": 273,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 283,
+    "end": 285,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 285,
+    "end": 287,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 296,
+    "end": 300,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 300,
+    "end": 302,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 305,
+    "end": 307,
+    "rule": "qalqalah"
+   },
+   {
+    "start": 309,
+    "end": 310,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 313,
+    "end": 314,
+    "rule": "ikhfaaLight"
+   },
+   {
+    "start": 325,
+    "end": 326,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 332,
+    "end": 335,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 335,
+    "end": 337,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 338,
+    "end": 341,
+    "rule": "maddNaturalMiniature"
+   },
+   {
+    "start": 345,
+    "end": 346,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 351,
+    "end": 352,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 354,
+    "end": 356,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 357,
+    "end": 361,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 364,
+    "end": 365,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 365,
+    "end": 366,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 383,
+    "end": 387,
+    "rule": "tafkhim"
+   },
+   {
+    "start": 387,
+    "end": 388,
+    "rule": "maddNatural"
+   },
+   {
+    "start": 403,
+    "end": 407,
+    "rule": "maddConnected"
+   },
+   {
+    "start": 419,
+    "end": 420,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 420,
+    "end": 421,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 432,
+    "end": 434,
+    "rule": "maddSeparated"
+   },
+   {
+    "start": 437,
+    "end": 440,
+    "rule": "generalGhunnah"
+   },
+   {
+    "start": 448,
+    "end": 449,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 449,
+    "end": 450,
+    "rule": "lamShamsiyah"
+   },
+   {
+    "start": 461,
+    "end": 462,
+    "rule": "hamzatWaslSilent"
+   },
+   {
+    "start": 472,
+    "end": 473,
+    "rule": "maddNatural"
+   }
+  ]
+ }
+]

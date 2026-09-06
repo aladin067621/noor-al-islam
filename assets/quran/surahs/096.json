@@ -1,0 +1,242 @@
+{
+  "id": 96,
+  "type": "makkan",
+  "nameArabic": "العَلَق",
+  "nameTransliteration": "Al-'Alaq",
+  "nameEnglish": "The Clot",
+  "numberOfAyahs": 19,
+  "pageStart": 597,
+  "pageEnd": 598,
+  "numberOfPages": 2,
+  "firstJuz": 30,
+  "lastJuz": 30,
+  "juzs": [
+    30
+  ],
+  "revelationOrder": 1,
+  "revelationExceptions": "",
+  "similarNames": [
+    "al--alaq",
+    "the-clot",
+    "the clinging form",
+    "the clinging clot",
+    "al-'alaq",
+    "al 'alaq",
+    "al'alaq",
+    "'alaq"
+  ],
+  "ayahs": [
+    {
+      "id": 1,
+      "textArabic": "ٱقۡرَأۡ بِٱسۡمِ رَبِّكَ ٱلَّذِي خَلَقَ",
+      "textTransliteration": "Iqra biismi rabbika allathee khalaqa",
+      "textEnglishSaheeh": "Recite in the name of your Lord who created -",
+      "textEnglishMustafa": "Read, ˹O Prophet,˺ in the Name of your Lord Who created—",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 2,
+      "textArabic": "خَلَقَ ٱلۡإِنسَٰنَ مِنۡ عَلَقٍ",
+      "textTransliteration": "Khalaqa alinsana min AAalaqin",
+      "textEnglishSaheeh": "Created man from a clinging substance.",
+      "textEnglishMustafa": "created humans from a clinging clot.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 3,
+      "textArabic": "ٱقۡرَأۡ وَرَبُّكَ ٱلۡأَكۡرَمُ",
+      "textTransliteration": "Iqra warabbuka alakramu",
+      "textEnglishSaheeh": "Recite, and your Lord is the most Generous -",
+      "textEnglishMustafa": "Read! And your Lord is the Most Generous,",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 4,
+      "textArabic": "ٱلَّذِي عَلَّمَ بِٱلۡقَلَمِ",
+      "textTransliteration": "Allathee AAallama bialqalami",
+      "textEnglishSaheeh": "Who taught by the pen -",
+      "textEnglishMustafa": "Who taught by the pen—",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 13
+    },
+    {
+      "id": 5,
+      "textArabic": "عَلَّمَ ٱلۡإِنسَٰنَ مَا لَمۡ يَعۡلَمۡ",
+      "textTransliteration": "AAallama alinsana ma lam yaAAlam",
+      "textEnglishSaheeh": "Taught man that which he knew not.",
+      "textEnglishMustafa": "taught humanity what they knew not.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 5,
+      "letterCount": 17
+    },
+    {
+      "id": 6,
+      "textArabic": "كـَلَّآ إِنَّ ٱلۡإِنسَٰنَ لَيَطۡغَىٰٓ",
+      "textTransliteration": "Kalla inna alinsana layatgha",
+      "textEnglishSaheeh": "No! [But] indeed, man transgresses",
+      "textEnglishMustafa": "Most certainly, one exceeds all bounds",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 16
+    },
+    {
+      "id": 7,
+      "textArabic": "أَن رَّءَاهُ ٱسۡتَغۡنَىٰٓ",
+      "textTransliteration": "An raahu istaghna",
+      "textEnglishSaheeh": "Because he sees himself self-sufficient.",
+      "textEnglishMustafa": "once they think they are self-sufficient.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 8,
+      "textArabic": "إِنَّ إِلَىٰ رَبِّكَ ٱلرُّجۡعَىٰٓ",
+      "textTransliteration": "Inna ila rabbika alrrujAAa",
+      "textEnglishSaheeh": "Indeed, to your Lord is the return.",
+      "textEnglishMustafa": "˹But˺ surely to your Lord is the return ˹of all˺.",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 4,
+      "letterCount": 14
+    },
+    {
+      "id": 9,
+      "textArabic": "أَرَءَيۡتَ ٱلَّذِي يَنۡهَىٰ",
+      "textTransliteration": "Araayta allathee yanha",
+      "textEnglishSaheeh": "Have you seen the one who forbids",
+      "textEnglishMustafa": "Have you seen the man who prevents",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 13
+    },
+    {
+      "id": 10,
+      "textArabic": "عَبۡدًا إِذَا صَلَّىٰٓ",
+      "textTransliteration": "AAabdan itha salla",
+      "textEnglishSaheeh": "A servant when he prays?",
+      "textEnglishMustafa": "a servant ˹of Ours˺ from praying?",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 10
+    },
+    {
+      "id": 11,
+      "textArabic": "أَرَءَيۡتَ إِن كَانَ عَلَى ٱلۡهُدَىٰٓ",
+      "textTransliteration": "Araayta in kana AAala alhuda",
+      "textEnglishSaheeh": "Have you seen if he is upon guidance",
+      "textEnglishMustafa": "What if this ˹servant˺ is ˹rightly˺ guided,",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 5,
+      "letterCount": 18
+    },
+    {
+      "id": 12,
+      "textArabic": "أَوۡ أَمَرَ بِٱلتَّقۡوَىٰٓ",
+      "textTransliteration": "Aw amara bialttaqwa",
+      "textEnglishSaheeh": "Or enjoins righteousness?",
+      "textEnglishMustafa": "or encourages righteousness?",
+      "juz": 30,
+      "page": 597,
+      "wordCount": 3,
+      "letterCount": 12
+    },
+    {
+      "id": 13,
+      "textArabic": "أَرَءَيۡتَ إِن كَذَّبَ وَتَوَلَّىٰٓ",
+      "textTransliteration": "Araayta in kaththaba watawalla",
+      "textEnglishSaheeh": "Have you seen if he denies and turns away -",
+      "textEnglishMustafa": "What if that ˹man˺ persists in denial and turns away?",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 4,
+      "letterCount": 15
+    },
+    {
+      "id": 14,
+      "textArabic": "أَلَمۡ يَعۡلَم بِأَنَّ ٱللَّهَ يَرَىٰ",
+      "textTransliteration": "Alam yaAAlam bianna Allaha yara",
+      "textEnglishSaheeh": "Does he not know that Allah sees?",
+      "textEnglishMustafa": "Does he not know that Allah sees ˹all˺?",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 5,
+      "letterCount": 17
+    },
+    {
+      "id": 15,
+      "textArabic": "كـَلَّا لَئِن لَّمۡ يَنتَهِ لَنَسۡفَعَۢا بِٱلنَّاصِيَةِ",
+      "textTransliteration": "Kalla lain lam yantahi lanasfaAAan bialnnasiyati",
+      "textEnglishSaheeh": "No! If he does not desist, We will surely drag him by the forelock -",
+      "textEnglishMustafa": "But no! If he does not desist, We will certainly drag him by the forelock—",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 6,
+      "letterCount": 26
+    },
+    {
+      "id": 16,
+      "textArabic": "نَاصِيَةٖ كَٰذِبَةٍ خَاطِئَةٖ",
+      "textTransliteration": "Nasiyatin kathibatin khatiatin",
+      "textEnglishSaheeh": "A lying, sinning forelock.",
+      "textEnglishMustafa": "a lying, sinful forelock.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 3,
+      "letterCount": 14
+    },
+    {
+      "id": 17,
+      "textArabic": "فَلۡيَدۡعُ نَادِيَهُۥ",
+      "textTransliteration": "FalyadAAu nadiyahu",
+      "textEnglishSaheeh": "Then let him call his associates;",
+      "textEnglishMustafa": "So let him call his associates.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 2,
+      "letterCount": 10
+    },
+    {
+      "id": 18,
+      "textArabic": "سَنَدۡعُ ٱلزَّبَانِيَةَ",
+      "textTransliteration": "SanadAAu alzzabaniyata",
+      "textEnglishSaheeh": "We will call the angels of Hell.",
+      "textEnglishMustafa": "We will call the wardens of Hell.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 2,
+      "letterCount": 12
+    },
+    {
+      "id": 19,
+      "textArabic": "كـَلَّا لَا تُطِعۡهُ وَٱسۡجُدۡۤ وَٱقۡتَرِب۩",
+      "textTransliteration": "Kalla la tutiAAhu waosjud waiqtarib",
+      "textEnglishSaheeh": "No! Do not obey him. But prostrate and draw near [to Allah].",
+      "textEnglishMustafa": "Again, no! Never obey him ˹O Prophet˺! Rather, ˹continue to˺ prostrate and draw near ˹to Allah˺.",
+      "juz": 30,
+      "page": 598,
+      "wordCount": 5,
+      "letterCount": 20
+    }
+  ],
+  "juzChangesWithinSurah": false,
+  "wordCount": 72,
+  "letterCount": 285
+}
