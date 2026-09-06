@@ -4,6 +4,7 @@ import '../../services/hifz_service.dart';
 import '../../services/quran_data_service.dart';
 import '../../utils/theme.dart';
 import '../../widgets/tajweed_text.dart';
+import 'hifz_widgets.dart';
 import 'hifz_reader_screen.dart';
 
 /// تبويب المصحف — قائمة السور واختيار الجزء
