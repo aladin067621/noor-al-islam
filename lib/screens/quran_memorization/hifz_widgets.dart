@@ -76,9 +76,10 @@ class PlayerBar extends StatelessWidget {
                                 fontWeight: FontWeight.bold, fontSize: 14),
                           ),
                           Text(
-                            audio.downloading
-                                ? 'جارِ تحميل التلاوة…'
-                                : (audio.playing ? '● جارِ التشغيل' : 'متوقف'),
+                            audio.errorMessage ??
+                                (audio.downloading
+                                    ? 'جارِ تحميل التلاوة…'
+                                    : (audio.playing ? '● جارِ التشغيل' : 'متوقف')),
                             style: TextStyle(
                                 fontSize: 12, color: Colors.grey.shade600),
                           ),

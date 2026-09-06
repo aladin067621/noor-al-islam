@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/quran_models.dart';
 import '../../services/hifz_service.dart';
+import '../../services/quran_audio_service.dart';
 import '../../services/quran_data_service.dart';
 import '../../utils/theme.dart';
 import '../../widgets/tajweed_text.dart';
@@ -33,6 +34,10 @@ class _HifzProgressTabState extends State<HifzProgressTab> {
       builder: (context, _) => ListView(
         padding: const EdgeInsets.all(14),
         children: [
+          _planCard(hifz),
+          const SizedBox(height: 10),
+          _dueCard(hifz),
+          const SizedBox(height: 10),
           _statsGrid(hifz),
           const SizedBox(height: 14),
           _weekChart(hifz),
@@ -51,6 +56,142 @@ class _HifzProgressTabState extends State<HifzProgressTab> {
         ],
       ),
     );
+  }
+
+  Widget _planCard(HifzService hifz) {
+    final goal = hifz.dailyNewGoal;
+    final done = hifz.todayNew;
+    final frac = goal == 0 ? 0.0 : (done / goal).clamp(0.0, 1.0);
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('خطة اليوم', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Text(
+                  'جديدة: ${toArabicDigits(done)} / ${toArabicDigits(goal)}',
+                  style: const TextStyle(fontSize: 14),
+                ),
+                const Spacer(),
+                Text('مراجعات: ${toArabicDigits(hifz.todayReviews)}',
+                    style: const TextStyle(fontSize: 14)),
+              ],
+            ),
+            const SizedBox(height: 8),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: frac,
+                minHeight: 6,
+                backgroundColor: Colors.grey.shade300,
+                color: AppTheme.primaryGreen,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              done >= goal
+                  ? 'أتممت هدفك اليوم — استمر في المراجعة يثبّت الحفظ'
+                  : 'بقي ${toArabicDigits(goal - done)} آية جديدة لتحقيق هدف اليوم',
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _dueCard(HifzService hifz) {
+    final due = hifz.dueList();
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.schedule, size: 20, color: AppTheme.gold),
+                const SizedBox(width: 6),
+                Text(
+                  'مستحقة المراجعة اليوم — ${toArabicDigits(due.length)}',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            if (due.isEmpty)
+              const Padding(
+                padding: EdgeInsets.only(top: 8),
+                child: Text('لا آيات مستحقة اليوم — أحسنت',
+                    style: TextStyle(fontSize: 13, color: Colors.grey)),
+              )
+            else ...[
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: [
+                  for (final p in due)
+                    ActionChip(
+                      avatar: Icon(Icons.mic, size: 15, color: AppTheme.primaryGreen),
+                      label: Text(
+                          '${toArabicDigits(p.surah)}:${toArabicDigits(p.ayah)}'),
+                      onPressed: () => _dueAyahActions(p),
+                    ),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _dueAyahActions(QuranPos p) {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (sheetContext) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'مراجعة آية ${toArabicDigits(p.ayah)} — سورة ${toArabicDigits(p.surah)}',
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              OutlinedButton.icon(
+                onPressed: () {
+                  Navigator.pop(sheetContext);
+                  QuranAudioService.instance.playAyah(p);
+                },
+                icon: const Icon(Icons.headphones),
+                label: const Text('استمع للقارئ'),
+              ),
+              const SizedBox(height: 6),
+              FilledButton.icon(
+                onPressed: () {
+                  Navigator.pop(sheetContext);
+                  _reviewQuick(p);
+                },
+                icon: const Icon(Icons.rate_review),
+                label: const Text('قيّم مراجعتي'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _reviewQuick(QuranPos p) async {
+    await showReviewSheet(context, p);
   }
 
   Widget _statsGrid(HifzService hifz) {

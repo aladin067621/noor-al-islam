@@ -1,9 +1,9 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:sensors_plus/sensors_plus.dart';
+import '../../services/location_service.dart';
 import '../../utils/theme.dart';
+import '../../widgets/location_picker.dart';
 
 class QiblaScreen extends StatefulWidget {
   const QiblaScreen({super.key});
@@ -13,8 +13,6 @@ class QiblaScreen extends StatefulWidget {
 }
 
 class _QiblaScreenState extends State<QiblaScreen> {
-  Position? _position;
-  bool _loading = true;
   String? _error;
 
   double? _heading;
@@ -29,7 +27,7 @@ class _QiblaScreenState extends State<QiblaScreen> {
   @override
   void initState() {
     super.initState();
-    _init();
+    _start();
     _watchSensors();
   }
 
@@ -109,40 +107,21 @@ class _QiblaScreenState extends State<QiblaScreen> {
     return (360 - heading) % 360;
   }
 
-  Future<void> _init() async {
-    try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        setState(() { _error = 'خدمة الموقع غير مفعّلة'; _loading = false; });
-        return;
-      }
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          setState(() { _error = 'الرجاء تفعيل صلاحية الموقع'; _loading = false; });
-          return;
-        }
-      }
-      if (permission == LocationPermission.deniedForever) {
-        setState(() { _error = 'صلاحية الموقع ممنوعة نهائياً'; _loading = false; });
-        return;
-      }
-      final pos = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
-      if (!mounted) return;
-      setState(() { _position = pos; _loading = false; });
-    } catch (e) {
-      if (!mounted) return;
-      setState(() { _error = 'فشل في تحديد الموقع'; _loading = false; });
-    }
+  Future<void> _start() async {
+    final service = LocationService.instance;
+    await service.load();
+    if (!mounted) return;
+    // موقع محفوظ — ابدأ البوصلة فورًا دون انتظار GPS
+    if (service.saved != null) return;
+    // لا موقع محفوظ — حاول تحديده من GPS مرة واحدة
+    final err = await service.refreshFromGps();
+    if (!mounted) return;
+    setState(() => _error = err);
   }
 
-  double _calculateQiblaBearing() {
-    if (_position == null) return 0;
-    final lat1 = _position!.latitude * pi / 180;
-    final lon1 = _position!.longitude * pi / 180;
+  double _calculateQiblaBearing(double lat, double lon) {
+    final lat1 = lat * pi / 180;
+    final lon1 = lon * pi / 180;
     final lat2 = _makkahLat * pi / 180;
     final lon2 = _makkahLon * pi / 180;
 
@@ -153,13 +132,12 @@ class _QiblaScreenState extends State<QiblaScreen> {
     return (bearing + 360) % 360;
   }
 
-  double _distanceToMakkah() {
-    if (_position == null) return 0;
+  double _distanceToMakkah(double lat, double lon) {
     const R = 6371.0;
-    final dLat = (_makkahLat - _position!.latitude) * pi / 180;
-    final dLon = (_makkahLon - _position!.longitude) * pi / 180;
+    final dLat = (_makkahLat - lat) * pi / 180;
+    final dLon = (_makkahLon - lon) * pi / 180;
     final a = sin(dLat / 2) * sin(dLat / 2) +
-        cos(_position!.latitude * pi / 180) * cos(_makkahLat * pi / 180) *
+        cos(lat * pi / 180) * cos(_makkahLat * pi / 180) *
             sin(dLon / 2) * sin(dLon / 2);
     final c = 2 * atan2(sqrt(a), sqrt(1 - a));
     return R * c;
@@ -173,12 +151,27 @@ class _QiblaScreenState extends State<QiblaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('اتجاه القبلة')),
-      body: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : _error != null
-              ? _buildError()
-              : _buildCompass(),
+      appBar: AppBar(
+        title: const Text('اتجاه القبلة'),
+        actions: [
+          IconButton(
+            tooltip: 'تغيير الموقع',
+            icon: const Icon(Icons.my_location),
+            onPressed: () => showLocationPicker(context),
+          ),
+        ],
+      ),
+      body: ListenableBuilder(
+        listenable: LocationService.instance,
+        builder: (context, _) {
+          final loc = LocationService.instance.saved;
+          if (loc == null) {
+            if (_error != null) return _buildError();
+            return const Center(child: CircularProgressIndicator());
+          }
+          return _buildCompass(loc);
+        },
+      ),
     );
   }
 
@@ -194,9 +187,20 @@ class _QiblaScreenState extends State<QiblaScreen> {
             Text(_error!, textAlign: TextAlign.center, style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 20),
             ElevatedButton.icon(
-              onPressed: () => setState(() { _loading = true; _error = null; _init(); }),
+              onPressed: () async {
+                setState(() => _error = null);
+                final err = await LocationService.instance.refreshFromGps();
+                if (!mounted) return;
+                setState(() => _error = err);
+              },
               icon: const Icon(Icons.refresh),
               label: const Text('إعادة المحاولة'),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () => showLocationPicker(context),
+              icon: const Icon(Icons.location_city),
+              label: const Text('اختيار مدينة يدويًا'),
             ),
           ],
         ),
@@ -204,9 +208,9 @@ class _QiblaScreenState extends State<QiblaScreen> {
     );
   }
 
-  Widget _buildCompass() {
-    final qiblaBearing = _calculateQiblaBearing();
-    final distance = _distanceToMakkah();
+  Widget _buildCompass(SavedLocation loc) {
+    final qiblaBearing = _calculateQiblaBearing(loc.latitude, loc.longitude);
+    final distance = _distanceToMakkah(loc.latitude, loc.longitude);
     final heading = _heading;
     // بوصلة ثابتة: يتحرك سهم القبلة فقط بدلاً من تدوير القرص كاملاً.
     final arrowDeg = heading != null ? qiblaBearing - heading - 90.0 : qiblaBearing - 90.0;

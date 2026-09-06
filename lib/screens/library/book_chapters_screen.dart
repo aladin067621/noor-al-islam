@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:open_filex/open_filex.dart';
 import '../../models/book.dart';
 import '../../models/chapter.dart';
 import '../../services/data_service.dart';
@@ -102,17 +102,44 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
     if (path == null) _snack('تعذر تنزيل الملف — تحقق من الاتصال بالإنترنت');
   }
 
+  /// فتح ملف PDF محفوظ محليًا عبر open_filex (قارئ داخل الجهاز)
   Future<void> _openLocalPdf() async {
     final path = await BookDownloadService.instance.pdfFilePath(book.id);
     if (path == null) {
       _snack('الملف غير محفوظ على هذا الجهاز');
       return;
     }
-    final uri = Uri.file(path);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    final result = await OpenFilex.open(path, type: 'application/pdf');
+    if (result == null || result.type == null || result.type != 'done') {
+      _snack('تعذر فتح ملف PDF — لا يوجد قارئ PDF مثبت على الجهاز');
+    }
+  }
+
+  /// تحميل إن لم يكن محفوظًا ثم فتحه مباشرةً داخل التطبيق.
+  Future<void> _openPdfNow() async {
+    if (_downloading) return;
+    setState(() => _downloading = true);
+    String path;
+    if (_saved) {
+      path = (await BookDownloadService.instance.pdfFilePath(book.id)) ?? '';
+      if (path.isEmpty) {
+        path = (await BookDownloadService.instance.ensurePdf(book.id, book.downloadUrl)) ?? '';
+      }
     } else {
-      _snack('لا يوجد قارئ PDF مثبت على الجهاز');
+      path = (await BookDownloadService.instance.ensurePdf(book.id, book.downloadUrl)) ?? '';
+    }
+    if (!mounted) return;
+    setState(() {
+      _downloading = false;
+      _saved = path.isNotEmpty;
+    });
+    if (path.isEmpty) {
+      _snack('تعذر تنزيل الملف — تحقق من الاتصال ثم أعد المحاولة');
+      return;
+    }
+    final result = await OpenFilex.open(path, type: 'application/pdf');
+    if (result == null || result.type == null || result.type != 'done') {
+      _snack('تعذر فتح ملف PDF — لا يوجد قارئ PDF مثبت على الجهاز');
     }
   }
 
@@ -121,15 +148,6 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
     if (mounted) {
       setState(() => _saved = false);
       _snack('أُزيل الملف المحفوظ');
-    }
-  }
-
-  Future<void> _openPdfExternal() async {
-    final uri = Uri.parse(book.downloadUrl);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } else {
-      _snack('تعذر فتح ملف PDF');
     }
   }
 
@@ -191,15 +209,15 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                     ),
                   const SizedBox(height: 6),
                   OutlinedButton.icon(
-                    onPressed: _openPdfExternal,
-                    icon: const Icon(Icons.language),
-                    label: const Text('فتح من الإنترنت'),
+                    onPressed: _downloading ? null : _openPdfNow,
+                    icon: const Icon(Icons.auto_stories),
+                    label: const Text('تحميل وفتح الآن داخل التطبيق'),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     _saved
                         ? 'النسخة محفوظة على جهازك ويمكن فتحها دون إنترنت.'
-                        : 'احفظ النسخة على جهازك لتفتحها دون إنترنت، أو افتحها من الإنترنت.',
+                        : 'حمّل النسخة مرة واحدة ثم تُفتح من جهازك مباشرةً دون إنترنت.',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: Colors.grey.shade600, height: 1.6),
                   ),

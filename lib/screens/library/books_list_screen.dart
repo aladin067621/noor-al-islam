@@ -38,6 +38,16 @@ class BooksListScreen extends StatelessWidget {
                         child: Text(b.title,
                             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
                       ),
+                      if (b.assetFile.isNotEmpty)
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: AppTheme.successGreen.withOpacity(0.12),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Text('في التطبيق',
+                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: AppTheme.successGreen)),
+                        ),
                       if (b.downloadUrl.isNotEmpty)
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),

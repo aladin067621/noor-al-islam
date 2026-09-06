@@ -24,6 +24,7 @@ class QuranAudioService extends ChangeNotifier {
   QuranPos? _rangeEnd;
   bool _playing = false;
   bool _downloading = false;
+  String? _lastError;
   int _sameCount = 0;
   int _generation = 0;
   final Set<String> _cached = {};
@@ -42,6 +43,7 @@ class QuranAudioService extends ChangeNotifier {
   QuranPos? get rangeEnd => _rangeEnd;
   bool get playing => _playing;
   bool get downloading => _downloading;
+  String? get errorMessage => _lastError;
 
   Future<void> init() async {
     if (_docsDir != null) return;
@@ -116,13 +118,29 @@ class QuranAudioService extends ChangeNotifier {
       path = await _cachedPath(pos.surah, pos.ayah);
     } else {
       final ok = await _download(pos.surah, pos.ayah);
-      if (!ok || gen != _generation) return;
+      if (gen != _generation) return;
+      if (!ok) {
+        // فشل التحميل: نصفي حالة "جارِ التحميل" ونعرض خطأً واضحًا بدلًا من البقاء عالقًا
+        _downloading = false;
+        _playing = false;
+        _lastError = 'تعذر تحميل تلاوة هذه الآية — تأكد من اتصالك بالإنترنت ثم أعد المحاولة';
+        notifyListeners();
+        return;
+      }
       path = await _cachedPath(pos.surah, pos.ayah);
     }
     if (gen != _generation) return;
     _downloading = false;
+    _lastError = null;
     notifyListeners();
-    await _player.play(DeviceFileSource(path));
+    try {
+      await _player.play(DeviceFileSource(path));
+    } catch (_) {
+      _downloading = false;
+      _playing = false;
+      _lastError = 'تعذر تشغيل التلاوة على هذا الجهاز';
+      notifyListeners();
+    }
   }
 
   Future<String> _cachedPath(int surah, int ayah) async {
@@ -130,19 +148,44 @@ class QuranAudioService extends ChangeNotifier {
     return '${_cacheDirPath()}/$surah\_$ayah.mp3';
   }
 
+  /// عناوين تشبه المتصفح: بعض شبكات التوزيع ترفض الطلبات الآلية.
+  static const Map<String, String> _headers = {
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36',
+    'Accept': '*/*',
+  };
+
   Future<bool> _download(int surah, int ayah) async {
+    if (surah < 1) return false;
     try {
       await _ensureReciterDir();
       final path = await _cachedPath(surah, ayah);
-      final resp = await http.get(Uri.parse(urlOf(surah, ayah)))
-          .timeout(const Duration(seconds: 90));
-      if (resp.statusCode != 200) return false;
+      final urls = <String>[
+        '${AppConstants.quranAudioBase}/$_reciter/$surah/$ayah.mp3',
+        '${AppConstants.quranAudioBaseSecondary}/$_reciter/$surah/$ayah.mp3',
+      ];
+      http.Response? resp;
+      Object? lastErr;
+      for (final u in urls) {
+        try {
+          resp = await http
+              .get(Uri.parse(u), headers: _headers)
+              .timeout(const Duration(seconds: 40));
+          if (resp.statusCode == 200) break;
+          resp = null;
+        } catch (e) {
+          lastErr = e;
+        }
+      }
+      if (resp == null) {
+        if (lastErr != null) rethrow;
+        return false;
+      }
       final file = File(path);
       await file.writeAsBytes(resp.bodyBytes, flush: true);
       _cached.add('$surah:$ayah');
       notifyListeners();
       return true;
-    } catch (_) {
+    } catch (e) {
       return false;
     }
   }
@@ -259,6 +302,7 @@ class QuranAudioService extends ChangeNotifier {
     _generation++;
     _playing = false;
     _downloading = false;
+    _lastError = null;
     _player.stop();
   }
 

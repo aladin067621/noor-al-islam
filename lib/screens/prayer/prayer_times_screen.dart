@@ -1,10 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:adhan_dart/adhan_dart.dart';
+import '../../services/location_service.dart';
 import '../../utils/theme.dart';
+import '../../widgets/location_picker.dart';
 
 class PrayerTimesScreen extends StatefulWidget {
   const PrayerTimesScreen({super.key});
@@ -20,10 +19,7 @@ const List<String> _hijriMonths = [
 ];
 
 class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
-  Position? _position;
-  bool _loading = true;
   String? _error;
-  bool _locationLocked = false;
 
   int _methodIndex = 0;
   int _dayOffset = 0;
@@ -37,63 +33,19 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   @override
   void initState() {
     super.initState();
-    _init();
+    _start();
   }
 
-  Future<void> _init() async {
-    try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        setState(() {
-          _error = 'خدمة الموقع غير مفعّلة';
-          _loading = false;
-          _locationLocked = true;
-        });
-        return;
-      }
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          setState(() {
-            _error = 'الرجاء تفعيل صلاحية الموقع';
-            _loading = false;
-            _locationLocked = true;
-          });
-          return;
-        }
-      }
-      if (permission == LocationPermission.deniedForever) {
-        setState(() {
-          _error = 'صلاحية الموقع ممنوعة نهائياً — يُرجى تفعيلها من الإعدادات';
-          _loading = false;
-          _locationLocked = true;
-        });
-        return;
-      }
-      Position pos;
-      try {
-        pos = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high,
-        ).timeout(const Duration(seconds: 15));
-      } on TimeoutException {
-        final last = await Geolocator.getLastKnownPosition();
-        if (last == null) {
-          setState(() {
-            _error = 'تعذّر تحديد موقعك — تأكد من تفعيل خدمة الموقع ثم أعد المحاولة';
-            _loading = false;
-            _locationLocked = true;
-          });
-          return;
-        }
-        pos = last;
-      }
-      if (!mounted) return;
-      setState(() { _position = pos; _loading = false; });
-    } catch (e) {
-      if (!mounted) return;
-      setState(() { _error = 'فشل في تحديد الموقع'; _loading = false; });
-    }
+  Future<void> _start() async {
+    final service = LocationService.instance;
+    await service.load();
+    if (!mounted) return;
+    // موقع محفوظ — نعرض المواقيت فورًا دون طلب إذن أو انتظار GPS
+    if (service.saved != null) return;
+    // لا موقع محفوظ — حاول تحديده من GPS مرة واحدة
+    final err = await service.refreshFromGps();
+    if (!mounted) return;
+    setState(() => _error = err);
   }
 
   CalculationParameters _paramsForMethod(int index) {
@@ -123,12 +75,25 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('مواقيت الصلاة'),
+        actions: [
+          IconButton(
+            tooltip: 'تغيير الموقع',
+            icon: const Icon(Icons.my_location),
+            onPressed: () => showLocationPicker(context),
+          ),
+        ],
       ),
-      body: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : _error != null
-              ? _buildError()
-              : _buildContent(),
+      body: ListenableBuilder(
+        listenable: LocationService.instance,
+        builder: (context, _) {
+          final loc = LocationService.instance.saved;
+          if (loc == null) {
+            if (_error != null) return _buildError();
+            return const Center(child: CircularProgressIndicator());
+          }
+          return _buildContent(loc);
+        },
+      ),
     );
   }
 
@@ -177,26 +142,29 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
             Text(_error!, textAlign: TextAlign.center, style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 20),
             ElevatedButton.icon(
-              onPressed: () => setState(() { _loading = true; _error = null; _locationLocked = false; _init(); }),
+              onPressed: () async {
+                setState(() => _error = null);
+                final err = await LocationService.instance.refreshFromGps();
+                if (!mounted) return;
+                setState(() => _error = err);
+              },
               icon: const Icon(Icons.refresh),
               label: const Text('إعادة المحاولة'),
             ),
-            if (_locationLocked) ...[
-              const SizedBox(height: 8),
-              OutlinedButton.icon(
-                onPressed: () => Geolocator.openLocationSettings(),
-                icon: const Icon(Icons.settings),
-                label: const Text('فتح إعدادات الموقع'),
-              ),
-            ],
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () => showLocationPicker(context),
+              icon: const Icon(Icons.location_city),
+              label: const Text('اختيار مدينة يدويًا'),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildContent() {
-    final coordinates = Coordinates(_position!.latitude, _position!.longitude);
+  Widget _buildContent(SavedLocation loc) {
+    final coordinates = Coordinates(loc.latitude, loc.longitude);
     final targetDate = DateTime.now().add(Duration(days: _dayOffset));
     final hijriFrom = HijriCalendar.fromDate(targetDate);
     final params = _paramsForMethod(_methodIndex);
@@ -263,7 +231,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'الموقع: ${_position!.latitude.toStringAsFixed(2)}° , ${_position!.longitude.toStringAsFixed(2)}°',
+                  'الموقع: ${loc.label}',
                   style: const TextStyle(color: Colors.white70, fontSize: 13),
                 ),
               ],

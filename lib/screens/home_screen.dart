@@ -16,7 +16,6 @@ import '../services/notification_service.dart';
 
 import 'adhkar/adhkar_categories_screen.dart';
 import 'adhkar/adhkar_list_screen.dart';
-import 'adhkar/adhkar_personal_list_screen.dart';
 import 'asma_al_husna/asma_al_husna_screen.dart';
 import 'prayer/prayer_screen.dart';
 import 'prayer/prayer_times_screen.dart';
@@ -239,15 +238,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _toggleEditMode() => setState(() => _editMode = !_editMode);
 
-  void _onReorder(int oldIndex, int newIndex) {
-    setState(() {
-      if (newIndex > oldIndex) newIndex--;
-      final s = _sections.removeAt(oldIndex);
-      _sections.insert(newIndex, s);
-    });
-    _saveSections();
-  }
-
   /// إخفاء اختصار من الصفحة الرئيسية (يُضاف إلى قائمة المخفية — لا يُحذف)
   void _removeSection(String id) {
     final i = _sections.indexWhere((x) => x.id == id);
@@ -274,29 +264,6 @@ class _HomeScreenState extends State<HomeScreen> {
       _sections.add(sec);
     });
     _saveSections();
-  }
-
-  /// عرض الأقسام في وضع التعديل لإعادة ترتيبها (شبكة قابلة للسحب والإفلات)
-  Widget _buildReorderSliver() {
-    return SliverPadding(
-      padding: EdgeInsets.zero,
-      sliver: SliverReorderableList(
-        itemCount: _sections.length,
-        onReorder: _onReorder,
-        itemBuilder: (context, index) {
-          final section = _sections[index];
-          return ReorderableDelayedDragStartListener(
-            key: ValueKey(section.id),
-            index: index,
-            child: CardItem(
-              section: section,
-              onTap: () {},
-              onRemove: () => _removeSection(section.id),
-            ),
-          );
-        },
-      ),
-    );
   }
 
   /// فتح قسم مثبّت من الصفحة الرئيسية
@@ -329,8 +296,20 @@ class _HomeScreenState extends State<HomeScreen> {
       case 'adhkar':
         screen = const AdhkarCategoriesScreen();
         break;
-      case 'adhkar_personal':
-        screen = const AdhkarPersonalListScreen();
+      case 'adhkar_morning':
+        screen = const AdhkarListScreen(categoryKey: 'morning', title: 'أذكار الصباح');
+        break;
+      case 'adhkar_evening':
+        screen = const AdhkarListScreen(categoryKey: 'evening', title: 'أذكار المساء');
+        break;
+      case 'adhkar_before_sleep':
+        screen = const AdhkarListScreen(categoryKey: 'before_sleep', title: 'أذكار قبل النوم');
+        break;
+      case 'adhkar_travel':
+        screen = const AdhkarListScreen(categoryKey: 'travel', title: 'أذكار السفر');
+        break;
+      case 'adhkar_prayer':
+        screen = const AdhkarListScreen(categoryKey: 'prayer', title: 'أذكار الصلاة');
         break;
       case 'asma':
         screen = const AsmaAlHusnaScreen();
@@ -463,7 +442,7 @@ child: Center(
               child: Padding(
                 padding: EdgeInsets.fromLTRB(14, 8, 14, 0),
                 child: Text(
-                  'اسحب لإعادة الترتيب، اضغط x لإخفاء اختصار، وأعد إظهاره من قائمة الاختصارات المخفية',
+                  'اضغط x على أي اختصار لإخفائه، وأعده الظهور من «اختصارات مخفية» في الأسفل',
                   style: TextStyle(fontSize: 13, color: Colors.grey),
                   textAlign: TextAlign.center,
                 ),
@@ -471,9 +450,7 @@ child: Center(
             ),
           SliverPadding(
             padding: const EdgeInsets.all(14),
-            sliver: _editMode
-                ? _buildReorderSliver()
-                : SliverGrid(
+            sliver: SliverGrid(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 14,
@@ -485,12 +462,16 @@ child: Center(
                         final section = _sections[index];
                         return CardItem(
                           section: section,
-                          onTap: () => _open(context, section.id),
+                          onTap: () {
+                            if (!_editMode) _open(context, section.id);
+                          },
+                          onRemove:
+                              _editMode ? () => _removeSection(section.id) : null,
                         );
                       },
                       childCount: _sections.length,
                     ),
-                  ),
+                ),
           ),
           if (_editMode && _hiddenSections.isNotEmpty)
             SliverToBoxAdapter(

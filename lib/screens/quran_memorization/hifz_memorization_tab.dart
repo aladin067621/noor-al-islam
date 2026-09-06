@@ -79,6 +79,48 @@ class _HifzMemorizationTabState extends State<HifzMemorizationTab> {
       padding: const EdgeInsets.all(14),
       children: [
         Card(
+          color: AppTheme.gold.withOpacity(0.07),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: const [
+                    Icon(Icons.auto_stories, color: AppTheme.gold),
+                    SizedBox(width: 8),
+                    Text(
+                      'استراتيجية الحفظ المنظم',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppTheme.darkGreen),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  '1) استمع للآية من التلاوة وردّدها مع القارئ بتكرار.\n'
+                  '2) افهم معناها — الفهم يعين على الثبات.\n'
+                  '3) أسمع نفسك الآية دون النظر، وراجع القديم قبل الجديد.\n'
+                  '4) التزم خطة يومية ثابتة، فالمراجعة تثبّت الحفظ.',
+                  style: const TextStyle(height: 1.8, fontSize: 13, color: AppTheme.darkGreen),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  '﴿وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ﴾ [القمر: 17]',
+                  style: TextStyle(
+                      fontSize: 18,
+                      height: 1.9,
+                      fontFamily: quranFontFamily(),
+                      color: AppTheme.primaryGreen),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Card(
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -258,7 +300,7 @@ class _HifzMemorizationTabState extends State<HifzMemorizationTab> {
                   children: [
                     Text(
                       'سورة ${surah?.nameArabic ?? toArabicDigits(cur.surah)} — آية ${toArabicDigits(cur.ayah)}'
-                      '${audio.downloading ? ' · جارِ تحميل التلاوة…' : ''}',
+                      '${audio.downloading ? ' · جارِ تحميل التلاوة…' : (audio.errorMessage != null ? ' · تعذر التحميل — أعد المحاولة' : '')}',
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -300,9 +342,21 @@ class _HifzMemorizationTabState extends State<HifzMemorizationTab> {
                       onPressed: () {
                         HifzService.instance.markMemorized([cur]);
                       },
-                      icon: Icon(posIsMem ? Icons.check : Icons.thumb_up_alt_outlined),
-                      label: Text(posIsMem ? 'سُجّلت كمتقنة ✓' : 'أنهيت هذه الآية ✓'),
+                      icon: Icon(posIsMem ? Icons.check_circle : Icons.playlist_add_check),
+                      label: Text(posIsMem
+                          ? 'متقنة ✓'
+                          : 'سجّلت هذه الآية للحفظ ✓'),
                     ),
+                    if (!posIsMem)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 6),
+                        child: Text(
+                          'التسجيل للحفظ يبدأ مراجعاتها المتباعدة — لا تُحسب متقنة إلا بعد إتمام مراجعاتها.',
+                          textAlign: TextAlign.center,
+                          style:
+                              TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                        ),
+                      ),
                   ],
                 ),
               ),

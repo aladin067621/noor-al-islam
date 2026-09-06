@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../services/hifz_service.dart';
 import '../../services/quran_audio_service.dart';
+import '../../utils/theme.dart';
 import 'hifz_memorization_tab.dart';
 import 'hifz_mushaf_tab.dart';
 import 'hifz_progress_tab.dart';
@@ -41,15 +42,22 @@ class _MemorizationScreenState extends State<MemorizationScreen> {
         ),
         body: Column(
           children: [
-            TabBar(
-              isScrollable: true,
-              tabAlignment: TabAlignment.start,
-              tabs: const [
-                Tab(text: 'المصحف'),
-                Tab(text: 'الحفظ'),
-                Tab(text: 'التسميع'),
-                Tab(text: 'التقدم'),
-              ],
+            Material(
+              color: AppTheme.primaryGreen,
+              child: TabBar(
+                isScrollable: true,
+                tabAlignment: TabAlignment.start,
+                indicatorColor: AppTheme.gold,
+                indicatorWeight: 3,
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.white70,
+                tabs: const [
+                  Tab(text: 'المصحف'),
+                  Tab(text: 'الحفظ'),
+                  Tab(text: 'التسميع'),
+                  Tab(text: 'التقدم'),
+                ],
+              ),
             ),
             const Expanded(
               child: TabBarView(

@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import '../../models/quran_models.dart';
 import '../../services/hifz_service.dart';
+import '../../services/quran_audio_service.dart';
 import '../../services/quran_data_service.dart';
 import '../../utils/theme.dart';
 import '../../widgets/tajweed_text.dart';
@@ -91,6 +92,10 @@ class _TestBodyState extends State<_TestBody> {
   int _index = 1; // مع index+1 للتسلسل
   int _memStart = 1;
   bool _revealed = false;
+
+  void _listen() {
+    QuranAudioService.instance.playAyah(_targetPos);
+  }
 
   @override
   void initState() {
@@ -380,19 +385,7 @@ class _TestBodyState extends State<_TestBody> {
               ],
             ),
             const SizedBox(height: 14),
-            if (widget.mode == 1 && !_revealed)
-              Opacity(
-                opacity: 0.72,
-                child: TajweedText(
-                  text: s.ayahAt(_index).textArabic,
-                  spans: _tajweedMap[_index] ?? const <TajweedSpan>[],
-                  ruleColors: _ruleColors,
-                  tajweedOn: tajweedOn,
-                  fontSize: 24,
-                  fontFamily: quranFontFamily(),
-                ),
-              )
-            else if (_revealed)
+            if (_revealed)
               TajweedText(
                 text: ayah.textArabic,
                 spans: spans ?? const <TajweedSpan>[],
@@ -405,7 +398,9 @@ class _TestBodyState extends State<_TestBody> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  'النص مخفي — حاول التسميع من ذاكرتك ثم اضغط «إظهار النص» للتحقق.',
+                  widget.mode == 1
+                      ? 'النص مخفي — أسمع آية ${toArabicDigits(_index)} من ذاكرتك، ثم اضغط «إظهار النص» لتتحقق من الآية التالية.'
+                      : 'النص مخفي — حاول التسميع من ذاكرتك ثم اضغط «إظهار النص» للتحقق.',
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.grey.shade600, height: 1.7),
                 ),
@@ -430,6 +425,12 @@ class _TestBodyState extends State<_TestBody> {
               : null,
           icon: const Icon(Icons.visibility_outlined),
           label: const Text('إظهار النص'),
+        ),
+        const SizedBox(height: 8),
+        OutlinedButton.icon(
+          onPressed: _atEnd || !enabled ? null : () => _listen(),
+          icon: const Icon(Icons.headphones),
+          label: Text('استمع لآية ${toArabicDigits(_targetPos.ayah)} (${toArabicDigits(QuranAudioService.instance.repeatPerAyah)} مرات)'),
         ),
         const SizedBox(height: 8),
         ElevatedButton.icon(

@@ -37,6 +37,8 @@ class AppConstants {
 
   // الصوت — alquran.cloud (Islamic Network) — بث + تخزين مؤقت للآيات
   static const String quranAudioBase = 'https://cdn.islamic.network/quran/audio/128';
+  // نطاق احتياطي تابع لـ alquran.cloud نفسها يُجرَّب عند فشل الأساسي
+  static const String quranAudioBaseSecondary = 'https://cdn.islamicnetwork.com/quran/audio/128';
   static const String defaultReciter = 'ar.husary'; // محمود خليل الحصري (مرتّل)
 
   // مفاتيح shared_preferences
@@ -69,6 +71,14 @@ class AppConstants {
   static const String keyHifzStatus = 'hifz_status_v1';
   static const String keyHifzSessions = 'hifz_sessions_v1';
   static const String keyHifzSettings = 'hifz_settings_v1';
+  // بيانات المراجعة المتباعدة لكل آية (المرحلة، تاريخ الاستحقاق، تاريخ الحفظ)
+  static const String keyHifzMeta = 'hifz_meta_v1';
+
+  // مفاتيح الموقع المحفوظ (مدينة يدوية أو إحداثيات GPS)
+  static const String keyLocationLat = 'location_lat';
+  static const String keyLocationLon = 'location_lon';
+  static const String keyLocationCity = 'location_city';
+  static const String keyLocationSource = 'location_source'; // gps | manual
 
   // القيم الافتراضية
   static const double defaultFontSize = 18.0;
@@ -99,7 +109,11 @@ class HomeSection {
 
 const List<HomeSection> homeSections = [
   HomeSection(id: 'adhkar', title: 'الأذكار', icon: Icons.spa, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'adhkar_personal', title: 'أذكاري', icon: Icons.bookmark_added, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_morning', title: 'أذكار الصباح', icon: Icons.wb_sunny, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_evening', title: 'أذكار المساء', icon: Icons.nightlight_round, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_before_sleep', title: 'أذكار قبل النوم', icon: Icons.bedtime, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_travel', title: 'أذكار السفر', icon: Icons.flight, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_prayer', title: 'أذكار الصلاة', icon: Icons.mosque, color: Color(0xFF2E7D5B)),
   HomeSection(id: 'asma', title: 'أسماء الله الحسنى', icon: Icons.auto_awesome, color: Color(0xFFB8860B)),
   HomeSection(id: 'prayer', title: 'الصلاة', icon: Icons.mosque, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'prayer_times', title: 'مواقيت الصلاة', icon: Icons.access_time, color: Color(0xFF2E7D5B)),
