@@ -18,20 +18,35 @@ class BookChaptersScreen extends StatefulWidget {
 
 class _BookChaptersScreenState extends State<BookChaptersScreen> {
   bool _downloading = false;
-  String? _downloadedPath;
   List<Chapter> _chapters = [];
+  bool _saved = false;
 
   Book get book => widget.book;
   bool get _isPdfBook => book.downloadUrl.isNotEmpty;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedState();
+  }
+
+  Future<void> _loadSavedState() async {
+    final svc = BookDownloadService.instance;
+    final saved = _isPdfBook
+        ? await svc.isPdfSaved(book.id)
+        : await svc.isBookSaved(book.id);
+    if (mounted && saved != _saved) setState(() => _saved = saved);
+  }
 
   Future<void> _saveCopy() async {
     if (_downloading) return;
     setState(() => _downloading = true);
     try {
-      final path = await BookDownloadService.instance.download(book.id, _chapters);
+      final path = await BookDownloadService.instance
+          .downloadJson(book.id, _chapters);
       if (!mounted) return;
-      setState(() => _downloadedPath = path);
-      _snack('تم حفظ نسخة الكتاب على جهازك');
+      setState(() => _saved = path != null);
+      _snack(path != null ? 'تم حفظ نسخة الكتاب على جهازك' : 'تعذر حفظ النسخة');
     } catch (e) {
       if (!mounted) return;
       _snack('تعذر حفظ النسخة على جهازك');
@@ -40,9 +55,29 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
     }
   }
 
-  void _openBook() {
+  Future<void> _removeSaved() async {
+    await BookDownloadService.instance.deleteBook(book.id);
+    if (mounted) {
+      setState(() => _saved = false);
+      _snack('أُزيلت النسخة المحفوظة');
+    }
+  }
+
+  Future<void> _openBook() async {
+    if (_chapters.isEmpty) {
+      try {
+        _chapters = await DataService.instance.loadChapters(book);
+      } catch (_) {}
+    }
+    if (!mounted) return;
     if (_chapters.isEmpty) {
       _snack('لا توجد أقسام للقراءة في هذا الكتاب');
+      return;
+    }
+    final path = await BookDownloadService.instance.bookFilePath(book.id);
+    if (!mounted) return;
+    if (path == null) {
+      _snack('احفظ النسخة أولاً ثم اقرأ الكتاب');
       return;
     }
     Navigator.push(
@@ -53,7 +88,43 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
     );
   }
 
-  Future<void> _openPdf() async {
+  // ==================== قسم ملفات PDF ====================
+
+  Future<void> _downloadPdf() async {
+    if (_downloading) return;
+    setState(() => _downloading = true);
+    final path = await BookDownloadService.instance.ensurePdf(book.id, book.downloadUrl);
+    if (!mounted) return;
+    setState(() {
+      _downloading = false;
+      _saved = path != null;
+    });
+    if (path == null) _snack('تعذر تنزيل الملف — تحقق من الاتصال بالإنترنت');
+  }
+
+  Future<void> _openLocalPdf() async {
+    final path = await BookDownloadService.instance.pdfFilePath(book.id);
+    if (path == null) {
+      _snack('الملف غير محفوظ على هذا الجهاز');
+      return;
+    }
+    final uri = Uri.file(path);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      _snack('لا يوجد قارئ PDF مثبت على الجهاز');
+    }
+  }
+
+  Future<void> _removePdf() async {
+    await BookDownloadService.instance.deletePdf(book.id);
+    if (mounted) {
+      setState(() => _saved = false);
+      _snack('أُزيل الملف المحفوظ');
+    }
+  }
+
+  Future<void> _openPdfExternal() async {
     final uri = Uri.parse(book.downloadUrl);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
@@ -93,17 +164,42 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                   const SizedBox(height: 10),
                   Text(book.intro, style: const TextStyle(height: 1.8)),
                   const SizedBox(height: 16),
-                  SizedBox(
-                    width: double.infinity,
-                    child: FilledButton.icon(
-                      onPressed: _openPdf,
+                  if (!_saved)
+                    FilledButton.icon(
+                      onPressed: _downloading ? null : _downloadPdf,
+                      icon: _downloading
+                          ? const SizedBox(
+                              width: 18,
+                              height: 18,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : const Icon(Icons.download),
+                      label: Text(_downloading ? 'جارٍ التحميل...' : 'تحميل نسخة PDF على جهازك'),
+                    )
+                  else
+                    FilledButton.icon(
+                      onPressed: _openLocalPdf,
                       icon: const Icon(Icons.picture_as_pdf),
                       label: const Text('فتح الكتاب PDF'),
                     ),
+                  const SizedBox(height: 6),
+                  if (_saved)
+                    TextButton(
+                      onPressed: _removePdf,
+                      child: const Text('إزالة النسخة المحفوظة',
+                          style: TextStyle(color: Colors.redAccent)),
+                    ),
+                  const SizedBox(height: 6),
+                  OutlinedButton.icon(
+                    onPressed: _openPdfExternal,
+                    icon: const Icon(Icons.language),
+                    label: const Text('فتح من الإنترنت'),
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'اضغط لفتح ملف الكتاب كاملاً بصيغة PDF.',
+                    _saved
+                        ? 'النسخة محفوظة على جهازك ويمكن فتحها دون إنترنت.'
+                        : 'احفظ النسخة على جهازك لتفتحها دون إنترنت، أو افتحها من الإنترنت.',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: Colors.grey.shade600, height: 1.6),
                   ),
@@ -146,35 +242,36 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                       const SizedBox(height: 10),
                       Text(book.intro, style: const TextStyle(height: 1.8)),
                       const SizedBox(height: 16),
-                      if (_downloadedPath == null)
-                        SizedBox(
-                          width: double.infinity,
-                          child: FilledButton.icon(
-                            onPressed: _downloading ? null : _saveCopy,
-                            icon: _downloading
-                                ? const SizedBox(
-                                    width: 18,
-                                    height: 18,
-                                    child: CircularProgressIndicator(strokeWidth: 2),
-                                  )
-                                : const Icon(Icons.download),
-                            label: Text(_downloading ? 'جارٍ الحفظ...' : 'حفظ نسخة على جهازك'),
-                          ),
+                      if (!_saved)
+                        FilledButton.icon(
+                          onPressed: _downloading ? null : _saveCopy,
+                          icon: _downloading
+                              ? const SizedBox(
+                                  width: 18,
+                                  height: 18,
+                                  child: CircularProgressIndicator(strokeWidth: 2),
+                                )
+                              : const Icon(Icons.download),
+                          label: Text(_downloading ? 'جارٍ الحفظ...' : 'حفظ نسخة على جهازك'),
                         )
                       else
-                        SizedBox(
-                          width: double.infinity,
-                          child: FilledButton.icon(
-                            onPressed: _openBook,
-                            icon: const Icon(Icons.auto_stories),
-                            label: const Text('اقرأ الكتاب الآن'),
-                          ),
+                        FilledButton.icon(
+                          onPressed: _openBook,
+                          icon: const Icon(Icons.auto_stories),
+                          label: const Text('اقرأ الكتاب الآن'),
+                        ),
+                      const SizedBox(height: 6),
+                      if (_saved)
+                        TextButton(
+                          onPressed: _removeSaved,
+                          child: const Text('إزالة النسخة المحفوظة',
+                              style: TextStyle(color: Colors.redAccent)),
                         ),
                       const SizedBox(height: 6),
                       Text(
-                        _downloadedPath == null
-                            ? 'احفظ نسخة من الكتاب على جهازك، وبعدها اقرأ الكتاب كاملًا داخل التطبيق.'
-                            : 'تم الحفظ بنجاح — اضغط «اقرأ الكتاب الآن» لعرض كل أقسام الكتاب.',
+                        _saved
+                            ? 'تم الحفظ بنجاح — اضغط «اقرأ الكتاب الآن» لعرض كل أقسام الكتاب.'
+                            : 'احفظ نسخة من الكتاب على جهازك، وبعدها اقرأ الكتاب كاملًا داخل التطبيق.',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 12, color: Colors.grey.shade600, height: 1.6),
                       ),

@@ -165,14 +165,63 @@ class DataService {
   Future<List<Book>> loadBooksIndex() async {
     if (_booksIndex != null) return _booksIndex!;
     final data = await _loadJson(AppConstants.booksIndexFile);
-    _booksIndex = (data['books'] as List)
+    final all = (data['books'] as List)
         .map((e) => Book.fromIndexJson(e as Map<String, dynamic>))
         .toList();
+
+    // تجميع الأجزاء (nasaai_p0..p9، tirmidhi_p1..p5، abu_dawud_p1..p6) تحت أصل واحد
+    final re = RegExp(r'^(.*)_p(\d+)$');
+    final grouped = <String, List<Book>>{};
+    final result = <Book>[];
+    for (final b in all) {
+      final m = re.firstMatch(b.id);
+      if (m != null && b.downloadUrl.isNotEmpty) {
+        grouped.putIfAbsent(m.group(1)!, () => []).add(b);
+      } else {
+        result.add(b);
+      }
+    }
+    grouped.forEach((baseId, parts) {
+      parts.sort((a, b) {
+        final na = int.tryParse(re.firstMatch(a.id)?.group(2) ?? '0') ?? 0;
+        final nb = int.tryParse(re.firstMatch(b.id)?.group(2) ?? '0') ?? 0;
+        return na.compareTo(nb);
+      });
+      final firstTitle = parts.first.title;
+      final baseTitle = firstTitle.contains(' — ')
+          ? firstTitle.split(' — ').first.trim()
+          : firstTitle;
+      final parent = Book(
+        id: baseId,
+        title: baseTitle,
+        author: parts.first.author,
+        benefit: '${parts.length} أجزاء',
+        intro: 'الكتاب مقسّم إلى أجزاء — اختر الجزء المطلوب.',
+        reference: '',
+        assetFile: '',
+        volumeChildren: [
+          for (final p in parts) p.copyWithVolumeLabel(_volumeLabelOf(p)),
+        ],
+      );
+      result.add(parent);
+    });
+
+    _booksIndex = result;
     return _booksIndex!;
+  }
+
+  String _volumeLabelOf(Book b) {
+    final i = b.title.indexOf(' — ');
+    return i >= 0 ? b.title.substring(i + 3).trim() : b.title;
   }
 
   Future<List<Chapter>> loadChapters(Book book) async {
     if (_chaptersCache.containsKey(book.id)) return _chaptersCache[book.id]!;
+    // كتب PDF والأجزاء المجمّعة لا تحتوي على ملف فصول
+    if (book.assetFile.isEmpty || book.volumeChildren.isNotEmpty) {
+      _chaptersCache[book.id] = const [];
+      return const [];
+    }
     final data = await _loadJson(book.assetFile);
     final chapters = (data['chapters'] as List)
         .map((e) => Chapter.fromJson(e as Map<String, dynamic>, book.id, book.title))

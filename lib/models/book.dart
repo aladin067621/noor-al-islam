@@ -10,6 +10,8 @@ class Book {
   final String reference; // المصدر الرقمي
   final String assetFile; // ملف الفصول
   final String downloadUrl; // رابط مباشر لملف PDF على GitHub
+  final String volumeLabel; // تسمية الجزء داخل مجموعة (مثال: الجزء الأول)
+  final List<Book> volumeChildren; // أجزاء الكتاب عند التجميع
   final List<Chapter> chapters;
 
   Book({
@@ -21,8 +23,26 @@ class Book {
     required this.reference,
     required this.assetFile,
     this.downloadUrl = '',
+    this.volumeLabel = '',
+    this.volumeChildren = const [],
     this.chapters = const [],
   });
+
+  Book copyWithVolumeLabel(String label) {
+    return Book(
+      id: id,
+      title: title,
+      author: author,
+      benefit: benefit,
+      intro: intro,
+      reference: reference,
+      assetFile: assetFile,
+      downloadUrl: downloadUrl,
+      volumeLabel: label,
+      volumeChildren: volumeChildren,
+      chapters: chapters,
+    );
+  }
 
   factory Book.fromIndexJson(Map<String, dynamic> json) {
     return Book(
@@ -46,6 +66,8 @@ class Book {
         reference: reference,
         assetFile: assetFile,
         downloadUrl: downloadUrl,
+        volumeLabel: volumeLabel,
+        volumeChildren: volumeChildren,
         chapters: ch,
       );
 }

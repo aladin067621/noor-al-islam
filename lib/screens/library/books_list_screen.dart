@@ -3,6 +3,7 @@ import '../../models/book.dart';
 import '../../services/data_service.dart';
 import '../../utils/theme.dart';
 import 'book_chapters_screen.dart';
+import 'book_volumes_screen.dart';
 
 class BooksListScreen extends StatelessWidget {
   const BooksListScreen({super.key});
@@ -58,7 +59,11 @@ class BooksListScreen extends StatelessWidget {
                   trailing: const Icon(Icons.chevron_left),
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => BookChaptersScreen(book: b)),
+                    MaterialPageRoute(
+                      builder: (_) => b.volumeChildren.isNotEmpty
+                          ? BookVolumesScreen(book: b)
+                          : BookChaptersScreen(book: b),
+                    ),
                   ),
                 ),
               );

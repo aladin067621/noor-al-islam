@@ -43,13 +43,29 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2"/>
+
+        <!-- لفتح ملفات PDF المحفوظة محليًا عبر url_launcher -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.flutter.url_launcher"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/flutter_file_provider_paths" />
+        </provider>
     </application>
 
-    <!-- لفتح روابط تيليجرام عبر url_launcher -->
+    <!-- لفتح روابط تيليجرام وملفات PDF عبر url_launcher -->
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW"/>
             <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="file"/>
+            <data android:mimeType="application/pdf"/>
         </intent>
     </queries>
 </manifest>
