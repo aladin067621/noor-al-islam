@@ -5,7 +5,7 @@ import '../../utils/theme.dart';
 import '../../utils/constants.dart';
 import 'adhkar_list_screen.dart';
 import 'adhkar_sub_categories_screen.dart';
-import 'adhkar_added_list_screen.dart';
+import 'adhkar_personal_list_screen.dart';
 
 /// فئة أذكار قابلة للسحب والإفلات وإعادة الترتيب
 class AdhkarCategoriesScreen extends StatefulWidget {
@@ -31,16 +31,6 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
         _AdhkarEntry(key: 'prayer', title: 'أذكار الصلاة', icon: Icons.mosque),
         _AdhkarEntry(
             key: 'sub_other', title: 'أذكار أخرى', icon: Icons.list),
-        _AdhkarEntry(
-            key: 'added_list', title: 'قائمة إضافية', icon: Icons.playlist_add),
-        _AdhkarEntry(
-            key: 'hisn_all',
-            title: 'حصن المسلم — جميع الأبواب',
-            icon: Icons.menu_book),
-        _AdhkarEntry(
-            key: 'wabil_all',
-            title: 'الوابل الصيب — جميع الأبواب',
-            icon: Icons.auto_stories),
       ];
 
   Future<void> _loadOrder() async {
@@ -109,11 +99,6 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
           MaterialPageRoute(builder: (_) => const AdhkarSubCategoriesScreen()));
       return;
     }
-    if (key == 'added_list') {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (_) => const AdhkarAddedListScreen()));
-      return;
-    }
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -123,12 +108,12 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
     );
   }
 
-  Future<void> _openAddedList() async {
+  Future<void> _openPersonalList() async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => const AdhkarAddedListScreen()),
+      MaterialPageRoute(builder: (_) => const AdhkarPersonalListScreen()),
     );
-    // أعد تحميل الأقسام المثبّتة إن تغيّرت من القائمة الإضافية
+    // أعِد تحميل الأقسام المثبّتة إن تغيّرت من داخل "أذكاري"
     await _loadOrder();
   }
 
@@ -183,11 +168,11 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
             )
           : const Center(child: CircularProgressIndicator()),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _openAddedList,
+        onPressed: _openPersonalList,
         backgroundColor: AppTheme.primaryGreen,
         foregroundColor: Colors.white,
-        icon: const Icon(Icons.add),
-        label: const Text('أضف قسماً جديداً'),
+        icon: const Icon(Icons.bookmark_add_outlined),
+        label: const Text('أذكاري'),
       ),
     );
   }

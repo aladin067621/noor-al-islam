@@ -37,7 +37,8 @@ class DataService {
     final data = await _loadJson(path);
     final category = data['category'] ?? key;
     final items = (data['items'] as List)
-        .map((e) => Dhikr.fromJson(e as Map<String, dynamic>, category))
+        .map((e) => Dhikr.fromJson(e as Map<String, dynamic>, category,
+            sourceKey: key))
         .toList();
     _adhkarCache[key] = items;
     return items;
@@ -53,8 +54,8 @@ class DataService {
   Future<List<AdhkarCategory>> loadHisnCategories() async {
     final data = await _loadJson(AppConstants.hisnAdhkarPath);
     return (data['categories'] as List)
-        .map((c) =>
-            AdhkarCategory.fromJson(c as Map<String, dynamic>, book: 'حصن المسلم'))
+        .map((c) => AdhkarCategory.fromJson(c as Map<String, dynamic>,
+            book: 'حصن المسلم', sourceKey: 'hisn'))
         .toList();
   }
 
@@ -62,9 +63,8 @@ class DataService {
   Future<List<AdhkarCategory>> loadWabilCategories() async {
     final data = await _loadJson(AppConstants.wabilAdhkarPath);
     return (data['categories'] as List)
-        .map((c) => AdhkarCategory.fromJson(
-            c as Map<String, dynamic>,
-            book: 'الوابل الصيب'))
+        .map((c) => AdhkarCategory.fromJson(c as Map<String, dynamic>,
+            book: 'الوابل الصيب', sourceKey: 'wabil'))
         .toList();
   }
 
@@ -100,7 +100,9 @@ class DataService {
       final categoryData = category as Map<String, dynamic>;
       final title = categoryData['title']?.toString() ?? 'حصن المسلم';
       for (final item in categoryData['items'] as List) {
-        result.add(Dhikr.fromJson(item as Map<String, dynamic>, title));
+        result.add(Dhikr.fromJson(item as Map<String, dynamic>, title,
+            sourceKey: 'hisn',
+            categoryKey: categoryData['key']?.toString()));
       }
     }
     _hisnAdhkar = result;
@@ -116,11 +118,26 @@ class DataService {
       final categoryData = category as Map<String, dynamic>;
       final title = categoryData['title']?.toString() ?? 'الوابل الصيب';
       for (final item in categoryData['items'] as List) {
-        result.add(Dhikr.fromJson(item as Map<String, dynamic>, title));
+        result.add(Dhikr.fromJson(item as Map<String, dynamic>, title,
+            sourceKey: 'wabil',
+            categoryKey: categoryData['key']?.toString()));
       }
     }
     _wabilAdhkar = result;
     return result;
+  }
+
+  // خريطة مرجعية: refKey -> Dhikr — لاسترجاع الأذكار من أي قائمة مراجع
+  Map<String, Dhikr>? _adhkarByRef;
+
+  Future<Map<String, Dhikr>> loadAllAdhkarByRefKey() async {
+    if (_adhkarByRef != null) return _adhkarByRef!;
+    final map = <String, Dhikr>{};
+    for (final d in await loadAllAdhkar()) {
+      map[d.refKey] = d;
+    }
+    _adhkarByRef = map;
+    return map;
   }
 
   Future<List<PrayerTab>> loadPrayerTabs() async {

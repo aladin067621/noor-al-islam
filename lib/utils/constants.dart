@@ -47,10 +47,11 @@ class AppConstants {
   static const String keyAdhkarOrder = 'adhkar_order';
   static const String keySubAdhkarOrder = 'adhkar_sub_order';
   static const String keyPinnedAdhkar = 'adhkar_pinned_list';
-  static const String keyAddedAdhkarCategories = 'adhkar_added_categories';
 
   // ترتيب أقسام الصفحة الرئيسية
   static const String keyHomeSectionsOrder = 'home_sections_order';
+  // الأقسام الظاهرة في الصفحة الرئيسية (مع الترتيب) — الأقسام التي لا تظهر محفوظة ضمنها
+  static const String keyHomeSectionsVisible = 'home_sections_visible';
 
   // القيم الافتراضية
   static const double defaultFontSize = 18.0;
@@ -81,6 +82,7 @@ class HomeSection {
 
 const List<HomeSection> homeSections = [
   HomeSection(id: 'adhkar', title: 'الأذكار', icon: Icons.spa, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_personal', title: 'أذكاري', icon: Icons.bookmark_added, color: Color(0xFF2E7D5B)),
   HomeSection(id: 'asma', title: 'أسماء الله الحسنى', icon: Icons.auto_awesome, color: Color(0xFFB8860B)),
   HomeSection(id: 'prayer', title: 'الصلاة', icon: Icons.mosque, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'prayer_times', title: 'مواقيت الصلاة', icon: Icons.access_time, color: Color(0xFF2E7D5B)),

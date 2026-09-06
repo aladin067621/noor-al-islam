@@ -6,6 +6,7 @@ import 'package:share_plus/share_plus.dart';
 import '../models/dhikr.dart';
 import '../utils/theme.dart';
 import '../services/favorites_service.dart';
+import '../services/personal_adhkar_service.dart';
 
 /// بطاقة ذكر تفاعلية: عداد تكرار، نسخ، مشاركة، مفضلة
 class DhikrCard extends StatefulWidget {
@@ -107,7 +108,9 @@ class _DhikrCardState extends State<DhikrCard> {
   @override
   Widget build(BuildContext context) {
     final favorites = context.watch<FavoritesService>();
+    final personal = context.watch<PersonalAdhkarService>();
     final isFav = favorites.isFavorite(widget.dhikr.favoriteKey);
+    final inPersonal = personal.contains(widget.dhikr.refKey);
     final done = _remaining == 0;
 
     return Card(
@@ -208,6 +211,16 @@ class _DhikrCardState extends State<DhikrCard> {
                 ),
                 Row(
                   children: [
+                    IconButton(
+                      tooltip: inPersonal ? 'إزالة من أذكاري' : 'أضف إلى أذكاري',
+                      icon: Icon(
+                        inPersonal
+                            ? Icons.bookmark_added
+                            : Icons.bookmark_add_outlined,
+                        color: inPersonal ? AppTheme.primaryGreen : null,
+                      ),
+                      onPressed: () => personal.toggle(widget.dhikr.refKey),
+                    ),
                     IconButton(
                       tooltip: 'نسخ',
                       icon: const Icon(Icons.copy_outlined),

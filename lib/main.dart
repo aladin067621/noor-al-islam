@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'app.dart';
 import 'services/settings_provider.dart';
 import 'services/favorites_service.dart';
+import 'services/personal_adhkar_service.dart';
 import 'services/notification_service.dart';
 
 Future<void> main() async {
@@ -15,6 +16,9 @@ Future<void> main() async {
   final favorites = FavoritesService();
   await favorites.load();
 
+  final personalAdhkar = PersonalAdhkarService();
+  await personalAdhkar.load();
+
   // تهيئة الإشعارات المحلية (لا تعطّل التشغيل إن فشلت على المنصات غير المدعومة)
   await NotificationService.instance.init();
 
@@ -23,6 +27,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider.value(value: settings),
         ChangeNotifierProvider.value(value: favorites),
+        ChangeNotifierProvider.value(value: personalAdhkar),
       ],
       child: const IslamicApp(),
     ),

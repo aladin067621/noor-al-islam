@@ -12,6 +12,8 @@ class Dhikr {
   final String? hadithReference; // اسم المصدر الحديثي ورقم الحديث
   final String? grading; // درجة الحديث إن وردت
   final int? sourcePage; // صفحة الذكر في الكتاب
+  final String sourceKey; // هوية الملف/المصدر: morning/evening/.../hisn/wabil
+  final String? categoryKey; // مفتاح الفصل للكتب متعددة الأبواب (حصن/وابل)
   bool isFavorite;
 
   Dhikr({
@@ -27,10 +29,13 @@ class Dhikr {
     this.hadithReference,
     this.grading,
     this.sourcePage,
+    this.sourceKey = '',
+    this.categoryKey,
     this.isFavorite = false,
   });
 
-  factory Dhikr.fromJson(Map<String, dynamic> json, String category) {
+  factory Dhikr.fromJson(Map<String, dynamic> json, String category,
+      {String sourceKey = '', String? categoryKey}) {
     return Dhikr(
       id: json['id']?.toString() ?? '${category}_${json['text'].hashCode}',
       text: json['text'] ?? '',
@@ -46,11 +51,18 @@ class Dhikr {
       sourcePage: json['sourcePage'] is int
           ? json['sourcePage'] as int
           : int.tryParse('${json['sourcePage'] ?? ''}'),
+      sourceKey: sourceKey,
+      categoryKey: categoryKey,
     );
   }
 
   /// مفتاح فريد للمفضلة
   String get favoriteKey => 'dhikr:$id';
+
+  /// مفتاح مرجعي فريد يتيح ربط الذكر نفسه من أي ملف:
+  /// ملفات الأقسام الأساسية: morning::id ... وكتب الأبواب: hisn::chapter::id
+  String get refKey =>
+      (categoryKey == null || categoryKey!.isEmpty) ? '$sourceKey::$id' : '$sourceKey::$categoryKey::$id';
 
   String shareText() {
     final buffer = StringBuffer()

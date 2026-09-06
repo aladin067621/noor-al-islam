@@ -14,12 +14,15 @@ class AdhkarCategory {
     required this.book,
   });
 
-  factory AdhkarCategory.fromJson(Map<String, dynamic> json, {String book = ''}) {
+  factory AdhkarCategory.fromJson(Map<String, dynamic> json,
+      {String book = '', String sourceKey = ''}) {
     return AdhkarCategory(
       key: json['key']?.toString() ?? '',
       title: json['title']?.toString() ?? '',
       items: (json['items'] as List)
-          .map((e) => Dhikr.fromJson(e as Map<String, dynamic>, book))
+          .map((e) => Dhikr.fromJson(e as Map<String, dynamic>, book,
+              sourceKey: sourceKey,
+              categoryKey: json['key']?.toString()))
           .toList(),
       book: book,
     );

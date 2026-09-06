@@ -6,7 +6,6 @@ import '../../services/data_service.dart';
 import '../../utils/theme.dart';
 import '../../utils/constants.dart';
 import 'adhkar_list_screen.dart';
-import 'adhkar_added_list_screen.dart';
 
 /// المفاتيح التي تكرّر أقسام الصباح/المساء/النوم/السفر/الصلاة الموجودة أصلاً
 /// كأقسام رئيسية — تُستبعد من "أذكار أخرى" لتجنّب التكرار.
@@ -95,14 +94,6 @@ class _AdhkarSubCategoriesScreenState extends State<AdhkarSubCategoriesScreen> {
     _saveOrder();
   }
 
-  Future<void> _openAddedList() async {
-    await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const AdhkarAddedListScreen()),
-    );
-    await _load();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,13 +154,6 @@ class _AdhkarSubCategoriesScreenState extends State<AdhkarSubCategoriesScreen> {
                 ),
               ],
             ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _openAddedList,
-        backgroundColor: AppTheme.primaryGreen,
-        foregroundColor: Colors.white,
-        icon: const Icon(Icons.add),
-        label: const Text('أضف فئة'),
-      ),
     );
   }
 }

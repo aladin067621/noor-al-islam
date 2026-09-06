@@ -16,6 +16,7 @@ import '../services/notification_service.dart';
 
 import 'adhkar/adhkar_categories_screen.dart';
 import 'adhkar/adhkar_list_screen.dart';
+import 'adhkar/adhkar_personal_list_screen.dart';
 import 'asma_al_husna/asma_al_husna_screen.dart';
 import 'prayer/prayer_screen.dart';
 import 'prayer/prayer_times_screen.dart';
@@ -46,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> _adhkarTexts = [];
   List<String> _pinnedAdhkar = [];
   List<HomeSection> _sections = [];
+  List<HomeSection> _hiddenSections = [];
   bool _editMode = false;
 
   static const List<String> _hijriMonths = [
@@ -184,30 +186,55 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() => _pinnedAdhkar = pinned);
   }
 
-  /// تحميل ترتيب أقسام الصفحة الرئيسية (مع الحفاظ على الترتيب الافتراضي للجديد)
+  /// تحميل الأقسام الظاهرة في الصفحة الرئيسية مع المخفية (ترحيل من ترتيب v1.0.27)
   Future<void> _loadSections() async {
     final prefs = await SharedPreferences.getInstance();
-    final stored = prefs.getStringList(AppConstants.keyHomeSectionsOrder) ?? [];
-    if (stored.isEmpty || stored.length != homeSections.length) {
-      if (mounted) setState(() => _sections = List.of(homeSections));
-      return;
-    }
     final byId = {for (final s in homeSections) s.id: s};
-    final ordered = <HomeSection>[];
+
+    // القائمة الافتراضية: كل الأقسام ظاهرة
+    final defaults = homeSections.map((s) => s.id).toList();
+    List<String> stored;
+    final bool fromDefault;
+    final saved = prefs.getStringList(AppConstants.keyHomeSectionsVisible);
+    if (saved != null && saved.isNotEmpty) {
+      stored = saved;
+      fromDefault = false;
+    } else {
+      // ترحيل: استخدم الترتيب القديم (كانت كل الأقسام ظاهرة)
+      final legacy =
+          prefs.getStringList(AppConstants.keyHomeSectionsOrder) ?? [];
+      stored = legacy.isNotEmpty ? legacy : defaults;
+      fromDefault = true;
+    }
+
+    final visible = <HomeSection>[];
     for (final id in stored) {
       final s = byId[id];
-      if (s != null) ordered.add(s);
+      if (s != null && visible.every((x) => x.id != id)) visible.add(s);
     }
-    for (final s in homeSections) {
-      if (!ordered.any((x) => x.id == s.id)) ordered.add(s);
+    // عند الترحيل فقط: الأقسام الجديدة التي لم تُذكر تظهر افتراضياً في النهاية.
+    // أما في الحفظ اللاحق فالغائب يعني أنه مخفي بقصد المستخدم.
+    if (fromDefault) {
+      for (final s in homeSections) {
+        if (visible.every((x) => x.id != s.id)) visible.add(s);
+      }
     }
-    if (mounted) setState(() => _sections = ordered);
+
+    if (mounted) {
+      setState(() {
+        _sections = visible;
+        _hiddenSections = homeSections
+            .where((s) => visible.every((x) => x.id != s.id))
+            .toList();
+      });
+      await _saveSections();
+    }
   }
 
-  Future<void> _saveSectionsOrder() async {
+  Future<void> _saveSections() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(
-        AppConstants.keyHomeSectionsOrder, _sections.map((s) => s.id).toList());
+        AppConstants.keyHomeSectionsVisible, _sections.map((s) => s.id).toList());
   }
 
   void _toggleEditMode() => setState(() => _editMode = !_editMode);
@@ -218,7 +245,45 @@ class _HomeScreenState extends State<HomeScreen> {
       final s = _sections.removeAt(oldIndex);
       _sections.insert(newIndex, s);
     });
-    _saveSectionsOrder();
+    _saveSections();
+  }
+
+  /// إخفاء اختصار من الصفحة الرئيسية (يُضاف إلى قائمة المخفية — لا يُحذف)
+  void _removeSection(String id) {
+    HomeSection? s;
+    for (final x in _sections) {
+      if (x.id == id) {
+        s = x;
+        break;
+      }
+    }
+    if (s == null) return;
+    setState(() {
+      _sections.remove(s);
+      _hiddenSections.add(s);
+    });
+    _saveSections();
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('أُخفي الاختصار — يمكنك إعادته من زر التعديل'),
+          duration: Duration(seconds: 2)),
+    );
+  }
+
+  /// إظهار اختصار مخفي مرة أخرى في نهاية القائمة
+  void _addSection(String id) {
+    HomeSection? s;
+    for (final x in _hiddenSections) {
+      if (x.id == id) {
+        s = x;
+        break;
+      }
+    }
+    if (s == null) return;
+    setState(() {
+      _hiddenSections.remove(s);
+      _sections.add(s);
+    });
+    _saveSections();
   }
 
   /// عرض الأقسام في وضع التعديل لإعادة ترتيبها (شبكة قابلة للسحب والإفلات)
@@ -235,7 +300,8 @@ class _HomeScreenState extends State<HomeScreen> {
             index: index,
             child: CardItem(
               section: section,
-              onTap: () => _open(context, section.id),
+              onTap: () {},
+              onRemove: () => _removeSection(section.id),
             ),
           );
         },
@@ -272,6 +338,9 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (id) {
       case 'adhkar':
         screen = const AdhkarCategoriesScreen();
+        break;
+      case 'adhkar_personal':
+        screen = const AdhkarPersonalListScreen();
         break;
       case 'asma':
         screen = const AsmaAlHusnaScreen();
@@ -346,16 +415,6 @@ SliverAppBar(
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
-            actions: [
-              TextButton.icon(
-                onPressed: _toggleEditMode,
-                style: TextButton.styleFrom(foregroundColor: Colors.white),
-                icon: Icon(
-                    _editMode ? Icons.check : Icons.edit,
-                    size: 18),
-                label: Text(_editMode ? 'تم' : 'تعديل'),
-              ),
-            ],
             flexibleSpace: FlexibleSpaceBar(
               title: const Text(''),
               centerTitle: true,
@@ -414,7 +473,7 @@ child: Center(
               child: Padding(
                 padding: EdgeInsets.fromLTRB(14, 8, 14, 0),
                 child: Text(
-                  'اضغط مطوّلاً على أي قسم واسحب لإعادة ترتيبه، ثم اضغط "تم"',
+                  'اسحب لإعادة الترتيب، اضغط x لإخفاء اختصار، وأعد إظهاره من قائمة الاختصارات المخفية',
                   style: TextStyle(fontSize: 13, color: Colors.grey),
                   textAlign: TextAlign.center,
                 ),
@@ -442,6 +501,50 @@ child: Center(
                       childCount: _sections.length,
                     ),
                   ),
+          ),
+          if (_editMode && _hiddenSections.isNotEmpty)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(14, 0, 14, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'اختصارات مخفية — اضغط لإعادتها',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade700,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: _hiddenSections.map((s) {
+                        return ActionChip(
+                          avatar: Icon(s.icon, size: 18, color: s.color),
+                          label: Text(s.title),
+                          onPressed: () => _addSection(s.id),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(14, 4, 14, 8),
+              child: SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: _toggleEditMode,
+                  icon: Icon(_editMode ? Icons.check : Icons.edit),
+                  label: Text(_editMode ? 'إنهاء التعديل' : 'تعديل القائمة'),
+                ),
+              ),
+            ),
           ),
           SliverToBoxAdapter(
             child: Padding(
