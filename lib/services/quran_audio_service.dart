@@ -177,7 +177,7 @@ class QuranAudioService extends ChangeNotifier {
         }
       }
       if (resp == null) {
-        if (lastErr != null) rethrow;
+        if (lastErr != null) throw lastErr;
         return false;
       }
       final file = File(path);
