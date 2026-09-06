@@ -8,7 +8,7 @@ import '../models/chapter.dart';
 /// حفظ نسخ الكتب على الجهاز (نصيًا أو PDF) مع حالة محفوظة دائمة.
 class BookDownloadService {
   BookDownloadService._();
-  static final BookDownloadService instance = BookDownloadService();
+  static final BookDownloadService instance = BookDownloadService._();
 
   static const _savedBooksKey = 'saved_books_v1';
   static const _savedPdfKey = 'saved_pdf_v1';
