@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../models/dhikr.dart';
+import '../models/book.dart';
 import '../utils/constants.dart';
 import '../utils/theme.dart';
 import '../widgets/card_item.dart';
@@ -26,6 +27,7 @@ import 'tawheed/tawheed_screen.dart';
 import 'pillars/pillars_screen.dart';
 import 'quran_tafsir/tafsir_surahs_screen.dart';
 import 'library/books_list_screen.dart';
+import 'library/book_chapters_screen.dart';
 import 'quran_memorization/memorization_screen.dart';
 import 'favorites/favorites_screen.dart';
 import 'notes/notes_screen.dart';
@@ -189,8 +191,14 @@ class _HomeScreenState extends State<HomeScreen> {
   /// تحميل الأقسام الظاهرة في الصفحة الرئيسية مع المخفية (ترحيل من ترتيب v1.0.27)
   Future<void> _loadSections() async {
     final prefs = await SharedPreferences.getInstance();
-    // بناء خريطة لجميع الأقسام: الأصلية + الإضافية (أذكار)
-    final allSections = [...homeSections, ...extraAdhkarHomeSections];
+    // أقسام ديناميكية: فئات «أذكار أخرى» المضافة من وضع التعديل
+    final dynamicSections = await _loadDhikrHomeSections();
+    // بناء خريطة لجميع الأقسام: الأصلية + الإضافية (أذكار) + الديناميكية
+    final allSections = [
+      ...homeSections,
+      ...extraAdhkarHomeSections,
+      ...dynamicSections,
+    ];
     final byId = {for (final s in allSections) s.id: s};
 
     // القائمة الافتراضية: الأقسام الأصلية فقط (بدون أذكار إضافية)
@@ -221,6 +229,15 @@ class _HomeScreenState extends State<HomeScreen> {
         await prefs.setStringList(AppConstants.keyHomeSectionsVisible, stored);
       }
       await prefs.setBool(AppConstants.keyHomeSectionsV2, true);
+    }
+
+    // ترحيل v1.0.44: إضافة بطاقة «الأربعون النووية» إلى القائمة الظاهرة مرة واحدة
+    if (!(prefs.getBool(AppConstants.keyHomeSectionsV3) ?? false)) {
+      if (!stored.contains('arbaeen')) {
+        stored = [...stored, 'arbaeen'];
+        await prefs.setStringList(AppConstants.keyHomeSectionsVisible, stored);
+      }
+      await prefs.setBool(AppConstants.keyHomeSectionsV3, true);
     }
 
     final visible = <HomeSection>[];
@@ -254,6 +271,24 @@ class _HomeScreenState extends State<HomeScreen> {
         AppConstants.keyHomeSectionsVisible, _sections.map((s) => s.id).toList());
   }
 
+  /// بناء أقسام ديناميكية لفئات «أذكار أخرى» (حصن/وابل) المختارة للصفحة الرئيسية
+  Future<List<HomeSection>> _loadDhikrHomeSections() async {
+    final prefs = await SharedPreferences.getInstance();
+    final keys = prefs.getStringList(AppConstants.keyHomeExtraDhikr) ?? [];
+    if (keys.isEmpty) return const [];
+    final catMap = await DataService.instance.loadHisnWabilCategoriesByKey();
+    return [
+      for (final uk in keys)
+        if (catMap[uk] != null)
+          HomeSection(
+            id: 'adhkar_extra::$uk',
+            title: catMap[uk]!.title,
+            icon: Icons.auto_stories,
+            color: const Color(0xFF2E7D5B),
+          ),
+    ];
+  }
+
   void _toggleEditMode() => setState(() => _editMode = !_editMode);
 
   /// إخفاء اختصار من الصفحة الرئيسية (يُضاف إلى قائمة المخفية — لا يُحذف)
@@ -266,6 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _hiddenSections.add(sec);
     });
     _saveSections();
+    _syncDynamicSection(id, removed: true);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('أُخفي الاختصار — يمكنك إعادته من زر التعديل'),
           duration: Duration(seconds: 2)),
@@ -282,6 +318,22 @@ class _HomeScreenState extends State<HomeScreen> {
       _sections.add(sec);
     });
     _saveSections();
+    _syncDynamicSection(id, removed: false);
+  }
+
+  /// مزامنة الأقسام الديناميكية (فئات «أذكار أخرى») مع مفاتيح التخزين
+  Future<void> _syncDynamicSection(String id, {required bool removed}) async {
+    if (!id.startsWith('adhkar_extra::')) return;
+    final uk = id.substring('adhkar_extra::'.length);
+    final prefs = await SharedPreferences.getInstance();
+    final keys =
+        (prefs.getStringList(AppConstants.keyHomeExtraDhikr) ?? []).toList();
+    if (removed) {
+      keys.removeWhere((k) => k == uk);
+    } else if (!keys.contains(uk)) {
+      keys.add(uk);
+    }
+    await prefs.setStringList(AppConstants.keyHomeExtraDhikr, keys);
   }
 
   /// فتح قسم مثبّت من الصفحة الرئيسية
@@ -309,6 +361,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _open(BuildContext context, String id) {
+    if (id.startsWith('adhkar_extra::')) {
+      _openAdhkarExtra(context, id);
+      return;
+    }
     Widget? screen;
     switch (id) {
       case 'adhkar':
@@ -332,6 +388,9 @@ class _HomeScreenState extends State<HomeScreen> {
       case 'adhkar_sub':
         screen = const AdhkarSubCategoriesScreen();
         break;
+      case 'arbaeen':
+        _openArbaeen(context);
+        return;
       case 'asma':
         screen = const AsmaAlHusnaScreen();
         break;
@@ -387,6 +446,56 @@ class _HomeScreenState extends State<HomeScreen> {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
+  }
+
+  /// فتح فئة «أذكار أخرى» مضافة كقسم في الصفحة الرئيسية
+  Future<void> _openAdhkarExtra(BuildContext context, String id) async {
+    final uk = id.substring('adhkar_extra::'.length);
+    final catMap = await DataService.instance.loadHisnWabilCategoriesByKey();
+    final cat = catMap[uk];
+    if (cat == null) return;
+    if (!context.mounted) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => AdhkarListScreen(
+            categoryKey: cat.key, title: cat.title, category: cat),
+      ),
+    );
+  }
+
+  /// فتح كتاب الأربعين النووية المضمّن في التطبيق
+  Future<void> _openArbaeen(BuildContext context) async {
+    final books = await DataService.instance.loadBooksIndex();
+    if (!context.mounted) return;
+    Book? arbaeen;
+    for (final b in books) {
+      if (b.id == 'arbaeen') {
+        arbaeen = b;
+        break;
+      }
+    }
+    if (arbaeen == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('الكتاب غير متوفر حالياً')),
+      );
+      return;
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => BookChaptersScreen(book: arbaeen)),
+    );
+  }
+
+  /// فتح شاشة انتقاء فئات «أذكار أخرى» لإضافتها للصفحة الرئيسية
+  Future<void> _openMoreAdhkar(BuildContext context) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const AdhkarSubCategoriesScreen(pickHome: true),
+      ),
+    );
+    await _loadSections();
   }
 
   @override
@@ -494,33 +603,44 @@ child: Center(
                     ),
                 ),
           ),
-          if (_editMode && _hiddenSections.isNotEmpty)
+          if (_editMode)
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(14, 0, 14, 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'اختصارات مخفية — اضغط لإعادتها',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey.shade700,
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: ActionChip(
+                        avatar: const Icon(Icons.search, size: 18),
+                        label: const Text('المزيد من الأذكار…'),
+                        onPressed: () => _openMoreAdhkar(context),
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: _hiddenSections.map((s) {
-                        return ActionChip(
-                          avatar: Icon(s.icon, size: 18, color: s.color),
-                          label: Text(s.title),
-                          onPressed: () => _addSection(s.id),
-                        );
-                      }).toList(),
-                    ),
+                    if (_hiddenSections.isNotEmpty) ...[
+                      Text(
+                        'اختصارات مخفية — اضغط لإعادتها',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey.shade700,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: _hiddenSections.map((s) {
+                          return ActionChip(
+                            avatar: Icon(s.icon, size: 18, color: s.color),
+                            label: Text(s.title),
+                            onPressed: () => _addSection(s.id),
+                          );
+                        }).toList(),
+                      ),
+                    ],
                   ],
                 ),
               ),

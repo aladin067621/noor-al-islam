@@ -23,6 +23,8 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
 
   Book get book => widget.book;
   bool get _isPdfBook => book.downloadUrl.isNotEmpty;
+  // الكتاب المضمّن في التطبيق (ملف فصول محلي) — يُقرأ مباشرة دون حفظ نسخة
+  bool get _isEmbeddedBook => book.assetFile.isNotEmpty && book.downloadUrl.isEmpty;
 
   @override
   void initState() {
@@ -74,11 +76,14 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
       _snack('لا توجد أقسام للقراءة في هذا الكتاب');
       return;
     }
-    final path = await BookDownloadService.instance.bookFilePath(book.id);
-    if (!mounted) return;
-    if (path == null) {
-      _snack('احفظ النسخة أولاً ثم اقرأ الكتاب');
-      return;
+    // الكتب المضمّنة تُقرأ مباشرةً من الأصول — لا حاجة لحفظ نسخة أولاً
+    if (!_isEmbeddedBook) {
+      final path = await BookDownloadService.instance.bookFilePath(book.id);
+      if (!mounted) return;
+      if (path == null) {
+        _snack('احفظ النسخة أولاً ثم اقرأ الكتاب');
+        return;
+      }
     }
     Navigator.push(
       context,
@@ -107,34 +112,6 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
     final path = await BookDownloadService.instance.pdfFilePath(book.id);
     if (path == null) {
       _snack('الملف غير محفوظ على هذا الجهاز');
-      return;
-    }
-    final result = await OpenFilex.open(path, type: 'application/pdf');
-    if (result == null || result.type == null || result.type != 'done') {
-      _snack('تعذر فتح ملف PDF — لا يوجد قارئ PDF مثبت على الجهاز');
-    }
-  }
-
-  /// تحميل إن لم يكن محفوظًا ثم فتحه مباشرةً داخل التطبيق.
-  Future<void> _openPdfNow() async {
-    if (_downloading) return;
-    setState(() => _downloading = true);
-    String path;
-    if (_saved) {
-      path = (await BookDownloadService.instance.pdfFilePath(book.id)) ?? '';
-      if (path.isEmpty) {
-        path = (await BookDownloadService.instance.ensurePdf(book.id, book.downloadUrl)) ?? '';
-      }
-    } else {
-      path = (await BookDownloadService.instance.ensurePdf(book.id, book.downloadUrl)) ?? '';
-    }
-    if (!mounted) return;
-    setState(() {
-      _downloading = false;
-      _saved = path.isNotEmpty;
-    });
-    if (path.isEmpty) {
-      _snack('تعذر تنزيل الملف — تحقق من الاتصال ثم أعد المحاولة');
       return;
     }
     final result = await OpenFilex.open(path, type: 'application/pdf');
@@ -208,12 +185,6 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                           style: TextStyle(color: AppTheme.dangerRed)),
                     ),
                   const SizedBox(height: 6),
-                  OutlinedButton.icon(
-                    onPressed: _downloading ? null : _openPdfNow,
-                    icon: const Icon(Icons.auto_stories),
-                    label: const Text('تحميل وفتح الآن داخل التطبيق'),
-                  ),
-                  const SizedBox(height: 6),
                   Text(
                     _saved
                         ? 'النسخة محفوظة على جهازك ويمكن فتحها دون إنترنت.'
@@ -260,7 +231,20 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                       const SizedBox(height: 10),
                       Text(book.intro, style: const TextStyle(height: 1.8)),
                       const SizedBox(height: 16),
-                      if (!_saved)
+                      if (_isEmbeddedBook) ...[
+                        FilledButton.icon(
+                          onPressed: _openBook,
+                          icon: const Icon(Icons.auto_stories),
+                          label: const Text('اقرأ الكتاب الآن'),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'الكتاب مضمّن في التطبيق — تُقرأ أقسامه مباشرةً دون اتصال بالإنترنت.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 12, color: Colors.grey.shade600, height: 1.6),
+                        ),
+                      ] else if (!_saved)
                         FilledButton.icon(
                           onPressed: _downloading ? null : _saveCopy,
                           icon: _downloading
@@ -279,13 +263,14 @@ class _BookChaptersScreenState extends State<BookChaptersScreen> {
                           label: const Text('اقرأ الكتاب الآن'),
                         ),
                       const SizedBox(height: 6),
-                      if (_saved)
+                      if (!_isEmbeddedBook && _saved)
                         TextButton(
                           onPressed: _removeSaved,
                           child: const Text('إزالة النسخة المحفوظة',
                               style: TextStyle(color: AppTheme.dangerRed)),
                         ),
                       const SizedBox(height: 6),
+                      if (!_isEmbeddedBook)
                       Text(
                         _saved
                             ? 'تم الحفظ بنجاح — اضغط «اقرأ الكتاب الآن» لعرض كل أقسام الكتاب.'

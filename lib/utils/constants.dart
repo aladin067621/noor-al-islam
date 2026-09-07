@@ -61,6 +61,10 @@ class AppConstants {
   static const String keyAdhkarOrder = 'adhkar_order';
   static const String keySubAdhkarOrder = 'adhkar_sub_order';
   static const String keyPinnedAdhkar = 'adhkar_pinned_list';
+  // فئات «أذكار أخرى» (حصن/وابل) المضافة إلى القائمة الرئيسية للأذكار
+  static const String keyAdhkarMainExtra = 'adhkar_main_extra_sections';
+  // فئات «أذكار أخرى» المضافة كأقسام في الصفحة الرئيسية من وضع التعديل
+  static const String keyHomeExtraDhikr = 'home_extra_dhikr_sections';
 
   // ترتيب أقسام الصفحة الرئيسية
   static const String keyHomeSectionsOrder = 'home_sections_order';
@@ -68,6 +72,8 @@ class AppConstants {
   static const String keyHomeSectionsVisible = 'home_sections_visible';
   // علم ترحيل: فُصلت بطاقات الأذكار الإضافية عن القائمة الافتراضية (ظهرت سابقًا افتراضيًا)
   static const String keyHomeSectionsV2 = 'home_sections_v2';
+  // علم ترحيل: أُضيفت بطاقة «الأربعون النووية» إلى القائمة الظاهرة
+  static const String keyHomeSectionsV3 = 'home_sections_v3';
 
   // مفاتيح قسم حفظ القرآن (محلية فقط — لا يوجد تسجيل/إعلانات/ميكروفون)
   static const String keyHifzStatus = 'hifz_status_v1';
@@ -121,7 +127,8 @@ const List<HomeSection> homeSections = [
   HomeSection(id: 'pillars', title: 'أركان الإسلام', icon: Icons.auto_stories, color: Color(0xFF8B6914)),
   HomeSection(id: 'tafsir', title: 'تفسير القرآن', icon: Icons.menu_book, color: Color(0xFF2E7D5B)),
   HomeSection(id: 'library', title: 'المكتبة', icon: Icons.library_books, color: Color(0xFF1B6B5A)),
-  HomeSection(id: 'memorization', title: 'حفظ القرآن', icon: Icons.psychology, color: Color(0xFFB8860B)),
+  HomeSection(id: 'memorization', title: 'حفظ القرآن', icon: Icons.menu_book, color: Color(0xFFB8860B)),
+  HomeSection(id: 'arbaeen', title: 'الأربعون النووية', icon: Icons.auto_stories, color: Color(0xFF2E7D5B)),
   HomeSection(id: 'favorites', title: 'المفضلة', icon: Icons.favorite, color: Color(0xFFC0392B)),
   HomeSection(id: 'notes', title: 'الملاحظات', icon: Icons.edit_note, color: Color(0xFF8B6914)),
   HomeSection(id: 'search', title: 'البحث', icon: Icons.search, color: Color(0xFF2E7D5B)),

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../models/adhkar_category.dart';
+import '../../models/dhikr.dart';
 import '../../utils/theme.dart';
 import '../../utils/constants.dart';
+import '../../services/data_service.dart';
+import '../../widgets/dhikr_card.dart';
 import 'adhkar_list_screen.dart';
 import 'adhkar_sub_categories_screen.dart';
 import 'adhkar_personal_list_screen.dart';
@@ -20,6 +24,12 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
   bool _loaded = false;
   Set<String> _pinned = {};
 
+  // البحث النصي
+  String _query = '';
+  List<AdhkarCategory> _searchCats = [];
+  List<Dhikr> _searchDhikr = [];
+  bool _searchReady = false;
+
   static List<_AdhkarEntry> _defaultEntries() => [
         _AdhkarEntry(
             key: 'morning', title: 'أذكار الصباح', icon: Icons.wb_sunny),
@@ -36,22 +46,55 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
   Future<void> _loadOrder() async {
     final prefs = await SharedPreferences.getInstance();
     final stored = prefs.getStringList(AppConstants.keyAdhkarOrder) ?? [];
+
+    // أقسام إضافية: فئات «أذكار أخرى» المضافة إلى القائمة الرئيسية
+    final extraKeys =
+        prefs.getStringList(AppConstants.keyAdhkarMainExtra) ?? [];
+    final extraEntries = <_AdhkarEntry>[];
+    if (extraKeys.isNotEmpty) {
+      final catMap = await DataService.instance.loadHisnWabilCategoriesByKey();
+      final base = {..._defaultEntries().map((e) => e.key)};
+      for (final uk in extraKeys) {
+        final c = catMap[uk];
+        if (c != null && !base.contains(uk)) {
+          extraEntries.add(_AdhkarEntry(
+            key: uk,
+            title: c.title,
+            icon: Icons.auto_stories,
+            category: c,
+          ));
+        }
+      }
+    }
+
+    final allEntries = [
+      ..._defaultEntries(),
+      ...extraEntries,
+    ];
+
+    var ordered = allEntries;
     if (stored.isNotEmpty) {
-      final byKey = {for (final e in _entries) e.key: e};
-      final ordered = <_AdhkarEntry>[];
+      final byKey = {for (final e in allEntries) e.key: e};
+      final list = <_AdhkarEntry>[];
       for (final k in stored) {
         final e = byKey[k];
-        if (e != null && !ordered.any((x) => x.key == k)) ordered.add(e);
+        if (e != null && !list.any((x) => x.key == k)) list.add(e);
       }
-      for (final e in _entries) {
-        if (!ordered.any((x) => x.key == e.key)) ordered.add(e);
+      for (final e in allEntries) {
+        if (!list.any((x) => x.key == e.key)) list.add(e);
       }
-      if (mounted) setState(() => _entries = ordered);
+      ordered = list;
     }
+
     // تحميل الأقسام المثبّتة
     final pinned = prefs.getStringList(AppConstants.keyPinnedAdhkar) ?? [];
-    if (mounted) setState(() => _pinned = pinned.toSet());
-    if (mounted) setState(() => _loaded = true);
+    if (mounted) {
+      setState(() {
+        _entries = ordered;
+        _pinned = pinned.toSet();
+        _loaded = true;
+      });
+    }
   }
 
   Future<void> _saveOrder() async {
@@ -95,8 +138,24 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
   void _open(_AdhkarEntry entry) {
     final key = entry.key;
     if (key == 'sub_other') {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (_) => const AdhkarSubCategoriesScreen()));
+      Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => const AdhkarSubCategoriesScreen()))
+          .then((_) => _loadOrder());
+      return;
+    }
+    if (entry.category != null) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => AdhkarListScreen(
+            categoryKey: entry.category!.key,
+            title: entry.title,
+            category: entry.category,
+          ),
+        ),
+      );
       return;
     }
     Navigator.push(
@@ -117,6 +176,41 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
     await _loadOrder();
   }
 
+  /// تحميل كل الفئات والأذكار لمرة واحدة عند بدء البحث
+  Future<void> _ensureSearchIndex() async {
+    if (_searchReady) return;
+    final catMap = await DataService.instance.loadHisnWabilCategoriesByKey();
+    final allAdhkar = await DataService.instance.loadAllAdhkar();
+    if (mounted) {
+      setState(() {
+        _searchCats = catMap.values.toList();
+        _searchDhikr = allAdhkar;
+        _searchReady = true;
+      });
+    }
+  }
+
+  void _onSearchChanged(String q) {
+    setState(() => _query = q.trim());
+    if (q.trim().isNotEmpty) _ensureSearchIndex();
+  }
+
+  List<AdhkarCategory> _filteredCategories(String q) {
+    final norm = q.replaceAll(RegExp(r'[أإآ]'), 'ا');
+    return _searchCats.where((c) {
+      final t = c.title.replaceAll(RegExp(r'[أإآ]'), 'ا');
+      return t.contains(norm);
+    }).toList();
+  }
+
+  List<Dhikr> _filteredDhikr(String q) {
+    final norm = q.replaceAll(RegExp(r'[أإآ]'), 'ا');
+    return _searchDhikr.where((d) {
+      final t = d.text.replaceAll(RegExp(r'[أإآ]'), 'ا');
+      return t.contains(norm);
+    }).toList();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -125,6 +219,7 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final searching = _query.isNotEmpty;
     return Scaffold(
       appBar: AppBar(title: const Text('الأذكار')),
       body: _loaded
@@ -132,37 +227,55 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
-                  child: Text(
-                    'اسحب القسم لإعادة ترتيبه كما تريد',
-                    style:
-                        TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'ابحث عن فئة أو ذكر… مثل: أذكار دخول المسجد',
+                      prefixIcon: const Icon(Icons.search),
+                      isDense: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onChanged: _onSearchChanged,
                   ),
                 ),
-                Expanded(
-                  child: ReorderableListView.builder(
-                    padding: const EdgeInsets.fromLTRB(12, 4, 12, 90),
-                    itemCount: _entries.length,
-                    onReorder: _onReorder,
-                    buildDefaultDragHandles: false,
-                    itemBuilder: (context, index) {
-                      final entry = _entries[index];
-                      final pinnable = const [
-                        'morning',
-                        'evening',
-                        'before_sleep',
-                        'travel',
-                        'prayer'
-                      ].contains(entry.key);
-                      return _EntryTile(
-                        key: ValueKey(entry.key),
-                        entry: entry,
-                        index: index,
-                        pinned: pinnable && _pinned.contains(entry.key),
-                        onPin: pinnable ? () => _togglePin(entry.key) : null,
-                        onTap: () => _open(entry),
-                      );
-                    },
+                if (!searching)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
+                    child: Text(
+                      'اسحب القسم لإعادة ترتيبه كما تريد',
+                      style:
+                          TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                    ),
                   ),
+                Expanded(
+                  child: searching
+                      ? _buildSearchResults()
+                      : ReorderableListView.builder(
+                          padding: const EdgeInsets.fromLTRB(12, 4, 12, 90),
+                          itemCount: _entries.length,
+                          onReorder: _onReorder,
+                          buildDefaultDragHandles: false,
+                          itemBuilder: (context, index) {
+                            final entry = _entries[index];
+                            final pinnable = const [
+                              'morning',
+                              'evening',
+                              'before_sleep',
+                              'travel',
+                              'prayer'
+                            ].contains(entry.key);
+                            return _EntryTile(
+                              key: ValueKey(entry.key),
+                              entry: entry,
+                              index: index,
+                              pinned: pinnable && _pinned.contains(entry.key),
+                              onPin:
+                                  pinnable ? () => _togglePin(entry.key) : null,
+                              onTap: () => _open(entry),
+                            );
+                          },
+                        ),
                 ),
               ],
             )
@@ -174,6 +287,64 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
         icon: const Icon(Icons.bookmark_add_outlined),
         label: const Text('أذكاري'),
       ),
+    );
+  }
+
+  Widget _buildSearchResults() {
+    final cats = _filteredCategories(_query);
+    final dhikrList = _filteredDhikr(_query).take(100).toList();
+    if (cats.isEmpty && dhikrList.isEmpty) {
+      return const Center(child: Text('لا توجد نتائج مطابقة'));
+    }
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(12, 4, 12, 90),
+      children: [
+        if (cats.isNotEmpty) ...[
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+            child: Text('فئات مطابقة',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          ),
+          ...cats.map((c) {
+            final isHisn = c.book == 'حصن المسلم';
+            return Card(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor:
+                      (isHisn ? AppTheme.primaryGreen : AppTheme.gold)
+                          .withOpacity(0.15),
+                  child: Icon(isHisn ? Icons.menu_book : Icons.auto_stories,
+                      size: 20,
+                      color: isHisn ? AppTheme.primaryGreen : AppTheme.gold),
+                ),
+                title: Text(c.title,
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold)),
+                subtitle: Text(
+                  '${c.book} — ${c.items.length} أذكار',
+                  style: const TextStyle(fontSize: 12),
+                ),
+                trailing: const Icon(Icons.chevron_left),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => AdhkarListScreen(
+                        categoryKey: c.key, title: c.title, category: c),
+                  ),
+                ),
+              ),
+            );
+          }),
+        ],
+        if (dhikrList.isNotEmpty) ...[
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+            child: Text('أذكار مطابقة',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          ),
+          ...dhikrList.map((d) => DhikrCard(dhikr: d)),
+        ],
+      ],
     );
   }
 }
@@ -235,6 +406,10 @@ class _AdhkarEntry {
   final String key;
   final String title;
   final IconData icon;
+  final AdhkarCategory? category;
   const _AdhkarEntry(
-      {required this.key, required this.title, required this.icon});
+      {required this.key,
+      required this.title,
+      required this.icon,
+      this.category});
 }
