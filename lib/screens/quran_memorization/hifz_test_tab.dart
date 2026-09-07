@@ -94,7 +94,16 @@ class _TestBodyState extends State<_TestBody> {
   bool _revealed = false;
 
   void _listen() {
-    QuranAudioService.instance.playAyah(_targetPos);
+    final audio = QuranAudioService.instance;
+    audio.playAyah(_targetPos);
+    // انتظر لحظات ثم اعرض رسالة واضحة إن فشل التحميل/التشغيل
+    Future<void>.delayed(const Duration(milliseconds: 1500), () {
+      if (!mounted) return;
+      final err = audio.errorMessage;
+      if (err != null && err.isNotEmpty) {
+        _snack(err);
+      }
+    });
   }
 
   @override
@@ -103,6 +112,7 @@ class _TestBodyState extends State<_TestBody> {
     _index = 1;
     _surahId = widget.initialSurah ?? 1;
     _memStart = widget.initialAyah ?? 1;
+    QuranAudioService.instance.init();
     _load();
   }
 

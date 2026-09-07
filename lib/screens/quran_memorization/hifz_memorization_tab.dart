@@ -79,34 +79,50 @@ class _HifzMemorizationTabState extends State<HifzMemorizationTab> {
       padding: const EdgeInsets.all(14),
       children: [
         Card(
-          color: AppTheme.gold.withOpacity(0.07),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: const [
-                    Icon(Icons.auto_stories, color: AppTheme.gold),
-                    SizedBox(width: 8),
-                    Text(
-                      'استراتيجية الحفظ المنظم',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.darkGreen),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
                 Text(
-                  '1) استمع للآية من التلاوة وردّدها مع القارئ بتكرار.\n'
-                  '2) افهم معناها — الفهم يعين على الثبات.\n'
-                  '3) أسمع نفسك الآية دون النظر، وراجع القديم قبل الجديد.\n'
-                  '4) التزم خطة يومية ثابتة، فالمراجعة تثبّت الحفظ.',
-                  style: const TextStyle(height: 1.8, fontSize: 13, color: AppTheme.darkGreen),
+                  'طرق الحفظ المتداولة',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: AppTheme.primaryGreen),
                 ),
                 const SizedBox(height: 10),
+                _StrategyItem(
+                  icon: Icons.repeat,
+                  title: 'التكرار والتحبيث',
+                  desc: 'استمع للآية مرات متعددة مع القارئ، ثم حاول ترديدها '
+                      'دون مراجعة. كرر حتى تثبت في الذاكرة.',
+                ),
+                _StrategyItem(
+                  icon: Icons.stairs,
+                  title: 'الحفظ التراكمي',
+                  desc: 'حفظ آية جديدة ثم راجع ما سبق فوراً: آية جديدة + مراجعة '
+                      'الأمس + آية قبل أمس. هذا يثبّت الحفظ على المدى الطويل.',
+                ),
+                _StrategyItem(
+                  icon: Icons.headphones,
+                  title: 'الاستماع والمحاكاة',
+                  desc: 'استمع باستمرار لتلاوة القارئ المفضل وحاكِ صوته. '
+                      'هذا يُحسّن الترتيل ويُثبت النطق في الذاكرة.',
+                ),
+                _StrategyItem(
+                  icon: Icons.edit_note,
+                  title: 'الحفظ بالكتابة',
+                  desc: 'اكتب الآية بيديك بعد الاستماع. الكتابة تُعزز '
+                      'التثبيت وتساعد على تحسين الحفظ لمن يجد صعوبة بالسمع فقط.',
+                ),
+                _StrategyItem(
+                  icon: Icons.school,
+                  title: 'التسميع من الحفظ',
+                  desc: 'أسمع الآية من ذاكرتك للشخص الآخر (زوج/صديق). '
+                      'الإخراج من الذاكرة يُثبّت الحفظ أكثر من مجرد التكرار.',
+                ),
+                const SizedBox(height: 8),
                 Text(
                   '﴿وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ﴾ [القمر: 17]',
                   style: TextStyle(
@@ -364,6 +380,55 @@ class _HifzMemorizationTabState extends State<HifzMemorizationTab> {
           },
         ),
       ],
+    );
+  }
+}
+
+class _StrategyItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String desc;
+
+  const _StrategyItem({
+    required this.icon,
+    required this.title,
+    required this.desc,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: AppTheme.primaryGreen.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(icon, size: 18, color: AppTheme.primaryGreen),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 14)),
+                const SizedBox(height: 2),
+                Text(desc,
+                    style: TextStyle(
+                        fontSize: 12,
+                        height: 1.5,
+                        color: Colors.grey.shade700)),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
