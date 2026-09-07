@@ -66,6 +66,8 @@ class AppConstants {
   static const String keyHomeSectionsOrder = 'home_sections_order';
   // الأقسام الظاهرة في الصفحة الرئيسية (مع الترتيب) — الأقسام التي لا تظهر محفوظة ضمنها
   static const String keyHomeSectionsVisible = 'home_sections_visible';
+  // علم ترحيل: فُصلت بطاقات الأذكار الإضافية عن القائمة الافتراضية (ظهرت سابقًا افتراضيًا)
+  static const String keyHomeSectionsV2 = 'home_sections_v2';
 
   // مفاتيح قسم حفظ القرآن (محلية فقط — لا يوجد تسجيل/إعلانات/ميكروفون)
   static const String keyHifzStatus = 'hifz_status_v1';
@@ -107,13 +109,9 @@ class HomeSection {
   });
 }
 
+/// الأقسام الأصلية في الصفحة الرئيسية (تظهر افتراضياً)
 const List<HomeSection> homeSections = [
   HomeSection(id: 'adhkar', title: 'الأذكار', icon: Icons.spa, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'adhkar_morning', title: 'أذكار الصباح', icon: Icons.wb_sunny, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'adhkar_evening', title: 'أذكار المساء', icon: Icons.nightlight_round, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'adhkar_before_sleep', title: 'أذكار قبل النوم', icon: Icons.bedtime, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'adhkar_travel', title: 'أذكار السفر', icon: Icons.flight, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'adhkar_prayer', title: 'أذكار الصلاة', icon: Icons.mosque, color: Color(0xFF2E7D5B)),
   HomeSection(id: 'asma', title: 'أسماء الله الحسنى', icon: Icons.auto_awesome, color: Color(0xFFB8860B)),
   HomeSection(id: 'prayer', title: 'الصلاة', icon: Icons.mosque, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'prayer_times', title: 'مواقيت الصلاة', icon: Icons.access_time, color: Color(0xFF2E7D5B)),
@@ -127,4 +125,14 @@ const List<HomeSection> homeSections = [
   HomeSection(id: 'favorites', title: 'المفضلة', icon: Icons.favorite, color: Color(0xFFC0392B)),
   HomeSection(id: 'notes', title: 'الملاحظات', icon: Icons.edit_note, color: Color(0xFF8B6914)),
   HomeSection(id: 'search', title: 'البحث', icon: Icons.search, color: Color(0xFF2E7D5B)),
+];
+
+/// أقسام إضافية للتعديل — تظهر فقط في وضع تعديل القائمة كخيارات قابلة للإضافة
+const List<HomeSection> extraAdhkarHomeSections = [
+  HomeSection(id: 'adhkar_morning', title: 'أذكار الصباح', icon: Icons.wb_sunny, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_evening', title: 'أذكار المساء', icon: Icons.nightlight_round, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_before_sleep', title: 'أذكار قبل النوم', icon: Icons.bedtime, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_travel', title: 'أذكار السفر', icon: Icons.flight, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_prayer', title: 'أذكار الصلاة', icon: Icons.mosque, color: Color(0xFF2E7D5B)),
+  HomeSection(id: 'adhkar_sub', title: 'أذكار أخرى', icon: Icons.list, color: Color(0xFF2E7D5B)),
 ];

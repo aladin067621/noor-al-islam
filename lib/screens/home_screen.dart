@@ -15,6 +15,7 @@ import '../services/data_service.dart';
 import '../services/notification_service.dart';
 
 import 'adhkar/adhkar_categories_screen.dart';
+import 'adhkar/adhkar_sub_categories_screen.dart';
 import 'adhkar/adhkar_list_screen.dart';
 import 'asma_al_husna/asma_al_husna_screen.dart';
 import 'prayer/prayer_screen.dart';
@@ -188,9 +189,11 @@ class _HomeScreenState extends State<HomeScreen> {
   /// تحميل الأقسام الظاهرة في الصفحة الرئيسية مع المخفية (ترحيل من ترتيب v1.0.27)
   Future<void> _loadSections() async {
     final prefs = await SharedPreferences.getInstance();
-    final byId = {for (final s in homeSections) s.id: s};
+    // بناء خريطة لجميع الأقسام: الأصلية + الإضافية (أذكار)
+    final allSections = [...homeSections, ...extraAdhkarHomeSections];
+    final byId = {for (final s in allSections) s.id: s};
 
-    // القائمة الافتراضية: كل الأقسام ظاهرة
+    // القائمة الافتراضية: الأقسام الأصلية فقط (بدون أذكار إضافية)
     final defaults = homeSections.map((s) => s.id).toList();
     List<String> stored;
     final bool fromDefault;
@@ -204,6 +207,20 @@ class _HomeScreenState extends State<HomeScreen> {
           prefs.getStringList(AppConstants.keyHomeSectionsOrder) ?? [];
       stored = legacy.isNotEmpty ? legacy : defaults;
       fromDefault = true;
+    }
+
+    // ترحيل v1.0.40: الأذكار الإضافية (الصباح/المساء/قبل النوم/السفر/الصلاة)
+    // أُضيفت سابقًا افتراضيًا في الصفحة الرئيسية — نزيلها من الظاهرة لتصبح
+    // متاحة فقط من وضع «تعديل القائمة»، مع احترام اختيار المستخدم اللاحق.
+    if (!(prefs.getBool(AppConstants.keyHomeSectionsV2) ?? false)) {
+      final extras = {
+        for (final s in extraAdhkarHomeSections) s.id: true,
+      };
+      if (stored.any(extras.containsKey)) {
+        stored = stored.where((id) => !extras.containsKey(id)).toList();
+        await prefs.setStringList(AppConstants.keyHomeSectionsVisible, stored);
+      }
+      await prefs.setBool(AppConstants.keyHomeSectionsV2, true);
     }
 
     final visible = <HomeSection>[];
@@ -222,7 +239,8 @@ class _HomeScreenState extends State<HomeScreen> {
     if (mounted) {
       setState(() {
         _sections = visible;
-        _hiddenSections = homeSections
+        // المخفية = جميع الأقسام التي ليست ظاهرة (الأصلية + الإضافية)
+        _hiddenSections = allSections
             .where((s) => visible.every((x) => x.id != s.id))
             .toList();
       });
@@ -310,6 +328,9 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
       case 'adhkar_prayer':
         screen = const AdhkarListScreen(categoryKey: 'prayer', title: 'أذكار الصلاة');
+        break;
+      case 'adhkar_sub':
+        screen = const AdhkarSubCategoriesScreen();
         break;
       case 'asma':
         screen = const AsmaAlHusnaScreen();
