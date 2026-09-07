@@ -476,14 +476,17 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     }
     if (arbaeen == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('الكتاب غير متوفر حالياً')),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('الكتاب غير متوفر حالياً')),
+        );
+      }
       return;
     }
+    // بعد التأكد من عدم العدمية، نمرر نسخة غير قابلة للعدمية صراحةً
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => BookChaptersScreen(book: arbaeen)),
+      MaterialPageRoute(builder: (_) => BookChaptersScreen(book: arbaeen!)),
     );
   }
 
