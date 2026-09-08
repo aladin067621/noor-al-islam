@@ -203,9 +203,24 @@ class _AdhkarSubCategoriesScreenState extends State<AdhkarSubCategoriesScreen> {
         title: Text(widget.pickHome ? 'أضف أذكارًا للرئيسية' : 'أذكار أخرى'),
         actions: [
           if (widget.pickHome)
-            TextButton(
-              onPressed: _selectedHome.isEmpty ? null : _confirmHomeSelection,
-              child: const Text('تم'),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: AppTheme.gold,
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                ),
+                onPressed: _confirmHomeSelection,
+                child: Text(
+                  'تم (${_selectedHome.length})',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 14),
+                ),
+              ),
             ),
         ],
       ),

@@ -67,20 +67,44 @@ class TajweedText extends StatelessWidget {
     }
     items.sort((a, b) => a.start != b.start ? a.start - b.start : a.end - b.end);
 
-    final children = <InlineSpan>[];
-    var cursor = 0;
-    for (final r in items) {
-      if (r.start > cursor) {
-        children.add(TextSpan(text: text.substring(cursor, r.start)));
+    // لا نقسّم منتصف الكلمة العربية، وإلا انفصلت الحروف (محرك Flutter يشكّل
+    // كل span على حدة). لذلك نلوّن كل كلمة بلون قاعدة التجويد الأطول تغطيةً لها.
+    final perWord = <_WordColor>[];
+    var wordStart = -1;
+    for (var i = 0; i < text.length; i++) {
+      final isSpace = _isWhitespace(text, i);
+      if (!isSpace && wordStart < 0) wordStart = i;
+      if ((isSpace || i == text.length - 1) && wordStart >= 0) {
+        final wEnd = isSpace ? i : i + 1;
+        _WordColor? best;
+        for (final r in items) {
+          if (r.end <= wordStart || r.start >= wEnd) continue;
+          final overlap =
+              (r.end < wEnd ? r.end : wEnd) - (r.start > wordStart ? r.start : wordStart);
+          if (best == null || overlap > best.overlap) {
+            best = _WordColor(overlap, r.color);
+          }
+        }
+        perWord.add(_WordColor(0, best?.color));
+        perWord.last.wordStart = wordStart;
+        perWord.last.wordEnd = wEnd;
+        wordStart = -1;
       }
-      children.add(TextSpan(
-        text: text.substring(r.start, r.end),
-        style: TextStyle(color: r.color, fontWeight: FontWeight.w600),
-      ));
-      cursor = r.end > cursor ? r.end : cursor;
     }
-    if (cursor < text.length) {
-      children.add(TextSpan(text: text.substring(cursor)));
+
+    final children = <InlineSpan>[];
+    for (final w in perWord) {
+      if (w.wordStart < 0) continue;
+      if (w.color != null) {
+        children.add(TextSpan(
+          text: text.substring(w.wordStart, w.wordEnd),
+          style: TextStyle(color: w.color, fontWeight: FontWeight.w600),
+        ));
+      } else {
+        children.add(TextSpan(
+          text: text.substring(w.wordStart, w.wordEnd),
+        ));
+      }
     }
 
     return Text.rich(
@@ -88,6 +112,20 @@ class TajweedText extends StatelessWidget {
       textDirection: TextDirection.rtl,
     );
   }
+
+  /// مسافة بيضاء (مسافة عادية أو ZWSP/ZWNJ) — أي نقطة أمان لفصل الكلمات دون كسر التشكيل
+  bool _isWhitespace(String s, int i) {
+    final c = s.codeUnitAt(i);
+    return c == 0x20 || c == 0x200B || c == 0x200C || c == 0xA0;
+  }
+}
+
+class _WordColor {
+  final int overlap;
+  final Color? color;
+  int wordStart = -1;
+  int wordEnd = -1;
+  const _WordColor(this.overlap, this.color);
 }
 
 class _Range {

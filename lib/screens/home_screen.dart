@@ -26,6 +26,7 @@ import 'hijri_calendar/hijri_calendar_screen.dart';
 import 'tawheed/tawheed_screen.dart';
 import 'pillars/pillars_screen.dart';
 import 'quran_tafsir/tafsir_surahs_screen.dart';
+import 'quran_mushaf/mushaf_screen.dart';
 import 'library/books_list_screen.dart';
 import 'library/book_chapters_screen.dart';
 import 'quran_memorization/memorization_screen.dart';
@@ -240,6 +241,15 @@ class _HomeScreenState extends State<HomeScreen> {
       await prefs.setBool(AppConstants.keyHomeSectionsV3, true);
     }
 
+    // ترحيل المصحف: إضافة قسم «القرآن الكريم» إلى القائمة الظاهرة مرة واحدة
+    if (!(prefs.getBool(AppConstants.keyHomeSectionsV4) ?? false)) {
+      if (!stored.contains('mushaf')) {
+        stored = [...stored, 'mushaf'];
+        await prefs.setStringList(AppConstants.keyHomeSectionsVisible, stored);
+      }
+      await prefs.setBool(AppConstants.keyHomeSectionsV4, true);
+    }
+
     final visible = <HomeSection>[];
     for (final id in stored) {
       final s = byId[id];
@@ -419,6 +429,9 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
       case 'tafsir':
         screen = const TafsirSurahsScreen();
+        break;
+      case 'mushaf':
+        screen = const MushafScreen();
         break;
       case 'library':
         screen = const BooksListScreen();

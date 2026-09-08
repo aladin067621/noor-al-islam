@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:adhan_dart/adhan_dart.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/location_service.dart';
 import '../../utils/theme.dart';
 import '../../widgets/location_picker.dart';
@@ -24,6 +27,20 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   int _methodIndex = 0;
   int _dayOffset = 0;
 
+  // إذاعة الأذان
+  bool _adhanEnabled = false;
+  bool _adhanLoading = false;
+  final AudioPlayer _adhanPlayer = AudioPlayer();
+
+  // نص "الأذان يعمل الآن": آخر صلاة تم تشغيل أذانها (سورة لقمع تكرار التشغيل)
+  String? _lastAdhanPrayer;
+
+  // تحديث عدّاد الوقت كل دقيقة
+  Timer? _ticker;
+
+  static const String _adhanUrl =
+      'https://alfurqan.online/api/v1/athan/1a014366658c';
+
   static const List<Map<String, String>> _methods = [
     {'name': 'رابطة العالم الإسلامي', 'desc': 'زاوية 18°'} ,
     {'name': 'أم القرى (مكة)', 'desc': '18.5° والعشاء بعد 90 دقيقة'} ,
@@ -36,16 +53,120 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     _start();
   }
 
+  @override
+  void dispose() {
+    _ticker?.cancel();
+    _adhanPlayer.dispose();
+    super.dispose();
+  }
+
   Future<void> _start() async {
     final service = LocationService.instance;
     await service.load();
     if (!mounted) return;
     // موقع محفوظ — نعرض المواقيت فورًا دون طلب إذن أو انتظار GPS
-    if (service.saved != null) return;
+    if (service.saved != null) {
+      await _loadAdhanPref();
+      _startTicker();
+      return;
+    }
     // لا موقع محفوظ — حاول تحديده من GPS مرة واحدة
     final err = await service.refreshFromGps();
     if (!mounted) return;
     setState(() => _error = err);
+  }
+
+  Future<void> _loadAdhanPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (!mounted) return;
+    setState(() {
+      _adhanEnabled = prefs.getBool('adhan_enabled') ?? false;
+    });
+  }
+
+  void _startTicker() {
+    _ticker = Timer.periodic(const Duration(seconds: 20), (_) {
+      if (!mounted) return;
+      setState(() {});
+      _maybeFlashAdhan();
+    });
+  }
+
+  /// عند تفعيل الأذان: يفحص إن دخل وقت صلاةٍ ما الآن ثم يشغّل الأذان مرة واحدة
+  Future<void> _maybeFlashAdhan() async {
+    if (!_adhanEnabled || _dayOffset != 0) return;
+    final loc = LocationService.instance.saved;
+    if (loc == null) return;
+    final now = DateTime.now();
+    final pt = PrayerTimes(
+      coordinates: Coordinates(loc.latitude, loc.longitude),
+      date: now,
+      calculationParameters: _paramsForMethod(_methodIndex),
+    );
+    final names = <String, DateTime?>{
+      'الفجر': pt.fajr,
+      'الظهر': pt.dhuhr,
+      'العصر': pt.asr,
+      'المغرب': pt.maghrib,
+      'العشاء': pt.isha,
+    };
+    for (final e in names.entries) {
+      final t = e.value;
+      if (t == null) continue;
+      final parts = _fmt(t).split(':');
+      final local = DateTime(now.year, now.month, now.day,
+          int.parse(parts[0]), int.parse(parts[1]));
+      final windowEnd = local.add(const Duration(minutes: 1));
+      if (!now.isBefore(local) && now.isBefore(windowEnd)) {
+        final key = _keyFor(now, e.key);
+        if (_lastAdhanPrayer == key) continue;
+        _lastAdhanPrayer = key;
+        await _playAdhan();
+      }
+    }
+  }
+
+  String _keyFor(DateTime d, String name) =>
+      '${d.year}-${d.month}-${d.day}-$name';
+
+  Future<void> _toggleAdhan() async {
+    final enable = !_adhanEnabled;
+    setState(() => _adhanEnabled = enable);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('adhan_enabled', enable);
+    if (!enable) {
+      await _adhanPlayer.stop();
+      if (mounted) setState(() {});
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('تفعيل الأذان: سيُشغَّل الأذان عند دخول وقت كل صلاة'),
+          duration: Duration(seconds: 3),
+        ));
+      }
+    }
+  }
+
+  /// تشغيل الأذان (عبر تدفق mp3 — دون تحميل الملف)
+  Future<void> _playAdhan() async {
+    setState(() => _adhanLoading = true);
+    try {
+      await _adhanPlayer.stop();
+      await _adhanPlayer.play(UrlSource(_adhanUrl));
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('تعذر تشغيل الأذان — تحقق من اتصالك بالإنترنت'),
+        ));
+      }
+    } finally {
+      if (mounted) setState(() => _adhanLoading = false);
+    }
+  }
+
+  void _stopAdhan() {
+    _adhanPlayer.stop();
+    setState(() {});
   }
 
   CalculationParameters _paramsForMethod(int index) {
@@ -70,12 +191,70 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     return '${local.hour.toString().padLeft(2, '0')}:${local.minute.toString().padLeft(2, '0')}';
   }
 
+  String _nextPrayerName(List<_PrayerTime> prayers, DateTime now) {
+    for (final p in prayers) {
+      if (p.name == 'الشروق') continue;
+      final parts = p.time.split(':');
+      final t = DateTime(now.year, now.month, now.day,
+          int.parse(parts[0]), int.parse(parts[1]));
+      if (t.isAfter(now)) return p.name;
+    }
+    // كل الصلوات مرّت اليوم → التالية صلاة الفجر
+    return 'الفجر';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('مواقيت الصلاة'),
         actions: [
+          IconButton(
+            tooltip: _adhanEnabled ? 'إيقاف الأذان' : 'تشغيل الأذان',
+            icon: _adhanLoading
+                ? const SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : Icon(
+                    _adhanEnabled
+                        ? Icons.volume_up
+                        : Icons.volume_off_outlined,
+                    color: _adhanEnabled ? AppTheme.gold : null,
+                  ),
+            onPressed: _toggleAdhan,
+          ),
+          PopupMenuButton<String>(
+            tooltip: 'التحكم في الأذان',
+            onSelected: (v) {
+              if (v == 'play') {
+                _playAdhan();
+              } else if (v == 'stop') {
+                _stopAdhan();
+              }
+            },
+            itemBuilder: (_) => [
+              const PopupMenuItem(
+                value: 'play',
+                child: ListTile(
+                  leading: Icon(Icons.play_circle_outline),
+                  title: Text('تشغيل الأذان الآن'),
+                  dense: true,
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem(
+                value: 'stop',
+                child: ListTile(
+                  leading: Icon(Icons.stop_circle_outlined),
+                  title: Text('إيقاف الأذان'),
+                  dense: true,
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+            ],
+          ),
           IconButton(
             tooltip: 'تغيير الموقع',
             icon: const Icon(Icons.my_location),
@@ -184,19 +363,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
       _PrayerTime('العشاء', _fmt(prayerTimes.isha!), Icons.dark_mode, const Color(0xFF4A148C)),
     ];
 
+    // تفعيل الأذان تلقائيًا عند دخول وقت الصلاة (مرة واحدة لكل صلاة)
+    // — يُدار من المؤقّت الدوري، لا من دورة البناء
     final now = DateTime.now();
-    String nextPrayer = 'الفجر';
-    if (_dayOffset == 0) {
-      for (final p in prayers) {
-        if (p.name == 'الشروق') continue;
-        final parts = p.time.split(':');
-        final t = DateTime(now.year, now.month, now.day,
-            int.parse(parts[0]), int.parse(parts[1]));
-        if (t.isAfter(now)) { nextPrayer = p.name; break; }
-      }
-    } else {
-      nextPrayer = '';
-    }
+    final nextPrayer = _dayOffset == 0 ? _nextPrayerName(prayers, now) : '';
 
     final dayLabel = _dayOffset == 0
         ? 'اليوم'
@@ -279,7 +449,12 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
             ),
           ),
           const SizedBox(height: 12),
-          ...prayers.map((p) => _PrayerTile(prayer: p, isNext: p.name == nextPrayer)),
+          ...prayers.map((p) => _PrayerTile(
+                prayer: p,
+                isNext: p.name == nextPrayer,
+                now: now,
+                dayOffset: _dayOffset,
+              )),
           const SizedBox(height: 20),
           Container(
             width: double.infinity,
@@ -327,11 +502,44 @@ class _PrayerTime {
 class _PrayerTile extends StatelessWidget {
   final _PrayerTime prayer;
   final bool isNext;
+  final DateTime now;
+  final int dayOffset;
 
-  const _PrayerTile({required this.prayer, required this.isNext});
+  const _PrayerTile({
+    required this.prayer,
+    required this.isNext,
+    required this.now,
+    required this.dayOffset,
+  });
+
+  /// فرق الوقت: مرّ (elapsed) أو بقي (remaining) — الأوقات تُحسب ليوم العرض
+  _CountDiff? _diff() {
+    final parts = prayer.time.split(':');
+    final t = DateTime(now.year, now.month, now.day,
+        int.parse(parts[0]), int.parse(parts[1]));
+    final diff = now.difference(t);
+    if (diff.inSeconds > -30 && diff.inSeconds <= 30) {
+      return _CountDiff('الآن', isPast: false);
+    }
+    if (diff.isNegative) {
+      // بقي بعض الوقت → upcoming
+      final abs = -diff;
+      return _CountDiff(_fmtDur(abs), isPast: false);
+    }
+    // مرّ الوقت → elapsed
+    return _CountDiff(_fmtDur(diff), isPast: true);
+  }
+
+  String _fmtDur(Duration d) {
+    final h = d.inHours;
+    final m = d.inMinutes.remainder(60);
+    if (h > 0) return '${h} س ${m} د';
+    return '${m} د';
+  }
 
   @override
   Widget build(BuildContext context) {
+    final diff = dayOffset == 0 ? _diff() : null;
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 4),
       shape: RoundedRectangleBorder(
@@ -353,6 +561,35 @@ class _PrayerTile extends StatelessWidget {
             color: isNext ? AppTheme.primaryGreen : null,
           ),
         ),
+        subtitle: diff != null
+            ? Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Row(
+                  children: [
+                    Icon(
+                      diff.isPast ? Icons.check_circle_outline : Icons.schedule,
+                      size: 14,
+                      color: diff.isPast ? Colors.grey : AppTheme.primaryGreen,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      diff.label == 'الآن'
+                          ? 'حان وقت الصلاة الآن'
+                          : (diff.isPast
+                              ? 'مرّ عليه ${diff.label}'
+                              : 'بقي ${diff.label}'),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: diff.isPast
+                            ? Colors.grey
+                            : AppTheme.primaryGreen,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : null,
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -380,4 +617,10 @@ class _PrayerTile extends StatelessWidget {
       ),
     );
   }
+}
+
+class _CountDiff {
+  final String label;
+  final bool isPast;
+  const _CountDiff(this.label, {required this.isPast});
 }
