@@ -176,6 +176,15 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
     await _loadOrder();
   }
 
+  /// فتح شاشة «أذكار أخرى» مباشرة لإضافة فئات إلى القائمة الرئيسية
+  Future<void> _openAddFromOther() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const AdhkarSubCategoriesScreen()),
+    );
+    await _loadOrder();
+  }
+
   /// تحميل كل الفئات والأذكار لمرة واحدة عند بدء البحث
   Future<void> _ensureSearchIndex() async {
     if (_searchReady) return;
@@ -221,7 +230,16 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
   Widget build(BuildContext context) {
     final searching = _query.isNotEmpty;
     return Scaffold(
-      appBar: AppBar(title: const Text('الأذكار')),
+      appBar: AppBar(
+        title: const Text('الأذكار'),
+        actions: [
+          IconButton(
+            tooltip: 'إضافة فئات من أذكار أخرى',
+            icon: const Icon(Icons.add),
+            onPressed: _openAddFromOther,
+          ),
+        ],
+      ),
       body: _loaded
           ? Column(
               children: [
