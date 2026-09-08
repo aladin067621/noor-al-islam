@@ -125,7 +125,7 @@ class _WordColor {
   final Color? color;
   int wordStart = -1;
   int wordEnd = -1;
-  const _WordColor(this.overlap, this.color);
+  _WordColor(this.overlap, this.color);
 }
 
 class _Range {
