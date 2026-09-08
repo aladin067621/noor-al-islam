@@ -245,6 +245,11 @@ class _HomeScreenState extends State<HomeScreen> {
       final s = byId[id];
       if (s != null && visible.every((x) => x.id != id)) visible.add(s);
     }
+    // الأقسام الديناميكية (فئات «أذكار أخرى» المضافة عبر «المزيد من الأذكار»)
+    // تظهر دائماً ظاهرة بمجرد اختيارها — حتى لو لم تُسجَّل في قائمة الظاهرة.
+    for (final s in dynamicSections) {
+      if (visible.every((x) => x.id != s.id)) visible.add(s);
+    }
     // عند الترحيل فقط: الأقسام الجديدة التي لم تُذكر تظهر افتراضياً في النهاية.
     // أما في الحفظ اللاحق فالغائب يعني أنه مخفي بقصد المستخدم.
     if (fromDefault) {
