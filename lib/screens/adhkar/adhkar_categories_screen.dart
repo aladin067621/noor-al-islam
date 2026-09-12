@@ -7,6 +7,7 @@ import '../../utils/theme.dart';
 import '../../utils/constants.dart';
 import '../../services/data_service.dart';
 import '../../widgets/dhikr_card.dart';
+import '../../widgets/slide_notification.dart';
 import 'adhkar_list_screen.dart';
 import 'adhkar_sub_categories_screen.dart';
 import 'adhkar_personal_list_screen.dart';
@@ -115,13 +116,13 @@ class _AdhkarCategoriesScreenState extends State<AdhkarCategoriesScreen> {
     await prefs.setStringList(
         AppConstants.keyPinnedAdhkar, _pinned.toList());
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(_pinned.contains(key)
-              ? 'تم تثبيت القسم في الصفحة الرئيسية'
-              : 'تمت إزالة التثبيت'),
-          duration: const Duration(seconds: 1),
-        ),
+      SlideNotification.show(
+        context,
+        title: _pinned.contains(key) ? 'تم التثبيت' : 'تمت الإزالة',
+        message: _pinned.contains(key)
+            ? 'عُرض القسم في الصفحة الرئيسية'
+            : 'أُزيل القسم من الصفحة الرئيسية',
+        icon: Icons.push_pin_outlined,
       );
     }
   }

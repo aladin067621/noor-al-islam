@@ -5,6 +5,7 @@ import '../../models/adhkar_category.dart';
 import '../../services/data_service.dart';
 import '../../utils/theme.dart';
 import '../../utils/constants.dart';
+import '../../widgets/slide_notification.dart';
 import 'adhkar_list_screen.dart';
 
 /// المفاتيح التي تكرّر أقسام الصباح/المساء/النوم/السفر/الصلاة الموجودة أصلاً
@@ -127,13 +128,13 @@ class _AdhkarSubCategoriesScreenState extends State<AdhkarSubCategoriesScreen> {
     await prefs.setStringList(
         AppConstants.keyAdhkarMainExtra, _inMainExtra.toList());
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(_inMainExtra.contains(cat.uniqueKey)
-              ? 'أُضيف «${cat.title}» إلى قائمة الأذكار'
-              : 'أُزيل «${cat.title}» من قائمة الأذكار'),
-          duration: const Duration(seconds: 2),
-        ),
+      SlideNotification.show(
+        context,
+        title: _inMainExtra.contains(cat.uniqueKey) ? 'أُضيف القسم' : 'أُزيل القسم',
+        message: _inMainExtra.contains(cat.uniqueKey)
+            ? 'أُضيف «${cat.title}» إلى قائمة الأذكار'
+            : 'أُزيل «${cat.title}» من قائمة الأذكار',
+        icon: Icons.playlist_add_check,
       );
     }
   }

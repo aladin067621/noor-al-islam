@@ -7,6 +7,7 @@ import '../../utils/constants.dart';
 import '../../utils/theme.dart';
 import '../../widgets/tajweed_text.dart' show toArabicDigits;
 import 'mushaf_reader_screen.dart';
+import 'tajweed_rules_screen.dart';
 
 /// المصحف المنفصل «القرآن الكريم» — قائمة السور مع بطاقة استئناف القراءة
 class MushafScreen extends StatefulWidget {
@@ -71,7 +72,21 @@ class _MushafScreenState extends State<MushafScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('القرآن الكريم')),
+      appBar: AppBar(
+        title: const Text('القرآن الكريم'),
+        actions: [
+          IconButton(
+            tooltip: 'أحكام التجويد',
+            icon: const Icon(Icons.menu_book),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const TajweedRulesScreen()),
+              );
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           if (_bookmarkSurah != null && _bookmarkAyah != null)

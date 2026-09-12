@@ -9,9 +9,13 @@ import '../../utils/constants.dart';
 import '../../utils/theme.dart';
 import '../../widgets/tajweed_text.dart';
 import '../quran_tafsir/tafsir_surah_screen.dart';
+import 'tajweed_rules_screen.dart';
 
-/// قارئ المصحف المنفصل — نص كامل مع ألوان التجويد، علامة قراءة (استئناف)،
-/// ورابط لكل آية إلى تفسيرها.
+/// قارئ المصحف المنفصل — عرض يشبه المصحف الحقيقي:
+/// — صفحات متتابعة (حسب حقل page في بيانات الآيات) بنص متصل.
+/// — علامة آية نهاية كل آية «﴿١﴾» داخليًا.
+/// — وضع قراءة أسود/أبيض قابل للتبديل.
+/// — ضغط أي آية يفتح نافذة إجراءات (تفسير/علامة/تلاوة).
 class MushafReaderScreen extends StatefulWidget {
   final int surahId;
   final int initialAyah;
@@ -33,9 +37,16 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
   String _basmalah = '';
   bool _error = false;
   int? _bookmarkAyah;
+  bool _darkMode = false;
+
+  // صفحات السورة: كل صفحة قائمة آياتها بالترتيب (حسب حقل page)
+  late List<List<QuranAyah>> _pages = [];
   final ScrollController _scroll = ScrollController();
 
-  static const double _ayahExtent = 84.0;
+  // تقدير ارتفاع الصفحة للانتقال إلى علامة القراءة (التنقل بسرعة إلى الصفحة)
+  double _pageExtent = 0;
+
+  static const String _prefDark = 'mushaf_dark_mode';
 
   @override
   void initState() {
@@ -61,6 +72,7 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
         basmalah = fatiha.ayahAt(1).textArabic;
       }
       final prefs = await SharedPreferences.getInstance();
+      final dark = prefs.getBool(_prefDark) ?? false;
       final raw = prefs.getString(AppConstants.keyMushafBookmark);
       int? bmAyah;
       if (raw != null) {
@@ -69,6 +81,20 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
           bmAyah = int.tryParse(p[1]);
         }
       }
+      // تجميع الآيات في صفحات
+      final pages = <List<QuranAyah>>[];
+      var current = <QuranAyah>[];
+      var lastPage = -1;
+      for (final ayah in surah.ayahs) {
+        if (ayah.page != lastPage && current.isNotEmpty) {
+          pages.add(current);
+          current = <QuranAyah>[];
+        }
+        current.add(ayah);
+        lastPage = ayah.page;
+      }
+      if (current.isNotEmpty) pages.add(current);
+
       if (!mounted) return;
       setState(() {
         _surah = surah;
@@ -76,6 +102,8 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
         _ruleColors = colors;
         _basmalah = basmalah;
         _bookmarkAyah = bmAyah;
+        _darkMode = dark;
+        _pages = pages;
       });
       final target = widget.initialAyah > 1
           ? widget.initialAyah
@@ -91,11 +119,42 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
   }
 
   void _scrollToAyah(int ayah) {
-    if (ayah < 1) return;
-    final dy = _ayahExtent * (ayah - 1);
-    if (dy > 0) _scroll.animateTo(dy,
-        duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+    if (_pageExtent <= 0) _estimatePageExtent();
+    final pageIndex = _pageIndexOfAyah(ayah);
+    if (pageIndex < 0) return;
+    // بسمله أول قائمة إذا وُجدت ⇒ إزاحة صفحة إضافية
+    final itemIndex = pageIndex + (_basmalah.isEmpty ? 0 : 1);
+    final dy = (itemIndex * _pageExtent) - 8;
+    if (dy > 0) {
+      _scroll.animateTo(dy,
+          duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+    }
   }
+
+  int _pageIndexOfAyah(int ayah) {
+    for (var i = 0; i < _pages.length; i++) {
+      final p = _pages[i];
+      if (p.any((a) => a.number == ayah)) return i;
+    }
+    return -1;
+  }
+
+  /// تقدير ارتفاع الصفحة الواحدة (عدد الحروف ÷ حروف السطر الواحد × ارتفاع السطر)
+  void _estimatePageExtent() {
+    if (!_surahLoaded) return;
+    final lineHeight = 1.9 * 27.0; // ارتفاع سطر بمقياس خط الصفحة
+    const charsPerLine = 26.0;
+    var totalEst = 0.0;
+    for (final page in _pages) {
+      var letters = 0;
+      for (final a in page) letters += a.textArabic.runes.length;
+      totalEst += ((letters / charsPerLine).ceil()) * lineHeight;
+    }
+    totalEst += (_pages.length + ( _basmalah.isEmpty ? 0 : 1)) * 90; // هوامش/رقم
+    _pageExtent = totalEst / (_pages.length + (_basmalah.isEmpty ? 0 : 1));
+  }
+
+  bool get _surahLoaded => _surah != null;
 
   Future<void> _setBookmark(int ayah) async {
     final prefs = await SharedPreferences.getInstance();
@@ -112,6 +171,13 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
     if (!mounted) return;
     setState(() => _bookmarkAyah = null);
     _snack('حُذفت العلامة');
+  }
+
+  Future<void> _toggleDarkMode() async {
+    final prefs = await SharedPreferences.getInstance();
+    final next = !_darkMode;
+    setState(() => _darkMode = next);
+    await prefs.setBool(_prefDark, next);
   }
 
   void _playAll() {
@@ -157,6 +223,21 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
             icon: const Icon(Icons.play_circle_outline),
             onPressed: _surah == null ? null : _playAll,
           ),
+          IconButton(
+            tooltip: 'أحكام التجويد',
+            icon: const Icon(Icons.menu_book),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const TajweedRulesScreen()),
+              );
+            },
+          ),
+          IconButton(
+            tooltip: _darkMode ? 'وضع النهار (أبيض)' : 'وضع الليل (أسود)',
+            icon: Icon(_darkMode ? Icons.light_mode : Icons.dark_mode),
+            onPressed: _toggleDarkMode,
+          ),
           if (_bookmarkAyah != null)
             PopupMenuButton<String>(
               tooltip: 'علامة القراءة',
@@ -193,27 +274,88 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
           ? const Center(child: Text('تعذّر تحميل السورة'))
           : (_surah == null
               ? const Center(child: CircularProgressIndicator())
-              : ListView.builder(
-                  controller: _scroll,
-                  padding: const EdgeInsets.all(12),
-                  itemCount: _surah!.numberOfAyahs + 1,
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      if (_basmalah.isEmpty) return const SizedBox(height: 4);
-                      return _basmalahCard();
-                    }
-                    return _ayahCard(index);
-                  },
-                )),
+              : _buildMushaf()),
     );
   }
 
-  Widget _basmalahCard() {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 10),
-      color: AppTheme.gold.withOpacity(0.08),
+  Widget _buildMushaf() {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (_pageExtent <= 0) _estimatePageExtent();
+        final bg = _darkMode
+            ? const Color(0xFF0E0B07)
+            : const Color(0xFFF8F5EE);
+        final paper = _darkMode
+            ? const Color(0xFF171310)
+            : const Color(0xFFFFFDF7);
+        final textColor = _darkMode ? Colors.white : const Color(0xFF1A1A1A);
+        return Container(
+          color: bg,
+          child: ListView.builder(
+            controller: _scroll,
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+            itemCount: _pages.length + (_basmalah.isEmpty ? 0 : 1),
+            itemBuilder: (context, index) {
+              if (_basmalah.isNotEmpty && index == 0) {
+                return _mushafPage(
+                  paper: paper,
+                  textColor: textColor,
+                  children: [_basmalahLine()],
+                  pageNumber: null,
+                );
+              }
+              final pageIndex = index - (_basmalah.isEmpty ? 0 : 1);
+              final page = _pages[pageIndex];
+              return _mushafPage(
+                paper: paper,
+                textColor: textColor,
+                children: [
+                  for (final ayah in page) _ayahLine(ayah, textColor),
+                ],
+                pageNumber: page.first.page,
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _mushafPage({
+    required Color paper,
+    required Color textColor,
+    required List<Widget> children,
+    required int? pageNumber,
+  }) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.fromLTRB(18, 14, 18, 10),
+      decoration: BoxDecoration(
+        color: paper,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(_darkMode ? 0.35 : 0.08),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (final c in children) c,
+          if (pageNumber != null)
+            Align(alignment: Alignment.center, child: _pageNumberBadge(pageNumber, textColor)),
+        ],
+      ),
+    );
+  }
+
+  Widget _basmalahLine() {
+    return Center(
       child: Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.only(bottom: 2),
         child: TajweedText(
           text: _basmalah,
           spans: const [],
@@ -226,55 +368,71 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
     );
   }
 
-  Widget _ayahCard(int ayahNum) {
-    final surah = _surah!;
-    final ayah = surah.ayahAt(ayahNum);
-    final spans = _tajweed![ayahNum] ?? const <TajweedSpan>[];
-    final isBookmark = _bookmarkAyah == ayahNum;
+  /// آية بنص متصل وعلامة نهاية «﴿رقم﴾» داخليًا — قابلة للمس لفتح الإجراءات
+  Widget _ayahLine(QuranAyah ayah, Color textColor) {
+    final ayahText = ayah.textArabic;
+    // إلحاق علامة نهاية الآية داخل نفس السطر (بعد النص، خارج نطاق التلوين)
+    final inline = '  ﴿${toArabicDigits(ayah.number)}﴾';
+    final isBookmark = _bookmarkAyah == ayah.number;
 
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 4),
-      color: isBookmark ? AppTheme.gold.withOpacity(0.10) : null,
+    Widget line = TajweedText(
+      text: ayahText + inline,
+      spans: _tajweed![ayah.number] ?? const <TajweedSpan>[],
+      ruleColors: _ruleColors!,
+      tajweedOn: true,
+      fontSize: 27,
+      fontFamily: AppConstants.quranUthmaniFont,
+      color: textColor,
+    );
+
+    if (isBookmark) {
+      line = Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(vertical: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+        decoration: BoxDecoration(
+          color: AppTheme.gold.withOpacity(_darkMode ? 0.18 : 0.10),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: line,
+      );
+    }
+
+    return Semantics(
+      button: true,
+      label: 'آية ${toArabicDigits(ayah.number)}',
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: () => _showAyahActions(ayahNum, ayah.textArabic),
+        borderRadius: BorderRadius.circular(6),
+        onTap: () => _showAyahActions(ayah.number, ayahText),
         child: Padding(
-          padding: const EdgeInsets.all(14),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: TajweedText(
-                  text: ayah.textArabic,
-                  spans: spans,
-                  ruleColors: _ruleColors!,
-                  tajweedOn: true,
-                  fontSize: 26,
-                  fontFamily: AppConstants.quranUthmaniFont,
-                ),
-              ),
-              const SizedBox(width: 10),
-              Container(
-                width: 34,
-                height: 34,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: AppTheme.primaryGreen.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                      color: isBookmark
-                          ? AppTheme.gold
-                          : AppTheme.primaryGreen.withOpacity(0.5)),
-                ),
-                child: Text(
-                  '﴿${toArabicDigits(ayahNum)}﴾',
-                  style: TextStyle(
-                      color: isBookmark ? AppTheme.gold : AppTheme.primaryGreen,
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
+          padding: const EdgeInsets.symmetric(vertical: 1),
+          child: line,
+        ),
+      ),
+    );
+  }
+
+  Widget _pageNumberBadge(int page, Color textColor) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 6),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                  color: textColor.withOpacity(0.25), width: 0.8),
+              bottom: BorderSide(
+                  color: textColor.withOpacity(0.25), width: 0.8),
+            ),
+          ),
+          child: Text(
+            toArabicDigits(page),
+            style: TextStyle(
+              fontSize: 13,
+              color: textColor.withOpacity(0.6),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -284,6 +442,7 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
   Future<void> _showAyahActions(int ayahNum, String ayahText) async {
     await showModalBottomSheet<void>(
       context: context,
+      backgroundColor: _darkMode ? const Color(0xFF1E1915) : null,
       builder: (sheetContext) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
@@ -300,6 +459,11 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
                   tajweedOn: false,
                   fontSize: 20,
                   fontFamily: AppConstants.quranUthmaniFont,
+                  color: _darkMode
+                      ? Colors.white
+                      : Theme.of(sheetContext).brightness == Brightness.dark
+                          ? Colors.white
+                          : const Color(0xFF1A1A1A),
                 ),
               ),
               ListTile(

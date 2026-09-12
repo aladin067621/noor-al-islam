@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../services/notification_service.dart';
 import '../utils/constants.dart';
 import '../utils/theme.dart';
+import 'slide_notification.dart';
 
 /// قسم التذكيرات اليومية (سورة الكهف + صيام الاثنين/الخميس + الأيام البيض)
 /// يعرض في الصفحة الرئيسية في الزيارة الأولى فقط، وهو متاح دائماً في الإعدادات.
@@ -39,9 +40,14 @@ class _DailyRemindersCardState extends State<DailyRemindersCard> {
       NotificationService.instance.scheduleSunnahReminders();
     } else {
       NotificationService.instance.cancelSunnahReminders();
-      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-        const SnackBar(content: Text('تم إيقاف تذكيرات السنن اليومية')),
-      );
+      if (mounted) {
+        SlideNotification.show(
+          context,
+          title: 'تم الإيقاف',
+          message: 'أُوقفت تذكيرات السنن اليومية',
+          icon: Icons.notifications_off_outlined,
+        );
+      }
     }
   }
 

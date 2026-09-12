@@ -7,6 +7,7 @@ import '../models/dhikr.dart';
 import '../utils/theme.dart';
 import '../services/favorites_service.dart';
 import '../services/personal_adhkar_service.dart';
+import 'slide_notification.dart';
 
 /// بطاقة ذكر تفاعلية: عداد تكرار، نسخ، مشاركة، مفضلة
 class DhikrCard extends StatefulWidget {
@@ -36,8 +37,11 @@ class _DhikrCardState extends State<DhikrCard> {
 
   void _copy() {
     Clipboard.setData(ClipboardData(text: widget.dhikr.shareText()));
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('تم نسخ الذكر'), duration: Duration(seconds: 1)),
+    SlideNotification.show(
+      context,
+      title: 'تم النسخ',
+      message: 'نُسخ الذكر إلى الحافظة',
+      icon: Icons.copy,
     );
   }
 

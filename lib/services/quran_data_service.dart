@@ -72,6 +72,17 @@ class QuranDataService {
     return map;
   }
 
+  Map<String, dynamic>? _ruleCatalogCache;
+
+  /// كتالوج أحكام التجويد كاملًا (الأقسام والأحكام وأوصافها وألوانها)
+  /// — من tajweed-rules.json (Quran-Tajweed-Engine) دون تعديل.
+  Future<Map<String, dynamic>> loadRulesCatalog() async {
+    if (_ruleCatalogCache != null) return _ruleCatalogCache!;
+    final data = await _loadJson(AppConstants.quranRulesPath);
+    _ruleCatalogCache = data;
+    return data;
+  }
+
   /// قائمة الأجزاء الثلاثين
   Future<List<JuzInfo>> loadJuz() async {
     if (_juzCache != null) return _juzCache!;

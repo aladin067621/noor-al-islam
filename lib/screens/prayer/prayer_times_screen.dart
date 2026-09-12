@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/location_service.dart';
 import '../../utils/theme.dart';
 import '../../widgets/location_picker.dart';
+import '../../widgets/slide_notification.dart';
 
 class PrayerTimesScreen extends StatefulWidget {
   const PrayerTimesScreen({super.key});
@@ -30,7 +31,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   // إذاعة الأذان
   bool _adhanEnabled = false;
   bool _adhanLoading = false;
+  bool _adhanPlaying = false;
+  bool _adhanManuallyStopped = false;
   final AudioPlayer _adhanPlayer = AudioPlayer();
+  StreamSubscription<PlayerState>? _adhanStateSub;
 
   // نص "الأذان يعمل الآن": آخر صلاة تم تشغيل أذانها (سورة لقمع تكرار التشغيل)
   String? _lastAdhanPrayer;
@@ -50,12 +54,19 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   @override
   void initState() {
     super.initState();
+    _adhanStateSub = _adhanPlayer.onPlayerStateChanged.listen((state) {
+      final playing = state == PlayerState.playing;
+      if (_adhanPlaying != playing && mounted) {
+        setState(() => _adhanPlaying = playing);
+      }
+    });
     _start();
   }
 
   @override
   void dispose() {
     _ticker?.cancel();
+    _adhanStateSub?.cancel();
     _adhanPlayer.dispose();
     super.dispose();
   }
@@ -94,7 +105,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
 
   /// عند تفعيل الأذان: يفحص إن دخل وقت صلاةٍ ما الآن ثم يشغّل الأذان مرة واحدة
   Future<void> _maybeFlashAdhan() async {
-    if (!_adhanEnabled || _dayOffset != 0) return;
+    if (!_adhanEnabled || _adhanManuallyStopped || _dayOffset != 0) return;
     final loc = LocationService.instance.saved;
     if (loc == null) return;
     final now = DateTime.now();
@@ -131,7 +142,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
 
   Future<void> _toggleAdhan() async {
     final enable = !_adhanEnabled;
-    setState(() => _adhanEnabled = enable);
+    setState(() {
+      _adhanEnabled = enable;
+      if (!enable) {
+        _adhanManuallyStopped = true;
+        _adhanPlaying = false;
+      } else {
+        _adhanManuallyStopped = false;
+      }
+    });
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('adhan_enabled', enable);
     if (!enable) {
@@ -139,34 +158,47 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
       if (mounted) setState(() {});
     } else {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('تفعيل الأذان: سيُشغَّل الأذان عند دخول وقت كل صلاة'),
-          duration: Duration(seconds: 3),
-        ));
+        SlideNotification.show(
+          context,
+          title: 'تفعيل الأذان',
+          message: 'سيُشغَّل الأذان عند دخول وقت كل صلاة',
+          icon: Icons.volume_up,
+        );
       }
     }
   }
 
   /// تشغيل الأذان (عبر تدفق mp3 — دون تحميل الملف)
-  Future<void> _playAdhan() async {
+  Future<void> _playAdhan({bool manual = false}) async {
+    if (manual) _adhanManuallyStopped = false;
     setState(() => _adhanLoading = true);
     try {
       await _adhanPlayer.stop();
       await _adhanPlayer.play(UrlSource(_adhanUrl));
     } catch (_) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('تعذر تشغيل الأذان — تحقق من اتصالك بالإنترنت'),
-        ));
+        SlideNotification.show(
+          context,
+          title: 'تعذر تشغيل الأذان',
+          message: 'تحقق من اتصالك بالإنترنت ثم أعد المحاولة',
+          icon: Icons.wifi_off,
+          color: AppTheme.dangerRed,
+        );
       }
     } finally {
       if (mounted) setState(() => _adhanLoading = false);
     }
   }
 
+  /// إيقاف الأذان يدويًا — يمنع إعادة التشغيل التلقائي حتى يعيد المستخدم التفعيل
   void _stopAdhan() {
     _adhanPlayer.stop();
-    setState(() {});
+    if (mounted) {
+      setState(() {
+        _adhanPlaying = false;
+        _adhanManuallyStopped = true;
+      });
+    }
   }
 
   CalculationParameters _paramsForMethod(int index) {
@@ -229,7 +261,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
             tooltip: 'التحكم في الأذان',
             onSelected: (v) {
               if (v == 'play') {
-                _playAdhan();
+                _playAdhan(manual: true);
               } else if (v == 'stop') {
                 _stopAdhan();
               }
@@ -262,16 +294,62 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           ),
         ],
       ),
-      body: ListenableBuilder(
-        listenable: LocationService.instance,
-        builder: (context, _) {
-          final loc = LocationService.instance.saved;
-          if (loc == null) {
-            if (_error != null) return _buildError();
-            return const Center(child: CircularProgressIndicator());
-          }
-          return _buildContent(loc);
-        },
+      body: Column(
+        children: [
+          if (_adhanPlaying) _adhanPlayingBanner(),
+          Expanded(
+            child: ListenableBuilder(
+              listenable: LocationService.instance,
+              builder: (context, _) {
+                final loc = LocationService.instance.saved;
+                if (loc == null) {
+                  if (_error != null) return _buildError();
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return _buildContent(loc);
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// شريط «الأذان يعمل الآن» مع زر إيقاف فوري
+  Widget _adhanPlayingBanner() {
+    return Material(
+      color: AppTheme.primaryGreen,
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          child: Row(
+            children: [
+              const Icon(Icons.volume_up, color: Colors.white, size: 20),
+              const SizedBox(width: 10),
+              const Expanded(
+                child: Text(
+                  'الأذان يعمل الآن',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+              ),
+              TextButton.icon(
+                onPressed: _stopAdhan,
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.white.withOpacity(0.12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                ),
+                icon: const Icon(Icons.stop_circle_outlined, size: 18),
+                label: const Text('إيقاف'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -355,12 +433,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     );
 
     final prayers = [
-      _PrayerTime('الفجر', _fmt(prayerTimes.fajr!), Icons.nightlight_round, const Color(0xFF1A237E)),
-      _PrayerTime('الشروق', _fmt(prayerTimes.sunrise!), Icons.wb_sunny, const Color(0xFFFF9800)),
-      _PrayerTime('الظهر', _fmt(prayerTimes.dhuhr!), Icons.brightness_high, const Color(0xFFFFC107)),
-      _PrayerTime('العصر', _fmt(prayerTimes.asr!), Icons.wb_cloudy, const Color(0xFFFF6F00)),
-      _PrayerTime('المغرب', _fmt(prayerTimes.maghrib!), Icons.nights_stay, const Color(0xFFE65100)),
-      _PrayerTime('العشاء', _fmt(prayerTimes.isha!), Icons.dark_mode, const Color(0xFF4A148C)),
+      _PrayerTime('الفجر', _fmt(prayerTimes.fajr!), Icons.nightlight_round, const Color(0xFF1A237E),
+          'السُّنّة قبل الفجر: ركعتان'),
+      _PrayerTime('الشروق', _fmt(prayerTimes.sunrise!), Icons.wb_sunny, const Color(0xFFFF9800),
+          'الشروق ليس صلاة — يحرم أداء النافلة حتى ترتفع الشمس'),
+      _PrayerTime('الظهر', _fmt(prayerTimes.dhuhr!), Icons.brightness_high, const Color(0xFFFFC107),
+          'السُّنّة قبل الظهر: ركعتان، وبعدها: ركعتان (والأربع قبلها أَكمل)'),
+      _PrayerTime('العصر', _fmt(prayerTimes.asr!), Icons.wb_cloudy, const Color(0xFFFF6F00),
+          'لا سُنّة راتبة مؤكدة للعصر'),
+      _PrayerTime('المغرب', _fmt(prayerTimes.maghrib!), Icons.nights_stay, const Color(0xFFE65100),
+          'السُّنّة بعد المغرب: ركعتان'),
+      _PrayerTime('العشاء', _fmt(prayerTimes.isha!), Icons.dark_mode, const Color(0xFF4A148C),
+          'السُّنّة بعد العشاء: ركعتان، ثم الوتر'),
     ];
 
     // تفعيل الأذان تلقائيًا عند دخول وقت الصلاة (مرة واحدة لكل صلاة)
@@ -455,6 +539,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
                 now: now,
                 dayOffset: _dayOffset,
               )),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              const Icon(Icons.verified_outlined, size: 16, color: AppTheme.gold),
+              const SizedBox(width: 6),
+              Expanded(
+                child: Text(
+                  'السنن الرواتب: عن ابن عمر قال: «حفِظت من النبي ﷺ عشرَ ركعات: ركعتين قبل الظهر، وركعتين بعدها، وركعتين بعد المغرب، وركعتين بعد العشاء، وركعتين قبل صلاة الفجر» (رواه البخاري 1180، ومسلم 725)',
+                  style: TextStyle(
+                    fontSize: 12,
+                    height: 1.6,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: 20),
           Container(
             width: double.infinity,
@@ -495,8 +596,9 @@ class _PrayerTime {
   final String time;
   final IconData icon;
   final Color color;
+  final String sunnah;
 
-  const _PrayerTime(this.name, this.time, this.icon, this.color);
+  const _PrayerTime(this.name, this.time, this.icon, this.color, this.sunnah);
 }
 
 class _PrayerTile extends StatelessWidget {
@@ -561,10 +663,22 @@ class _PrayerTile extends StatelessWidget {
             color: isNext ? AppTheme.primaryGreen : null,
           ),
         ),
-        subtitle: diff != null
-            ? Padding(
-                padding: const EdgeInsets.only(top: 2),
-                child: Row(
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 2),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                prayer.sunnah,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey[600],
+                  height: 1.4,
+                ),
+              ),
+              if (diff != null) ...[
+                const SizedBox(height: 3),
+                Row(
                   children: [
                     Icon(
                       diff.isPast ? Icons.check_circle_outline : Icons.schedule,
@@ -588,8 +702,10 @@ class _PrayerTile extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
-            : null,
+              ],
+            ],
+          ),
+        ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

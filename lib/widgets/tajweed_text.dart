@@ -18,6 +18,9 @@ class TajweedText extends StatelessWidget {
   final double fontSize;
   final String fontFamily;
 
+  /// لون أساسي صريح يغلب لون السمة (يُستخدم في وضع المصحف الأسود/الأبيض)
+  final Color? color;
+
   /// قاعدة مدّ الوقف لا تُلون افتراضيًا (كما في المحرك الأصلي)
   static const _skippedRules = {'maddSukoon'};
 
@@ -29,12 +32,14 @@ class TajweedText extends StatelessWidget {
     required this.tajweedOn,
     required this.fontSize,
     required this.fontFamily,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
-    final baseColor = dark ? Colors.white : const Color(0xFF1A1A1A);
+    final baseColor =
+        color ?? (dark ? Colors.white : const Color(0xFF1A1A1A));
     final base = TextStyle(
       fontFamily: fontFamily,
       fontSize: fontSize,
@@ -93,18 +98,23 @@ class TajweedText extends StatelessWidget {
     }
 
     final children = <InlineSpan>[];
+    var cursor = 0;
     for (final w in perWord) {
       if (w.wordStart < 0) continue;
-      if (w.color != null) {
-        children.add(TextSpan(
-          text: text.substring(w.wordStart, w.wordEnd),
-          style: TextStyle(color: w.color, fontWeight: FontWeight.w600),
-        ));
-      } else {
-        children.add(TextSpan(
-          text: text.substring(w.wordStart, w.wordEnd),
-        ));
+      if (w.wordStart > cursor) {
+        children.add(TextSpan(text: text.substring(cursor, w.wordStart)));
       }
+      final wordText = text.substring(w.wordStart, w.wordEnd);
+      children.add(TextSpan(
+        text: wordText,
+        style: w.color != null
+            ? TextStyle(color: w.color, fontWeight: FontWeight.w600)
+            : null,
+      ));
+      cursor = w.wordEnd;
+    }
+    if (cursor < text.length) {
+      children.add(TextSpan(text: text.substring(cursor)));
     }
 
     return Text.rich(
