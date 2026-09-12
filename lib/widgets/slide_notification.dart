@@ -23,7 +23,8 @@ class SlideNotification {
     final overlay = Overlay.of(context, rootOverlay: true);
     // إغلاق أي إشعار سابق قبل عرض الجديد
     _current?.remove();
-    final entry = OverlayEntry(
+    late final OverlayEntry entry;
+    entry = OverlayEntry(
       builder: (ctx) => _SlideNotificationBanner(
         title: title,
         message: message,
