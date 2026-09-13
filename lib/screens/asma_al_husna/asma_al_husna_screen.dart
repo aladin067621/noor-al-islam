@@ -1,268 +1,398 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../utils/theme.dart';
 
-class AsmaAlHusnaScreen extends StatelessWidget {
+/// نموذج اسمٍ من أسماء الله الحسنى (من asma_husna_entries.json)
+class AsmaHusnaEntry {
+  final String id;
+  final String name;
+  final String category;
+  final String short;
+  final String detailed;
+  final String source;
+
+  const AsmaHusnaEntry({
+    required this.id,
+    required this.name,
+    required this.category,
+    required this.short,
+    required this.detailed,
+    required this.source,
+  });
+
+  factory AsmaHusnaEntry.fromJson(Map<String, dynamic> json) {
+    return AsmaHusnaEntry(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      category: json['category'] as String,
+      short: json['short'] as String,
+      detailed: json['detailed'] as String,
+      source: json['source'] as String,
+    );
+  }
+}
+
+class AsmaAlHusnaScreen extends StatefulWidget {
   const AsmaAlHusnaScreen({super.key});
 
-  static const List<Map<String, String>> _names = [
-    {'ar': 'الله', 'desc': 'الاسم الأعظم الجامع لجميع صفات الكمال'},
-    {'ar': 'الرَّحْمَن', 'desc': 'الذي وسعت رحمته كل شيء'},
-    {'ar': 'الرَّحِيم', 'desc': 'الذي خصّ رحمته بالمؤمنين'},
-    {'ar': 'المَلِك', 'desc': 'المالك المتصرف بملكه كيف يشاء'},
-    {'ar': 'القُدُّوس', 'desc': 'المنزه عن كل نقص'},
-    {'ar': 'السَّلاَم', 'desc': 'السالم من كل عيب ونقص'},
-    {'ar': 'المُؤْمِن', 'desc': 'المصدق لرسله بالآيات'},
-    {'ar': 'المُهَيْمِن', 'desc': 'الرقيب الحافظ لكل شيء'},
-    {'ar': 'العَزِيز', 'desc': 'الغالب الذي لا يُغلب'},
-    {'ar': 'الجَبَّار', 'desc': 'الذي يجبر كسر عباده'},
-    {'ar': 'المُتَكَبِّر', 'desc': 'المتعالي عن صفات الخلق'},
-    {'ar': 'الخَالِق', 'desc': 'المُبدع لكل موجود'},
-    {'ar': 'البَارِئ', 'desc': 'المُقدر للأشياء على مقدار'},
-    {'ar': 'المُصَوِّر', 'desc': 'المعطي لكل شيء صورته'},
-    {'ar': 'الغَفَّار', 'desc': 'كثير المغفرة لذنوب عباده'},
-    {'ar': 'القَهَّار', 'desc': 'الغالب الذي قهر كل شيء'},
-    {'ar': 'الوَهَّاب', 'desc': 'الكثير العطيّة بلا مقابل'},
-    {'ar': 'الرَّزَّاق', 'desc': 'الذي يرزق عباده كلهم'},
-    {'ar': 'الفَتَّاح', 'desc': 'الذي يفتح أبواب الخير'},
-    {'ar': 'العَلِيم', 'desc': 'المحيط علمه بكل شيء'},
-    {'ar': 'القَابِض', 'desc': 'القابض للأرواح والقلوب'},
-    {'ar': 'البَاسِط', 'desc': 'الباسط الرزق والرحمة'},
-    {'ar': 'الخَافِض', 'desc': 'الخافض من شاء من عباده'},
-    {'ar': 'الرَّافِع', 'desc': 'الرافع من شاء من عباده'},
-    {'ar': 'المُعِزّ', 'desc': 'المعز من شاء بكرمه'},
-    {'ar': 'المُذِلّ', 'desc': 'المذل من شاء من عباده'},
-    {'ar': 'السَّمِيع', 'desc': 'الذي لا يخفى عليه مسموع'},
-    {'ar': 'البَصِير', 'desc': 'الذي يبصر كل شيء'},
-    {'ar': 'الحَكَم', 'desc': 'فصل بين الخلق بالعدل'},
-    {'ar': 'العَدْل', 'desc': 'المنزه عن الظلم'},
-    {'ar': 'اللَّطِيف', 'desc': 'الرفيق بعباده في تدبيره'},
-    {'ar': 'الخَبِير', 'desc': 'العليم بدقائق الأمور'},
-    {'ar': 'الحَلِيم', 'desc': 'الذي لا يعجل بالعقوبة'},
-    {'ar': 'العَظِيم', 'desc': 'الجامع لصفات العظمة'},
-    {'ar': 'الغَفُور', 'desc': 'الذي يغفر الذنوب مهما كبرت'},
-    {'ar': 'الشَّكُور', 'desc': 'يُثيب على القليل كثيراً'},
-    {'ar': 'العَلِيّ', 'desc': 'منتهى العلو بلا حد'},
-    {'ar': 'الكَبِير', 'desc': 'الجامع لصفات الجلال'},
-    {'ar': 'الحَفِيظ', 'desc': 'الحافظ لكل شيء، الذي لا يضيع عنده شيء'},
-    {'ar': 'المُقِيت', 'desc': 'الكافي لخلقه'},
-    {'ar': 'الحَسِيب', 'desc': 'المحاسب للعباد'},
-    {'ar': 'الجَلِيل', 'desc': 'الجامع لصفات الجلال'},
-    {'ar': 'الكَرِيم', 'desc': 'الجواد المعطي الذي لا ينفد'},
-    {'ar': 'الرَّقِيب', 'desc': 'الرقيب على عباده'},
-    {'ar': 'المُجِيب', 'desc': 'المجيب لدعاء المضطرين'},
-    {'ar': 'الوَاسِع', 'desc': 'الذي وسع علمه ورحمته كل شيء'},
-    {'ar': 'الحَكِيم', 'desc': 'الذي حكمته في خلقه'},
-    {'ar': 'الوَدُود', 'desc': 'المحب لعباده الصالحين'},
-    {'ar': 'المَجِيد', 'desc': 'الكثير الخير والعطاء'},
-    {'ar': 'البَاعِث', 'desc': 'يُحيي الموتى'},
-    {'ar': 'الشَّهِيد', 'desc': 'المحيط علمه بأعمال العباد'},
-    {'ar': 'الحَقّ', 'desc': 'الصادق في أقواله وأفعاله'},
-    {'ar': 'الوَكِيل', 'desc': 'الكفيل بأرزاق عباده'},
-    {'ar': 'القَوِيّ', 'desc': 'الذي لا يُقهَر قوته'},
-    {'ar': 'المَتِين', 'desc': 'شديد القوة'},
-    {'ar': 'الوَلِيّ', 'desc': 'الناصر والمحب لعباده'},
-    {'ar': 'الحَمِيد', 'desc': 'المحمود بصفات الكمال'},
-    {'ar': 'المُحْصِي', 'desc': 'العليم بعدد كل شيء'},
-    {'ar': 'المُبْدِئ', 'desc': 'مبدأ الخلق'},
-    {'ar': 'المُعِيد', 'desc': 'يعيد الخلق كما بدأه'},
-    {'ar': 'المُحْيِي', 'desc': 'يُحيي الموتى بإرادته'},
-    {'ar': 'المُمِيت', 'desc': 'يُميت الأحياء بإرادته'},
-    {'ar': 'الحَيّ', 'desc': 'الحي الذي لا يموت'},
-    {'ar': 'القَيُّوم', 'desc': 'القائم بنفسه الذي لا يحتاج إلى غيره'},
-    {'ar': 'الوَاجِد', 'desc': 'الذي لا يلتمس فيجد'},
-    {'ar': 'المَاجِد', 'desc': 'الكريم العظيم'},
-    {'ar': 'الوَاحِد', 'desc': 'المنفرد في ذاته وصفاته'},
-    {'ar': 'الصَّمَد', 'desc': 'الذي لا يحتاج إلى أحد'},
-    {'ar': 'القَادِر', 'desc': 'القادر على كل شيء'},
-    {'ar': 'المُقْتَدِر', 'desc': 'القادر الذي قدر كل شيء'},
-    {'ar': 'المُقَدِّم', 'desc': 'يُقدّم من يشاء'},
-    {'ar': 'المُؤَخِّر', 'desc': 'يُؤخّر من يشاء'},
-    {'ar': 'الأوَّل', 'desc': 'الذي لم يسبقه شيء'},
-    {'ar': 'الآخِر', 'desc': 'الذي لا يبقى بعده شيء'},
-    {'ar': 'الظَّاهِر', 'desc': 'الذي دلّ على ذاته بخلقه'},
-    {'ar': 'البَاطِن', 'desc': 'الذي لا تدركه العيون بالمشاهدة'},
-    {'ar': 'الوَالِي', 'desc': 'المالك الذي لا يُجار عليه'},
-    {'ar': 'المُتَعَالِي', 'desc': 'المتعالي عن صفات الخلق'},
-    {'ar': 'البَرّ', 'desc': 'الكثير الخير'},
-    {'ar': 'التَّوَّاب', 'desc': 'يُقبل التوبة على عباده'},
-    {'ar': 'المُنْتَقِم', 'desc': 'يأخذ الظالمين على ظلمهم'},
-    {'ar': 'العَفُوّ', 'desc': 'الذي يُعفو عن الذنوب'},
-    {'ar': 'الرَّؤُوف', 'desc': 'الرحيم بعباده رحمة بالمؤمنين'},
-    {'ar': 'مَالِكُ المُلْك', 'desc': 'مالك كل شيء'},
-    {'ar': 'ذُو الجَلاَلِ وَالإِكْرَام', 'desc': 'الجامع للجلال والإكرام'},
-    {'ar': 'المُقْسِط', 'desc': 'العادل في حكمه'},
-    {'ar': 'الجَامِع', 'desc': 'يجمع الخلق يوم القيامة'},
-    {'ar': 'الغَنِيّ', 'desc': 'الذي لا يحتاج إلى شيء'},
-    {'ar': 'المُغْنِي', 'desc': 'يُغني من يشاء'},
-    {'ar': 'المَانِع', 'desc': 'يمنع من يشاء بحكمته'},
-    {'ar': 'الضَّارّ', 'desc': 'يضرّ من يشاء بحكمته'},
-    {'ar': 'النَّافِع', 'desc': 'ينفع من يشاء بكرمه'},
-    {'ar': 'النُّور', 'desc': 'المنور للسماوات والأرض'},
-    {'ar': 'الهَادِي', 'desc': 'يهدي عباده إلى الصراط المستقيم'},
-    {'ar': 'البَدِيع', 'desc': 'الخالق على غير مثال'},
-    {'ar': 'البَاقِي', 'desc': 'الدائم الذي لا يفنى'},
-    {'ar': 'الوَارِث', 'desc': 'الباقي بعد فناء الخلق'},
-    {'ar': 'الرَّشِيد', 'desc': 'يهدي إلى الرشاد'},
-    {'ar': 'الصَّبُور', 'desc': 'الذي لا يعجل بالعقوبة'},
-  ];
+  @override
+  State<AsmaAlHusnaScreen> createState() => _AsmaAlHusnaScreenState();
+}
+
+class _AsmaAlHusnaScreenState extends State<AsmaAlHusnaScreen> {
+  static const String _assetPath =
+      'assets/asma_al_husna/asma_husna_entries.json';
+
+  static const String _hadith =
+      'عن أبي هريرة رضي الله عنه قال: قال رسول الله ﷺ: '
+      '«إن لله تسعةً وتسعين اسماً مائةً إلا واحداً، من أحصاها دخل الجنة»';
+  static const String _hadithRef = 'رواه البخاري (2736) ومسلم (2677)';
+
+  List<AsmaHusnaEntry>? _entries;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    if (_entries != null || _error != null) {
+      setState(() {
+        _entries = null;
+        _error = null;
+      });
+    }
+    try {
+      final raw = await rootBundle.loadString(_assetPath);
+      final data = json.decode(raw) as Map<String, dynamic>;
+      final items = (data['entries'] as List)
+          .map((e) => AsmaHusnaEntry.fromJson(e as Map<String, dynamic>))
+          .toList();
+      if (!mounted) return;
+      setState(() => _entries = items);
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _error = 'تعذر تحميل الأسماء: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('أسماء الله الحسنى'),
-      ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(12),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          childAspectRatio: 0.85,
+      appBar: AppBar(title: const Text('أسماء الله الحسنى')),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    final error = _error;
+    if (error != null) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                error,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: AppTheme.dangerRed),
+              ),
+              const SizedBox(height: 12),
+              OutlinedButton(onPressed: _load, child: const Text('إعادة المحاولة')),
+            ],
+          ),
         ),
-        itemCount: _names.length,
-        itemBuilder: (context, index) {
-          final name = _names[index];
-          return _NameCard(
-            index: index + 1,
-            arabic: name['ar']!,
-            description: name['desc']!,
-          );
-        },
+      );
+    }
+    final entries = _entries;
+    if (entries == null) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    return _EntriesList(entries: entries);
+  }
+}
+
+/// القائمة بتجميع الأسماء (كتاب الله / سنة النبي) مع عدّاد وفتح تفاصيل
+class _EntriesList extends StatelessWidget {
+  final List<AsmaHusnaEntry> entries;
+
+  const _EntriesList({required this.entries});
+
+  @override
+  Widget build(BuildContext context) {
+    final quran = entries.where((e) => e.category == 'من كتاب الله تعالى').toList();
+    final sunnah = entries.where((e) => e.category == 'من سنة النبي ﷺ').toList();
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(12, 8, 12, 24),
+      children: [
+        const _HeaderCard(),
+        const SizedBox(height: 12),
+        _SectionHeader(title: 'من كتاب الله تعالى', count: quran.length),
+        ...quran.map((e) => _NameTile(entry: e, index: entries.indexOf(e) + 1)),
+        const SizedBox(height: 12),
+        _SectionHeader(title: 'من سنة النبي ﷺ', count: sunnah.length),
+        ...sunnah.map((e) => _NameTile(entry: e, index: entries.indexOf(e) + 1)),
+      ],
+    );
+  }
+}
+
+/// بطاقة الحديث الافتتاحي
+class _HeaderCard extends StatelessWidget {
+  const _HeaderCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              AppTheme.primaryGreen.withOpacity(0.12),
+              AppTheme.gold.withOpacity(0.08),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          children: [
+            Text(
+              _AsmaAlHusnaScreenState._hadith,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: AppTheme.fontFamily,
+                fontSize: 16,
+                height: 1.9,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white.withOpacity(0.92)
+                    : AppTheme.darkGreen,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              _AsmaAlHusnaScreenState._hadithRef,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 13,
+                color: AppTheme.gold,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class _NameCard extends StatelessWidget {
-  final int index;
-  final String arabic;
-  final String description;
+class _SectionHeader extends StatelessWidget {
+  final String title;
+  final int count;
 
-  const _NameCard({
-    required this.index,
-    required this.arabic,
-    required this.description,
-  });
+  const _SectionHeader({required this.title, required this.count});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        HapticFeedback.lightImpact();
-        _showDetail(context);
-      },
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppTheme.primaryGreen.withOpacity(0.08),
-                AppTheme.primaryGreen.withOpacity(0.02),
-              ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6, top: 4),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontFamily: AppTheme.fontFamily,
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                color: AppTheme.primaryGreen,
+              ),
             ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '$index',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppTheme.gold,
-                  fontWeight: FontWeight.bold,
-                ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+            decoration: BoxDecoration(
+              color: AppTheme.primaryGreen.withOpacity(0.12),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              '$count',
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+                color: AppTheme.primaryGreen,
               ),
-              const SizedBox(height: 4),
-              Text(
-                arabic,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: AppTheme.quranFontFamily,
-                  fontSize: arabic.length > 12 ? 16 : 20,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.primaryGreen,
-                  height: 1.4,
-                ),
-              ),
-            ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// بطاقة الاسم النصي في القائمة
+class _NameTile extends StatelessWidget {
+  final AsmaHusnaEntry entry;
+  final int index;
+
+  const _NameTile({required this.entry, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      child: ListTile(
+        onTap: () {
+          HapticFeedback.lightImpact();
+          _showDetails(context);
+        },
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        leading: CircleAvatar(
+          radius: 16,
+          backgroundColor: AppTheme.primaryGreen.withOpacity(0.12),
+          child: Text(
+            '$index',
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.bold,
+              color: AppTheme.primaryGreen,
+            ),
           ),
         ),
+        title: Text(
+          entry.name,
+          style: TextStyle(
+            fontFamily: AppTheme.quranFontFamily,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? AppTheme.lightGold
+                : AppTheme.primaryGreen,
+          ),
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: Text(
+            entry.short,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.right,
+            style: const TextStyle(fontSize: 13, height: 1.6),
+          ),
+        ),
+        trailing: const Icon(Icons.chevron_left, color: AppTheme.gold),
       ),
     );
   }
 
-  void _showDetail(BuildContext context) {
-    showModalBottomSheet(
+  void _showDetails(BuildContext context) {
+    showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) => DraggableScrollableSheet(
-        initialChildSize: 0.35,
-        minChildSize: 0.2,
-        maxChildSize: 0.6,
+        initialChildSize: 0.7,
+        minChildSize: 0.4,
+        maxChildSize: 0.95,
         expand: false,
-        builder: (context, scrollController) => SingleChildScrollView(
-          controller: scrollController,
-          padding: const EdgeInsets.all(24),
+        builder: (context, controller) => SingleChildScrollView(
+          controller: controller,
+          padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(2),
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
                 ),
               ),
-              const SizedBox(height: 24),
-              Text(
-                '$index',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: AppTheme.gold,
-                  fontWeight: FontWeight.bold,
+              const SizedBox(height: 16),
+              Center(
+                child: Text(
+                  '$index · ${entry.category}',
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: AppTheme.gold,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                arabic,
-                style: TextStyle(
-                  fontFamily: AppTheme.quranFontFamily,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.primaryGreen,
-                  height: 1.4,
+              Center(
+                child: Text(
+                  entry.name,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: AppTheme.quranFontFamily,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppTheme.lightGold
+                        : AppTheme.primaryGreen,
+                    height: 1.4,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
               Container(
-                width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: AppTheme.primaryGreen.withOpacity(0.06),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: AppTheme.quranFontFamily,
-                    fontSize: 18,
-                    color: AppTheme.darkGreen,
-                    height: 1.8,
+                  entry.detailed,
+                  textAlign: TextAlign.justify,
+                  style: const TextStyle(
+                    fontFamily: AppTheme.fontFamily,
+                    fontSize: 16,
+                    height: 1.9,
                   ),
                 ),
               ),
               const SizedBox(height: 12),
-              TextButton(
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: AppTheme.gold.withOpacity(0.08),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(Icons.menu_book, size: 18, color: AppTheme.gold),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        entry.source,
+                        textAlign: TextAlign.right,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: AppTheme.gold,
+                          height: 1.6,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12),
+              OutlinedButton(
                 onPressed: () => Navigator.pop(context),
                 child: const Text('إغلاق'),
               ),
