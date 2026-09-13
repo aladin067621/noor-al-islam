@@ -53,12 +53,14 @@ class QuranAyah {
 class QuranSurah {
   final int id;
   final String nameArabic;
+  final String type; // makkan | medinan
   final int numberOfAyahs;
   final List<QuranAyah> ayahs;
 
   const QuranSurah({
     required this.id,
     required this.nameArabic,
+    this.type = '',
     required this.numberOfAyahs,
     required this.ayahs,
   });
@@ -70,6 +72,7 @@ class QuranSurah {
     return QuranSurah(
       id: j['id'] as int,
       nameArabic: j['nameArabic'] as String? ?? '',
+      type: j['type'] as String? ?? '',
       numberOfAyahs: j['numberOfAyahs'] as int,
       ayahs: ayahs,
     );

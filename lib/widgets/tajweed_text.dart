@@ -9,6 +9,81 @@ Color colorFromHex(String hex) {
   return Color(v);
 }
 
+/// يبني قطع النص الملونة بالتجويد (بكلمات كاملة حتى لا ينكسر التشكيل):
+/// يُرجع null عندما لا يوجد تلوين (نص عادي)، أو قائمة القطع الملوّنة.
+/// يُستخدم لعرض آية مفردة أو لدمج عدة آيات في صفحة مصحف متّصلة.
+List<InlineSpan>? buildTajweedInlines({
+  required String text,
+  required List<TajweedSpan> spans,
+  required Map<String, String> ruleColors,
+  required bool tajweedOn,
+}) {
+  if (!tajweedOn || spans.isEmpty) return null;
+
+  final items = <_Range>[];
+  for (final s in spans) {
+    if (TajweedText._skippedRules.contains(s.rule)) continue;
+    if (s.start < 0 || s.end > text.length || s.end <= s.start) continue;
+    final hex = ruleColors[s.rule];
+    final c = hex != null ? colorFromHex(hex) : Colors.grey;
+    items.add(_Range(s.start, s.end, c));
+  }
+  if (items.isEmpty) return null;
+  items.sort((a, b) => a.start != b.start ? a.start - b.start : a.end - b.end);
+
+  // لا نقسّم منتصف الكلمة العربية، وإلا انفصلت الحروف (محرك Flutter يشكّل
+  // كل span على حدة). لذلك نلوّن كل كلمة بلون قاعدة التجويد الأطول تغطيةً لها.
+  final perWord = <_WordColor>[];
+  var wordStart = -1;
+  for (var i = 0; i < text.length; i++) {
+    final isSpace = _isWhitespaceAt(text, i);
+    if (!isSpace && wordStart < 0) wordStart = i;
+    if ((isSpace || i == text.length - 1) && wordStart >= 0) {
+      final wEnd = isSpace ? i : i + 1;
+      _WordColor? best;
+      for (final r in items) {
+        if (r.end <= wordStart || r.start >= wEnd) continue;
+        final overlap = (r.end < wEnd ? r.end : wEnd) -
+            (r.start > wordStart ? r.start : wordStart);
+        if (best == null || overlap > best.overlap) {
+          best = _WordColor(overlap, r.color);
+        }
+      }
+      perWord.add(_WordColor(0, best?.color));
+      perWord.last.wordStart = wordStart;
+      perWord.last.wordEnd = wEnd;
+      wordStart = -1;
+    }
+  }
+
+  final children = <InlineSpan>[];
+  var cursor = 0;
+  for (final w in perWord) {
+    if (w.wordStart < 0) continue;
+    if (w.wordStart > cursor) {
+      children.add(TextSpan(text: text.substring(cursor, w.wordStart)));
+    }
+    final wordText = text.substring(w.wordStart, w.wordEnd);
+    children.add(TextSpan(
+      text: wordText,
+      style: w.color != null
+          ? TextStyle(color: w.color, fontWeight: FontWeight.w600)
+          : null,
+    ));
+    cursor = w.wordEnd;
+  }
+  if (cursor < text.length) {
+    children.add(TextSpan(text: text.substring(cursor)));
+  }
+  return children;
+}
+
+/// مسافة بيضاء (مسافة عادية أو ZWSP/ZWNJ) — أي نقطة أمان لفصل الكلمات دون كسر التشكيل
+bool _isWhitespaceAt(String s, int i) {
+  final c = s.codeUnitAt(i);
+  return c == 0x20 || c == 0x200B || c == 0x200C || c == 0xA0;
+}
+
 /// عرض آية قرآنية مع ألوان التجويد (بدون أي تعديل على النص)
 class TajweedText extends StatelessWidget {
   final String text;
@@ -47,86 +122,25 @@ class TajweedText extends StatelessWidget {
       color: baseColor,
     );
 
-    if (!tajweedOn || spans.isEmpty) {
+    final children = buildTajweedInlines(
+      text: text,
+      spans: spans,
+      ruleColors: ruleColors,
+      tajweedOn: tajweedOn,
+    );
+
+    if (children == null) {
       return Text(
         text,
         style: base,
         textDirection: TextDirection.rtl,
       );
-    }
-
-    final items = <_Range>[];
-    for (final s in spans) {
-      if (_skippedRules.contains(s.rule)) continue;
-      if (s.start < 0 || s.end > text.length || s.end <= s.start) continue;
-      final hex = ruleColors[s.rule];
-      final c = hex != null ? colorFromHex(hex) : Colors.grey;
-      items.add(_Range(s.start, s.end, c));
-    }
-    if (items.isEmpty) {
-      return Text(
-        text,
-        style: base,
-        textDirection: TextDirection.rtl,
-      );
-    }
-    items.sort((a, b) => a.start != b.start ? a.start - b.start : a.end - b.end);
-
-    // لا نقسّم منتصف الكلمة العربية، وإلا انفصلت الحروف (محرك Flutter يشكّل
-    // كل span على حدة). لذلك نلوّن كل كلمة بلون قاعدة التجويد الأطول تغطيةً لها.
-    final perWord = <_WordColor>[];
-    var wordStart = -1;
-    for (var i = 0; i < text.length; i++) {
-      final isSpace = _isWhitespace(text, i);
-      if (!isSpace && wordStart < 0) wordStart = i;
-      if ((isSpace || i == text.length - 1) && wordStart >= 0) {
-        final wEnd = isSpace ? i : i + 1;
-        _WordColor? best;
-        for (final r in items) {
-          if (r.end <= wordStart || r.start >= wEnd) continue;
-          final overlap =
-              (r.end < wEnd ? r.end : wEnd) - (r.start > wordStart ? r.start : wordStart);
-          if (best == null || overlap > best.overlap) {
-            best = _WordColor(overlap, r.color);
-          }
-        }
-        perWord.add(_WordColor(0, best?.color));
-        perWord.last.wordStart = wordStart;
-        perWord.last.wordEnd = wEnd;
-        wordStart = -1;
-      }
-    }
-
-    final children = <InlineSpan>[];
-    var cursor = 0;
-    for (final w in perWord) {
-      if (w.wordStart < 0) continue;
-      if (w.wordStart > cursor) {
-        children.add(TextSpan(text: text.substring(cursor, w.wordStart)));
-      }
-      final wordText = text.substring(w.wordStart, w.wordEnd);
-      children.add(TextSpan(
-        text: wordText,
-        style: w.color != null
-            ? TextStyle(color: w.color, fontWeight: FontWeight.w600)
-            : null,
-      ));
-      cursor = w.wordEnd;
-    }
-    if (cursor < text.length) {
-      children.add(TextSpan(text: text.substring(cursor)));
     }
 
     return Text.rich(
       TextSpan(style: base, children: children),
       textDirection: TextDirection.rtl,
     );
-  }
-
-  /// مسافة بيضاء (مسافة عادية أو ZWSP/ZWNJ) — أي نقطة أمان لفصل الكلمات دون كسر التشكيل
-  bool _isWhitespace(String s, int i) {
-    final c = s.codeUnitAt(i);
-    return c == 0x20 || c == 0x200B || c == 0x200C || c == 0xA0;
   }
 }
 

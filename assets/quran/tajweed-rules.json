@@ -1,6 +1,7 @@
 {
   "$schema": "./tajweed-rules.schema.md",
   "description": "Tajweed rule catalogue (categories, canonical colors, trigger letters) extracted from Al-Islam's TajweedRules.swift. See docs/02-tajweed.md for the full detection engine specification.",
+  "sourceNoteArabic": "مصدر هذه الأحكام: محرك التجويد مفتوح المصدر Quran-Tajweed-Engine (استخراج Al-Islam)، والشروح هنا معروضة بالعربية وفق أحكام التلاوة برواية حفص عن عاصم: الإخفاء، الإدغام، الإقلاب، القلقلة، تفخيم الحروف المستعلية، والمدود وأحكام الوقف.",
   "sections": [
     {
       "id": "silents",
@@ -28,11 +29,11 @@
       "englishTitle": "Solar Lam",
       "arabicTitle": "لَامٌ شَمسِيَّة",
       "transliteration": "Laam Shamiyyah",
-      "literalMeaning": "The laam of 'al-' assimilates into a following sun letter (which doubles).",
+      "literalMeaning": "لامَ \"ال\" تُدغَم في الحرف الشمسي الذي بعدها فيُشدَّد ذلك الحرف لأن اللام فيه.",
       "countLabel": null,
       "applicableLetters": null,
-      "shortDescription": "Lam of al- is silent before sun letters.",
-      "longDescription": "In connected recitation this appears most clearly in words beginning with al- followed by sun letters (ta, daal, seen, sheen, …). The laam stays in writing but is absorbed into the next consonant, which is heard with emphasis/doubling."
+      "shortDescription": "لام \"ال\" تسكت/تُدغَم قبل الحروف الشمسية.",
+      "longDescription": "في الوصل يظهر ذلك بوضوح في الكلمات المبدوءة بـ\"ال\" المتبوعة بحرف شمسي (ت، د، س، ش، …). تبقى اللام في الكتابة لكنها تُدغَم في الحرف الذي بعدها، فتُنطق معه مشدَّدةً."
     },
     {
       "id": "droppedLetter",
@@ -42,11 +43,11 @@
       "englishTitle": "Written but Not Pronounced",
       "arabicTitle": "حَرفٌ غَيرُ مَنطُوق",
       "transliteration": "Harf Ghayr Mantuq",
-      "literalMeaning": "A letter written in the Uthmani script but not pronounced.",
+      "literalMeaning": "حرف مكتوب في الرسم العثماني لكنه لا يُنطق في التلاوة.",
       "countLabel": null,
       "applicableLetters": null,
-      "shortDescription": "Letter written in the script but dropped in recitation.",
-      "longDescription": "A practical reading aid for orthographic letters preserved in the Uthmani script while the transmitted recitation does not fully sound them (e.g. a dropped alif or yaa that remains visible for script fidelity)."
+      "shortDescription": "حرف مكتوب في الرسم لكنه يُسقط عند التلاوة.",
+      "longDescription": "أداة عملية للقراءة الصحيحة للحروف التي تثبت في الرسم العثماني ولا تُنطق في الرواية المتواترة (كالألف أو الياء المحذوفة التي تبقى في الكتابة حفظًا للرسم)."
     },
     {
       "id": "hamzatWaslSilent",
@@ -56,11 +57,11 @@
       "englishTitle": "Joining Hamzah",
       "arabicTitle": "هَمزَةُ الوَصل",
       "transliteration": "Hamzat al-Wasl",
-      "literalMeaning": "Hamzat al-wasl — the 'connecting hamzah' — is silent when joining from a previous word.",
+      "literalMeaning": "همزة الوصل تُسقط عند الوصل بعد كلمة سابقة.",
       "countLabel": null,
       "applicableLetters": null,
-      "shortDescription": "Start-only hamzah; dropped when connecting.",
-      "longDescription": "Its role is to allow smooth word-initial pronunciation when starting, but to avoid extra breaks mid-flow when linking words. Test both states: start from the word (hear the hamzah), then connect from before it (the hamzah drops)."
+      "shortDescription": "همزة تُنطق في بداية الكلام وتسقط عند الوصل.",
+      "longDescription": "فائدتها السماح ببدء الكلمة بنطق سليم، وتجنُّب القطع غير الضروري بين الكلمات عند الوصل. اختبر الحالتين: ابدأ بالكلمة فتظهر الهمزة، ثم صِل بما قبلها فتسقط الهمزة."
     },
     {
       "id": "idghamBilaGhunnah",
@@ -70,11 +71,11 @@
       "englishTitle": "Merge Without Ghunnah",
       "arabicTitle": "إِدغَامٌ بِلَا غُنَّة",
       "transliteration": "Idgham Bilaa Ghunnah",
-      "literalMeaning": "Idgham = merging; bila ghunnah = without a nasal hum.",
+      "literalMeaning": "الإدغام: إدخال الحرف في الحرف، وبلا غنة: من دون صوت أنفي.",
       "countLabel": null,
-      "applicableLetters": "When noon (ن) or tanween comes before: ل، ر",
-      "shortDescription": "Silent-style merge into next without nasal sound.",
-      "longDescription": "Unlike ghunnah-based merges, no nasal hold is maintained; the sound moves straight into the target letter (ل or ر). Timing is cleaner and shorter — avoid adding nasal color by habit."
+      "applicableLetters": "إذا سبقت النون الساكنة أو التنوين: ل، ر",
+      "shortDescription": "إدغام بلا غنة في لام وراء.",
+      "longDescription": "على خلاف الإدغام بالغنة لا يُمسَك بصوت أنفي؛ بل ينتقل الصوت مباشرة إلى الحرف (ل أو ر). يكون الصوت أخف وأسرع — وتجنَّب إضافة الغنة بحكم العادة."
     },
     {
       "id": "idghamGhunnah",
@@ -84,11 +85,11 @@
       "englishTitle": "Merge with Ghunnah",
       "arabicTitle": "إِدغَامٌ بِغُنَّةٍ",
       "transliteration": "Idgham Bighunnah",
-      "literalMeaning": "Idgham = merging; bi-ghunnah = with a nasal hum.",
+      "literalMeaning": "الإدغام: إدخال الحرف في الحرف، وبغنة: مع صوت أنفي (غنة).",
       "countLabel": "2 counts",
-      "applicableLetters": "When a noon sound (ن or tanween) comes before: ي، ن، م، و",
-      "shortDescription": "Merge into the next letter with nasal.",
-      "longDescription": "Merging into the next letter with a gentle nasal ghunnah. The noon or tanween blends fully into the following letter (ي ن م و) while keeping clear timing and resonance."
+      "applicableLetters": "إذا سبقت النون الساكنة أو التنوين: ي، ن، م، و",
+      "shortDescription": "إدغام في الحرف التالي مع غنة.",
+      "longDescription": "إدغام النون الساكنة أو التنوين في ي، ن، م، و مع غنة. تذوب النون أو التنوين في الحرف التالي إدغامًا كاملًا مع الإبقاء على توقيت الغنة ورنينها."
     },
     {
       "id": "generalGhunnah",
@@ -98,11 +99,11 @@
       "englishTitle": "Shaddah Ghunnah",
       "arabicTitle": "غُنَّة عَامَّة",
       "transliteration": "Ghunnah Aammah",
-      "literalMeaning": "Ghunnah = the nasal hum held on noon/meem with shaddah (~2 counts).",
+      "literalMeaning": "الغنة: صوت أنفي يُمسَك على النون والميم المشددتين نحو حركتين.",
       "countLabel": "2 counts",
-      "applicableLetters": "Noon or meem with shaddah; also used on selected nasal merge targets",
-      "shortDescription": "Noon/meem with shaddah nasal sound.",
-      "longDescription": "Use for an explicit noon or meem with shaddah. It is also reused for a few helper target highlights in idgham-style nasal merges so those targets stay visually connected to the same ghunnah family."
+      "applicableLetters": "النون أو الميم المشددتان، ويُستعمل أيضًا لأهداف الإدغام بالغنة",
+      "shortDescription": "النون والميم المشددتان بغنة.",
+      "longDescription": "تُستعمل للنون أو الميم المشددتين صراحةً، وتُستخدم أيضًا لتلوين أهداف مساعدة في إدغام الغنة لتبقى مرتبطة بصريًا بمجموعة الغنة نفسها."
     },
     {
       "id": "ikhfaaLight",
@@ -112,11 +113,11 @@
       "englishTitle": "Hidden Letter (Light)",
       "arabicTitle": "إِخْفَاء مُرَقَّق",
       "transliteration": "Ikhfaa (Light)",
-      "literalMeaning": "Ikhfaa = hiding/concealing the noon sound with a light nasal hum.",
+      "literalMeaning": "الإخفاء: إخفاء صوت النون الساكنة أو التنوين مع غنة خفيفة.",
       "countLabel": "2 counts",
-      "applicableLetters": "When a noon sound (ن or tanween) comes before lighter letters: ت، ث، ج، د، ذ، ز، س، ش، ف، ك",
-      "shortDescription": "Lightly hide noon or tanween with nasal.",
-      "longDescription": "A light concealment: the noon or tanween is partially hidden with a soft nasal ghunnah, balancing clarity and a smooth transition without fully merging."
+      "applicableLetters": "إذا سبقت النون الساكنة أو التنوين: ت، ث، ج، د، ذ، ز، س، ش، ف، ك",
+      "shortDescription": "إخفاء خفيف للنون أو التنوين مع غنة.",
+      "longDescription": "إخفاء خفيف: تُخفى النون أو التنوين جزئيًا مع غنة لطيفة، حفظًا للوضوح مع انسيابية الوصول إلى الحرف التالي دون إدغام كامل."
     },
     {
       "id": "ikhfaaHeavy",
@@ -126,11 +127,11 @@
       "englishTitle": "Hidden Letter (Heavy)",
       "arabicTitle": "إِخْفَاء مُفَخَّم",
       "transliteration": "Ikhfaa (Heavy)",
-      "literalMeaning": "Ikhfaa = hiding/concealing the noon sound with a heavy nasal hum.",
+      "literalMeaning": "الإخفاء: إخفاء صوت النون الساكنة أو التنوين مع غنة مفخمة.",
       "countLabel": "2 counts",
-      "applicableLetters": "When a noon sound (ن or tanween) comes before heavier letters: ص، ض، ط، ظ، ق",
-      "shortDescription": "Heavily hide noon or tanween with nasal.",
-      "longDescription": "A heavier concealment: the noon or tanween is partially hidden with a stronger nasal ghunnah while the tongue prepares for the next (heavy) letter."
+      "applicableLetters": "إذا سبقت النون الساكنة أو التنوين: ص، ض، ط، ظ، ق",
+      "shortDescription": "إخفاء مفخم للنون أو التنوين مع غنة.",
+      "longDescription": "إخفاء أشد: تُخفى النون أو التنوين جزئيًا مع غنة أقوى بينما يستعد اللسان للحرف المفخم التالي."
     },
     {
       "id": "iqlaab",
@@ -140,11 +141,11 @@
       "englishTitle": "Noon into Meem",
       "arabicTitle": "إِقلَاب",
       "transliteration": "Iqlaab",
-      "literalMeaning": "Iqlaab = conversion of the noon sound into a meem before baa.",
+      "literalMeaning": "الإقلاب: قلب صوت النون الساكنة أو التنوين ميمًا إذا جاءت بعدها باء.",
       "countLabel": "2 counts",
-      "applicableLetters": "When noon (ن) or tanween comes before: ب (changes to meem sound)",
-      "shortDescription": "Noon/tanween turns to meem before baa.",
-      "longDescription": "The cue is the following baa: articulation shifts toward the lips with a meem-quality nasal sound before entering baa, sounding connected rather than abrupt."
+      "applicableLetters": "إذا سبقت النون الساكنة أو التنوين: ب (يُقلب النطق ميمًا)",
+      "shortDescription": "النون أو التنوين تُقلب ميمًا قبل الباء.",
+      "longDescription": "العلامة هي الباء التالية: يتحول النطق نحو الشفتين بصوت ميمي أنفي قبل الدخول في الباء، فيخرج الكلام متصلًا لا منفصلًا."
     },
     {
       "id": "qalqalah",
@@ -154,11 +155,11 @@
       "englishTitle": "Bounce Letter",
       "arabicTitle": "قَلقَلَة",
       "transliteration": "Qalqalah",
-      "literalMeaning": "Qalqalah = a slight echo/bounce on qutb-jad letters at sukoon or stop.",
+      "literalMeaning": "القلقلة: ارتجاج/قَلقلة خفيفة في حروف \"قُطبُ جَدٍّ\" عند سكونها أو عند الوقف عليها.",
       "countLabel": null,
-      "applicableLetters": "Letters that bounce when they have sukoon or are stopped on: ق، ط، ب، ج، د",
-      "shortDescription": "Qutb jad letters bounce on sukoon/stop.",
-      "longDescription": "A quick release, not an added harakah and not a long vowel. Strength varies by position, but keep it crisp and brief so the consonant stays clear without over-bouncing."
+      "applicableLetters": "حروف القلقلة إذا سكنت أو وُقف عليها: ق، ط، ب، ج، د",
+      "shortDescription": "حروف قطب جد ترتج عند السكون أو الوقف.",
+      "longDescription": "ارتفاع صوتي سريع وخفيف، ليس بحركة زائدة ولا بمد طويل. تختلف قوته بحسب موضعه في الكلمة، فليكن حادًا قصيرًا ليظل الحرف واضحًا دون مبالغة."
     },
     {
       "id": "tafkhim",
@@ -168,11 +169,11 @@
       "englishTitle": "Heavy Letter",
       "arabicTitle": "تَفخِيم",
       "transliteration": "Tafkheem",
-      "literalMeaning": "Tafkhim = heaviness; the istiʿla letters are pronounced full and deep.",
+      "literalMeaning": "التفخيم: تهيئة الحرف (الاستعلاء) وامتلاؤه فينطق مفخمًا عميقًا.",
       "countLabel": null,
-      "applicableLetters": "Letters pronounced heavily (elevated tongue): خ، ص، ض، غ، ط، ق، ظ",
-      "shortDescription": "Heavy, full-mouth pronunciation.",
-      "longDescription": "Hear it by contrast: read the same syllable lightly, then with tafkhim, and notice the darker resonance. Strongest on istiʿla letters; keep it controlled so heaviness doesn't spread into nearby vowels."
+      "applicableLetters": "الحروف المستعلية المفخمة: خ، ص، ض، غ، ط، ق، ظ",
+      "shortDescription": "تفخيم الحروف المستعلية.",
+      "longDescription": "قارن برقيقها: اقرأ المقطع نفسه مرققًا ثم مفخمًا ولاحظ الصدى الأعمق. تكون أشد في الحروف المستعلية؛ واضبطه حتى لا يتجاوز التفخيم إلى الحروف المجاورة."
     },
     {
       "id": "maddNatural",
@@ -182,11 +183,11 @@
       "englishTitle": "Madd Letters (2 Counts)",
       "arabicTitle": "مَدٌّ طَبِيعِي",
       "transliteration": "Madd Tabee Letters",
-      "literalMeaning": "Madd Tabiʿi = the natural 2-count elongation of a madd letter.",
+      "literalMeaning": "المد الطبيعي: إطالة حركتين لحرف المد إذا لم يتلُها همز ولا سكون.",
       "countLabel": "2 counts",
-      "applicableLetters": "Occurs on madd letters: ا، و، ي (normal 2-count elongation)",
-      "shortDescription": "From full vowel letters: alif, waw, or yaa.",
-      "longDescription": "The reference madd length. Mastering its steady two-count rhythm calibrates all longer madd forms. The stretch should be even and relaxed — not clipped, not drifting longer."
+      "applicableLetters": "يقع على حروف المد: ا، و، ي (المد الطبيعي حركتان)",
+      "shortDescription": "مد حروف المد الثلاثة: الألف والواو والياء.",
+      "longDescription": "هو معيار أطوال المدود. ضبط إيقاعه الثابت بحركتين يعاير كل المدود الأطول. يكون الإطالة متوازنة ومسترخية — لا مقصوصة ولا مُطوَّلة حتى لا تخرج عن قدرها."
     },
     {
       "id": "maddNaturalMiniature",
@@ -196,11 +197,11 @@
       "englishTitle": "Tiny Madd Marks",
       "arabicTitle": "مَدٌّ طَبِيعِي صَغِير",
       "transliteration": "Madd Tabee Tiny Marks",
-      "literalMeaning": "A 2-count natural madd written with a superscript (miniature) mark.",
+      "literalMeaning": "مد طبيعي من حركتين مكتوب بعلامة صغيرة فوق الحرف.",
       "countLabel": "2 counts",
-      "applicableLetters": "Occurs on miniature madd marks: alif sagheerah, waw sagheerah, ya sagheerah",
-      "shortDescription": "From tiny vowel diacritics: small alif, waw, or yaa.",
-      "longDescription": "Tiny written signs (small alif, small waw, small yaa) carry the same two-count natural vowel sound, controlled separately so miniature Uthmani madd marks can be shown or hidden independently."
+      "applicableLetters": "يقع على علامات المد الصغيرة: الألف الصغيرة والواو الصغيرة والياء الصغيرة",
+      "shortDescription": "العلامات الصغيرة: الألف والواو والياء الصغيرة.",
+      "longDescription": "هذه العلامات الصغيرة (ألف صغيرة، واو صغيرة، ياء صغيرة) تحمل صوت المد الطبيعي نفسه من حركتين، وتُفصل عن المد الممدود الأصلي لتتمكن من إظهار أو إخفاء هذه العلامات في الرسم العثماني."
     },
     {
       "id": "maddSukoon",
@@ -210,11 +211,11 @@
       "englishTitle": "Ending Madd",
       "arabicTitle": "مَدّ الوَقْف",
       "transliteration": "Ending Madd",
-      "literalMeaning": "Stop-based madd (Aarid lis-Sukoon / Leen), lengthened only when pausing.",
+      "literalMeaning": "مد بسبب الوقف (العارض للسكون واللين)، يُمد عند الوقف فقط.",
       "countLabel": "2, 4, or 6 counts",
-      "applicableLetters": "When stopping creates madd aarid lis-sukoon after ا، و، ي, or madd leen after َ + وۡ / َ + يۡ",
-      "shortDescription": "Stop-based madd, including aarid and leen.",
-      "longDescription": "Triggered by pausing at a word ending: Madd Aarid lis-Sukoon (a final letter becomes temporarily sakin after a madd letter) and Madd Leen (a sakin waaw/yaa after a fatha). 2, 4, or 6 counts; keep leen no longer than the aarid length chosen."
+      "applicableLetters": "إذا وُقف على حرف بعد مد ا، و، ي (العارض للسكون) أو بعد فتحة+واو/ياء ساكنة (مد اللين)",
+      "shortDescription": "مد عارض للسكون، ومد اللين.",
+      "longDescription": "يحدث بالوقف على نهاية الكلمة: مد عارض للسكون (حرف يصير ساكنًا مؤقتًا بعد حرف مد) ومد اللين (واو أو ياء ساكنة بعد فتحة). مدّان أو أربع أو ست حركات — واجعل مد اللين لا يتجاوز مقدار العارض الذي اخترته."
     },
     {
       "id": "maddSeparated",
@@ -224,11 +225,11 @@
       "englishTitle": "Madd Munfasil",
       "arabicTitle": "مَدٌّ مُنفَصِل",
       "transliteration": "Madd Munfasil",
-      "literalMeaning": "Madd Munfasil = 'separated' madd: madd at a word end before a hamzah starting the next word.",
+      "literalMeaning": "المد المنفصل: حرف المد في آخر الكلمة والهمزة في أول الكلمة التالية.",
       "countLabel": "2, 4, or 5 counts",
-      "applicableLetters": "When madd letters (ا، و، ي) are followed by hamzah in the next word",
-      "shortDescription": "Madd at word end before next hamzah.",
-      "longDescription": "Because the hamzah is in the following word, scholars classify this separately from muttasil. Allowed lengths vary by riwayah — follow one taught pattern. This color also marks Madd Munfasil Hukmi: the vocative يَا and demonstrative هَا particles written joined to a following hamzah (e.g. يَٰٓأَيُّهَا, هَٰٓؤُلَآءِ)."
+      "applicableLetters": "إذا جاء بعد حرف المد (ا، و، ي) همزة في أول الكلمة التالية",
+      "shortDescription": "مد في آخر كلمة تليه همزة في أول التي بعدها.",
+      "longDescription": "لأن الهمزة في الكلمة التي تلي المد، صنفه العلماء منفصلًا عن المتصل. مقاديره تختلف باختلاف الروايات — فاتبع قدرًا واحدًا معتمدًا. ويشمل هذا اللون مد المنفصل حكمًا: ياء النداء وهاء التنبيه الموصولتين بهمز فيما بعدها (يَا أَيُّهَا، هَؤُلَاءِ)."
     },
     {
       "id": "maddConnected",
@@ -238,11 +239,11 @@
       "englishTitle": "Madd Muttasil",
       "arabicTitle": "مَدٌّ مُتَّصِل",
       "transliteration": "Madd Muttasil",
-      "literalMeaning": "Madd Muttasil = 'connected' madd: a madd letter + hamzah inside one word.",
+      "literalMeaning": "المد المتصل: حرف المد والهمزة في كلمة واحدة.",
       "countLabel": "4 or 5 counts",
-      "applicableLetters": "When madd letters (ا، و، ي) are followed by hamzah in the same word",
-      "shortDescription": "Madd letter + hamzah in one word.",
-      "longDescription": "Both elements sit inside one word, so this is a stronger extension than natural madd. Keep the elongation measured and stable per your riwayah so the following hamzah stays clear. (Note the يَٰٓ/هَٰٓ particle exception, which is munfasil-hukmi instead.)"
+      "applicableLetters": "إذا جاءت الهمزة بعد حرف المد (ا، و، ي) في كلمة واحدة",
+      "shortDescription": "حرف مد وهمزة في كلمة واحدة.",
+      "longDescription": "حيث يجتمعان في كلمة واحدة يكون المد أشد من الطبيعي. أطله مقدارًا مقيسًا ثابتًا وفق روايتك ليبقى ما بعد الهمزة واضحًا. (وعن ياءَ أو هاءَ الموصولتين بالهمز كـ\"يَا أَيُّهَا\" فحكمها مد منفصل حكمًا كما تقدم)."
     },
     {
       "id": "maddNecessary",
@@ -252,11 +253,11 @@
       "englishTitle": "Madd Lazim",
       "arabicTitle": "مَدٌّ لَازِم",
       "transliteration": "Madd Laazim",
-      "literalMeaning": "Madd Lazim = 'necessary' madd: madd + a permanent sukoon/shaddah, fixed 6 counts.",
+      "literalMeaning": "المد اللازم: حرف مد يليه سكون أصلي أو تشديد، ومقداره ست حركات لازمة.",
       "countLabel": "6 counts",
-      "applicableLetters": "When madd letters (ا، و، ي) are followed by a permanent sukoon or shaddah",
-      "shortDescription": "Fixed required madd due to shaddah after madd.",
-      "longDescription": "Fixed and not flexible like optional madds, so give it its full required length whenever encountered. Includes Lazim Harfi (muqattaʿat letter names) and Lazim Kalimi (e.g. ٱلضَّآلِّينَ). Its consistency stabilizes rhythm in longer passages."
+      "applicableLetters": "إذا جاء بعد حرف المد (ا، و، ي) سكون لازم أو تشديد",
+      "shortDescription": "مد لازم ست حركات بسبب السكون الأصلي أو التشديد.",
+      "longDescription": "ثابت لا يرتخي مثل غيره من المدود، فلا بد من الوفاء بمقداره كلما وُجد. يشمل المد اللازم الحرفي (حروف فواتح السور كـ\"ألم\" و\"حم\") والمد اللازم الكلمي (مثل ٱلضَّآلِّينَ). منتظم الإيقاع يستقر بثبات القراءة في المواضع الطويلة."
     }
   ],
   "letterSets": {

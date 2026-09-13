@@ -24,6 +24,7 @@ class QuranAudioService extends ChangeNotifier {
   QuranPos? _rangeEnd;
   bool _playing = false;
   bool _downloading = false;
+  bool _continuous = false;
   String? _lastError;
   int _sameCount = 0;
   int _generation = 0;
@@ -44,6 +45,10 @@ class QuranAudioService extends ChangeNotifier {
   bool get playing => _playing;
   bool get downloading => _downloading;
   String? get errorMessage => _lastError;
+
+  /// وضع التلاوة المتصلة (القارئ/المصحف): كل آية تُتلى مرة واحدة بلا تكرار
+  /// ولا حلقة ولا تأخير، ثم تتوقف عند نهاية النطاق.
+  bool get continuous => _continuous;
 
   Future<void> init() async {
     if (_docsDir != null) return;
@@ -108,8 +113,10 @@ class QuranAudioService extends ChangeNotifier {
 
   bool isCached(int surah, int ayah) => _cached.contains('$surah:$ayah');
 
-  /// تشغيل آية واحدة مع التكرار المحدد في الإعدادات
-  Future<void> playAyah(QuranPos pos) async {
+  /// تشغيل آية واحدة مع التكرار المحدد في الإعدادات،
+  /// أو مرة واحدة بلا تكرار عند [continuous].
+  Future<void> playAyah(QuranPos pos, {bool continuous = false}) async {
+    _continuous = continuous;
     _rangeStart = pos;
     _rangeEnd = pos;
     _current = pos;
@@ -117,8 +124,20 @@ class QuranAudioService extends ChangeNotifier {
     await _playCurrent();
   }
 
+  /// تلاوة سورة كاملة بصوت القارئ: كل آية مرة واحدة بلا تكرار ولا حلقة.
+  Future<void> playSurah(int surah, int ayahCount) async {
+    _continuous = true;
+    final start = QuranPos(surah, 1);
+    _rangeStart = start;
+    _rangeEnd = QuranPos(surah, ayahCount);
+    _current = start;
+    _sameCount = 0;
+    await _playCurrent();
+  }
+
   /// تشغيل نطاق آيات (جلسة حفظ/استماع) مع تكرار كل آية
   Future<void> playRange(QuranPos start, QuranPos end) async {
+    _continuous = false;
     _rangeStart = start;
     _rangeEnd = end;
     _current = start;
@@ -225,6 +244,19 @@ class QuranAudioService extends ChangeNotifier {
     if (pos == null) return;
     final gen = ++_generation;
 
+    // التلاوة المتصلة: كل آية تُتلى مرة واحدة بلا تأخير ولا تكرار.
+    if (_continuous) {
+      final next = _nextInRange();
+      if (next != null) {
+        _current = next;
+        _playCurrent();
+        return;
+      }
+      _playing = false;
+      notifyListeners();
+      return;
+    }
+
     Future<void> afterDelay(Future<void> Function() action) async {
       await Future.delayed(Duration(seconds: delaySec));
       if (gen != _generation) return;
@@ -327,6 +359,7 @@ class QuranAudioService extends ChangeNotifier {
     _generation++;
     _playing = false;
     _downloading = false;
+    _continuous = false;
     _lastError = null;
     _player.stop();
   }
