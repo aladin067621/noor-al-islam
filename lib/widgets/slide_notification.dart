@@ -11,7 +11,9 @@ class SlideNotification {
   /// عرض إشعار ينزلق من الجانب.
   ///
   /// [title] عنوان قصير، [message] نص الإشعار، [icon] أيقونة اختيارية،
-  /// [color] لون الشريط الجانبي (افتراضيًا الأخضر الأساسي)، [duration] مدة الظهور.
+  /// [color] لون الشريط الجانبي (افتراضيًا الأخضر الأساسي)، [duration] مدة الظهور،
+  /// [onTap] يُستدعى عند الضغط على الإشعار قبل إخفائه (اختياري).
+  /// الضغط في أي مكان على الإشعار يخفيه — لا يفتح أي شاشة.
   static void show(
     BuildContext context, {
     required String title,
@@ -19,6 +21,7 @@ class SlideNotification {
     IconData? icon,
     Color? color,
     Duration duration = const Duration(seconds: 4),
+    VoidCallback? onTap,
   }) {
     final overlay = Overlay.of(context, rootOverlay: true);
     // إغلاق أي إشعار سابق قبل عرض الجديد
@@ -31,6 +34,7 @@ class SlideNotification {
         icon: icon ?? Icons.notifications_active_outlined,
         color: color ?? AppTheme.primaryGreen,
         duration: duration,
+        onTap: onTap,
         onDone: () => _remove(entry),
       ),
     );
@@ -54,6 +58,7 @@ class _SlideNotificationBanner extends StatefulWidget {
   final IconData icon;
   final Color color;
   final Duration duration;
+  final VoidCallback? onTap;
   final VoidCallback onDone;
 
   const _SlideNotificationBanner({
@@ -62,6 +67,7 @@ class _SlideNotificationBanner extends StatefulWidget {
     required this.icon,
     required this.color,
     required this.duration,
+    this.onTap,
     required this.onDone,
   });
 
@@ -136,81 +142,89 @@ class _SlideNotificationBannerState extends State<_SlideNotificationBanner>
             ),
           ],
         ),
-        child: Stack(
-          children: [
-            // شريط لون جانبي يمين
-            Positioned(
-              top: 0,
-              bottom: 0,
-              right: 0,
-              child: Container(
-                width: 5,
-                decoration: BoxDecoration(
-                  color: widget.color,
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(14),
-                    bottomRight: Radius.circular(14),
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            widget.onTap?.call();
+            if (mounted) _controller.reverse();
+          },
+          child: Stack(
+            children: [
+              // شريط لون جانبي يمين
+              Positioned(
+                top: 0,
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  width: 5,
+                  decoration: BoxDecoration(
+                    color: widget.color,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(14),
+                      bottomRight: Radius.circular(14),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(width: 14),
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Container(
-                    width: 38,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: widget.color.withOpacity(0.12),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(widget.icon, color: widget.color, size: 22),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.title,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          widget.message,
-                          style: TextStyle(
-                            fontSize: 13,
-                            height: 1.5,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white.withOpacity(0.85)
-                                : Colors.black.withOpacity(0.7),
-                          ),
-                        ),
-                      ],
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(width: 14),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: widget.color.withOpacity(0.12),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(widget.icon, color: widget.color, size: 22),
                     ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    if (mounted) _controller.reverse();
-                  },
-                  icon: const Icon(Icons.close, size: 18),
-                  color: Colors.grey,
-                  padding: const EdgeInsets.all(8),
-                ),
-                const SizedBox(width: 4),
-              ],
-            ),
-          ],
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.title,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            widget.message,
+                            style: TextStyle(
+                              fontSize: 13,
+                              height: 1.5,
+                              color: Theme.of(context).brightness ==
+                                  Brightness.dark
+                                  ? Colors.white.withOpacity(0.85)
+                                  : Colors.black.withOpacity(0.7),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      if (mounted) _controller.reverse();
+                    },
+                    icon: const Icon(Icons.close, size: 18),
+                    color: Colors.grey,
+                    padding: const EdgeInsets.all(8),
+                  ),
+                  const SizedBox(width: 4),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

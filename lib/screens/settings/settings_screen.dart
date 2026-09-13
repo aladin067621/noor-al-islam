@@ -107,17 +107,9 @@ class SettingsScreen extends StatelessWidget {
           SwitchListTile(
             secondary: const Icon(Icons.notifications_active),
             title: const Text('تفعيل الأذكار المنبثقة'),
-            subtitle: const Text('إشعار دوري بذكر عشوائي من قائمتك'),
+            subtitle: const Text('تنبيه جانبي بصمت بذكر عشوائي من قائمتك أثناء استخدام التطبيق'),
             value: s.popupEnabled,
-            onChanged: (v) async {
-              await s.setPopupEnabled(v);
-              if (v) {
-                await NotificationService.instance
-                    .schedulePopupDhikr(s.popupAdhkar, s.popupInterval);
-              } else {
-                await NotificationService.instance.cancelPopupDhikr();
-              }
-            },
+            onChanged: (v) => s.setPopupEnabled(v),
           ),
           ListTile(
             leading: const Icon(Icons.timer),
@@ -137,7 +129,7 @@ class SettingsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Text(
-              'ملاحظة: تعمل الإشعارات على نظام أندرويد. قد يتطلب الأمر السماح بالإشعارات والمنبهات الدقيقة من إعدادات النظام.',
+              'ملاحظة: تذكيرات أذكار الصباح والمساء والسنن اليومية إشعارات نظام تظهر من الأعلى. أما الأذكار المنبثقة فتنبيه داخلي جانبي بصمت يظهر أثناء استخدام التطبيق وتُخفيه بالضغط عليه.',
               style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
             ),
           ),
@@ -240,10 +232,6 @@ class SettingsScreen extends StatelessWidget {
     controller.dispose();
     if (result == null) return;
     await s.setPopupInterval(result);
-    if (s.popupEnabled) {
-      await NotificationService.instance
-          .schedulePopupDhikr(s.popupAdhkar, result);
-    }
   }
 
   Future<void> _editPopupAdhkar(BuildContext context, SettingsProvider s) async {

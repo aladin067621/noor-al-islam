@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hijri/hijri_calendar.dart';
@@ -34,6 +33,10 @@ class NotificationService {
       const settings = InitializationSettings(android: androidInit, iOS: iosInit);
 
       await _plugin.initialize(settings);
+
+      // ترحيل: إلغاء أي إشعار دوري قديم للأذكار المنبثقة (id=2000) — أصبحت
+      // الآن تنبيهًا داخليًا جانبيًا بصمت يظهر أثناء استخدام التطبيق فقط.
+      await _plugin.cancel(popupBaseId);
 
       // لا تُطلب أذونات النظام هنا — تُعرض نافذة شرح أول تشغيل،
       // وتُطلب الأذونات بعد موافقة المستخدم.
@@ -230,31 +233,6 @@ class NotificationService {
     for (int id = whiteDayBaseId + 1; id <= whiteDayBaseId + whiteDayCount; id++) {
       await _plugin.cancel(id);
     }
-  }
-
-  /// عرض إشعار فوري بذكر عشوائي من القائمة (للأذكار المنبثقة)
-  Future<void> showRandomDhikr(List<String> adhkar) async {
-    if (!_ready || adhkar.isEmpty) return;
-    final dhikr = adhkar[Random().nextInt(adhkar.length)];
-    await _plugin.show(popupBaseId, 'تذكير بالذكر', dhikr, _details);
-  }
-
-  /// جدولة الأذكار المنبثقة بشكل دوري بفترة حرّة (بالدقائق).
-  /// تُلغى أي جدولة سابقة ثم تُعاد جدولتها بالفترة الجديدة.
-  Future<void> schedulePopupDhikr(
-      List<String> adhkar, int intervalMinutes) async {
-    if (!_ready || adhkar.isEmpty) return;
-    await _plugin.cancel(popupBaseId);
-    if (intervalMinutes < 1) intervalMinutes = 1;
-    final dhikr = adhkar[Random().nextInt(adhkar.length)];
-    await _plugin.periodicallyShowWithDuration(
-      popupBaseId,
-      'تذكير بالذكر',
-      dhikr,
-      Duration(minutes: intervalMinutes),
-      _details,
-      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-    );
   }
 
   /// إلغاء إشعارات الأذكار المنبثقة

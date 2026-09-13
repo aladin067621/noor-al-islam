@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:provider/provider.dart';
 
 import '../models/dhikr.dart';
 import '../models/book.dart';
@@ -12,8 +14,10 @@ import '../utils/theme.dart';
 import '../widgets/card_item.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/daily_reminders_card.dart';
+import '../widgets/slide_notification.dart';
 import '../services/data_service.dart';
 import '../services/notification_service.dart';
+import '../services/settings_provider.dart';
 
 import 'adhkar/adhkar_categories_screen.dart';
 import 'adhkar/adhkar_sub_categories_screen.dart';
@@ -47,6 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? _timer;
   bool _showDailyReminders = true;
 
+  Timer? _popupTimer;
+  SettingsProvider? _settings;
+  bool _lastPopupEnabled = false;
+  int _lastPopupInterval = AppConstants.defaultPopupInterval;
+
   List<String> _adhkarTexts = [];
   List<String> _pinnedAdhkar = [];
   List<HomeSection> _sections = [];
@@ -74,6 +83,53 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadSections();
     _loadReminderVisibility();
     WidgetsBinding.instance.addPostFrameCallback((_) => _maybeShowFirstLaunchDialog());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // إعداد مؤقت الأذكار المنبثقة الداخلي (تنبيه جانبي بصمت، لا يفتح التطبيق)
+    if (_settings == null) {
+      _settings = context.read<SettingsProvider>();
+      _settings!.addListener(_onSettingsChanged);
+      _lastPopupEnabled = _settings!.popupEnabled;
+      _lastPopupInterval = _settings!.popupInterval;
+      _syncPopupTimer(_settings!);
+    }
+  }
+
+  /// ربط المؤقت الداخلي بحالة الإعدادات: يبدأ عند التفعيل ويُحدَّث عند تغيير الفترة
+  void _onSettingsChanged() {
+    final s = _settings;
+    if (s == null) return;
+    if (s.popupEnabled != _lastPopupEnabled ||
+        s.popupInterval != _lastPopupInterval) {
+      _lastPopupEnabled = s.popupEnabled;
+      _lastPopupInterval = s.popupInterval;
+      _syncPopupTimer(s);
+    }
+  }
+
+  /// تشغيل مؤقت يعرض ذكرًا عشوائيًا بشكل دوري كتنبيه جانبي بصمت.
+  /// التنبيه يظهر فقط أثناء استخدام التطبيق، والضغط عليه يخفيه فحسب.
+  void _syncPopupTimer(SettingsProvider s) {
+    _popupTimer?.cancel();
+    _popupTimer = null;
+    if (!s.popupEnabled || s.popupAdhkar.isEmpty) return;
+    final minutes = s.popupInterval < 1 ? 1 : s.popupInterval;
+    _popupTimer = Timer.periodic(Duration(minutes: minutes), (_) {
+      if (!mounted) return;
+      final list = s.popupAdhkar;
+      if (list.isEmpty) return;
+      final dhikr = list[Random().nextInt(list.length)];
+      SlideNotification.show(
+        context,
+        title: 'تذكير بالذكر',
+        message: dhikr,
+        icon: Icons.notifications_active_outlined,
+        color: AppTheme.primaryGreen,
+      );
+    });
   }
 
   /// التذكيرات اليومية تظهر في الصفحة الرئيسية في الزيارة الأولى فقط،
@@ -372,6 +428,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     _timer?.cancel();
+    _popupTimer?.cancel();
+    _settings?.removeListener(_onSettingsChanged);
     super.dispose();
   }
 
