@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../services/settings_provider.dart';
 import '../../services/notification_service.dart';
@@ -107,9 +108,12 @@ class SettingsScreen extends StatelessWidget {
           SwitchListTile(
             secondary: const Icon(Icons.notifications_active),
             title: const Text('تفعيل الأذكار المنبثقة'),
-            subtitle: const Text('تنبيه جانبي بصمت بذكر عشوائي من قائمتك أثناء استخدام التطبيق'),
+            subtitle: const Text('تنبيه دوري بذكر عشوائي: داخل التطبيق جانبي صامت وخارجه إشعار نظام'),
             value: s.popupEnabled,
-            onChanged: (v) => s.setPopupEnabled(v),
+            onChanged: (v) {
+              s.setPopupEnabled(v);
+              if (!v) NotificationService.instance.cancelPopupDhikr();
+            },
           ),
           ListTile(
             leading: const Icon(Icons.timer),
@@ -129,13 +133,46 @@ class SettingsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Text(
-              'ملاحظة: تذكيرات أذكار الصباح والمساء والسنن اليومية إشعارات نظام تظهر من الأعلى. أما الأذكار المنبثقة فتنبيه داخلي جانبي بصمت يظهر أثناء استخدام التطبيق وتُخفيه بالضغط عليه.',
+              'ملاحظة: تذكيرات أذكار الصباح والمساء والسنن اليومية إشعارات نظام. '
+              'أما الأذكار المنبثقة فتنبيه داخلي جانبي بصمت داخل التطبيق، '
+              'وعند مغادرة التطبيق يُرسل إشعار نظام تذكيرًا دون فتح التطبيق.',
               style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
             ),
+          ),
+          const Divider(),
+          _header('الخلفية والبطارية'),
+          ListTile(
+            leading: const Icon(Icons.battery_charging_full),
+            title: const Text('إيقاف تقييد البطارية'),
+            subtitle: const Text(
+                'لكي تصل التذكيرات والأذكار وأنت خارج التطبيق، اجعل الاستخدام دون تقييد (غير محدود)'),
+            trailing: const Icon(Icons.open_in_new, size: 18),
+            onTap: () => _openBatterySettings(context),
           ),
         ],
       ),
     );
+  }
+
+  /// فتح شاشة إعدادات البطارية في النظام — مع بديل إرشادي عند تعذّر الفتح
+  Future<void> _openBatterySettings(BuildContext ctx) async {
+    const uri =
+        'intent:#Intent;action=android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS;end';
+    try {
+      if (await canLaunchUrl(Uri.parse(uri))) {
+        await launchUrl(Uri.parse(uri), mode: LaunchMode.externalApplication);
+        return;
+      }
+    } catch (_) {}
+    if (ctx.mounted) {
+      ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
+        content: Text(
+          'من إعدادات الهاتف: البطارية ← البطارية غير المحدودة '
+          '(أو تحسين البطارية) ← العروة الوثقى ← لا تقييد',
+        ),
+        duration: Duration(seconds: 6),
+      ));
+    }
   }
 
   Widget _header(String text) => Padding(

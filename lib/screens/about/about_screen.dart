@@ -40,6 +40,70 @@ class AboutScreen extends StatelessWidget {
             style: TextStyle(height: 1.9),
           ),
           const SizedBox(height: 20),
+          const Text('نبذة',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8),
+          const Card(
+            child: Padding(
+              padding: EdgeInsets.all(14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.verified_outlined,
+                          size: 20, color: AppTheme.primaryGreen),
+                      SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'التطبيق خالٍ من الإعلانات بالكامل، ولا يجمع أي بيانات شخصية. '
+                          'نسأل الله أن يجعله صدقة جارية لنا ولكم.',
+                          style: TextStyle(height: 1.8),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Divider(),
+                  SizedBox(height: 4),
+                  Text('نسأل من كل مستخدم الدعاء لنا بالرحمة والمغفرة — فهذا أفضل جزاء:',
+                      style: TextStyle(height: 1.6, fontSize: 13)),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Card(
+            color: Color(0xFFF7F1E0),
+            child: Padding(
+              padding: EdgeInsets.all(14),
+              child: Column(
+                children: [
+                  SelectableText(
+                    '«اللهم اغفر لي ولوالدي وللمؤمنين والمؤمنات، الأحياء منهم والأموات»',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: AppTheme.quranFontFamily,
+                      fontSize: 17,
+                      height: 2.0,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  SelectableText(
+                    '﴿رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ﴾',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: AppTheme.quranFontFamily,
+                      fontSize: 17,
+                      height: 2.0,
+                      color: AppTheme.darkGreen,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
           const Text('المراجع والمصادر',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),

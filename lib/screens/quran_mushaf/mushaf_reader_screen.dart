@@ -54,9 +54,6 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
   // تقدير ارتفاع الصفحة للانتقال إلى علامة القراءة (تنقل سريع إلى الصفحة)
   double _pageExtent = 0;
 
-  // معرّفات النقر لكل آية (تُنشأ مرة واحدة وتُتلف عند مغادرة الشاشة)
-  final Map<int, TapGestureRecognizer> _taps = {};
-
   @override
   void initState() {
     super.initState();
@@ -66,10 +63,6 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
   @override
   void dispose() {
     _scroll.dispose();
-    for (final t in _taps.values) {
-      t.dispose();
-    }
-    _taps.clear();
     // إيقاف تلاوة السورة عند مغادرة الشاشة (لا تستمر في الخلفية)
     if (QuranAudioService.instance.continuous) {
       QuranAudioService.instance.stop();
@@ -302,15 +295,6 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
 
   bool get _surahLoaded => _surah != null;
 
-  TapGestureRecognizer _tapFor(int n) => _taps.putIfAbsent(
-      n,
-      () => TapGestureRecognizer()
-        ..onTap = () {
-          if (mounted) {
-            _showAyahActions(n, _surah!.ayahAt(n).textArabic);
-          }
-        });
-
   Future<void> _openTafsir(int ayahNum) async {
     final surahs = await DataService.instance.loadTafsirSurahs();
     if (!mounted) return;
@@ -521,27 +505,40 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
         border: Border.all(color: border, width: 1.4),
         borderRadius: BorderRadius.circular(40),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
-          _sideTag(label, textColor),
-          Expanded(
-            child: Center(
-              child: Text(
-                'سورة ${_stripHarakat(s.nameArabic)}',
-                textDirection: TextDirection.rtl,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                  height: 1.3,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _sideTag(label, textColor),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'سورة ${_stripHarakat(s.nameArabic)}',
+                    textDirection: TextDirection.rtl,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: textColor,
+                      height: 1.3,
+                    ),
+                  ),
                 ),
               ),
+              _sideTag('${toArabicDigits(s.numberOfAyahs)} آية', textColor),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'برواية حفص عن عاصم',
+            style: TextStyle(
+              fontSize: 12,
+              color: textColor.withOpacity(0.7),
+              fontWeight: FontWeight.w600,
             ),
           ),
-          _sideTag('${toArabicDigits(s.numberOfAyahs)} آية', textColor),
         ],
       ),
     );
@@ -607,8 +604,18 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
   }
 
   /// نص الصفحة — آيات متصلة داخل سطر واحد يلتف لأسفل، مع نهاية آية «﴿رقم﴾»
-  /// وكل آية قابلة للمس لفتح الإجراءات.
+  /// والضغط على أي موضع يدلّ إلى الآية الواقعة تحته عبر TextPainter
+  /// (طريقة مضمونة في النصوص العربية المتّصلة <selectable>).
   Widget _pageText(List<QuranAyah> page, Color textColor) {
+    // مساحات الآيات بالرموز (UTF-16) داخل نص الصفحة الكامل للضغط
+    final ranges = <_AyahRange>[];
+    var cursor = 0;
+    for (final ayah in page) {
+      final marker = '  ﴿${toArabicDigits(ayah.number)}﴾';
+      final start = cursor;
+      cursor += ayah.textArabic.length + marker.length;
+      ranges.add(_AyahRange(ayah.number, start, cursor));
+    }
     final base = TextStyle(
       fontFamily: AppConstants.quranUthmaniFont,
       fontSize: _kFontSize,
@@ -618,12 +625,56 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
     final groups = <InlineSpan>[
       for (final ayah in page) _ayahSpan(ayah),
     ];
-    return Text.rich(
-      TextSpan(style: base, children: groups),
+    return Builder(
+      builder: (textContext) => GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTapUp: (d) => _onTextTap(
+          textContext: textContext,
+          local: d.localPosition,
+          ranges: ranges,
+          groups: groups,
+          base: base,
+        ),
+        child: Text.rich(
+          TextSpan(style: base, children: groups),
+          textDirection: TextDirection.rtl,
+          textAlign: TextAlign.justify,
+          softWrap: true,
+        ),
+      ),
+    );
+  }
+
+  /// تعيين مكان الضغط على النص إلى الآية المقابلة ثم فتح إجراءاتها.
+  void _onTextTap({
+    required BuildContext textContext,
+    required Offset local,
+    required List<_AyahRange> ranges,
+    required List<InlineSpan> groups,
+    required TextStyle base,
+  }) {
+    final renderBox = textContext.findRenderObject() as RenderBox?;
+    if (renderBox == null) return;
+    final painter = TextPainter(
+      text: TextSpan(style: base, children: groups),
       textDirection: TextDirection.rtl,
       textAlign: TextAlign.justify,
-      softWrap: true,
-    );
+      textScaler: MediaQuery.textScalerOf(textContext),
+    )..layout(maxWidth: renderBox.size.width);
+    final pos = painter.getPositionForOffset(local);
+    _AyahRange? hit;
+    for (final r in ranges) {
+      if (pos.offset >= r.start) {
+        hit = r;
+      } else {
+        break;
+      }
+    }
+    if (hit == null) return;
+    final ayahNum = hit.number;
+    if (mounted) {
+      _showAyahActions(ayahNum, _surah!.ayahAt(ayahNum).textArabic);
+    }
   }
 
   InlineSpan _ayahSpan(QuranAyah ayah) {
@@ -635,7 +686,6 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
     );
     final isBookmark = _bookmarkAyah == ayah.number;
     return TextSpan(
-      recognizer: _tapFor(ayah.number),
       style: isBookmark
           ? TextStyle(
               backgroundColor:
@@ -742,4 +792,12 @@ class _MushafReaderScreenState extends State<MushafReaderScreen> {
     }
     return buf.toString();
   }
+}
+
+/// نطاق آية داخل نص الصفحة الكامل (بمعيار UTF-16) — لتحديد الآية المضمومة عند الضغط
+class _AyahRange {
+  final int number;
+  final int start;
+  final int end;
+  const _AyahRange(this.number, this.start, this.end);
 }

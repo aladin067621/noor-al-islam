@@ -14,6 +14,7 @@ import '../utils/theme.dart';
 import '../widgets/card_item.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/daily_reminders_card.dart';
+import '../widgets/home_status_panel.dart';
 import '../widgets/slide_notification.dart';
 import '../services/data_service.dart';
 import '../services/notification_service.dart';
@@ -45,7 +46,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   List<String> _verses = [];
   int _verseIndex = 0;
   Timer? _timer;
@@ -77,12 +78,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _loadVerses();
     _loadAdhkarTexts();
     _loadPinned();
     _loadSections();
     _loadReminderVisibility();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _maybeShowFirstLaunchDialog());
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _maybeShowFirstLaunchDialog();
+      if (mounted) await _maybeShowAboutNote();
+    });
   }
 
   @override
@@ -95,6 +100,32 @@ class _HomeScreenState extends State<HomeScreen> {
       _lastPopupEnabled = _settings!.popupEnabled;
       _lastPopupInterval = _settings!.popupInterval;
       _syncPopupTimer(_settings!);
+    }
+  }
+
+  /// أثناء الاستخدام التطبيق أمام المستخدم → التنبيه الجانبي الصامت.
+  /// عند مغادرة التطبيق → يتم إلغاء المؤقت الداخلي وجدولة إشعار نظام واحد
+  /// بذكر عشوائي بعد المدة المحددة ليبقى التذكير يعمل خارج التطبيق.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    final s = _settings;
+    if (s == null) return;
+    if (state == AppLifecycleState.resumed) {
+      NotificationService.instance.cancelPopupDhikr();
+      _syncPopupTimer(s);
+    } else if (state == AppLifecycleState.paused) {
+      _popupTimer?.cancel();
+      _popupTimer = null;
+      if (s.popupEnabled && s.popupAdhkar.isNotEmpty) {
+        final list = s.popupAdhkar;
+        final dhikr = list[Random().nextInt(list.length)];
+        final minutes = s.popupInterval < 1 ? 1 : s.popupInterval;
+        NotificationService.instance.schedulePopupDhikrOnce(
+          title: 'تذكير بالذكر',
+          body: dhikr,
+          after: Duration(minutes: minutes),
+        );
+      }
     }
   }
 
@@ -188,6 +219,103 @@ class _HomeScreenState extends State<HomeScreen> {
       await Geolocator.requestPermission();
     } catch (_) {}
     await NotificationService.instance.scheduleSunnahReminders();
+  }
+
+  /// نافذة نبذة: بلا إعلانات / صدقة جارية / طلب الدعاء / ملاحظة البطارية.
+  /// تُعرض مرة واحدة فقط عند أول استخدام (بعد نافذة الأذونات).
+  Future<void> _maybeShowAboutNote() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool(AppConstants.keyAppNoteSeen) ?? false) return;
+    await prefs.setBool(AppConstants.keyAppNoteSeen, true);
+    if (!mounted) return;
+    await showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('نسأل الله الإخلاص والقبول'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'هذا التطبيق مجاني بالكامل، بلا إعلانات، ولا يجمع أي بيانات شخصية. '
+                'نسأل الله أن يجعله صدقة جارية لنا ولكم، وأن يرزق الجميع الإخلاص والقبول.',
+                style: TextStyle(height: 1.8),
+                textAlign: TextAlign.right,
+              ),
+              const SizedBox(height: 14),
+              const Divider(),
+              const SizedBox(height: 6),
+              const Text('نسأل من كل مستخدم الدعاء — فهذا أفضل جزاء:',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(height: 1.5)),
+              const SizedBox(height: 10),
+              const Text(
+                '«اللهم اغفر لي ولوالدي وللمؤمنين والمؤمنات، الأحياء منهم والأموات»',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontFamily: AppTheme.quranFontFamily,
+                  fontSize: 15,
+                  height: 2.0,
+                ),
+              ),
+              const SizedBox(height: 14),
+              const Divider(),
+              const SizedBox(height: 6),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(Icons.battery_charging_full, size: 18),
+                  SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      'لكي تعمل التذكيرات خارج التطبيق: افتح إعدادات الهاتف '
+                      '← البطارية ← البطارية غير المحدودة (أو تحسين البطارية) '
+                      '← العروة الوثقى ← لا تقييد.',
+                      style: TextStyle(height: 1.6, fontSize: 13),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('حسناً'),
+          ),
+          FilledButton.icon(
+            onPressed: () {
+              Navigator.pop(ctx);
+              _openBatterySettings(context);
+            },
+            icon: const Icon(Icons.battery_charging_full),
+            label: const Text('إعدادات البطارية'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _openBatterySettings(BuildContext ctx) async {
+    const uri = 'intent:#Intent;action=android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS;end';
+    try {
+      if (await canLaunchUrl(Uri.parse(uri))) {
+        await launchUrl(Uri.parse(uri), mode: LaunchMode.externalApplication);
+        return;
+      }
+    } catch (_) {}
+    if (ctx.mounted) {
+      ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
+        content: Text(
+          'من إعدادات الهاتف: البطارية ← البطارية غير المحدودة '
+          '(أو تحسين البطارية) ← العروة الوثقى ← لا تقييد',
+        ),
+        duration: Duration(seconds: 6),
+      ));
+    }
   }
 
   Future<void> _loadVerses() async {
@@ -427,6 +555,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _timer?.cancel();
     _popupTimer?.cancel();
     _settings?.removeListener(_onSettingsChanged);
@@ -637,6 +766,7 @@ child: Center(
           ),
         ),
           SliverToBoxAdapter(child: _HijriDateCard(dateStr: _hijriDateStr())),
+          const SliverToBoxAdapter(child: HomeStatusPanel()),
           if (_showDailyReminders)
             const SliverToBoxAdapter(child: DailyRemindersCard()),
           if (_pinnedAdhkar.isNotEmpty)

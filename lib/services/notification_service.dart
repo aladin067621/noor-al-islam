@@ -235,6 +235,27 @@ class NotificationService {
     }
   }
 
+  /// جدولة إشعار نظام واحد للأذكار المنبثقة بعد مدة محددة.
+  /// يُستخدم عند خروج التطبيق إلى الخلفية ليصل المستخدمُ ذكرٌ دوري.
+  Future<void> schedulePopupDhikrOnce({
+    required String title,
+    required String body,
+    required Duration after,
+  }) async {
+    if (!_ready) return;
+    await _plugin.cancel(popupBaseId);
+    await _plugin.zonedSchedule(
+      popupBaseId,
+      title,
+      body,
+      tz.TZDateTime.now(tz.local).add(after),
+      _details,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+    );
+  }
+
   /// إلغاء إشعارات الأذكار المنبثقة
   Future<void> cancelPopupDhikr() async {
     if (!_ready) return;

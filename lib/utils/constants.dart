@@ -59,6 +59,8 @@ class AppConstants {
   static const String keyFirstLaunchDone = 'first_launch_done';
   static const String keySunnahReminders = 'sunnah_reminders_enabled';
   static const String keyDailyRemindersSeen = 'daily_reminders_seen';
+  // نافذة «نبذة» (بلا إعلانات + طلب دعاء + توجيه البطارية) — تُعرض مرة واحدة
+  static const String keyAppNoteSeen = 'app_note_seen_v1';
 
   // مفاتيح تخصيص الأذكار (shared_preferences)
   static const String keyAdhkarOrder = 'adhkar_order';

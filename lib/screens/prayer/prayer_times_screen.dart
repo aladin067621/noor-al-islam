@@ -223,16 +223,24 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     return '${local.hour.toString().padLeft(2, '0')}:${local.minute.toString().padLeft(2, '0')}';
   }
 
-  String _nextPrayerName(List<_PrayerTime> prayers, DateTime now) {
+  /// يُعيد اسم الصلاة التالية ووقتها الفعلي.
+  /// بعد آخر صلاة من اليوم، الصلاة التالية هي فجر **الغد**.
+  ({String name, DateTime when}) _nextPrayerInfo(List<_PrayerTime> prayers, DateTime now) {
     for (final p in prayers) {
       if (p.name == 'الشروق') continue;
       final parts = p.time.split(':');
       final t = DateTime(now.year, now.month, now.day,
           int.parse(parts[0]), int.parse(parts[1]));
-      if (t.isAfter(now)) return p.name;
+      if (t.isAfter(now)) return (name: p.name, when: t);
     }
-    // كل الصلوات مرّت اليوم → التالية صلاة الفجر
-    return 'الفجر';
+    // كل الصلوات مرّت اليوم → الصلاة التالية هي فجر الغد
+    final fajr = prayers.firstWhere((p) => p.name == 'الفجر');
+    final fParts = fajr.time.split(':');
+    return (
+      name: 'الفجر',
+      when: DateTime(now.year, now.month, now.day,
+          int.parse(fParts[0]), int.parse(fParts[1])).add(const Duration(days: 1)),
+    );
   }
 
   @override
@@ -450,7 +458,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     // تفعيل الأذان تلقائيًا عند دخول وقت الصلاة (مرة واحدة لكل صلاة)
     // — يُدار من المؤقّت الدوري، لا من دورة البناء
     final now = DateTime.now();
-    final nextPrayer = _dayOffset == 0 ? _nextPrayerName(prayers, now) : '';
+    final nextInfo =
+        _dayOffset == 0 ? _nextPrayerInfo(prayers, now) : null;
 
     final dayLabel = _dayOffset == 0
         ? 'اليوم'
@@ -535,7 +544,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           const SizedBox(height: 12),
           ...prayers.map((p) => _PrayerTile(
                 prayer: p,
-                isNext: p.name == nextPrayer,
+                isNext: nextInfo?.name == p.name,
+                nextWhen: nextInfo?.name == p.name ? nextInfo!.when : null,
                 now: now,
                 dayOffset: _dayOffset,
               )),
@@ -604,22 +614,30 @@ class _PrayerTime {
 class _PrayerTile extends StatelessWidget {
   final _PrayerTime prayer;
   final bool isNext;
+
+  /// وقت حدوث الصلاة التالية الفعلي (قد يكون في الغد) — يُستخدم للعدّ التنازلي
+  final DateTime? nextWhen;
   final DateTime now;
   final int dayOffset;
 
   const _PrayerTile({
     required this.prayer,
     required this.isNext,
+    required this.nextWhen,
     required this.now,
     required this.dayOffset,
   });
 
   /// فرق الوقت: مرّ (elapsed) أو بقي (remaining) — الأوقات تُحسب ليوم العرض
+  /// وللصلاة التالية يُستخدم وقتها الفعلي ([nextWhen]) حتى لو كان في الغد.
   _CountDiff? _diff() {
-    final parts = prayer.time.split(':');
-    final t = DateTime(now.year, now.month, now.day,
-        int.parse(parts[0]), int.parse(parts[1]));
-    final diff = now.difference(t);
+    final base = nextWhen ??
+        () {
+          final parts = prayer.time.split(':');
+          return DateTime(now.year, now.month, now.day,
+              int.parse(parts[0]), int.parse(parts[1]));
+        }();
+    final diff = now.difference(base);
     if (diff.inSeconds > -30 && diff.inSeconds <= 30) {
       return _CountDiff('الآن', isPast: false);
     }
