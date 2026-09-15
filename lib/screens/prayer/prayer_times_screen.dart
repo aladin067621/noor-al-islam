@@ -1,10 +1,13 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/location_service.dart';
+import '../../services/adhan_background_task.dart';
 import '../../utils/theme.dart';
 import '../../widgets/location_picker.dart';
 import '../../widgets/slide_notification.dart';
@@ -78,6 +81,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     // موقع محفوظ — نعرض المواقيت فورًا دون طلب إذن أو انتظار GPS
     if (service.saved != null) {
       await _loadAdhanPref();
+      // إعادة تفعيل خدمة الأذان إن كانت مفعّلة (بعد إعادة تشغيل الجهاز/التطبيق)
+      if (_adhanEnabled) await _fgHandlesAdhan(service.saved!);
       _startTicker();
       return;
     }
@@ -103,11 +108,13 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     });
   }
 
-  /// عند تفعيل الأذان: يفحص إن دخل وقت صلاةٍ ما الآن ثم يشغّل الأذان مرة واحدة
+  /// عند تفعيل الأذان: يفحص إن دخل وقت صلاةٍ ما الآن ثم يشغّل الأذان مرة واحدة.
+  /// إن كانت الخدمة الأمامية مفعّلة تترك مهمة الأذان لها (حتى خارج التطبيق).
   Future<void> _maybeFlashAdhan() async {
     if (!_adhanEnabled || _adhanManuallyStopped || _dayOffset != 0) return;
     final loc = LocationService.instance.saved;
     if (loc == null) return;
+    if (await _fgHandlesAdhan(loc)) return;
     final now = DateTime.now();
     final pt = PrayerTimes(
       coordinates: Coordinates(loc.latitude, loc.longitude),
@@ -153,19 +160,69 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     });
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('adhan_enabled', enable);
-    if (!enable) {
+    if (enable) {
+      await _startAdhanForeground();
+    } else {
+      await _stopAdhanForeground();
       await _adhanPlayer.stop();
       if (mounted) setState(() {});
-    } else {
-      if (mounted) {
-        SlideNotification.show(
-          context,
-          title: 'تفعيل الأذان',
-          message: 'سيُشغَّل الأذان عند دخول وقت كل صلاة',
-          icon: Icons.volume_up,
-        );
-      }
     }
+    if (!enable) return;
+    if (mounted) {
+      SlideNotification.show(
+        context,
+        title: 'تفعيل الأذان',
+        message: 'سيعمل الأذان عند دخول وقت كل صلاة، حتى خارج التطبيق',
+        icon: Icons.volume_up,
+      );
+    }
+  }
+
+  /// إذا كانت الخدمة الأمامية مفعّلة: تزامن معها الموقع والطريقة وتعيد تشغيلها إن
+  /// توقفت، وتترك لها مهمة الأذان. تُرجع true عند التفعيل (يتولّى الأذان).
+  Future<bool> _fgHandlesAdhan(SavedLocation loc) async {
+    if (!Platform.isAndroid) return false;
+    final prefs = await SharedPreferences.getInstance();
+    final fgOn = prefs.getBool(kAdhanFgEnabledKey) ?? false;
+    if (!fgOn) return false;
+    await prefs.setDouble(kAdhanFgLatKey, loc.latitude);
+    await prefs.setDouble(kAdhanFgLngKey, loc.longitude);
+    await prefs.setInt(kAdhanFgMethodKey, _methodIndex);
+    try {
+      if (!await FlutterForegroundTask.isRunningService) {
+        await FlutterForegroundTask.restartService();
+      }
+    } catch (_) {}
+    return true;
+  }
+
+  Future<void> _startAdhanForeground() async {
+    if (!Platform.isAndroid) return;
+    final prefs = await SharedPreferences.getInstance();
+    final loc = LocationService.instance.saved;
+    if (loc != null) {
+      await prefs.setDouble(kAdhanFgLatKey, loc.latitude);
+      await prefs.setDouble(kAdhanFgLngKey, loc.longitude);
+    }
+    await prefs.setInt(kAdhanFgMethodKey, _methodIndex);
+    await prefs.setBool(kAdhanFgEnabledKey, true);
+    try {
+      await FlutterForegroundTask.startService(
+        serviceId: 21404,
+        notificationTitle: 'الأذان مفعّل',
+        notificationText: 'سيعمل الأذان عند دخول وقت كل صلاة',
+        callback: adhanTaskCallback,
+      );
+    } catch (_) {}
+  }
+
+  Future<void> _stopAdhanForeground() async {
+    if (!Platform.isAndroid) return;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(kAdhanFgEnabledKey, false);
+    try {
+      await FlutterForegroundTask.stopService();
+    } catch (_) {}
   }
 
   /// تشغيل الأذان (عبر تدفق mp3 — دون تحميل الملف)
