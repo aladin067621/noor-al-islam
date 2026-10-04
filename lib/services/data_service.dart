@@ -18,11 +18,8 @@ class DataService {
   List<Dhikr>? _hisnAdhkar;
   List<Dhikr>? _wabilAdhkar;
   List<PrayerTab>? _prayerTabs;
-  List<dynamic>? _tawheedSections;
-  Map<String, dynamic>? _pillars;
   List<Book>? _booksIndex;
   final Map<String, List<Chapter>> _chaptersCache = {};
-  List<dynamic>? _tafsirSurahs;
   Map<String, dynamic>? _config;
 
   Future<Map<String, dynamic>> _loadJson(String path) async {
@@ -149,19 +146,6 @@ class DataService {
     return _prayerTabs!;
   }
 
-  Future<List<dynamic>> loadTawheedSections() async {
-    if (_tawheedSections != null) return _tawheedSections!;
-    final data = await _loadJson(AppConstants.tawheedFile);
-    _tawheedSections = data['sections'] as List;
-    return _tawheedSections!;
-  }
-
-  Future<Map<String, dynamic>> loadPillars() async {
-    if (_pillars != null) return _pillars!;
-    _pillars = await _loadJson(AppConstants.pillarsFile);
-    return _pillars!;
-  }
-
   Future<List<Book>> loadBooksIndex() async {
     if (_booksIndex != null) return _booksIndex!;
     final data = await _loadJson(AppConstants.booksIndexFile);
@@ -228,13 +212,6 @@ class DataService {
         .toList();
     _chaptersCache[book.id] = chapters;
     return chapters;
-  }
-
-  Future<List<dynamic>> loadTafsirSurahs() async {
-    if (_tafsirSurahs != null) return _tafsirSurahs!;
-    final data = await _loadJson(AppConstants.tafsirFile);
-    _tafsirSurahs = data['surahs'] as List;
-    return _tafsirSurahs!;
   }
 
   Future<Map<String, dynamic>> loadConfig() async {

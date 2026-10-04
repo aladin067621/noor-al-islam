@@ -23,18 +23,12 @@ import '../services/settings_provider.dart';
 import 'adhkar/adhkar_categories_screen.dart';
 import 'adhkar/adhkar_sub_categories_screen.dart';
 import 'adhkar/adhkar_list_screen.dart';
-import 'asma_al_husna/asma_al_husna_screen.dart';
 import 'prayer/prayer_screen.dart';
 import 'prayer/prayer_times_screen.dart';
 import 'qibla/qibla_screen.dart';
 import 'hijri_calendar/hijri_calendar_screen.dart';
-import 'tawheed/tawheed_screen.dart';
-import 'pillars/pillars_screen.dart';
-import 'quran_tafsir/tafsir_surahs_screen.dart';
-import 'quran_mushaf/mushaf_screen.dart';
 import 'library/books_list_screen.dart';
 import 'library/book_chapters_screen.dart';
-import 'quran_memorization/memorization_screen.dart';
 import 'favorites/favorites_screen.dart';
 import 'notes/notes_screen.dart';
 import 'search/search_screen.dart';
@@ -425,13 +419,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       await prefs.setBool(AppConstants.keyHomeSectionsV3, true);
     }
 
-    // ترحيل المصحف: إضافة قسم «القرآن الكريم» إلى القائمة الظاهرة مرة واحدة
-    if (!(prefs.getBool(AppConstants.keyHomeSectionsV4) ?? false)) {
-      if (!stored.contains('mushaf')) {
-        stored = [...stored, 'mushaf'];
-        await prefs.setStringList(AppConstants.keyHomeSectionsVisible, stored);
-      }
-      await prefs.setBool(AppConstants.keyHomeSectionsV4, true);
+    // إزالة أقسام لم تعد موجودة في هذه النسخة (المصحف، التفسير، حفظ القرآن،
+    // أسماء الله الحسنى، التوحيد، أركان الإسلام) من قائمة الأقسام المحفوظة.
+    const removedIds = {
+      'mushaf', 'tafsir', 'memorization', 'asma', 'tawheed', 'pillars',
+    };
+    if (stored.any(removedIds.contains)) {
+      stored = stored.where((id) => !removedIds.contains(id)).toList();
+      await prefs.setStringList(AppConstants.keyHomeSectionsVisible, stored);
     }
 
     final visible = <HomeSection>[];
@@ -593,9 +588,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       case 'arbaeen':
         _openArbaeen(context);
         return;
-      case 'asma':
-        screen = const AsmaAlHusnaScreen();
-        break;
       case 'prayer':
         screen = const PrayerScreen();
         break;
@@ -608,23 +600,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       case 'hijri':
         screen = const HijriCalendarScreen();
         break;
-      case 'tawheed':
-        screen = const TawheedScreen();
-        break;
-      case 'pillars':
-        screen = const PillarsScreen();
-        break;
-      case 'tafsir':
-        screen = const TafsirSurahsScreen();
-        break;
-      case 'mushaf':
-        screen = const MushafScreen();
-        break;
       case 'library':
         screen = const BooksListScreen();
-        break;
-      case 'memorization':
-        screen = const MemorizationScreen();
         break;
       case 'favorites':
         screen = const FavoritesScreen();

@@ -78,30 +78,6 @@ class _SearchScreenState extends State<SearchScreen> {
       }
     }
 
-    // التوحيد
-    final tw = await data.loadTawheedSections();
-    for (final s in tw) {
-      final m = s as Map<String, dynamic>;
-      results.add(SearchResult(
-        section: 'التوحيد',
-        title: m['title'] ?? '',
-        preview: m['content'] ?? '',
-        source: m['source'] ?? '',
-      ));
-    }
-
-    // أركان الإسلام
-    final pillars = await data.loadPillars();
-    for (final s in (pillars['sections'] as List? ?? [])) {
-      final m = s as Map<String, dynamic>;
-      results.add(SearchResult(
-        section: 'أركان الإسلام',
-        title: m['title'] ?? '',
-        preview: m['content'] ?? '',
-        source: m['source'] ?? '',
-      ));
-    }
-
     // الكتب
     final books = await data.loadBooksIndex();
     for (final b in books) {
@@ -112,20 +88,6 @@ class _SearchScreenState extends State<SearchScreen> {
           title: c.title,
           preview: c.content,
           source: b.author,
-        ));
-      }
-    }
-
-    // التفسير
-    final surahs = await data.loadTafsirSurahs();
-    for (final s in surahs) {
-      final m = s as Map<String, dynamic>;
-      for (final a in (m['ayat'] as List? ?? [])) {
-        final ay = a as Map<String, dynamic>;
-        results.add(SearchResult(
-          section: 'تفسير القرآن',
-          title: 'سورة ${m['name']} — آية ${ay['number']}',
-          preview: '${ay['text']} ${ay['tafsir']}',
         ));
       }
     }

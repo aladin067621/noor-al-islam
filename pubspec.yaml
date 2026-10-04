@@ -49,16 +49,8 @@ flutter:
     - assets/adhkar/
     - assets/books/
     - assets/prayer/
-    - assets/tawheed/
-    - assets/pillars/
-    - assets/tafsir/
-    - assets/asma_al_husna/
     - assets/config/
     - assets/references.md
-    - assets/quran/surahs/
-    - assets/quran/tajweed/
-    - assets/quran/
-    - assets/quran/fonts/
 
   fonts:
     - family: NotoNaskhArabic
@@ -71,9 +63,3 @@ flutter:
         - asset: assets/fonts/Amiri-Regular.ttf
         - asset: assets/fonts/Amiri-Bold.ttf
           weight: 700
-    - family: QuranUthmani
-      fonts:
-        - asset: assets/quran/fonts/Uthmani.ttf
-    - family: QuranIndopak
-      fonts:
-        - asset: assets/quran/fonts/Indopak.ttf

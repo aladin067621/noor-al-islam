@@ -22,27 +22,7 @@ class AppConstants {
   };
 
   static const String prayerStepsFile = 'assets/prayer/prayer_steps.json';
-  static const String tawheedFile = 'assets/tawheed/tawheed.json';
-  static const String pillarsFile = 'assets/pillars/pillars.json';
   static const String booksIndexFile = 'assets/books/index.json';
-  static const String tafsirFile = 'assets/tafsir/tafsir.json';
-
-  // مسارات أصول القرآن (نص + ألوان تجويد — من Quran-Tajweed-Engine دون تعديل)
-  static const String quranSurahsPath = 'assets/quran/surahs';
-  static const String quranTajweedPath = 'assets/quran/tajweed';
-  static const String quranRulesPath = 'assets/quran/tajweed-rules.json';
-  static const String quranJuzPath = 'assets/quran/juz.json';
-  static const String quranUthmaniFont = 'QuranUthmani';
-  static const String quranIndopakFont = 'QuranIndopak';
-
-  // الصوت — alquran.cloud (Islamic Network) — بث + تخزين مؤقت للآيات
-  // ملاحظة: شبكة التوزيع تُرقّم الآيات بالرقم التسلسلي العالمي (1-6236) لا بمسار سورة/آية
-  static const String quranAudioBase = 'https://cdn.islamic.network/quran/audio/128';
-  // نطاق احتياطي تابع لـ alquran.cloud نفسها يُجرَّب عند فشل الأساسي
-  static const String quranAudioBaseSecondary = 'https://cdn.islamicnetwork.com/quran/audio/128';
-  // احتياط ثالث عبر islamic.app (يعيد توجيهًا لـ cdn.islamic.app بجودة عالية)
-  static const String quranAudioBaseTertiary = 'https://api.islamic.app/v1/audio/ayah';
-  static const String defaultReciter = 'ar.husary'; // محمود خليل الحصري (مرتّل)
 
   // مفاتيح shared_preferences
   static const String keyDarkMode = 'dark_mode';
@@ -79,17 +59,6 @@ class AppConstants {
   static const String keyHomeSectionsV2 = 'home_sections_v2';
   // علم ترحيل: أُضيفت بطاقة «الأربعون النووية» إلى القائمة الظاهرة
   static const String keyHomeSectionsV3 = 'home_sections_v3';
-  // علم ترحيل: أُضيف قسم «القرآن الكريم» (المصحف المنفصل) إلى القائمة الظاهرة
-  static const String keyHomeSectionsV4 = 'home_sections_v4';
-  // علامة القراءة (استئناف) في المصحف المنفصل — بصيغة "surah:ayah"
-  static const String keyMushafBookmark = 'mushaf_bookmark_v1';
-
-  // مفاتيح قسم حفظ القرآن (محلية فقط — لا يوجد تسجيل/إعلانات/ميكروفون)
-  static const String keyHifzStatus = 'hifz_status_v1';
-  static const String keyHifzSessions = 'hifz_sessions_v1';
-  static const String keyHifzSettings = 'hifz_settings_v1';
-  // بيانات المراجعة المتباعدة لكل آية (المرحلة، تاريخ الاستحقاق، تاريخ الحفظ)
-  static const String keyHifzMeta = 'hifz_meta_v1';
 
   // مفاتيح الموقع المحفوظ (مدينة يدوية أو إحداثيات GPS)
   static const String keyLocationLat = 'location_lat';
@@ -127,17 +96,11 @@ class HomeSection {
 /// الأقسام الأصلية في الصفحة الرئيسية (تظهر افتراضياً)
 const List<HomeSection> homeSections = [
   HomeSection(id: 'adhkar', title: 'الأذكار', icon: Icons.spa, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'asma', title: 'أسماء الله الحسنى', icon: Icons.auto_awesome, color: Color(0xFFB8860B)),
   HomeSection(id: 'prayer', title: 'الصلاة', icon: Icons.mosque, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'prayer_times', title: 'مواقيت الصلاة', icon: Icons.access_time, color: Color(0xFF2E7D5B)),
   HomeSection(id: 'qibla', title: 'اتجاه القبلة', icon: Icons.explore, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'hijri', title: 'التقويم الهجري', icon: Icons.calendar_month, color: Color(0xFF8B6914)),
-  HomeSection(id: 'tawheed', title: 'التوحيد', icon: Icons.brightness_7, color: Color(0xFFB8860B)),
-  HomeSection(id: 'pillars', title: 'أركان الإسلام', icon: Icons.auto_stories, color: Color(0xFF8B6914)),
-  HomeSection(id: 'tafsir', title: 'تفسير القرآن', icon: Icons.menu_book, color: Color(0xFF2E7D5B)),
-  HomeSection(id: 'mushaf', title: 'القرآن الكريم', icon: Icons.import_contacts, color: Color(0xFF1B6B5A)),
   HomeSection(id: 'library', title: 'المكتبة', icon: Icons.library_books, color: Color(0xFF1B6B5A)),
-  HomeSection(id: 'memorization', title: 'حفظ القرآن', icon: Icons.menu_book, color: Color(0xFFB8860B)),
   HomeSection(id: 'arbaeen', title: 'الأربعون النووية', icon: Icons.auto_stories, color: Color(0xFF2E7D5B)),
   HomeSection(id: 'favorites', title: 'المفضلة', icon: Icons.favorite, color: Color(0xFFC0392B)),
   HomeSection(id: 'notes', title: 'الملاحظات', icon: Icons.edit_note, color: Color(0xFF8B6914)),
